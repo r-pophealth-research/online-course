@@ -1,0 +1,43 @@
+---
+title: "Welcome"
+---
+
+
+Welcome to **R Fundamentals for Health Research** — an introduction to R for epidemiology and health policy research.
+
+These materials
+
+These course materials run entirely in your browser using [Quarto](https://quarto.org) and [WebR](https://docs.r-wasm.org/webr/latest/). You do not need R installed locally to explore the tutorials and run code on this site.
+
+```{webr-r}
+#| context: setup
+# Helper: download bundled data into the WebR virtual filesystem
+webr_read_csv <- function(path) {
+  local_name <- basename(path)
+  if (!file.exists(local_name)) {
+    download.file(path, local_name, quiet = TRUE, mode = "wb")
+  }
+  readr::read_csv(local_name, show_col_types = FALSE)
+}
+```
+
+Try loading a course dataset:
+
+```{webr-r}
+framingham <- webr_read_csv("data/framingham.csv")
+nrow(framingham)
+```
+
+## How to use this site
+
+- **Tutorials** — Pre-class activities with interactive code cells. Click **Run** in any code block to execute R in your browser.
+- **Homework** — Assignments with editable code cells. Download the original `.Rmd` from the course repo if you prefer working in RStudio.
+- **Final Project** — End-of-quarter analysis assignment.
+
+::: {.callout-note}
+The first time you run code on a page, WebR needs to download R and any required packages. This can take 30–60 seconds on a slow connection. Subsequent cells on the same page run much faster.
+:::
+
+## Working locally in RStudio
+
+If you prefer the full RStudio experience, clone the [course repository](https://github.com/anna-nguyen/epi202-w25) and open the `.Rmd` files directly. The `.qmd` files on this site are generated from those sources for WebR compatibility.
