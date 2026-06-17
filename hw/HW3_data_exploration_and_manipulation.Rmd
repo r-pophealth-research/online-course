@@ -1,0 +1,185 @@
+---
+title: "Homework 3"
+output: pdf_document
+---
+
+# Homework 3
+
+This assignment covers materials from Weeks 4 and 5, including data exploration and data manipulation. You should be able to complete Part 1 after the Week 4 lecture and Parts 2-3 after the Week 5 lecture. **You only need to complete the "Challenge Questions" if you have enrolled in the class for 2 units.**
+
+In each question you are welcome to use additional lines of code or create intermediate variables, but be sure to save your final answer to the specified variable.
+
+If you have questions about this assignment, please attend office hours or create a discussion post on the course Ed.
+
+# Loading packages and data
+
+Run the cell below to load the required packages
+
+```{r}
+library(tidyverse)
+library(here)
+```
+
+## Data Overview 
+
+In this homework, we'll be working with hospitalization data collected by the California Department of Public Health. Specifically, we'll be looking at the number of COVID-19 and influenza hospitalizations in California during 2021. **Download the `covid19_hospitalizations.csv` and `influenza_hospitalizations.csv` files from Canvas and save them in the data folder of your class directory**
+
+The first dataset, loaded as `covid19_hospitalizations` contains daily data on the number of hospital patients with COVID-19, by county. It contains the following columns:
+* `county`: a string, the name of a county
+* `todays_date`: a date, the day that counts were recorded for
+* `hospitalized_covid_confirmed_patients`/`hospitalized_covid_suspected_patients`: a numeric, the number of patients in the hospital (including the ICU) that have a lab-confirmed/suspected case of COVID-19 
+* `icu_covid_confirmed_patients`/`icu_covid_suspected_patients`: a numeric, the number of patients in the ICU that have a lab-confirmed/suspected case of COVID-19
+* `all_hospital_beds` / `icu_available_beds`: a numeric, the total number of available hospital/ICU beds.
+
+Run the cell below to load the COVID-19 hospitalization data. 
+
+```{r}
+#Source: https://data.chhs.ca.gov/dataset/covid-19-hospital-data
+covid19_hospitalizations = read_csv(here("data", "covid19_hospitalizations.csv"))
+head(covid19_hospitalizations)
+```
+
+The second dataset, loaded as `flu_hospitalizations`, contains daily data on the number of influenza hospitalizations across the whole state. It contains the following columns:
+* `date`: a date, the day that counts were recorded for
+* `patient_vol_influenza`: a numeric, the total number of inpatients with a influenza diagnosis
+* `patient_vol_influenza_icu`: a numeric, the total number of ICU patients with a influenza diagnosis
+* `admits_influenza`: a numeric, the total number of patients who were newly admitted and had a influenza diagnosis on the same day
+
+Run the cell below to load the influenza hospitalization data.
+
+```{r}
+#Source: https://data.chhs.ca.gov/dataset/respiratory-virus-dashboard-metrics 
+flu_hospitalizations = read_csv(here("data", "influenza_hospitalizations.csv")) 
+head(flu_hospitalizations)
+```
+
+# Part 1: Exploring Data
+
+## Question 1 (3 points)
+
+On which day was there the most confirmed COVID-19 patients in the ICU in Alameda County? Use tidyverse commands to find the answer from the `covid19_hospitalizations` dataset, and save the date to the variable `highest_icu_date_alameda`. 
+
+Hint: There are many ways you can approach this question. In one possible method, you can use some combination of `filter()`, `pull()`, `arrange()`
+
+```{r}
+highest_icu_date_alameda = ...
+highest_icu_date_alameda
+```
+
+## Question 2 (2 points)
+
+How many days had over 50 influenza hospitalizations? Use tidyverse commands to find the answer from the `flu_hospitalizations` dataset, and save the value to the variable `n_days_over50_flu_hosp`.
+
+Hint: There are many ways you can approach this question. In one possible method, you can use some combination of `filter()` and `nrow()`. 
+
+```{r}
+n_days_over50_flu_hosp = ...
+n_days_over50_flu_hosp
+```
+
+## Question 3 (3 points)
+
+What was the maximum number of ICU patients with influenza between September 1st and December 31st? Use tidyverse commands to find the answer from the `flu_hospitalizations` dataset, and save the value to the variable `max_flu_icu_patients`.
+
+Hint: you can use `filter` on dates but need to compare the date column to other `date` value, similar to how you have to compare numbers to numbers and not numbers to characters. You can convert a string of format YYYY-MM-DD to a date using `ymd`. For example, this code checks if a date is between March 14, 2018 and November 8, 2019: `filter(date >= ymd("2018-03-14"), date <= ymd("2019-11-08"))`.
+
+```{r}
+max_flu_icu_patients = ...
+max_flu_icu_patients
+```
+
+## Question 4 (3 points)
+
+Create a scatter plot comparing the number of inpatient hospitalizations and the number of new influenza admits. Place current hospitalizations on the x-axis and new admissions on the y-axis. Make sure to include descriptive axis labels and a plot title. 
+
+```{r}
+...
+```
+
+## Challenge Question 1 (2 points)
+
+Create a vector called `county_covid_hosp` that contains the total number of confirmed COVID-19 hospitalizations for each county. Plot the distribution of the new vector as a histogram. Make sure to include descriptive axis labels and a plot title. 
+
+```{r}
+county_covid_hosp = ...
+...
+```
+
+# Part 2: Creating Variables
+
+## Question 5 (3 points)
+
+Create a dataframe called `all_covid19_hospitalizations` that is a copy of `covid19_hospitalizations` with two new columns (1) `all_covid_hospitalizations`, which is a sum of the confirmed and suspected COVID-19 hospitalizations and (2) `all_covid_icu`, which is a sum of the confirmed and suspected COVID-19 ICU patients.
+
+```{r}
+all_covid19_hospitalizations = ... 
+all_covid19_hospitalizations
+```
+
+## Question 6 (3 points)
+
+Create a dataframe called `flu_admits_levels` that is a copy of `flu_hospitalizations` with a new column `admit_level` that has the value `low` when there are 0-5 new admits with influenza, `medium` where there are 6-10 new admits with influenza, and `high` if there are over 10 new admits with influenza.
+
+```{r}
+flu_admits_levels = ... 
+flu_admits_levels
+```
+
+## Challenge Question 2 (4 points)
+
+Create a dataframe called `covid_icu_capacity` that is a copy of `covid19_hospitalizations` with a new column called `prop_icu_beds_occupied`, which is the proportion of ICU beds that are currently occupied by patients with either confirmed or suspected COVID-19. 
+
+Assume that the total number of ICU beds is the sum of available beds, beds taken by confirmed COVID-19 patients, and beds taken by suspected COVID-19 patients. Of course, this isn't realistic since it ignores any ICU beds taken by non-COVID patients, but we'll make the simplification for the sake of this question. 
+
+Hint: you may need to make two intermediate calculations for the number of ICU beds occupied by COVID-19 patients and the number of total ICU beds before calculating `prop_icu_beds_occupied`.
+
+```{r}
+covid_icu_capacity = ...
+covid_icu_capacity
+```
+
+# Part 3: Joining Data
+
+## Question 7 (2 points)
+
+The code below creates a dataframe `daily_covid19_hospitalizations` that adds up COVID-19 hospitalizations across all counties for each day of 2021.
+
+```{r}
+daily_covid19_hospitalizations = covid19_hospitalizations %>% 
+  group_by(todays_date) %>% 
+  summarize(hospitalized_covid_confirmed_patients = sum(hospitalized_covid_confirmed_patients), 
+            hospitalized_covid_suspected_patients = sum(hospitalized_covid_suspected_patients), 
+            icu_covid_confirmed_patients = sum(icu_covid_confirmed_patients), 
+            icu_covid_suspected_patients = sum(icu_covid_suspected_patients))
+
+head(daily_covid19_hospitalizations)
+```
+
+The code below shows the first few rows of `flu_hospitalizations` for your convenience. 
+
+```{r}
+head(flu_hospitalizations)
+```
+
+Merge `daily_covid19_hospitalizations` and `flu_hospitalizations` by date to create a new data frame called `respiratory_hospitalizations`. 
+
+```{r}
+respiratory_hospitalizations = ...
+respiratory_hospitalizations
+```
+
+## Challenge Question 3 (3 points)
+
+Using your newly created `respiratory_hospitalizations` dataframe, create a scatterplot comparing the total influenza non-ICU hospitalizations vs. COVID-19 non-ICU hospitalizations patients. Include both confirmed and suspected COVID-19 cases in your calculations. Your plot should have an informative title and axis labels. 
+
+Hint: start by creating columns in your dataset called `total_covid_nonicu_hospitalizations` and `total_flu_nonicu_hospitalizations`.
+
+```{r}
+...
+```
+
+# Submission Instructions
+
+Knit this R notebook as a PDF and submit it to the corresponding Gradescope assignment. Check the file to make sure that all your code and its output is displayed.
+
+Once you successfully submit, you will be asked to match each question to its respective page on your submission. **Do not skip this step.**

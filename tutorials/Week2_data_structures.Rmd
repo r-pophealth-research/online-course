@@ -1,0 +1,324 @@
+---
+title: "Data Types and Structures"
+output: html_notebook
+---
+
+In this chapter, we'll cover the different ways that data is stored in R. We'll start by looking at the individual data points before moving on to collections of data. Here, you'll implement code to create, store, and access data in R.
+
+# Review: Data Types
+
+There are several ways that data can be stored in R. In this class, we'll focus on using numerics, characters, and logicals.
+
+**Numerics** represent whole and decimal numbers.
+
+```{r}
+3 # A numeric
+3.5 # Also a numeric
+
+# Mathematical operations can be performed on numerics
+3 + 6
+3 / 6
+```
+
+**Characters** represent text data; values are always contained within quotations. Single `'...'` or double `"..."` quotations work, but the opening and closing quotation marks have to match! (Ex `'..."` returns an error)
+
+```{r}
+"hello world" # A character
+"5.3" # A character
+```
+
+**Logicals** evaluate to either TRUE or FALSE, and are often used when we want to make comparisons.
+
+```{r}
+TRUE # A logical
+6 > 5 # A logical, evaluates to TRUE
+12 == "12" # A logical, evaluates to FALSE
+```
+
+# Variables
+
+Often times, we want to complete multiple actions on the same data. We can use **variables** to store data values. These variables can be used for any future operations we want to do.
+
+The code below defines the variable `big_number` to take on the value of the numeric `153423483.` You can assign variables by using `<-` or `=`
+
+```{r}
+# These two lines of code do the same thing
+big_number = 153423483
+big_number <- 153423483
+```
+
+When you assign a variable, the environment panel in RStudio will update to include the variable's name and current value. Instead of having to type `153423483` every time we want to work with it, we can complete operations using the `big_number` variable. Compare the output of the following two cells:
+
+```{r}
+153423483 * 4
+```
+
+```{r}
+big_number * 4
+```
+
+We can also reassign the value of variables using `=` and `->`. Run the code below to set the value of `big_number` to 12413. In the environment pane, the value of `big_number` will change to reflect your edits.
+
+```{r}
+big_number = 12413
+```
+
+## Practice Problem 1
+
+Create a variable called `temp_f` that is equal to the current temperature in fahrenheit.
+
+```{r}
+temp_f = ...
+temp_f
+```
+
+## Practice Problem 2
+
+Now create a variable `temp_c` that converts the value of `temp_f` to celcius. Recall that °C = (°F - 32) ÷ (9/5)
+
+```{r}
+temp_c = ...
+temp_c
+```
+
+# Vectors
+
+**Vectors** are lists of data points that are all the same type. You can create a vector by using the `c()` function.
+
+```{r}
+c(1, 6, 7, 31, 2)
+```
+
+WARNING: When you try to mix data types in a new vector, R will *cast* all values in the vector as strings. Pay close attention to the data types that you put into a vector
+
+```{r}
+# All values will be convert to characters
+c(1, 6, "7", 2, F)
+```
+
+If you're interested in making a sequence of numbers, the `:` operator is a shortcut to making an series of ascending numbers. Put the first value of the sequence to the left of the `:` and the last value to the right of the `:.` The code below create a vector of numbers from 5 to 100..
+
+```{r}
+5:100
+```
+
+## Practice Problem 3
+
+Make a vector called `fruits`, which contains 3 fruit names stored as characters
+
+```{r}
+fruits = c(..., ..., ...)
+fruits
+```
+
+## Accessing Items
+
+Each item in a vector can be located using its **index**. The index is the numeric value that corresponds to the item's position in the vector. The first item in the vector is at index 1, the second item is at index 2, etc.
+
+We can use square brackets `[]` after a vector to indicate which items you'd like to select using their indices.
+
+Suppose we had the following vector `numbers`
+
+```{r}
+numbers = 4:24 
+numbers
+```
+
+To access the 6th item of this vector, we can use the following code
+
+```{r}
+numbers[6]
+```
+
+You can also index a list using a vector of indices. To access the 4th, 8th, and 19th item of this vector, we can use the following code
+
+```{r}
+numbers[c(4, 8, 19)]
+```
+
+We can also use vector indexing to alter the values of specific items in the vector. The code below replaces the *second* value of `numbers` with the value `1043`
+
+```{r}
+numbers[2] = 1043
+numbers
+```
+
+## Practice Problem 4
+
+In the cell below, write code to replace the 3rd and 8th item of `numbers` with the value `32`
+
+```{r}
+numbers[...] = ...
+numbers
+```
+
+## Extending Vectors
+
+We can also use `c()` to add data to an existing vector. Suppose we wanted to keep create a vector to keep track of the number of weekly flu cases observed in a large classroom.
+
+We can start by creating an empty vector `n_flu_cases` that we'll gradually add values to.
+
+```{r}
+n_flu_cases = c()
+```
+
+The first week, we observe 5 cases. Let's update \``` n_flu_cases` `` so the first value is equal to 5.
+
+```{r}
+# Sets n_flu_cases to a vector that contains the existing values of n_flu_cases with a 5 at the end. 
+n_flu_cases = c(n_flu_cases, 5)
+n_flu_cases
+```
+
+Two weeks pass, during which we observed 8 and 6 cases. We can add both data points to the vector in one line of code
+
+```{r}
+# Sets n_flu_cases to a vector that appends the values 8 and 6 to the end of the existing n_flu_cases vector.
+n_flu_cases = c(n_flu_cases, c(8, 6))
+n_flu_cases
+```
+
+We tracked down a database that we used to retroactively measure 2 flu cases from the week before we started tracking. We can add this to the start of the `n_flu_cases` vector by putting `2` before `n_flu_cases` when we use `c()`.
+
+```{r}
+# Sets n_flu_cases to a vector that adds the value 2 to the start of the existing n_flu_cases vector.
+n_flu_cases = c(2, n_flu_cases)
+n_flu_cases
+```
+
+## Vector Operations
+
+Similar to how we were able to operate on individual data points, we can work with vectors to modify a collection of data.
+
+In the code below, we multiply 20 and subtract 94 from each number in the vector `nums`
+
+```{r}
+nums = c(14, 362, 26, 2)
+nums * 20 - 94
+```
+
+We can also operate on vectors of characters. In the cells below, we append the character "Trial Number:" to a vector of characters.
+
+```{r}
+# Create a vector of numbers between 1 and 10, convert them to characters
+num_characters = as.character(1:10)
+paste("Trial Number:", num_characters)
+```
+
+We can also summarize the contents of a vector using functions like `min`, `max`, `mean`, `median`, and `length`. Read the code provided below and guess what the output will be. Run the cells to confirm.
+
+```{r}
+more_numbers = c(13, 6, 123, 23, 6)
+paste("Minimum:", min(more_numbers))
+paste("Maximum:", max(more_numbers))
+paste("Mean:", mean(more_numbers))
+paste("Median:", median(more_numbers))
+paste("Length:", length(more_numbers))
+```
+
+The `summary` function produces a quick description of the distribution of values in the vector.
+
+```{r}
+summary(more_numbers)
+```
+
+The `unique` function extracts all unique values in a vector
+
+```{r}
+unique(more_numbers)
+```
+
+The `table` function can be used to count the number of times each value appears in the vector
+
+```{r}
+table(more_numbers)
+```
+
+## Practice Problem 5
+
+Subtract the mean of the vector `even_more_numbers` from each value of `even_more_numbers`.
+
+```{r}
+even_more_numbers = c(1, 6, 2, 93, 241, 315, 23)
+... - ...
+```
+
+# Data Frames/Tables
+
+Sometimes, we have multiple pieces of corresponding data. Instead of storing each variable as a separate vector, we can use data frames. Data frames are composed of columns and rows. Typically, each row represents a single unit (ex: a person, county, or state) and each column represents a characteristics (ex: age, race, disease status).
+
+The code below creates a data frame called `study_cohort`, where each row contains data from a single study participant and each column contains all participant values of a single characteristics. We create the data frame using `data.frame()`, and define each column within the parentheses with `COLUMN_NAME = VECTOR_OF_COLUMN_VALUES`
+
+```{r}
+study_cohort = data.frame(person_id = 1:5, 
+                          tr = c(1, 1, 0, 0, 1), 
+                          disease = c(0, 0, 0, 1, 0), 
+                          age = c(19, 26, 56, 53, 12))
+
+study_cohort
+```
+
+## Indexing Tables
+
+Similar to how we used `[]` to select specific values, we can use `[]` to select certain rows, columns, and values in a data frame. Generally, we follow the structure `table_name[row_index, column_index]`
+
+To access a specific row of the table, we use `table_name[row_index, ]`. When we leave the position for `column_index` blank, it assumes that we want to select all columns for that row.
+
+```{r}
+study_cohort[1, ]
+```
+
+We can also use a vector of indices to select multiple rows.
+
+```{r}
+study_cohort[1:3, ]
+```
+
+```{r}
+study_cohort[c(1, 4), ]
+```
+
+Similarly, we can use `table_name[, column_index]` to select specific columns of the data frame.
+
+```{r}
+study_cohort[, 3]
+```
+
+Instead of using the numeric index, we can use the column name. If we pass the column name through a single set of brackets (`table_name["column_name"]`) it returns a table with one column, but if we pass the column name through a double set of brackets (`table_name[["column_name"]]`) it returns a vector
+
+```{r}
+study_cohort["disease"] # returns a table with one column
+```
+
+```{r}
+study_cohort[["disease"]] # returns a vector with column values
+```
+
+We can also use the `$` operator to select columns by their name, using the format `table_name$column_name`. If your column name has spaces, the name must be contained inside ticks (ex: `` table_name$`column name` ``)
+
+```{r}
+study_cohort$disease
+```
+
+## Practice Problem 6
+
+Calculate the age in months of the participants in `study_cohort` table.
+
+```{r}
+ages_years = ... # Extract the column that contains participant ages in years
+ages_years ... # Use a vector operation to convert ages from years to months. 
+```
+
+# Summary
+
+In this tutorial, you learned about the different ways that data is stored in R. You should be comfortable distinguishing between the different data types, creating new variables, and working with vectors.
+
+Next, you'll learn how to load existing tables, explore data found in tables, and manipulate data frames!
+
+# Resources
+
+Introduction to Rby Michael Koontz and Ryan Peek [Vectors and Dataframes](https://mikoontz.github.io/data-carpentry-week/lesson_data_frames.html)
+
+Advanced R by Hadley Wickham: [Data Structures](http://adv-r.had.co.nz/Data-structures.html)
+
+Video Tutorials by Lesley Park: [Data Structures](https://canvas.stanford.edu/courses/184485/pages/video-tutorials-data-structures?module_item_id=1713461).

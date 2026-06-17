@@ -1,0 +1,407 @@
+---
+title: "Week 4: Data Exploration"
+output: html_notebook
+---
+
+# Week 4: Data Exploration
+
+Welcome to Week 4! This week, we'll start diving into datasets and cover different commands to view and summarize your the information contained in data frames.
+
+If you have any questions about the contents of this tutorial, please post them in the `Week 4 Pre-Class Tutorial` thread on Ed.
+
+Through this tutorial (and the rest of the class), we will be leveraging open source tools from the `tidyverse` and `here` packages. `tidyverse` includes a several "core" packages can be used in data exploration, manipulation, and visualizations. Over the next two weeks, we'll learn about the basics of `dplyr`, a package that includes several useful functions to interact with data.
+
+Before you start, run the cell below to load the packages.
+
+```{r}
+#Run install.package("tidyverse") if you don't already have this installed
+library(tidyverse) # also loads dplyr
+
+#Run install.package("here") if you don't already have this installed
+library(here) 
+```
+
+# Loading data
+
+To load in data sets, we have to specify where the file is located. File paths can be hard to remember, but the `here` function can help by returning the path to your current working directory.
+
+Run the cell below to view your current file path. Make sure that it returns the folder with your materials for CHPR/EPI 202. If it returns anything else, open the project that you've created for your class work and then reopen this notebook.
+
+```{r}
+here()
+```
+
+We will be using a example dataset from the Framingham Heart Study in this tutorial. Download the "framingham.csv" dataset from Canvas and move it to the `data` folder of your class folder/directory. The code below will return `TRUE` if the data has been correctly downloaded and stored.
+
+```{r}
+# Data Source: https://www.kaggle.com/datasets/aasheesh200/framingham-heart-study-dataset/data
+framingham_file_path = here("data", "framingham.csv")
+file.exists(framingham_file_path)
+```
+
+If the `framingham.csv` is in the `data` folder (ie the previous cell returns `TRUE`), run the next cell to load the data and name the data frame `framingham_df`
+
+```{r}
+framingham_df = read_csv(here("data", "framingham.csv"))
+```
+
+# Viewing data
+
+By default, calling the data frame will display the first 10 rows of the data frame. For large data frames, this might not provide the best overview of your data. R and `tidyverse`/`dplyr` have several commands that you can use to effectively summarize your data.
+
+## head() and tail()
+
+The `head()` function allows you to preview the first 6 rows of the dataset.
+
+```{r}
+head(framingham_df)
+```
+
+Similarly, `tail()` will show you the last 6 rows of the data set.
+
+```{r}
+tail(framingham_df)
+```
+
+## slice_sample()
+
+If you want to view a random sample of your dataset, you can use `slice_sample` where we can specify the size (`n`) of the sample and that we want to sample without replacement (ie a row can't appear multiple times in our sample).
+
+```{r}
+slice_sample(.data = framingham_df, n = 5, replace = F)
+```
+
+## dim(), nrow(), ncol()
+
+The dimensions of a data frame describe how many observations (rows) and variables (columns) are included. The `dim()` function takes in a data frame as an argument and returns its dimensions as a vector. The first item of the vector is the number of rows, and the second item of the vector is the number of columns.
+
+```{r}
+dim(framingham_df)
+```
+
+If you were interested in just the number of rows of columns, you can use `nrow()` and `ncol`
+
+```{r}
+print(paste("Number of rows:", nrow(framingham_df)))
+print(paste("Number of columns:", ncol(framingham_df)))
+```
+
+To view the specific variables (columns) that are included in a dataset, we can use `colnames()` which lists out the names of all columns.
+
+```{r}
+colnames(framingham_df)
+```
+
+## arrange()
+
+To order the rows of a data frame by the values of a column, we can use `arrange()`. The function takes a column name as an argument and returns a data frame sorted by that column in ascending order (smallest to largest).
+
+```{r}
+arrange(framingham_df, heartRate)
+```
+
+To sort a column in descending order (largest to smallest), add a `-` before the column name.
+
+```{r}
+arrange(framingham_df, -heartRate)
+```
+
+# Basic Data Visualizations
+
+We might also be interested in viewing the values of a specific variable. In week 2, we learned how to describe the vectors using functions like `mean()`, `summary()`, and `range()` which can also be applied to the columns of dataframes (ex `mean(framingham_df$age)`). However, numerical summaries can't capture every feature of a distribution. Histograms, boxplots, and scatterplots provide another view of data frames and can be easily produced using R's built-in functions.
+
+## Histograms
+
+The `hist()` function takes in a vector and produces a histogram of its distribution. The code below creates a histogram of ages in `framingham_df`
+
+```{r}
+hist(framingham_df$age)
+```
+
+## Boxplots
+
+Similarly, a box plot can be used to show the range, interquartile range, and median of a vector. The code below makes a boxplot for ages in `framingham_df`
+
+```{r}
+boxplot(framingham_df$age)
+```
+
+## Scatterplots
+
+If we want to investigate the relationship between two variables in the dataset, we can create a scatterplot using `plot()`. This function takes in 2 vectors, the first vector contains the x-axis values for the plot and the second vector contains the y-axis values. The order of points should be the same - the first item of both vectors correspond to the first measurement, the second item of both vectors correspond to the second measurement, etc.
+
+The code below creates a scatterplot of age vs total cholesterol.
+
+```{r}
+plot(framingham_df$age, framingham_df$totChol)
+```
+
+## Labeling plots
+
+We can pass through additional arguments to any of the plotting functions above to edit axis labels and plot titles. \* `main`: a character, the title of the plot that will be displayed on the top \* `xlab`: a character, the x-axis label \* `ylab`: a character, the y-axis label
+
+Below, we can remake our scatterplot with informative titles and labels.
+
+```{r}
+plot(framingham_df$age, framingham_df$totChol, 
+     main = "Total Cholesterol by Age in the Framingham Cohort",
+     xlab = "Age (years)", 
+     ylab = "Total Cholesterol (mg/dL)")
+```
+
+## Practice Problem 1
+
+Create a scatter plot to visualize the relationship between systolic (`sysBP`) vs diastolic blood pressure (`diaBP`). Include titles and labels to help with the interpretation of your plot.
+
+```{r}
+...
+```
+
+# Subsetting Data in dplyr
+
+There are many different cuts of the data that we might want to examine before starting our analysis. In this section, we'll go over the functions that you can use view specific rows/columns of a dataset.
+
+## select()
+
+If we want to view specific observations (rows), we can use the `[]` operator (see week 2 materials for a refresher).
+
+```{r}
+# Returns rows 4-7 of the dataset
+framingham_df[4:7, ]
+```
+
+```{r}
+# Returns the prevalentStroke and prevalentHyp columns of the dataset
+framingham_df[c("prevalentStroke", "prevalentHyp")]
+```
+
+```{r}
+# Returns the prevalentStroke and prevalentHyp columns for rows 4-7 of the dataset
+framingham_df[4:7, c("prevalentStroke", "prevalentHyp")]
+```
+
+`dplyr` also has a `select` function that can be used to select specific columns of a dataset.
+
+```{r}
+?select
+```
+
+The first argument of `select` will always be the data frame we're working with. Each subsequent argument is the name of a column we want to select (no quotes needed).
+
+```{r}
+select(framingham_df, age, education, prevalentStroke)
+```
+
+We can also use `select()` to drop certain columns by placing a `-` before the column name.
+
+```{r}
+select(framingham_df, -age, -education, -prevalentStroke)
+```
+
+## pull()
+
+Recall that if we wanted to select columns as vectors instead of data frames, we can use the `$` operator.
+
+```{r}
+framingham_df$age
+```
+
+Alternatively, we can use the `pull()` function from `dplyr`.
+
+```{r}
+pull()
+```
+
+The first argument of `pull` should be the dataframe we're working with and the second argument is the name of a column we want to pull data from (no quotes needed).
+
+```{r}
+pull(framingham_df, age)
+```
+
+## filter()
+
+In week 2, we learned how to use `[]` to select rows that meet a certain condition. For example, the code below shows only rows for study participants that were over the age of 65.
+
+```{r}
+framingham_df[framingham_df$age > 65, ]
+```
+
+`dplyr` includes a function called `filter` that can also be used to subset data frames based on a condition.
+
+```{r}
+?filter
+```
+
+The first argument is the data frame that you'd like to filter from, and each subseqent argument is a condition that you'd like to filter for. Note how the conditions only include the column name, since the data frame is specified in the first argument.
+
+```{r}
+filter(framingham_df, age > 65)
+```
+
+If we want to filter for another condition, we can add it as an additional argument. Here, we filter for both `male == 0` and `age > 65`
+
+```{r}
+filter(framingham_df, age > 65, male == 0)
+```
+
+We can also filter by multiple conditions by using the `&` operator The code below also filters the dataset for `male == 0` and `age > 65`
+
+```{r}
+filter(framingham_df, age > 65 & male == 0)
+```
+
+If we want to filter for cases where *any* of the conditions are met, we can use the `|` operator. Here, we filter for both `male == 0` or `age > 65`
+
+```{r}
+filter(framingham_df, age > 65 | male == 0)
+```
+
+# Pipes
+
+When working with data, we often need to complete multiple actions to the same data frame.
+
+For example, suppose we wanted to take a 20-person sample of `framingham_df` that includes only participants' `age`, `sysBP`, and `diaBP`. Using the tools we learned earlier in the tutorial, we can create this sample using the following code:
+
+```{r}
+# Select the needed columns
+framingham_age_bp = select(framingham_df, age, sysBP, diaBP)
+# Take a sample
+subsample_age_bp = sample_n(framingham_age_bp, size = 20, replace = FALSE)
+subsample_age_bp
+```
+
+Instead of having a separate command for each action, we can condense this code using **pipes**. The pipe operator `%>%` can be used to pass the output of the command on its left as the input of the command on its right the next command.
+
+```{r}
+subsample_age_bp = framingham_df %>% 
+  select(age, sysBP, diaBP) %>% # framingham_df is the first argument of select
+  sample_n(size = 20, replace = FALSE) # the results of framingham_df %>% select(...) is the first argument of sample_n
+
+subsample_age_bp
+```
+
+The output of these piped operations is a data frame. We do additional computations on this output; in the code below, we filter the sample to include observations with systolic blood pressures over 150
+
+```{r}
+subsample_age_bp %>% 
+  filter(sysBP > 150)
+```
+
+## Practice Problem 2
+
+Starting from `framingham_df`, use pipes to (1) filter to participants that are younger than 40 years old and (2) select their glucose and diabetes values. Save your processed data to a variable called `framingham_diabetes`
+
+Tip: the keyboard shortcut for `%>%` is (Command + Shift + m) on MacOS and (Control + Shift + m) on Windows.
+
+```{r}
+framingham_diabetes = framingham_df ...
+  filter ... # Operation 1
+  select ... # Operation 2
+  
+framingham_diabetes
+```
+
+## Practice Problem 3
+
+Calculate the average glucose value in the `framingham_diabetes` data frame you made in practice problem 1
+
+Hint: `mean()` is used to take the average of a vector. Which function do you need to use extract values from a dataframe column as a vector?
+
+```{r}
+framingham_diabetes %>% 
+  ... %>% 
+  mean(na.rm = ...)
+```
+
+# [Optional] Groups: group_by() and summarize()
+
+In health research, we often want to compare the distribution of different risk factors or outcomes across different groups. For example, in the Framingham data we could compare prevalence of hypertension between those that had a stroke vs those that didn't have a stroke (similar to what we might do in a case-control study)
+
+We can start by calculating the overall prevalence of hypertension First, we can use `pull()` to extract the `prevalentHyp` columns to examine the values it contains.
+
+```{r}
+framingham_df %>% pull(prevalentHyp) 
+```
+
+`prevalentHyp` appears to only take on the values of `0` (= no hypertension) and `1` (= hypertension). Recall from your statistics classes that when we have a vector of 0s and 1s, the mean of the vector represents the prevalence of the condition represented by `1`. In this case, we can calculate the prevalence of hypertension in the Framingham dataset by calculating the mean of the `currentSmoker` column.
+
+```{r}
+framingham_df %>% pull(prevalentHyp) %>% mean()
+```
+
+To look at differences in hypoertension prevalence by stroke status, we can calculate separate smoking prevalence for those that did vs didn't have a stroke. One way to do this is to filter the `framingham_df` data set by stroke status and calculate the mean of `prevalentHyp` for each data subset.
+
+```{r}
+# Prevalence of smoking among those that had a stroke
+framingham_df %>% filter(prevalentStroke == 1) %>% pull(prevalentHyp) %>% mean()
+```
+
+```{r}
+# Prevalence of smoking among those that haven't had a stroke
+framingham_df %>% filter(prevalentStroke == 0) %>% pull(prevalentHyp) %>% mean()
+```
+
+The `group_by()` function can be used to streamline group comparisons Instead of filtering dataframes by specific conditions, we can specify why columns we want to make groups from. In the example above, we could group by `prevalentStroke`.
+
+```{r}
+framingham_df %>% group_by(prevalentStroke)
+```
+
+Notice how the table output looks the same as before, but there's a new label for "Groups" that will now include "prevalentStroke". However, we can now use dplyr operations to perform calculations within each group.
+
+Specifically, `summarize()` is used on a grouped data frame and takes any number of arguments of the form `summarized_variable_name = aggregating_function(column_name)`. `summarized_variable_name` is used to specify the name. `aggregating_function` is the function being used to summarize each group (ex: `mean`, `median`, etc) and `column_name` specifies the variable that is being summarized.
+
+`summarize` will result in a data frame, with one row for each unique value of the group variable. There will be one column for each summarized variable.
+
+The code below uses `group_by` and `summarize` to calculate the prevalence of hypertension among those that had a prevalent stroke and among those that did not.
+
+```{r}
+framingham_df %>% 
+  group_by(prevalentStroke) %>% 
+  summarize(hypertension_prev = mean(prevalentHyp))
+```
+
+If we were interested in summarizing more variables, we can add more arguments to `summarize()`. The function `n()` is a special function that counts the number of rows that belong to each group.
+
+```{r}
+framingham_df %>% 
+  group_by(prevalentStroke) %>% 
+  summarize(n_people = n(),
+            hypertension_prev = mean(prevalentHyp), 
+            age_median = median(age), 
+            chol_min = min(totChol, na.rm = T),
+            chol_max = max(totChol, na.rm = T))
+```
+
+We can also group by multiple variables (by including additional arguments to `group_by`) if we were interested in examining how different factors interact. For example, we might want to compare hypertension and age for different combinations of stroke and diabetes.
+
+```{r}
+framingham_df %>% 
+  group_by(prevalentStroke, diabetes) %>% 
+  summarize(n_people = n(), 
+            hypertension_prev = mean(prevalentHyp), 
+            age_median = median(age))
+```
+
+## Practice Problem 4
+
+Calculate the number of observations and average glucose value (`glucose`) by different combinations of diabetes (`diabetes`) and sex (`male`, where 1="male" and 0="false) in the `framingham_diabetes`.
+
+```{r}
+framingham_df %>% 
+  group_by(..., ...) %>% 
+  summarize(n_observations = ...,
+            average_glucose = ...)
+```
+
+# Summary
+
+In this tutorial, you learned different methods to view, subset, and aggregate data frames. You practiced working with `dplyr` functions and pipes, which help make coding workflows more efficient and streamlined.
+
+Next week, we'll learn about data manipulation which includes methods to create new variables, combine datasets, and reshape data frames.
+
+# Resources
+
+[Data Wrangling with dplyr and tidyverse Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
+
+R for Data Science Chapter 10: [Exploratory data analysis](https://r4ds.hadley.nz/eda)

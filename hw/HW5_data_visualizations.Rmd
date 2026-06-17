@@ -1,0 +1,182 @@
+---
+title: "Homework 5"
+output: pdf_document
+---
+
+# Homework 5
+
+This assignment covers materials on data visualizations from Weeks 8+9. **You only need to complete the "Challenge Questions" if you have enrolled in the class for 2 units.** If you have questions about this assignment, please attend office hours or create a discussion post on the course Ed.
+
+For this homework, **we require you to generate all plots using `ggplot2`.** Figures generated using base R will only receive up to 50% of the points for each question.
+
+In each question you are welcome to use additional lines of code or create intermediate variables, but be sure to save your final answer to the specified variable. **You will receive a style point penalty if your code is not indented correctly.** If you are not sure if your code is indented correctly, you can bring it back into one line and press "Enter". RStudio will add in the correct spacing for you.
+
+# Loading packages and data
+
+Run the cell below to load the required packages
+
+```{r}
+library(tidyverse)
+library(here)
+```
+
+## Data Overview
+
+In this homework, we'll be working indicators of noncommunicable diseases (NCD) like heart disease, cancer, and diabetes and associated risk factors collected by the WHO Global Health Observatory. **Download the `ncd_risk_factors.csv` file from Canvas and save them in the data folder of your class directory**
+
+The dataset contains country-level annual estimates on the prevalence of different NCDs and risk factors that may contribute to these conditions. It contains the following columns:
+
+-   `country`: a string, the name of a country
+
+-   `year`: a numeric, the year that estimates were recorded
+
+-   `indicator_abbr`: a character, the abbreviated code for the indicator
+
+-   `indicator_name`: a character, the full name of the indicator
+
+-   `sex`: a character, the total number of available hospital/ICU beds
+
+-   `estimate`: a numeric, the point estimate of the corresponding indicator
+
+-   `ci_lb`: a numeric, the lower bound of the confidence interval of the indicator esitmate
+
+-   `ci_ub`: a numeric, the upper bound of the confidence interval of the indicator esitmate
+
+Run the cell below to load the NCD data as `ncd_data`
+
+```{r}
+#Source: https://www.who.int/data/sets/health-inequality-monitor-dataset#gho
+ncd_data = read_csv(here("data", "ncd_risk_factors.csv"))
+head(ncd_data)
+```
+
+Run the cell below to see the mappings between each `indicator_abbr` and `indicator_name`. We can see that the data contains a variable `NCDMORT3070` that describes the probability of death from a chronic conditions between the ages of 30-70, as well as factors related to blood pressure, hypertension, BMI, and substance use.
+
+```{r}
+ncd_data %>% select(indicator_abbr, indicator_name) %>% distinct() 
+```
+
+# Part 1: Plotting Univariate and Bivariate Relationship
+
+## Question 1 (3 points)
+
+Create a histogram to plot the distribution of estimated prevalence of heavy episodic drinking for females in 2016. Make sure to add a title and informative axis labels to your plot.
+
+```{r}
+heavy_drinking_prev_df = ncd_data %>% filter(indicator_abbr == "SA_0000001739", sex == "Female")
+
+ggplot(..., aes(...)) + 
+  ...
+```
+
+## Question 2 (3 points)
+
+Create a boxplot to compare the distributions of estimated prevalence of tobacco use in 2015 for males vs females. Make sure to add a title and informative axis labels to your plot.
+
+```{r}
+tobacco_use_df = ncd_data %>% 
+  filter(indicator_abbr == "M_Est_tob_curr", year == 2015)
+
+ggplot(..., aes(...)) + 
+  ...
+```
+
+## Question 3 (3 points)
+
+Create a scatterplot to visualize the relationship between insufficient physical activity (`NCD_PAA`) and probability of death from a NCD between the age of 30 and 70 (`NCDMORT3070`) for males in 2016. Place `NCD_PAA` on the x-axis and `NCDMORT3070` on the y-axis. Make sure to add a title and informative axis labels to your plot.
+
+```{r}
+bp_mortality_df = ncd_data %>% 
+  filter(year == 2016, sex == "Male", 
+         indicator_abbr %in% c("NCD_PAA", "NCDMORT3070")) %>% 
+  pivot_wider(id_cols = country, 
+              names_from = indicator_abbr,
+              values_from = estimate)
+
+ggplot(..., aes(...)) + 
+  ...
+```
+
+# Part 2: Plotting Estimates and CIs
+
+## Question 4 (4 points)
+
+Plot the estimates and confidence intervals (using `geom_linerange()`) of probability of death from a NCD between the age of 30 and 70 (`NCDMORT3070`) for females in Canada, Mexico, and the United States in 2018. Make sure to add a title and informative axis labels to your plot.
+
+```{r}
+mortality_usa_can_mex_df = ncd_data %>% 
+  filter(year == 2016, sex == "Female",
+         indicator_abbr == "NCDMORT3070",
+         country %in% c("United States of America", "Canada", "Mexico"))
+
+ggplot(..., aes(...)) + 
+  ... 
+```
+
+## Question 5 (4 points)
+
+Using a line plot, visualize the estimates and confidence intervals (using `geom_ribbon()`) of probability of death from a NCD between the age of 30 and 70 (`NCDMORT3070`) for females in the United States over time. Make sure to add a title and informative axis labels to your plot.
+
+```{r}
+mortality_usa_df = ncd_data %>% 
+  filter(sex == "Female",
+         indicator_abbr == "NCDMORT3070",
+         country == "United States of America")
+
+ggplot(..., aes(...)) +
+  ... 
+```
+
+# Part 3: Plotting Groups
+
+## Question 6 (5 points)
+
+Using a line plot, visualize the estimates and confidence intervals (using `geom_ribbon()`) of underweight (`NCD_BMI_18A`) and obesity prevalence (`NCD_BMI_30A`) for females in the United States over time. Make sure to add a title and informative axis labels to your plot.
+
+Hint: set `alpha = 0.2` inside `geom_ribbon()` to make the fill of the intervals transparent
+
+```{r}
+bmi_usa_df = ncd_data %>% 
+  filter(sex == "Female",
+         indicator_abbr %in% c("NCD_BMI_18A", "NCD_BMI_30A"), 
+         country == "United States of America")
+
+ggplot(..., aes(...)) + 
+  ... 
+```
+
+## Challenge Question 1 (5 points)
+
+Plot the estimates and confidence intervals of the prevalence of elevated blood pressure (`BP_04`) by sex in France, Germany, Spain, and Portugal in 2015. Plot estimates on the x-axis and countries on the y-axis. Each country should have two corresponding points + error bars that are plotted next to each other, one for prevalence among females and one prevalence among males. Color plot elements for males vs females in different colors.
+
+Hint: look into how `position = position_dodge(...)` can be used to avoid overlapping elements of your plot
+
+```{r}
+drinking_west_europe_df = ncd_data %>% 
+  filter(indicator_abbr == "BP_04", 
+         year == 2015,
+         country %in% c("France", "Germany", "Spain", "Portugal"))
+
+ggplot(..., aes(...)) + 
+  ... 
+```
+
+## Challenge Question 2 (5 points)
+
+Using a line plot, visualize the estimates and confidence intervals (using `geom_ribbon()`) of the prevalence of tobacco use (`M_Est_tob_curr`) by sex in Vietnam, Cambodia, Laos, and Thailand over time. Use `facet_wrap` to create a subplot for each country. Within each facet, create a line plot with year on the x-axis, tobacco use prevalence on the y-axis, and use different colored lines for each sex. Make sure to add a title and informative axis labels to your plot.
+
+```{r}
+se_asia_hypertension_df = ncd_data %>% 
+  filter(indicator_abbr == "M_Est_tob_curr", 
+         country %in% c("Viet Nam", "Lao People's Democratic Republic", 
+                        "Cambodia", "Thailand"))
+
+ggplot(...) +
+  ... 
+```
+
+# Submission Instructions
+
+Knit this R notebook as a PDF and submit it to the corresponding Gradescope assignment. Check the file to make sure that all your code and its output is displayed.
+
+Once you successfully submit, you will be asked to match each question to its respective page on your submission. **Do not skip this step.**

@@ -1,0 +1,490 @@
+---
+title: 'Week 6: Descriptive Statistics'
+output: html_notebook
+---
+
+```{r setup}
+library(here)
+library(tidyverse)
+```
+
+*Note:* If you name your R chuck "setup", R will run it automatically the first time you run one of the code chucks below. It's a good idea to put your `library` statements inside `setup` so your packages are ready to go!
+
+# R in Statistical Analyses
+
+The first five weeks of this course have helped you understand the basics of R, import your data, and create the variables you need to do your analyses. For the next five weeks, we will focus on how you can use R in your statistical analyses. The first step in any research project is to understand the data set you are working with. We will use the `framingham.csv` dataset that you should have downloaded already in your `data` folder.
+
+```{r import}
+fram_data = read_csv(here("data/framingham.csv"))
+head(fram_data)
+```
+
+# Data Prep
+
+Look at the Framingham Heart Study data in the file we just imported. There is some useful stuff in there, but there is also some confusing bits. For example, there is a column called `male` that is a bunch of 1's and zeros. There's also a column called `education` that has the numbers 1 through 4. These values aren't particularly helpful and could lead to mistakes down the road. Let's say the data documentation said this:
+
+| Value | Meaning                 |
+|-------|-------------------------|
+| 1     | Less than High School   |
+| 2     | High School Diploma/GED |
+| 3     | Some College            |
+| 4     | 4-year Degree or Higher |
+
+We can use `dplyr` and `case_when` to give the values in the data set more meaning.
+
+```{r}
+clean_fram_data <- fram_data %>%
+  mutate(educ_labeled = case_when(
+    education == 1 ~ "Less than high school",
+    education == 2 ~ "High school diploma/GED",
+    education == 3 ~ "Some college",
+    education == 4 ~ "4-year degree or higher"))
+```
+
+We then check our work with the `table()` function. `table()` takes in vectors of values and creates a table telling us how many people belong in each group. For example, we can use `table()` to see how many people are in each group.
+
+```{r}
+table(clean_fram_data$educ_labeled)
+```
+
+However by default, `table()` does not tell us about missing values. We can add an additional argument (use `?table` to see what the options are) to see these missing values.
+
+```{r}
+?table
+table(clean_fram_data$educ_labeled, useNA="ifany")
+```
+
+We can give `table()` two vectors and compare how people stack up in each group. Let's double check our code to make sure that all of the people from `fram_data` ended up with the correct value in `clean_fram_data`.
+
+```{r}
+# The first argument will be the "rows", and will appear on the left
+# The second arument will be the "columns" and will appear on the top.
+table(clean_fram_data$educ_labeled, fram_data$education, useNA="ifany")
+```
+
+Notice how the numbers line up with the informative labels that we created. Everyone in the "1" column is assigned "Less than High School", everyone in the "2" column is assigned "High School Diploma/GED", and so on (including missing).
+
+Lastly, it is important to note that the outputs of `table()` are not data frames, so we cannot use dplyr pipes `%>%` to make changes to this table. To get the output of `table()` into a data frame, it requires a clever usage of `data.frame()` followed by `pivot_wider()`.
+
+```{r}
+# Find the type of data returned by table()
+class(table(clean_fram_data$educ_labeled, fram_data$education, useNA="ifany"))
+
+# Optional: Try to make the output of table() into a data frame using data.frame() and pivot_wider()
+
+# table(...) %>%
+#   data.frame() %>%
+#   pivot_wider(...)
+```
+
+### Practice Problem 1
+
+| Value | Meaning    |
+|-------|------------|
+| 0     | No smoking |
+| 1     | Smoker     |
+
+Add a `smoker` column to `clean_fram_data` based on the `currentSmoker` column using the table above and then check your work using `table()`. *Challenge:* Try doing this using both `if_else()` and `case_when()` and note the differences.
+
+```{r}
+# Add smoker column based on currentSmoker column
+clean_fram_data <- clean_fram_data %>%
+  mutate(...)
+
+# Check your work using table. Make sure to include missing values!
+table(...)
+```
+
+Test to make sure your code works:
+
+```{r}
+# Should output:
+# [1] "No smoking" "Smoker"
+unique(clean_fram_data$smoker)
+```
+
+# Categorical Variables
+
+Sometimes it is useful to see how two variables interact. You may want to know for data quality purposes to make sure your study is balanced (you don't want a study with just smoking males and non-smoking females). You may also want to know because it hints at an interesting association in the data that could be worth reporting (are men more likely to be smokers than women?). Just like we used `table()` to compare the before and after of education, we can use it to compare two categorical variables.
+
+```{r}
+# Get sex data in a more readable format
+clean_fram_data <- clean_fram_data %>%
+  mutate(sex = if_else(male==1, "Male", "Female"))
+
+table(clean_fram_data$smoker, clean_fram_data$sex)
+```
+
+On the surface, it sure looks like there are a lot of male smokers and female non-smokers. But, it is also hard to tell because the study has 2,421 females and only 1,820 males. It would be better if we could look at the percents. For this, we can use `prop.table` which takes in the table we just made and gives us the percents. If we look at `?prop.table`, we see there is a `margin` option that lets us tell if we can leave it blank for cell percents, set it to 1 for row percents, or 2 for column percents.
+
+```{r}
+sex_smoking_table <- table(clean_fram_data$smoker, clean_fram_data$sex)
+
+# Leave margin blank - Get the cell percents
+# Each percent will be that cell's percent of the total
+# For example: non-smoking females are what percent of the total? 33%
+# The whole table will sum to 100%
+prop.table(sex_smoking_table) * 100
+
+# Set margin=1 - Get row percents
+# Each percent will be that cell's percent of the row
+# For example: what percent of non-smokers are female? 67%
+# Each row will sum to 100%
+prop.table(sex_smoking_table, margin=1) * 100
+
+# Set margin=2 - Get column percents
+# Each percent will be that cell's percent of the column
+# For example: what percent of females are non-smokers? 59%
+# Each column will sum to 100%
+prop.table(sex_smoking_table, margin=2) * 100
+```
+
+And so for our question "Are men more likely to be smokers than women?", based on these data, it seems like yes. Our third table tells us that, for males, 60.77% are smokers while only 40.85% percent of females are smokers.
+
+### Practice Problem 2
+
+Use the `educ_labeled` and `sex` columns and the methods from the section above to answer these questions:
+
+1.  What percent of the entire study is women with a High School Diploma or GED?
+2.  What percent of males have more than a 4-year college degree?
+3.  What percent of 4-year degree holders are female?
+
+```{r}
+prop.table(table(...), margin=...)
+
+prop.table(table(...), margin=...)
+
+prop.table(table(...), margin=...)
+```
+
+### [Optional Challenge] Practice Problem 3
+
+If you like tidy commands better, you can also make these tables using the pipe functions. We will group by 2 variables which gives us all four unique combinations of sex and smoker (female smokers, female non-smokers, male smokers, and male non-smoker). We then use `summarize` to count the number of people in each of the four groups. `pivot_wider` will take the `sex` column and put the values in it (female and male) in their own columns. Fill out the code below to re-create the `table()` output using tidy commands.:
+
+```{r}
+# Get the count of people in each combination of sex and smoker
+clean_fram_data %>%
+  group_by(...) %>%
+  summarize(...) %>%
+  pivot_wider(...)
+```
+
+# Continuous Variables
+
+When you first get a dataset, it is a good idea to use `summary` and `hist` to see continuous variables. These two functions give you a quick overview where you can see outliers. For example, I always check `age` to make sure that everyone in my dataset meets my inclusion criteria of patients being 18 or older.
+
+```{r}
+summary(clean_fram_data$age)
+hist(clean_fram_data$age)
+```
+
+Continuous variables have two important descriptive statistics we should report. One measure is the **center** of the data. This statistic will tell your readers about the "average" person in your dataset, giving a sense if the people in your data are young or old; or healthy or unhealthy. The other important measure is the **spread** of you data. This statistic gives readers a sense of how big the range of the data is and how people are distributed within that range.
+
+## Center
+
+The two most common ways to describe the center of the data are the `mean` and `median`. R gives us simple functions to find these values.
+
+```{r}
+mean(clean_fram_data$age)
+median(clean_fram_data$cigsPerDay, na.rm=T)
+```
+
+It is good statistical practice to use mean when your data are normally distributed (bell shaped), like for `age` in this study. The median is used when the data are skewed, like for `cigsPerDay` in this study.
+
+```{r}
+# Histogram of ages in framingham data with mean age in the title
+hist(clean_fram_data$age,
+     main = paste0("Mean age: ", mean(clean_fram_data$age)))
+abline(v = mean(clean_fram_data$age), col="blue", lw=2)
+
+# Histogram of cigarettes per day in framingham data with mean cigs/day in title
+hist(clean_fram_data$cigsPerDay,
+     main=paste0("Median cigsPerDay: ", median(clean_fram_data$cigsPerDay, na.rm=T)))
+abline(v = median(clean_fram_data$cigsPerDay, na.rm=T), col="blue", lw=2)
+```
+
+If we want to tell people the "center" age of our data, we can see 49.58 is a good central marker. If we want to say what our "center" cigarettes per day is, 0 is a much better choice because it represents the "average person" in our data set who does not smoke at all.
+
+## Spread
+
+The most common way to measure spread is through standard deviations calculated with `sd()`. This class is not a statistics class, so we will not go into what defines a standard deviation other than it describes the spread of the data. We can also use the inter-quartile range (IQR) to describe the spread of the data calculated using `quantile()`. The inter-quartile range is two numbers associated with the 25th and 75th percentile of the data (aka the 1/4 mark and the 3/4 mark). To get the IQR, we tell `quantile` we're looking for the 25th and 75th percentile using `probs=c(0.25,0.75)`. `quantile` returns our two values inside a vector. If we want to collapse that vector into a character with a dash between the numbers, we can use `paste()` with the argument `collapse="-"`.
+
+```{r}
+sd(clean_fram_data$age)
+quantile(clean_fram_data$cigsPerDay, probs=c(0.25,0.75), na.rm=T)
+
+# Get the IQR as a single character with a - between the two numbers
+paste(quantile(clean_fram_data$cigsPerDay, probs=c(0.25,0.75), na.rm=T), 
+      collapse="-")
+```
+
+Just like before, it is good practice to use standard deviations for normally distributed data like `age` and IQR for skewed data like `cigsPerDay`.
+
+### Practice Problem 4
+
+Summarize the **center** and **spread** of the columns `totChol` and `BMI`. Check the variables with `hist` first to choose the methods you think are appropriate.
+
+```{r}
+# Summary statistics for totChol
+...
+
+# Summary statistics for BMI
+...
+```
+
+### [Optional Challenge] Practice Problem 5
+
+To get the `mean`, `median`, `sd`, or `IQR` of variables within groups, we can use `dplyr` functions and the `group_by` function like we learned in Week 4! Remember that `dplyr` starts with the dataset and uses `%>%` (pipe) operators to create a data flow. We then use `group_by` to specify which variables define our groups of interest. `summarize` can then give us a value for each group. For example, let's find the `mean`, `median`, `sd`, and `IQR` of cigarettes per day for each education category.
+
+```{r}
+clean_fram_data %>%
+  group_by(educ_labeled) %>%
+  summarize(mean_cigsPerDay = mean(cigsPerDay, na.rm=T),
+            median_cigsPerDay = median(cigsPerDay, na.rm=T),
+            sd_cigsPerDay = sd(cigsPerDay, na.rm=T),
+            # Remember quantile gives is two values back, so paste is going to
+            #   combine them and put a - between them
+            iqr_cigsPerDay = paste(quantile(cigsPerDay, probs=c(0.25,0.75), 
+                                            na.rm=T),
+                                   collapse="-"))
+```
+
+Use `dplyr` to get the mean and standard deviation of age for males and females.
+
+```{r}
+# Feel free to copy and edit the code above!
+```
+
+# Relative Measures of Risk
+
+When we want to compare outcomes under different exposure or treatment levels, we can use **risk ratios** or **odds ratios**. These numbers describe the relative difference of an outcome between two groups.
+
+For these examples, we will use our `clean_fram_data` to determine if the presence of diabetes (`diabetes`) has an effect on having coronary heart disease (CHD) in the next ten years (`TenYearCHD`).
+
+```{r}
+# Making the variables easier to understand
+clean_fram_data <- clean_fram_data %>%
+  mutate(diabetes_labeled = if_else(diabetes == 1, "Diabetes", "None"),
+         TenYearCHD_labeled = if_else(TenYearCHD == 1, "CHD", "None"))
+```
+
+## Risk Ratios
+
+The **risk ratio** divides the risk (or probability) of the outcome of interest in the exposed group by the risk (or probability) of the outcome of interest in the unexposed group.
+
+Suppose we had the following 2x2 table:
+
+|                     | Outcome + | Outcome - |
+|---------------------|-----------|-----------|
+| Exposed/Treated     | a         | b         |
+| Unexposed/Untreated | c         | d         |
+
+Then we can cacluclate the risk ratio as:
+
+$$
+RR = \frac{Risk\ of\ Outcome\ in\ Exposed}{Risk\ of\ Outcome\ in\ Unexposed} = \frac{a/(a+b)}{c/(c+d)}
+$$
+
+In this example, we will divide the risk of CHD in those with diabetes by the risk of CHD in those without diabetes. Let's start with our 2x2 table of diabetes and CHD.
+
+```{r}
+table(clean_fram_data$diabetes_labeled, clean_fram_data$TenYearCHD_labeled)
+```
+
+The risk of having CHD for someone with diabetes is the number of people with CHD & diabetes divided by the total number of people with diabetes, or `40/(40+69)`. You can also think of this number as the percent of people with diabetes that have CHD; or the probability of CHD given you have diabetes.
+
+The risk of CHD for someone without diabetes is the number of people with CHD & no diabetes divided by the number of people with no diabetes, or `604/(604+3528)`. You can also think of this number as the percent of people without diabetes that have CHD; or the probability of CHD given no diabetes. If we divide these risks, we get the risk ratio.
+
+```{r}
+# Risk of CHD in each group
+risk_chd_diab <- 40/(40+69)
+risk_chd_none <- 604/(604+3528)
+
+# Risk ratio
+risk_chd_diab/risk_chd_none
+```
+
+According to this result, people with diabetes are at *2.51 times higher risk* of having CHD compared to people without diabetes.
+
+To avoid having to manually type the values, we can use dplyr to extract the relevant risk estimates directly from the data frame. Recall that when we have a vector of "0"s and "1"s (or "FALSES" and "TRUES"), we can calculate the proportions of "1"s by taking the mean of the vector. If we filter the data frame by diabetes status, taking the mean of the `TenYearCHD` column will give us the corresponding risk of CHD.
+
+```{r}
+# Risk of CHD among those with diabetes
+risk_chd_diabetes <- clean_fram_data %>% 
+  filter(diabetes == 1) %>% 
+  pull(TenYearCHD) %>% 
+  mean()
+
+# Risk of CHD among those without diabetes
+risk_chd_no_diabetes <- clean_fram_data %>% 
+  filter(diabetes == 0) %>% 
+  pull(TenYearCHD) %>% 
+  mean()
+
+# Risk ratio
+risk_chd_diabetes/risk_chd_no_diabetes
+```
+
+### Practice Problem 5
+
+Calculate the **risk ratio** for CHD in the next ten years (`TenYearCHD`) comparing patients who are taking blood pressure medication to those who are not (`BPMeds`).
+
+```{r}
+# Risk of CHD among those taking blood pressure meds
+
+# Risk of CHD among those not taking blood pressure meds
+
+# Risk ratio
+
+```
+
+## Odds Ratios
+
+Sometimes, we want to know the **odds ratio**. Odds is very similar to risk with a slight twist. Risk is the number of "yes"s divided by the total number in that group. Odds is the number of "yes"s divided by the number of "no"s. If your risk is 50%, your odds are 1 to 1. If your risk is 75%, your odds are 3 to 1. If your risk is 10%, your odds are 1 to 9. Applying this concept, the odds ratio divides the odds of disease in the exposed group by the odds of the disease in the unexposed group.
+
+Suppose we had the following 2x2 table:
+
+|                     | Outcome + | Outcome - |
+|---------------------|-----------|-----------|
+| Exposed/Treated     | a         | b         |
+| Unexposed/Untreated | c         | d         |
+
+: Then the odds ratio is calculated as:
+
+$$
+OR = \frac{Odds\ of\ Outcome\ in\ Exposed}{Odds\ of\ Outcome\ in\ Unexposed} = \frac{a/b}{c/d}
+$$
+
+Let's start with a 2x2 table of diabetes and CHD again:
+
+```{r}
+table(clean_fram_data$diabetes_labeled, clean_fram_data$TenYearCHD_labeled)
+```
+
+For our example, the odds of CHD for people with diabetes is the number of people with CHD & diabetes divided by the number of people with no CHD & diabetes, or `40/69`. The odds of CHD for people without diabetes is the number of people with CHD & no diabetes divided by the number of people with no CHD & no diabetes, or `604/3528`. If we divide these odds, we get the odds ratio.
+
+```{r}
+# Odds of CHD in each group
+odds_chd_diab <- 40/69
+odds_chd_none <- 604/3528
+
+# Odds ratio
+odds_chd_diab/odds_chd_none
+```
+
+According to this result, people with diabetes are at *3.39 times higher odds* of having CHD compared to people without diabetes.
+
+We can also use dplyr to calculate odds ratios directly from the data frame. Because of how odds are calculated, we aren't able to take simply take the mean columns to estimate proportions. Instead, we can use `filter` to find the individual values of our 2x2 table and do the calculation as follows:
+
+```{r}
+# Odds of CHD among those with diabetes
+odds_chd_diab_numerator <- clean_fram_data %>% 
+  filter(diabetes == 1, TenYearCHD == 1) %>% 
+  nrow()
+odds_chd_diab_denominator <- clean_fram_data %>% 
+  filter(diabetes == 1, TenYearCHD == 0) %>% 
+  nrow()
+odds_chd_diab = odds_chd_diab_numerator / odds_chd_diab_denominator
+
+# Odds of CHD among those without diabetes
+odds_chd_none_numerator <- clean_fram_data %>% 
+  filter(diabetes == 0, TenYearCHD == 1) %>% 
+  nrow()
+odds_chd_none_denominator <- clean_fram_data %>% 
+  filter(diabetes == 0, TenYearCHD == 0) %>% 
+  nrow()
+odds_chd_none <- odds_chd_none_numerator / odds_chd_none_denominator
+
+# Odds ratio
+odds_chd_diab/odds_chd_none
+```
+
+### Practice Problem 6
+
+Calculate the **odds ratio** for CHD in the next ten years (`TenYearCHD`) comparing patients who are taking blood pressure medication to those who are not (`BPMeds`).
+
+```{r}
+# Odds of CHD among those taking blood pressure meds
+
+# Odds of CHD among those not taking blood pressure meds
+
+# Odds ratio
+
+```
+
+## Epitools
+
+The `epiR` package has a function `epi.2by2` that takes in a 2x2 table and calculates the risk ratio and odds ratio for you.
+
+```{r}
+# Don't forget to install first
+#install.packages("epiR")
+library(epiR)
+epi.2by2(table(clean_fram_data$diabetes_labeled, 
+               clean_fram_data$TenYearCHD_labeled))
+```
+
+### [Optional Challenge] Practice Problem 7
+
+Calculate the **risk and odds ratios** for CHD in the next ten years (`TenYearCHD`) comparing patients who are taking blood pressure medication to those who are not (`BPMeds`) using `epiR`.
+
+*Hint:* Taking blood pressure medications probably lowers your risk of heart disease, so the number you are looking for is less than 1.
+
+```{r}
+
+```
+
+# Make a Table 1
+
+In almost every medical study, there will be what is colloquially referred to as a "Table 1". A Table 1 lists out all of the variables that will be used in the study, summary statistics for each variable, and comparisons between groups, if needed. In [this paper](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9259046/)'s Table 1, they list all of the variables they are planning on controlling for. All of the continuous variables (like age) have a mean and standard deviation. All of the categorical variables (like sex and race) have a number and percent. These are also split into three categories: total, MSS (the intervention being tested), and the HE control group. Wow! What a succinct yet informative table! Whoever made that must be a really good researcher.
+
+### Practice Problem 8
+
+Using the skills you learned above, fill in this mini-Table 1 for `clean_fram_data` to enumerate different characteristics by sex (Total, Females, Males) For percents, we want the column percents, so the female non-smoking and female smoking should total 100%.
+
+| Characteristic | Total sample (N=???) | Females (N=???) | Males (N=???) |
+|------------------|------------------|------------------|------------------|
+| Age, mean years (SD) | ??? | ??? | ??? |
+| **Smoking status, N (%)** |  |  |  |
+| Non-smoking | ??? | ??? | ??? |
+| Smoking | ??? | ??? | ??? |
+| **Education, N (%)** |  |  |  |
+| Less than High School | ??? | ??? | ??? |
+| High School/GED | ??? | ??? | ??? |
+| 4-year College Degree | ??? | ??? | ??? |
+| More than 4-year | ??? | ??? | ??? |
+| Missing | ??? | ??? | ??? |
+
+```{r}
+# Age - mean & SD
+
+# Smoking status counts and column percents
+
+# Education counts and column percents
+
+```
+
+## table1 Package
+
+We can have R make a table1 for us using the `table1` package. I often use this to get quick summary statistics about all of the variables and then copy all of that information into a pretty looking table in a word document. The creators of `table1` have already made [a tutorial](https://cran.r-project.org/web/packages/table1/vignettes/table1-examples.html) if you want to dive in deeper.
+
+```{r}
+#install.packages("table1")
+library(table1)
+?table1
+```
+
+To tell R which variables we want in our table, we have to give `table1` a "formula". Formulas in R use the `~` to describe the relationship between variables. For `table1`, we use the formula to add up all the variables we want in the table. If we want to remake the table above, we write the three variables that we want on the left side added together to the right of the `~` like `~age+smoker+educ_labeled`. If we want `table1` to calculate counts and percents for categorical variables, we use `factor()` to indicate that data is categorical like this `~age+factor(smoker)+factor(educ_labeled)`. If we want there to be different columns for different sexes, we need to add a `| sex` at the end. Lastly, we tell the function which dataset we are working on with `data=clean_fram_data`.
+
+```{r}
+table1(~ age + factor(smoker) + factor(educ_labeled) | sex, 
+       data=clean_fram_data)
+```
+
+### [Optional Challenge] Practice Problem 9
+
+Make your own Table 1 using table1! Try having age, number of cigarettes per day, smoking status, education, and CHD in ten years on the left side with blood pressure medication status along the top. You will need to filter out missing data for blood pressure medication before you give the data to table1.
+
+```{r}
+
+```

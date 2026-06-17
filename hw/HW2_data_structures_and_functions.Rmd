@@ -1,0 +1,200 @@
+---
+title: "Homework 2"
+output: pdf_document
+---
+
+This assignment covers materials from Weeks 2 and 3, including data structures (vectors and data frames) and functions. You should be able to complete Parts 1-2 after the Week 2 lecture and Part 3 after the Week 3 lecture. **You only need to complete the "Challenge Questions" if you have enrolled in the class for 2 units.**
+
+If you have questions about this assignment, please attend office hours or create a discussion post on the course Ed.
+
+### Quick note about style points
+
+There are two points each homework given to "style" to give you credit for writing readable code. Readable code always has informative variable names like `blood_pressure`, `format_sentence`, or `height_boxplot`. Variable names like `data`, `x`, or `num` are almost never appropriate and are confusing in the long run. Even adding a prefix like `imported_data` allows for future variables to be named `cleaned_data` and `table_data` improving clarity. If you are writing longer, more complex code, use `# Comments` to describe what each part does. Comments are especially useful for before functions where you might describe what the function does. For example:
+
+``` r
+# Function to add two numbers together
+# Accepts two numerics and returns the sum numeric
+add_nums = function(x, y) {
+  return(x+y)
+}
+```
+
+# Part 1: Vectors
+
+Suppose that we want to study the impacts of household income on health outcomes. We survey households in the community and collect the following data:
+
+-   Household 1: \$35,294
+-   Household 2: \$74,243
+-   Household 3: \$93,866
+-   Household 4: \$12,325
+-   Household 5: \$53,243
+
+## Question 1 (2 points)
+
+Create a vector called `household_incomes` that contains the survey data, as numerics. Make sure that the first item in the vector corresponds to household 1, the second item corresponds to household 2, etc.
+
+```{r}
+household_incomes = ...
+household_incomes
+```
+
+## Question 2 (2 points)
+
+We continue to survey the community and collect incomes for 2 additional households. Household 6 reported an income of \$124,950 and Household 7 reported an income of \$42,738. Create a vector `updated_household_incomes` that extends the `household_incomes` vector with the two new income measurements
+
+```{r}
+updated_household_incomes = ...
+updated_household_incomes
+```
+
+## Question 3 (2 point)
+
+Calculate summary statistics for `updated_household_incomes`. Save `mean_income`, `median_income`, `min_income`, and `max_income` to their respective values.
+
+```{r}
+mean_income = ...
+print(paste("Mean income =", mean_income))
+
+median_income = ...
+print(paste("Median income =", median_income))
+
+min_income = ...
+print(paste("Minimum income =", min_income))
+
+max_income = ...
+print(paste("Maximum income =", max_income))
+```
+
+## Question 4 (3 points)
+
+We decide that we don't need to measure the exact dollar amount of these incomes. Instead, we're interested in rounding incomes to the nearest *thousands*. For example, \$35,294 should be 35 and \$93,866 should be 94 - note how the rounded values are whole numbers. Create a vector `rounded_incomes` that contain household incomes in thousands.
+
+Hint 1: You will have to complete a vector operation on `updated_household_incomes`. Hint 2: The result of your vector operation may include many decimal values. You may need to use the `round()` function to gain whole numbers. You can run `?round` to learn how to use the function.
+
+```{r}
+rounded_incomes = ...
+rounded_incomes
+```
+
+# Part 2: Data Frames
+
+We're interested in studying hypertension (high blood pressure) in a patient population, and extract blood pressure values from their electronic health records. Blood pressure values consist of two values (ex 124/75), where the top value is the systolic number and the bottom value is the diastolic number.
+
+## Question 5 (2 points)
+
+We collect the following data:
+
+-   Patient 1: 120/80 mmHg
+
+-   Patient 2: 130/85 mmHg
+
+-   Patient 3: 118/76 mmHg
+
+-   Patient 4: 140/90 mmHg
+
+-   Patient 5: 122/78 mmHg
+
+-   Patient 6: 150/100 mmHg
+
+-   Patient 7: 126/82 mmHg
+
+Create a data frame `blood_pressure_df` that contains these data points. It should have three columns: `patient_id`, `systolic_value`, and `diastolic_value`.
+
+```{r}
+blood_pressure_df = data.frame(... = ...,
+                               ... = ...,
+                               ... = ...)
+blood_pressure_df
+```
+
+## Question 6 (1 point)
+
+Pull the row in `blood_pressure_df` that corresponds to the measurement for Patient 5 and save it to the variable `patient_5_df`
+
+```{r}
+patient_5_df = ...
+patient_5_df
+```
+
+## Question 7 (1 point)
+
+Pull systolic blood pressure values as a one-column data frame called `systolic_df`.
+
+Hint: use `class()` to check that `systolic_df` is a `data.frame` type.
+
+```{r}
+systolic_df = ...
+systolic_df
+```
+
+## Question 8 (1 point)
+
+Pull systolic blood pressure values as a vector of numerics called `systolic_vector`.
+
+Hint: use `class()` to check that `systolic_vector` is a `numeric` type.
+
+```{r}
+systolic_vector = ...
+systolic_vector
+```
+
+# Part 3: Functions
+
+## Question 9 (2 points)
+
+Write a function that takes someone's systolic and diastolic blood pressure and returns "Normal" or "Hypertension", or "Severe Hypertension" based on the person's blood pressure. The American Heart Association defines **hypertension** as having a systolic blood pressure greater than or equal to 130 mmHg **OR** a diastolic blood pressure greater than or equal to 80 mmHg. **Severe hypertension** corresponds to systolic blood pressure of greater than or equal to 140 mmHg **OR** diastolic blood pressure greater than or equal 90 mmHg.
+
+Apply your function to a patient with a systolic BP of 120 and diastolic BP of 75, and a patient with a systolic BP of 150 and diastolic BP of 85.
+
+```{r}
+classify_hypertension = ...
+
+# Apply your function to a patient with systolic = 120, diastolic = 75
+classify_hypertension(..., ...)
+
+# Apply your function to a patient with systolic = 150, diastolic = 85
+classify_hypertension(..., ...)
+```
+
+## Challenge Question 1 (3 points)
+
+Write a for loop using the `classify_hypertension` function to create a vector called `hypertension_statuses` that stores the hypertension status of each person in the `blood_pressure_df` data frame.
+
+Hint: You can use the for loop to look at each row of the data frame using the row index.
+
+```{r}
+# Data frame to use
+blood_pressure_df
+
+# Initiate the hypertension_statuses vector
+hypertension_statuses = c()
+
+# Write for loop that will look at each row using the row index i
+for(i in ...){
+  # For each row, extract this patient's systolic and diastolic blood pressure
+  current_sys_bp = blood_pressure_df[i,...]
+  current_dia_bp = blood_pressure_df[i,...]
+  
+  # Implement your function to save the correct hypertension status for each patient
+  # to the hypertension_statuses vector
+  current_hypertension_status = ...
+  hypertension_statuses = ...
+}
+
+# Show the contents of the hypertension_statuses vector
+hypertension_statuses
+```
+
+## Challenge Question 2 (2 points)
+
+Don't like writing a for loop each time you want to do work on a data frame? Neither do we. R gives us the function `mapply()` (multiple apply) which passes values in order to a function. Use `?mapply` and Google to figure out how to create a vector with the hypertension status of each patient using your function, the patient data frame `blood_pressure_df`, and `mapply`.
+
+```{r}
+...
+```
+
+# Submission Instructions
+
+Knit this R notebook as a PDF and submit it to the corresponding Gradescope assignment. Check your output to make sure that all your code and its output is displayed.
+
+Once you successfully submit, you will be asked to match each question to its respective page on your submission. **Do not skip this step.**

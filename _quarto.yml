@@ -12,7 +12,8 @@ website:
   description: "Interactive R course materials with WebR"
   search: true
   reader-mode: true
-  repo-url: https://github.com/anna-nguyen/epi202-w25
+  repo-url: https://github.com/r-pophealth-research/online-course
+  site-url: https://r-pophealth-research.github.io/online-course
   repo-actions: [edit, issue]
   navbar:
     background: primary
@@ -92,7 +93,6 @@ format:
 resources:
   - data/
   - tutorials/images/
-  - images/
 
 webr:
   show-startup-message: false

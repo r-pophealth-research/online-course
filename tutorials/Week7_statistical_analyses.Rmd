@@ -1,0 +1,335 @@
+---
+title: "Week7_statistical_models"
+output: html_document
+---
+
+## Disclaimer: Statistics Pre-Requisites
+
+We assume that you have completed the pre-requisite EPI 258/259, or an equivalent introduction to statistics class. In this tutorial, we will teach you code needed to implement various statistical tests and models but will not cover the underlying theory of these tools. We do not expect you to remember which test to use when. Instead, we may tell you to run a certain test on certain variables, and you will be responsible for implementing the relevant code and interpreting the output. Getting you set up to run analyses in this way will prepare you for (often fast-paced) statistics courses and/or get you started on analyses with advising from someone with statistical training.
+
+Unbiased statistical inference relies on proper study design, population sampling, and confounder control. For the sake of this course, we assume all assumptions are met, but checking assumptions is something you need to explicitly do in a research setting.
+
+If we ever use statistical language that is unclear, please feel free to ask us to clarify.
+
+# Statistical Inference
+
+Over the past several weeks, we've have cleaned our Framingham data using the skills we learned in weeks 4 and 5 and we familiarized ourselves with the distributions of different variables in week 6. This week we'll go over code to implement statistical tests and models for inferential analysis.
+
+Run the cell below to load `clean_fram_data`, a "cleaned" version of the Framingham data set.
+
+```{r setup}
+library(here)
+library(tidyverse)
+
+# Get a dataset similar to the one we had last week
+clean_fram_data <- read_csv(here("data/framingham.csv"), show_col_types=F) %>%
+    mutate(education = case_when(education == 1 ~ "Less than high school", # Education labelling
+                                 education == 2 ~ "High school diploma/GED",
+                                 education == 3 ~ "Some college",
+                                 education == 4 ~ "4-year degree or higher"),
+           smoker = if_else(currentSmoker==0,"No smoking","Smoker"), # Smoker labelling
+           sex = if_else(male==1, "Male", "Female"), # Sex labelling
+           diabetes = if_else(diabetes == 1, "Diabetes", "None")) # Diabetes labelling
+```
+
+# Basic Comparisons
+
+## Categorical vs Categorical
+
+Often when we're doing research, we want to decide if two groups are different in some way. Last week, we asked if men were more likely to be smokers than women. Run the code below to reproduce a 2x2 table that shows the proportion of each sex that smoked.
+
+```{r}
+sex_smoking_table <- table(clean_fram_data$smoker, clean_fram_data$sex)
+prop.table(sex_smoking_table, margin=2)
+```
+
+From this table, we see that 61% of males smoked and 41% of females smoked. It seems like males were more likely to be smokers than females. However, it is possible that in our randomly selected cohort, there just happen to be more male smokers and female non-smokers. R (and statistics as a whole) gives us a way to tell if that difference is *statistically significant* by comparing that difference to the likelihood of observing that difference by chance.
+
+We can use a chi-squared test to see if the smoking rates by sex are significantly different. We use `chisq.test` with the `sex` and `smoker` variables like we used with `table`. (FYI, a chi-squared test is sometimes written as $\chi^2$ which is the Greek letter chi squared)
+
+```{r}
+chisq.test(clean_fram_data$smoker, clean_fram_data$sex)
+```
+
+From the output, we can see the test that was run: "Pearson's Chi-squared test with Yates' continuity correction". The next line tells us the data we used, `clean_fram_data$smoker` vs `clean_fram_data$sex`. The last line tells us the results of our statistical test: chi-squared value of 164.11, 1 degree of freedom, and a p-value of \< 2.2 \* 10\^-16. If you want to know what all of these mean, see this [resource](https://www.bmj.com/about-bmj/resources-readers/publications/statistics-square-one/8-chi-squared-tests). We don't expect you to understand what a chi-squared value or degree of freedom is for the class. For our purposes, our p-value is less than 0.05 which allows us to say there is a statistically significant difference in smoking rates between men and women in our sample.
+
+### Practice Problem 1
+
+Do a chi-squared test to answer the question, "Is there a statistically significant difference in blood pressure medication use (`BPMeds`) between males and females?"
+
+```{r}
+chisq.test(...)
+```
+
+**Interpret the output here**: ...
+
+------------------------------------------------------------------------
+
+## Categorical vs Continuous
+
+Let's say we now wanted to ask is there a significant difference between the ages of the males and females in this data set.
+
+To answer this question, we will first use `t.test()`. A t-test needs us to specify how we want this analysis run in the format of a **formula**. If formulas ring a bell, we used them to tell `table1` which variables to include in our table. A formula will look like `outcome ~ exposure` or `dependent_variable ~ independent_variable`. Essentially, the outcome you are interested in goes to the left of the `~` and everything you think affects the outcome goes on the right. For us, we're interested in `age ~ sex` or the difference in `age` across the different values of `sex`. We then tell `t.test` what dataset we are using by saying `data=clean_fram_data`.
+
+```{r}
+t.test(age~sex, data=clean_fram_data)
+```
+
+We see a similar output with the data, a t-value, degrees of freedom (don't worry about it), and a p-value listed at the top. The p-value is greater than 0.05, so the age difference between males and females is not statistically significant. Because we are now talking about continuous data rather than categorical, we get the sample mean of each group instead of an odds ratio. We can subtract these values to get that the mean age difference is $49.79926-49.29341=0.50585$. We also get a confidence interval for that difference in means ranging from -0.015 to 1.027. Notice this range is mostly on the positive side, and our p-value was close to 0.05. Therefore, we can say that, in our sample, females are on average older than men, but that difference is not statistically significant.
+
+### Practice Problem 3
+
+Repeat this t-test for the age difference between smokers and non-smokers. Interpret the output.
+
+```{r}
+t.test(...)
+```
+
+**Interpret the output here**: ...
+
+------------------------------------------------------------------------
+
+# Statistical Models
+
+Though those basic comparisons are useful for comparing groups in some situations, your inferential tests will likely involve a statistical model. A statistical model attempts to explain a relationship between two or more variables in your data. While in the basic comparisons only told us about differences between groups, we can learn a lot from a model. Models can even be used to predict outcomes for patients who are not in your data set. There are many ways to model different types of data, and in R they all tend to follow a basic format with increasing arguments and parameters for increasingly complex models.
+
+## Linear Models
+
+Linear models model...a line! They will have a continuous outcome like age, blood pressure, or a test score. You can then add independent variables that you believe influence that outcome. R will include them in the model and produce a coefficient for those independent variables. We will start with the most basic linear model with a continuous outcome $y$ and one continuous predictor $x$: $y=mx+b$. As an example, let's check whether age influences blood pressure. We will use the same **formula** format as we did above to tell R how to model the variables inside the function `lm`. Because these statistical models can do so much more than just test for differences, people typically save their models to a variable.
+
+```{r}
+sbp_age_mod <- lm(sysBP~age, data=clean_fram_data)
+```
+
+We can then use `summary` on that variable to get the model parameters and `confint` to get the confidence intervals for those parameters.
+
+```{r}
+summary(sbp_age_mod)
+confint(sbp_age_mod)
+```
+
+The summary of a linear model has parts we are already familiar with. First, it will tell us what call produced this output so we know how the variables are being modeled. Then we get a big coefficients section that is the star of the show. Here we can fill in our values for our equation $y=mx+b$. We can see the estimate for our intercept is 82.1 and the estimate for the age coefficient is 1.01. So our fitted formula is $sysBP=1.01*age+82.1$. In other words, for each year increase in age, systolic blood pressure increases by 1.01 on average with a 95% confidence interval of 0.94-1.08. Each of these coefficients also has a p-value that tells us if that coefficient is statistically significantly different than zero. If the p-value for age was greater than 0.05, we could not say that the coefficient for age is significantly different from zero. In other words, age would not have a statistically significant impact on systolic blood pressure. However, in our case, age is statistically significant.
+
+Some of you intrepid epidemiologists out there may be thinking that there may be missing parts to the story here. What happens if we have confounders, mediators, or other factors that we want to adjust for? With models, we can add them in using the `+` just like we would in an equation! We can also add in more complex variables to the equation. Often times age has a quadratic (squared) effect where its impact on health is high when someone is especially young or old, but not so much in the middle. We can add in quadratic or even higher order powers using `I()` inside the formula. This little function tells R to do that math before fitting the model. Let's add in sex, smoking status, and age squared into our existing model.
+
+```{r}
+sbp_full_mod <- lm(sysBP ~ age + I(age^2) + sex + smoker, data=clean_fram_data)
+summary(sbp_full_mod)
+```
+
+From this model, we can see that age and smoking status both significantly affect systolic blood pressure. For each year of age on average, systolic blood pressure increases by 1. For smokers on average, their systolic blood pressure is 2 lower than non-smokers on average. We will encourage you to take more epidemiology methods courses to learn what kinds of biases may be in place to make the model come out this way! The other coefficients age squared and sex are not significantly associated with systolic blood pressure.
+
+### Practice Problem 5
+
+Do these same associations hold when using diastolic blood pressure as the outcome? Run a linear model to test answer this question and interpret your model output.
+
+```{r}
+dbp_age_mod <- lm(...)
+
+# Get model statistics
+summary(...)
+confint(...)
+```
+
+**Interpret the output here**: ...
+
+------------------------------------------------------------------------
+
+## Logistic Models
+
+Rather than looking at a continuous outcome, sometimes it will make more sense to look at a binary outcome like the presence/absence of disease. For this case, our linear models will not do (because it violates the linearity assumption). Logistic models are specifically designed to model binary outcomes.
+
+We use `glm(family="binomial")` to fit logistic models. Generalized linear models (GLMs) are versatile tools that allow us to model variables that have non-normal distributions. Binary variables follow a "binomial" distribution because there are only two possible values. By specifying `family = "binomial"`, we're telling R that we want to use GLMs to model a binary outcome. For more information on GLMs, please see this [resource](https://r-eco-evo.blogspot.com/2017/05/generalized-linear-models.html).
+
+To run a GLM, we specify the formula and data, and can use `summary` to get the results in the same way as the linear model. Let's model coronary heart disease (CHD) of diabetes and age.
+
+```{r}
+chd_smok_age_mod <- glm(TenYearCHD ~ diabetes + age, data=clean_fram_data, 
+                        family="binomial")
+summary(chd_smok_age_mod)
+```
+
+The logistic model coefficients do not represent changes in the value of the outcome because there are only two possible values of the outcome! Instead, the model coefficients represent how covariates influence the likelihood of the outcome. In this output, the model coefficients represent the difference in *log odds* (as in $ln(odds)$) associated with a change in that exposure. For example, the coefficient associated with `diabetesNone` was about `-0.91`. Notice that R picked "None" as the group associated with the coefficient - this means that the *log odds* of CHD is 0.91 lower among those without diabetes.
+
+However, log odds are a very unnatural and unintuitive way of thinking about disease risk. Luckily, there's a algebraic trick that allows us to easily convert between differences in log odds and odds ratios. (See this [explainer](https://www.bookdown.org/rwnahhas/RMPH/blr-interp.html) if you need convincing!). We can use the natural exponentiation ($e^x$) to convert model coefficients to their equivalent odd ratios. In the case of diabetes, $e^{-0.91} = 0.40$ is the odds ratio associated with no diabetes vs diabetes.
+
+To implement this conversion in R, we need use `exp()` on the model coefficients to get the corresponding odds ratios. We can access the coefficients using the `$` on the model we saved.
+
+```{r}
+exp(chd_smok_age_mod$coefficients)
+exp(confint(chd_smok_age_mod))
+```
+
+We can confirm that the odds ratio of CHD associated with not having diabetes is 0.40, or that not having diabetes was associated with a lower odds of having CHD. This association is statistically significant, since the p-value associated with the coefficient (as shown with `summary(chd_smok_age_mod)`) is less than 0.05.
+
+From this output, we can also say that the odds ratio for CHD for each year older is 1.08 with a 95% confidence interval of 1.06-1.09. In other words, each additional year of age increases the odds of CHD by 8%.
+
+### Practice Problem 6
+
+What impact does smoking and systolic blood pressure have on the odds of having CHD? Run a logistic model to answer this question and interpret your results.
+
+```{r}
+chd_smok_sbp_mod <- glm(...)
+
+# Get the coefficients. Don't forget to exponentiate!
+
+```
+
+**Interpret the output here**: ...
+
+------------------------------------------------------------------------
+
+## Refactoring
+
+In that last example, it is a bit confusing to talk about how not having diabetes decreases risk. We usually talk about things by saying that having something increases your risk. To get this set up correctly for our model, we need to change the **factoring** of the diabetes variable. You have been working with factor variables all along! Factors are how R deals with categorical variables, or variables that can only take on a certain number of variables. By looking at `?factor`, we can see that R will let us change the order of our diabetes variable so that "None" is the reference group and we can get an odds ratio for the "Diabetes" group. Here's how we change the order of a factor using dplyr.
+
+```{r}
+diabetes_levels <- c("None", "Diabetes")
+
+# Put the values from the data in order in the levels parameter
+clean_fram_data_factor <- clean_fram_data %>%
+  mutate(diabetes = factor(diabetes, levels=diabetes_levels))
+
+# Use mutated diabetes in logistic model and the new clean_fram_data_factor data set
+chd_diab_factor_mod <- glm(TenYearCHD ~ diabetes + age, data=clean_fram_data_factor, 
+                           family="binomial")
+summary(chd_diab_factor_mod)
+exp(chd_diab_factor_mod$coefficients)
+```
+
+Now we can see that having diabetes increases your risk of CHD by 91%.
+
+Changing your categorical variables into factors has other benefits too. For example, it is much easier to see summary statistics about your variables. For example:
+
+```{r}
+# Run summary on non-factored diabetes data
+summary(clean_fram_data$diabetes)
+
+# Run summary on factored diabetes data
+summary(clean_fram_data_factor$diabetes)
+```
+
+### Practice Problem 7
+
+Add education into our logistic model for CHD from above, but before you do that, factor it so that "4-year degree or higher" is the reference group and educational attainment decreases from there. Interpret your model.
+
+```{r}
+# Put the education levels in order
+education_levels <- c()
+
+# Re-factor the framingham data using the levels
+clean_fram_data_factor <- clean_fram_data_factor %>%
+  mutate(...)
+
+# Create logistic model
+chd_educ_factor_mod <- glm(...)
+# Get coefficients
+exp(...)
+```
+
+**Interpret your model here**:
+
+------------------------------------------------------------------------
+
+# [Optional Challenge] Bootstrapping
+
+If so far you have been thinking "Psh, this is too easy", we offer you this optional section on bootstrapping. It is entirely optional, we will not test you on this or expect you to remember. It is, however, extremely useful in real-world analyses.
+
+In pretty much every study with real-world medical data, your statistical assumptions are going to be bent or completely broken. For these situations, our friends on main campus in the stats department Brad Efron and Rob Tibshirani invented **bootstrapping**. They called it bootstrapping because the data overcomes its weirdness by "pulling itself up by the bootsraps" through random sampling (it was the 80's). The idea behind bootstrapping is that we are simulating the re-sampling process, as though we went back out into the world and collected more data. Actually doing so is often too expensive and time-consuming, so we randomly sample from the data we have. Rather than using an estimate of the error like a statistical test does, we can observe the error by "repeating" the experiment many times. Let's estimate the mean difference and 95% confidence interval of that difference for the skewed `cigsPerDay` data with **bootstrapping**.
+
+We perform bootstrapping by estimating a value many times (usually around 1000) and then taking the mean and percentiles of that data. In-between estimation, we take a random sample with replacement of our original data to get a slightly different but mostly the same dataset. In this way, outliers have less and less influence on the data. Let's walk through 1 iteration of a bootstrap.
+
+1.  Take our existing dataset and randomly select a rows equal to the number of rows in the existing rows *with replacement*. With replacement means that we will get a slightly different dataset than our original with some rows being duplicated and other rows being left out entirely. Hint: Look at `?slice_sample`.
+
+    ```{r}
+    # When you do random sampling, you should do set.seed() so that
+    #   your "random" sample is the same every time you run this code block. 
+    #   It makes it easier to debug.
+    set.seed(0)
+
+    # Your code goes here
+    bootstrap_sample
+    ```
+
+2.  Get the mean `cigsPerDay` for males and females separately.
+
+    ```{r}
+    male_mean
+
+    female_mean
+    ```
+
+3.  Subtract the female mean from the male mean and save it to the variable `bootstrap_difference`. We expect males to smoke more given our previous results, and doing the subtraction this way will allow us to end up with a positive number.
+
+    ```{r}
+    bootstrap_difference
+    ```
+
+4.  Now we combine these three steps inside a for loop that will run 1000 times. Each time inside the for loop, we save the `bootstrap_difference` to a vector `all_boot_differences`. If you need to remember how to make a for loop that saves something to a vector every time, look back at week 2.
+
+    ```{r}
+    # When you do random sampling, you should do set.seed() so that
+    #   your "random" sample is the same every time you run this code block. 
+    #   It makes it easier to debug.
+    set.seed(0)
+
+    # Create a vector to store estimated differences in each bootstrapped sample
+
+    # Make a For loop that performs steps 1-3 each time through and saves the
+    #   result to the vector above.
+
+    ```
+
+5.  Our `all_boot_differences` vector is now full of simulated random means from different dataset that are similar to our original data. Now, we can use `mean` to get the mean difference of the vector and `quantile` with `probs=c(0.025,0.975)` to get the 95% confidence interval.
+
+    ```{r}
+
+    ```
+
+### Spoilers for the challenge below this line
+
+------------------------------------------------------------------------
+
+Your code should hopefully look something like this:
+
+```{r}
+set.seed(0)
+
+# Vector to store differences
+all_boot_differences <- c()
+
+# Number of times to bootstrap
+bootstrap_n <- 1000
+
+# Iterate through number of bootstraps to calculate mean difference in 
+#   cigarettes per day by sex
+for(i in 1:bootstrap_n){
+  # Draw bootstrap sample
+  bootstrap_sample <- clean_fram_data %>%
+    slice_sample(n = nrow(clean_fram_data), replace = T)
+  
+  # Calculate male mean
+  male_mean <- bootstrap_sample %>%
+    filter(sex == "Male") %>%
+    pull(cigsPerDay) %>%
+    mean(na.rm = T)
+  
+  # Calculate female mean
+  female_mean <- bootstrap_sample %>%
+    filter(sex == "Female") %>%
+    pull(cigsPerDay) %>%
+    mean(na.rm = T)
+  
+  # Add mean difference to vector
+  boot_difference <- male_mean-female_mean
+  all_boot_differences <- c(all_boot_differences, boot_difference)
+}
+
+# Get bootstrapped mean difference
+mean(all_boot_differences)
+
+# Get bootstrapped 95% confidence interval
+quantile(all_boot_differences, probs=c(0.025,0.975))
+```
+
+Using bootstrapping, we calculated an estimate and a 95% percent confidence interval without needing to use a statistical test with all of its annoying assumptions. Instead, because our 95% confidence interval does not cross zero, we can say that men smoke significantly more cigarettes than women on overage (go back and note how this conclusion is different from the one in the chi squared test).

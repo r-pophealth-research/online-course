@@ -1,0 +1,356 @@
+---
+title: 'Week 3: Functions and Packages'
+output: html_document
+---
+
+# Functions
+
+Welcome to Week 3! In this tutorial, you'll learn all about functions in R. This includes building your own functions, using R's built-in functions, and loading packages that contain helpful tools.
+
+If you have any questions about the contents of this tutorial, please post them in the `Week 3 Pre-Class Tutorial` thread on Ed.
+
+## Function? I sure hope it does.
+
+Functions allow us to take an input, run some code, and send back an output. In fact, if you've ever taken a math class before, you've already seen functions!
+
+$$
+f(x) = 2x
+$$
+
+Look familiar? This function is very simple. It takes an input $x$, multiplies it by two, and gives back the answer. You can run it over and over again for different values:
+
+$$
+f(1)=2*1=2\\
+f(-10)=2*-10=-20\\
+f(0)=2*0=0
+$$
+
+R lets us do the same exact thing. We can provide instructions inside a function that we use later for different inputs. R uses `function(){}` to define these inputs and instructions. The inputs go inside the `()` and the instructions go inside the `{}`. In this case, our input `x` goes inside the parentheses, and our instructions `2*x` goes inside the curly brackets. We give the function the name `times_two` so we can reference it later. So if we want to turn our math function into an R function called `times_two`, we can say:
+
+```{r}
+times_two = function(x){
+  2*x
+}
+```
+
+Run this code. In the Environment tab in the top right, a function called `times_two` appears. We can **call** to the function using its name followed by our input in parenthesis. For `times_two`, all we have to do is give `x` a value:
+
+```{r}
+times_two(x=1)
+times_two(x=-10)
+times_two(x=0)
+```
+
+Each time we run the function, it **returns** back the last thing it calculated. For this example, it only calculates `2*x`, so that is what it returns.
+
+We can also use a `return()` statement to explicitly state what we want the function output to be. A `return()` statement tells R that we want to exit the function, and any code after it won't be run.
+
+```{r}
+multiply = function(x, y){
+  return(x*y)
+  x = x + 1 # This code will never be reached because return exits the function
+  x
+}
+
+multiply(x=4, y=10)
+```
+
+### Practice Problem
+
+Write your own function called `times_four_plus_one` that takes one input `x`, multiplies it by four, and adds one. Then, call your function three times with different inputs to make sure it works right.
+
+```{r}
+...
+```
+
+## Built-in Functions
+
+R has a bunch of built-in functions that help us get our work done. In fact, you have been using functions this whole time! `data.frame()` is a useful function that we learned about last week. And during week one, we learned about a bunch of math functions like `exp()`, `log()`, and even `abs()` which gives us the absolute value!
+
+An especially useful built-in function is `seq()`. This function allows you to generate a sequence of numbers. Now, we already learned that the colon `:` can be used to generate numbers in order. `seq()` expands on this by taking three inputs: `from=`, `to=`, and `by=`. `from` tells it our starting number, `to` tells it our maximum number, and `by` tells it the gaps between the numbers. If we want the numbers 1 through 10, we can just say `1:10` or `seq(from=1, to=10, by=1)`. However, if we want every odd number from 1 to 10, we cannot use the `:` and have to use `seq(from=1, to=10, by=2)`.
+
+```{r}
+# 1 through 10
+1:10
+seq(1, 10)
+# odd numbers 1 through 10
+seq(1, 10, 2)
+```
+
+### Practice Problem
+
+Now you use `seq()` to generate all multiples of 0.2 from 0 to 5 (e.g. 0, 0.2, 0.4, ... , 4.8, 5).
+
+```{r}
+# Write your code here
+```
+
+## Getting Help
+
+R has a lot of functions built in, so it is almost impossible to remember all of them. Instead, we have the `?` operator. When you write this operator before a function name in R, it will pop up some useful information.
+
+```{r}
+?sample
+```
+
+When we run this line, a little window pops up on the right side describing what `sample()` does. We learn that it takes a sample of size `size` from the elements of `x`. So let's randomly pick 3 numbers between 1 and 10.
+
+```{r}
+sample(x=1:10, size=3)
+```
+
+There is also an optional input `replace` that is normally equal to `FALSE`. Further down under **Arguments**, we learn that `replace` tells it "should sampling be with replacement?". In other words, should the same element be able to be picked multiple times? If we want that to be yes, we can tell the function that. Try running this code multiple times until you get a repeated number.
+
+```{r}
+sample(x=1:10, size=3, replace=TRUE)
+```
+
+The help page on the right side also has examples down at the bottom to help us. You can also always use Google to help you figure out how to use these functions, but the `?` operator works even without Internet!
+
+### Practice Problem
+
+Use `?runif` (and the Internet if you need) to figure out how to get a random number between -1 and 2.
+
+```{r}
+# Write your code here
+```
+
+## Any Number of Arguments
+
+Sometimes, functions will have an input that just says `…`. For example:
+
+```{r}
+?max()
+```
+
+The ellipsis means that `max()` can accept any number of arguments and give you the maximum of them.
+
+```{r}
+max(1, 5, 22)
+```
+
+### Practice Problem
+
+Try it out! The `max()` and `min()` functions will give you the maximum and minimum, respectively, of numbers or letters. They will accept any number of inputs, including a pre-made vector.
+
+Try finding different minimums and maximums. What happens when you include an `NA` in the group of numbers? What can you do about that (hint: check `?max`?
+
+```{r}
+min()
+max()
+
+some_numbers = c(...)
+max(some_numbers)
+```
+
+# Control Statements
+
+Sometimes we write code that we only want to be run sometimes, or maybe we want to run it many times. For those situations, we use control statements. R gives us ways to say "only run this code if this is true" or "run this code over and over again". These code statements will look something like this:
+
+```         
+type(control_statement){
+  code_to_be_run
+}
+```
+
+The `type` tells R how we want the code to be run (sometimes, many times, etc). The `control_statement` is code we write to say when the code should be run or how many times it should be run. The `code_to_be_run` is inside curly brackets `{}` and can be any code, including multiple lines of code.
+
+## If-Else Statements
+
+If-else statements give us a chance to decide what code should be run. They will look like this:
+
+```{r}
+if(conditional_statement){
+  # If conditional_statement is TRUE, this code will be run
+} else {
+  # If conditional_statement is FALSE, this code will be run
+}
+```
+
+We can use this statement to have code that is run in different situations. For example, if we want to tell the user if they try to do some math that doesn't work, we could use an if-else statement.
+
+```{r}
+x <- -2
+
+if(x >= 0) {
+  sqrt(x)
+} else {
+  print("You cannot take the square root of a negative number.")
+}
+
+x <- 625
+
+if(x >= 0) {
+  sqrt(x)
+} else {
+  print("You cannot take the square root of a negative number.")
+}
+```
+
+You can also use the `if` part on its own if there is not a second step you want to do. You can also put multiple if-else statements together if there are multiple decisions you need to make. Feel free to run this code multiple times with different `x` values.
+
+```{r}
+x <- 6
+
+# Only make one decision
+# If it's greater than 10, say that. Otherwise do nothing.
+if(x > 5) {
+  print("x is greater than 5")
+}
+
+# Categorize x into whether it's over 10, 9-5, 5-3, or less than or equal to 2.
+if (x > 10) { 
+  print("x is greater than 10")
+} else if (x > 5) {
+  print("x is 9 to 5")
+} else if (x > 2) {
+  print("x is 5 to 3")
+} else {
+  print("x is less than or equal to 2")
+}
+```
+
+Note than when a condition in an if-else series ends up being `TRUE`, all of the other `else`s are ignored. In the example above, `x > 5` is `TRUE`, so `x is 9 to 5` is printed. The everything after the `else` gets ignored. Even though the next `if (x >2)` would have also been `TRUE`, we don't see it print that out because it is after the `else`.
+
+### Practice Problem
+
+Complete the code below to write a series of conditional statements that compares the values of `x` and `y`. Try changing the values of `x` and `y` to check that your code works as expected
+
+```{r}
+x = 24
+y = 10
+
+if (x > y) {
+  print("x is ... than the value of y")
+} else if (...) {
+  print("x is less than the value of y")
+} else {
+  print("x is equal to y")
+}
+```
+
+## Loops
+
+Many times in research, we will need to run the same code over and over again, like if we need to calculate a value for every participant in a study. R gives us a way to do this using *for loops*. A typical for loop might look like this:
+
+```{r}
+numbers <- 1:5
+
+# for(element in collection_of_elements)
+for (number in numbers) {
+  # Code that gets repeated
+  print(paste("Number is now", number))
+  print(number*5)
+}
+```
+
+In the for loop, we specify how many times the code needs to be run by giving it a collection of things, the vector `numbers` in this case. We give that element a name, `number`, and write code using that variable. In this way, the first time the loop runs, `number` will be set to 1 because that is the first element of `numbers`. The code inside the curly brackets runs. Then `number` is set to 2 because it is the second element of `numbers`. The loop continues all the way through 5 and then stops because 5 is the last element in the vector `numbers`. When writing your own for loop, you use the format `for (variable in values)`. `values` needs to be a collection of something that you have already created. `variable` is a placeholder name that you can use inside the curly brackets of the for loop to do what you want to do.
+
+Something we normally do inside for loops is add the result to a list of results so we can keep track of all of them. Saving your results is a lot better than just printing them out, especially when you have a lot of observations. Let's say we have ten people in a study, and we want to categorize them by age. If we have their ages stored in `ages`, we can use a for loop to add their categorized age to `age_categories`. Notice that the part labeled "Step 2" is *inside* the for loop, so it will add `new_age_category` to the end of `age_categories` every time the loop is run.
+
+```{r}
+ages = c(25, 8, 35, 87, 34, 15, 73, 34, 53, 2)
+
+age_categories = c()
+  
+# Categorize the first age
+for (age in ages) {
+  # Step 1: Match age to the correct category
+  if (age < 18) {
+    new_age_category = "<18 years"
+  } else if (age < 64) {
+    new_age_category = "18-64 years"
+  } else {
+    new_age_category = ">=65 years"
+  }
+  
+  # Step 2: Add age category to the vector
+  age_categories = c(age_categories, new_age_category)
+}
+
+# Display age and age category side-by-side
+cbind(ages, age_categories)
+```
+
+### Practice Problem
+
+Complete the code below to categorize the stage of chronic kidney disease (CKD) based on estimated glomerular filtration rate (eGFR) values in `egfr_values`
+
+eGRF values less than 15 correspond to Stage 5 CKD, values between 15 and 29 correspond to Stage 4, values between 30-44 correspond to Stage 3B, and values above 45 correspond to Stages 1-3A.
+
+```{r}
+egfr_values = c(24, 61, 8, 36, 98, 78, 47, 42, 20)
+ckd_statuses = c()
+
+for (... in ...){
+  # Convert one egfr value to CKD stage
+  if (... < 15) {
+    stage = "5"
+  } else if (... < 30){
+    stage = "4"
+  } else if (... < 45){
+    stage = "3b"
+  } else {
+    stage = "1 to 3a"
+  }
+  # Add CKD stage to vector
+  ckd_statuses = c(..., ...)
+}
+
+ckd_statuses
+```
+
+# Packages
+
+Writing functions sure is fun, but I don't want to have to write a function for everything in R. Luckily, many amazing data scientists have come before us, written useful functions, and stored them in packages. Packages are bits of code you download from the internet to use in your own code. In R, there are two steps to using a package. 1) Install the package with `install.packages()` and 2) Tell R you want to use that package with `library()`. One of the most useful packages is called tidyverse. This package contains a multitude of packages that help us import, clean, and visualize data. Let's download tidyverse.
+
+```{r}
+# Because we're working in R markdown, we have to tell it where to search for the package. That's why we put repos="https://cloud.r-project.org". If you run install.packages() in the console or in a normal R file, you don't need the repos= part.
+install.packages("tidyverse", repos="https://cloud.r-project.org")
+```
+
+Note that we put the package name in quotes like a string. Because the package is not downloaded yet, we have to put it in quotes. Now that it is downloaded, we can tell R we are ready to use tidyverse. Because it is downloaded, it no longer needs to be in quotes because it exists on our computer.
+
+```{r}
+library(tidyverse)
+```
+
+### Practice Problem
+
+Another useful package is called `haven`. Haven allows you to import SPSS, STATA, and SAS data files. Go ahead and follow the two steps to download and install haven.
+
+```{r}
+...
+```
+
+# Importing Data
+
+By installing tidyverse, one of the packages that gets installed is called readr. This package gives us useful functions to import data into R because who wants to type out 3,000 rows??? Let's learn about importing data. Before you get started, **make sure you're working in your R Studio project that you made during class on Week 1**. That means this file should be saved in your `pre-class` folder. If you're not already doing that, you can click File\>Save As... and save it in your R project folder. The top right of your R Studio should say something like "EPI 202 R Class".
+
+Go to Canvas and download the wage_data.csv file under Week 3. After it has downloaded, move `wage_data.csv` into your `data` folder in this R project. When you go into R, you should be able to click on the "Files" tab, and the `data` folder and see `wage_data.csv` in that folder.
+
+Now we're ready to import the data. We will use the `read_csv()` function from the `readr` package. You can check out what `read_csv()` does using the `?` function. If you get an error, you did not download and library tidyverse yet.
+
+```{r}
+?read_csv()
+```
+
+`read_csv()` has a bunch of options that lets us read in different files, but the only required input is the `file` we want in r. We give the file we want to import using a character. Because we are super organized and we are using an R Studio Project, all we have to say is look `here::here` in the `data` folder for a file called `wage_data.csv`. We do this by saying `here::here("data/wage_data.csv")`. You can even use the Tab key to autocomplete the name for you!
+
+```{r}
+read_csv(file=here::here("data", "wage_data.csv"))
+```
+
+*Why do we have to say `here::here()`*? This is the way tell R Markdown to look at the R Project for help finding the file. If you're working in a normal R file (one that ends with `.R` instead of `.Rmd)`, you don't have to do this.
+
+### Practice Problem
+
+Notice that the data were printed without it appearing in the top right "Environment" tab. That's because we didn't assign it a variable! Try importing the wage data again, this time assigning it to a variable called `wages`.
+
+```{r}
+# Write your code to import the wage data
+
+
+# Print out the wages data to check and make sure it was saved
+wages
+```

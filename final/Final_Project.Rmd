@@ -1,0 +1,420 @@
+---
+title: "Final Project"
+output: pdf_document
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+Similar to Homework 4, your final will consist of a start-to-finish
+analysis of pre-existing data. We will give you a structure and a
+research question to examine. It is your responsibility to organize your
+code, give appropriate variable names, and explain the output of your
+code so that it could be understood by someone who does not know R.
+Please make sure to make good use of comments, check your indenting, and
+ensure no code runs off the page to get full style points!
+
+We recommend that you complete this assignment in the **Visual** view of
+the notebook.
+
+# Background
+
+Your final project uses data from [this study published in *Nature
+Microbiology*](https://www.nature.com/articles/s41564-023-01543-3 "Household immunity and individual risk of infection with dengue virus in a prospective, longitudinal cohort study").
+
+The study examines individual- and household-level risk factors of
+dengue in Kamphaeng Phet province, Thailand. Dengue is a mosquito-borne
+viral infection that is found in tropical climates. Symptoms of dengue
+include fever, headache, rashes, and muscle and join pain; in extreme
+cases, dengue can also cause bleeding, low levels of blood platelets,
+and low blood pressure. However, most dengue infections are asymptomatic
+or only result in mild symptoms.
+
+The data for your final are based off of what the authors have
+published, but we have done some pre-processing to simplify the
+analysis. **You will not be able directly replicate the paper's
+results**, so do not worry if any of your data summaries or inferences
+are different from what's reported in the paper.
+
+You will work with two complementary datasets in this project. These two
+datasets are linked by a household ID.
+
+-   `dengue_individual_data.csv` contains individual-level
+    characteristics and infection status
+
+-   `dengue_household_data.csv` contains household characteristics
+
+# Loading packages and data
+
+Run the cell below to load the required packages
+
+```{r}
+library(tidyverse)
+library(here)
+```
+
+## Individual data
+
+```{r}
+individual_data = read_csv(here("data", "dengue_individual_data.csv"))
+glimpse(individual_data)
+```
+
+**Data dictionary:**
+
+| Variable Name        | Description                                                                              |
+|--------------------------|----------------------------------------------|
+| `ID`                 | Individual identifier                                                                    |
+| `hh_ID`              | Household identifier                                                                     |
+| `sex`                | Biological sex                                                                           |
+| `n_symp_infections`  | Count of times this individual has had a symptomatic dengue infection during the study   |
+| `n_asymp_infections` | Count of times this individual has had an asymptomatic dengue infection during the study |
+
+## Household data
+
+```{r}
+household_data = read_csv(here("data", "dengue_household_data.csv"))
+glimpse(household_data)
+```
+
+**Data dictionary:**
+
+| Variable Name          | Description                                                                                                                                                                                                                                                                                                       |
+|-------------------------|-----------------------------------------------|
+| `hh_ID`                | Household identifier                                                                                                                                                                                                                                                                                              |
+| `door_screens`         | 1, if the household has a screen door. 0, otherwise                                                                                                                                                                                                                                                               |
+| `house_type`           | One of three household types. "Poles" indicates the house is built on stilts, as homes on floodplains typically are. "Single" indicates the house is a single-family home separate from other homes. "Townhouse" indicates the house if part of a multifamily unit where multiple homes are physically connected. |
+| `concrete_house`       | 1, if the house was built from concrete. 0, otherwise                                                                                                                                                                                                                                                             |
+| `water_supply_by_pipe` | 1, if the house is supplied water by pipes. 0, if the house receives water some other way                                                                                                                                                                                                                         |
+| `garbage_management`   | One of three methods for getting rid of household waste. "Burn" if it is burned by the residents. "Car" if it is disposed of by a vehicle that collects waste. "Dump" if it is brought to a waste disposal facility by the residents.                                                                             |
+| `n_toilets_outside`    | Count of the outdoor toilets available to the household residents                                                                                                                                                                                                                                                 |
+
+# Research Question
+
+For your final, you will examine this research question "Are household
+factors associated with dengue infection?" Follow the steps below to
+complete the analysis. Make sure to document your code using plain
+language so that a researcher who does not know R could understand.
+
+# Data Exploration
+
+## Question 1 (2 points)
+
+Explore the distribution of at least one continuous variable and one
+categorical/binary variable in the datasets using both summary
+statistics and a exploratory plots.
+
+```{r}
+
+```
+
+## Question 2 (2 points)
+
+These is one column in `household_data` with missing/unknown values. How
+are the missing values coded? Identify the column and find the
+percentage of measurements that have a missing value for that variable.
+
+```{r}
+
+```
+
+# Data Cleaning
+
+## Question 3 (1 point)
+
+Create a copy of `individual_data` called `individual_data_cleaned` and
+a copy of `household_data` called `household_data_cleaned`. You will
+save the outputs of all your data cleaning and processing to these
+"cleaned" datasets to avoid overwriting the original datasets.
+
+```{r}
+individual_data_cleaned = ...
+household_data_cleaned = ...
+```
+
+## Question 4 (2 points)
+
+For the column in `household_data_cleaned` you identified in Question 2,
+recode missing or unknown values as `NA` and convert the remaining
+values to numerics.
+
+```{r}
+
+```
+
+## Question 5 (4 points)
+
+Add the following columns to `individual_data_cleaned`:
+
+-   `age_cat`, that is "adult" for people 18 or older and "child" for
+    people under 18.
+
+-   `n_any_infections`, the sum of symptomatic and asymptomatic
+    infections for each person.
+
+-   `any_infections`, that is `TRUE` if the individual was ever infected
+    with symptomatic or asymptomatic dengue.
+
+```{r}
+
+```
+
+## Challenge Question 1 (3 points)
+
+Add a `household_size` variable to `household_data_cleaned` that counts
+the number of individuals in each household.
+
+*Hint:* Use the individual dataset to calculate the number of people in
+each household, then merge the data into `household_data_cleaned`
+
+```{r}
+
+```
+
+## Question 6 (3 points)
+
+Join the cleaned individual and household level data to create a dataset
+called `merged_dengue_data`. The resulting data frame should contain 1
+row per individual, with columns for both individual- and
+household-level variables for that person.
+
+```{r}
+merged_dengue_data = ...
+```
+
+# Descriptive Analysis
+
+## Question 7 (3 points)
+
+Fill-in the values for Table 1. The "Total" column should describe
+characteristics for the full sample, while "No Infection" and "Any
+Infection" describe characteristics for subgroups by infection status.
+
+The cells with "---" in them do not need to be filled in. The percents
+should be column percents (ex. % no infection males + % no infection
+females = 100%)
+
+You should find all quantities indicated in the left column, including
+sample sizes, percentages, means, and SDs, using R code (no hand
+calculations). Clearly label and document your code so it's clear how
+you calculated each value.
+
+```{r}
+
+```
+
+| Table 1                  | Total | No Infection | Any Infection |
+|--------------------------|:-----:|:------------:|:-------------:|
+| Number of individuals, N |       |              |               |
+| Age, mean (SD)           |       |              |               |
+| Sex, N (%)               |  ---  |     ---      |      ---      |
+| \- Female                |       |              |               |
+| \- Male                  |       |              |               |
+| Concrete House, N (%)    |  ---  |     ---      |      ---      |
+| \- Yes                   |       |              |               |
+| \- No                    |       |              |               |
+| House Type, N (%)        |  ---  |     ---      |      ---      |
+| \- Poles                 |       |              |               |
+| \- Single                |       |              |               |
+| \- Townhouse             |       |              |               |
+| Water Supply, N (%)      |  ---  |     ---      |      ---      |
+| \- Pipes                 |       |              |               |
+| \- Other                 |       |              |               |
+| \- Missing               |       |              |               |
+
+## Challenge Question 2 (3 points)
+
+Complete the rest of Table 1.
+
+You should find all quantities, including sample sizes, percentages,
+means, and SDs, using R code (no hand calculations). Clearly label and
+document your code so it's clear how you calculated each value.
+
+```{r}
+
+```
+
+| Table 1                      | Total | No Infection | Any Infection |
+|------------------------------|:-----:|:------------:|:-------------:|
+| Screen Door, N (%)           |  ---  |     ---      |      ---      |
+| \- Yes                       |       |              |               |
+| \- No                        |       |              |               |
+| Garbage Management, N (%)    |  ---  |     ---      |      ---      |
+| \- Burn                      |       |              |               |
+| \- Car                       |       |              |               |
+| \- Dump                      |       |              |               |
+| Household Size, Median (IQR) |       |              |               |
+
+## Question 8 (3 points)
+
+Calculate the odds ratio for being infected with dengue
+(`any_infections`) by whether the house is made of concrete.
+
+Do not "hard code" this calculation by copying exact numbers - use R
+code to first find the number of infections in concrete vs non-concrete
+homes. Your code for the odds ratio calculation should still work even
+if the underlying data changes.
+
+```{r}
+n_infections_concrete = ...
+n_no_infections_concrete = ...
+odds_concrete = ...
+
+n_infections_nonconcrete = ...
+n_no_infections_nonconcrete = ...
+odds_nonconcrete = ...
+
+concrete_OR = ... 
+concrete_OR
+```
+
+## Challenge Question 3 (3 points)
+
+Calculate the odds ratio for being infected with dengue by adults vs
+children.
+
+Do not "hard code" this calculation by copying exact numbers - use R
+code to first find the number of infections in adults vs children. Your
+code for the odds ratio calculation should still be valid even if the
+underlying data changes
+
+```{r}
+
+```
+
+# Statistical Inference
+
+## Question 9 (2 points)
+
+Run a chi-square test to assess if there is a difference in any dengue
+infection between males and females.
+
+Interpret your model output below your code. (In what group were
+infections higher? Was the difference statistically significant?)
+
+```{r}
+
+```
+
+*Interpretation:* ...
+
+## Question 10 (3 points)
+
+Use a linear model to assess how the number of outdoor toilets affects
+the number of dengue infections. Get a 95% confidence interval for your
+estimate.
+
+Interpret your model output below your code. (For each addition outdoor
+toilet, what is the expected change to the number of dengue infections?
+Is the effect statistically significant?)
+
+```{r}
+
+```
+
+*Interpretation:* ...
+
+## Question 11 (3 points)
+
+Use a logistic model to estimate the odds ratio and 95% confidence
+interval of any dengue infection associated with screen doors.
+
+Interpret your model output below your code. (How do the odds of
+infection change for homes with vs without screen doors? Is this a
+statistically significant effect?)
+
+```{r}
+
+```
+
+*Interpretation:* ...
+
+## Question 12 (3 points)
+
+Extend the model you created in Question 5 to estimate the odds ratio
+and 95% confidence interval of any dengue infection associated with
+screen doors, controlling for house type and garbage management.
+
+Interpret your model output below your code. (How do the odds of
+infection change for homes with vs without screen doors, when
+controlling for other factors? Is this a statistically significant
+effect?)
+
+```{r}
+
+```
+
+*Interpretation:* ...
+
+## Challenge Question 4 (5 points)
+
+Fill in the skeleton code to produce a bootstrapped estimate of the risk
+ratio of any dengue infection for children vs adults using 100
+bootstrapped samples.
+
+*Hint:* Reference the "Optional Challenge: Bootstrapping" section of the
+Week 7 tutorial for help!
+
+```{r}
+# Create a vector to store the risk ratios
+...
+
+# Number of bootstrap samples to take
+bootstrap_n = ...
+
+# Create a for loop to run through the number of times to bootstrap calculating
+#   a the risk ratio of any infection for children versus adults from a random 
+#   sample of the data and saving it to your risk ratio vector
+for (...) {
+  # Draw bootstrap sample WITH replacement (use slice_sample())
+  bootstrap_sample = ...
+  
+  # Calculate the risk of any infection in children
+  risk_children = ...
+  
+  # Calculate the risk of any infection in adults
+  risk_adult = ...
+  
+  # Add risk ratio to your vector of risk ratios
+  risk_ratio = risk_children/risk_adult
+  ... = c(...)
+}
+
+# Take the mean of your risk ratios to get your estimate
+...
+
+# Get the 95% confidence interval from your risk ratio vector
+quantile(..., probs=c(0.025,0.975))
+```
+
+# Visualizations
+
+***You must use `ggplot` for this section.*** **Make sure each plot has
+an informative title and axes names.**
+
+## Question 13 (3 points)
+
+Make a scatterplot of the number of any infections by age. Place age on
+the x-axis and the number of any infections on the y-axis.
+
+```{r}
+
+```
+
+## Question 14 (4 points)
+
+Make a boxplot of the number of any dengue infections by house type.
+Place house type of the x-axis and infections on the y-axis. Order the
+house type from left to right as "Single", "Townhouse", and "Poles".
+
+```{r}
+
+```
+
+# Submission Instructions
+
+Knit the completed document as a PDF and submit it on Gradescope by the
+deadline. For students taking the course for 1 unit, you may need to
+delete the skeleton code under the challenge questions for your code to
+knit properly. Please double check the knitted PDF to make sure all of
+your code and comments are fully visible and do not run off the screen.

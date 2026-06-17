@@ -1,0 +1,52 @@
+# Quarto build output and cache
+/.quarto/
+_site/
+**/*.quarto_ipynb
+
+# Local Quarto installation (not needed in CI)
+.tools/
+
+# Non-website course materials
+lectures/
+other/
+
+# RStudio project (local development only)
+*.Rproj
+.Rproj.user/
+
+# Generated WebR pages (built from .Rmd by scripts/prepare_webr_docs.R in CI)
+tutorials/*.qmd
+hw/*.qmd
+final/*.qmd
+
+# Instructor materials and knit outputs
+*_complete*
+**/[[]solutions[]]*
+*.nb.html
+*.pdf
+
+# Final project — only Final_Project.Rmd is a website source
+final/*
+!final/Final_Project.Rmd
+
+# Quiz images used in lectures, not the website (site uses tutorials/images/)
+/images/
+
+# Data files not referenced by website source documents
+/data/Week10_classdata.csv
+/data/baseline_jhs.csv
+/data/dengue_hh_data.csv
+/data/dengue_infection_data.csv
+/data/employment_data.csv
+/data/householdCohortData.csv
+/data/mid_quarter_eval.csv
+/data/ncd_risk_factors_original.csv
+/data/od_deaths_state.csv
+/data/stomach_cancer_deaths_california.csv
+/data/titanic.csv
+/data/titanic_data.csv
+/data/washb_subset.csv
+
+# OS junk
+.DS_Store
+**/.DS_Store

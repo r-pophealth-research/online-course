@@ -5,8 +5,6 @@ title: "Welcome"
 
 Welcome to **R Fundamentals for Health Research** — an introduction to R for epidemiology and health policy research.
 
-These materials
-
 These course materials run entirely in your browser using [Quarto](https://quarto.org) and [WebR](https://docs.r-wasm.org/webr/latest/). You do not need R installed locally to explore the tutorials and run code on this site.
 
 ```{webr-r}
@@ -40,4 +38,4 @@ The first time you run code on a page, WebR needs to download R and any required
 
 ## Working locally in RStudio
 
-If you prefer the full RStudio experience, clone the [course repository](https://github.com/anna-nguyen/epi202-w25) and open the `.Rmd` files directly. The `.qmd` files on this site are generated from those sources for WebR compatibility.
+If you prefer the full RStudio experience, clone the [course repository](https://github.com/r-pophealth-research/online-course) and open the `.Rmd` files directly. The `.qmd` files on this site are generated from those sources for WebR compatibility.

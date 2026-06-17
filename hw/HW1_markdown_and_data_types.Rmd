@@ -1,0 +1,83 @@
+---
+title: "HW1_markdown_and_data_types"
+output: pdf_document
+---
+
+# Homework 1
+
+Welcome to your first homework! You will need to edit this document, Knit it to a PDF, and submit it to Gradescope. Remember the "Challenge" problems are optional for students taking this course for 1 unit but are required for students taking it for 2 units.
+
+## Part 1: Markdown
+
+### Question 1 (2 points)
+
+Create a code block that calculates 1,248 squared.
+
+## Part 2: Data Types
+
+### Question 2 (3 points)
+
+Replace the `#Your_code_here`'s with *appropriate data* based on the variable names. Hint: You will use 1 of each data type.
+
+```{r}
+average_height_of_a_girrafe_in_meters = #Your_code_here
+the_best_city_in_the_world = #Your_code_here
+is_strawberry_the_best_ice_cream_flavor = #Your_code_here
+```
+
+## Part 3: Comparisons
+
+### Question 3 (2 points)
+
+Write a comparison using numerics that evaluates to `TRUE`.
+
+```{r}
+
+```
+
+### Question 4 (2 points)
+
+Write a comparison using characters that evaluates to `FALSE`.
+
+```{r}
+
+```
+
+### Question 5 (2 points)
+
+Write a comparison that uses NA and, based on your experience, explain what happens anytime you use NA in a comparison. Hint: Try a bunch of comparisons using an NA and see what you get.
+
+```{r}
+
+```
+
+Briefly explain what is happening:
+
+## Challenge: Think About Data in Research
+
+**This section is required for students enrolled in the course for 2-units, and optional for students enrolled for 1-unit**
+
+Search [PubMed](https://pubmed.ncbi.nlm.nih.gov/) for a public health topic you are interested in (ex. "opioid addiction"). In the left sidebar under "Article Type", click "Clinical Trial" to only view trials. Pick an article you find interesting, and briefly answer the questions below. If you're having trouble answering the questions, you can pick a different article.
+
+*NOTE:* To access the full text of some articles, you may need to be on Stanford's wifi, logged into the Stanford VPN, or looking at the articles using the [Stanford Libraries website](libraries.stanford.edu).
+
+### Challenge 1 (1 point)
+
+Please paste a link to the article here:
+
+### Challenge 2 (1 points)
+
+What was the study objective?
+
+### Challenge 3 (4 points)
+
+Describe in words and using R code at least two inclusion criteria for the study. Inclusion criteria are requirements described in the paper that participants had to meet before joining the study. Replace the examples with at least two of your own inclusion criteria from your research article.
+
+-   Example: Patients 40 years old or greater - age \>= 40
+-   Example: Patients with greater than 140 mm Hg blood pressure - blood_pressure \> 140
+
+# Submission Instructions
+
+Use the Knit button next to the magnifying glass to knit this R notebook as a PDF and submit it to the corresponding Gradescope assignment. Check your PDF to make sure that all your code and its output is displayed.
+
+Once you successfully submit, you will be asked to match each question to its respective page on your submission. **Do not skip this step.**

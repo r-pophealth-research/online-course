@@ -1,0 +1,580 @@
+---
+title: "Week 8 + 9: Data Visualizations"
+output: pdf_document
+---
+
+# Weeks 8 and 9: Data Visualizations with ggplot
+
+Welcome to Week 8 and 9! Over the next two weeks, we'll revisit data visualizations and learn how to use the `ggplot2` package to create publication-ready figures. This tutorial is on the longer side, but you'll have two weeks to complete it. **Please complete up to (and including) the `Plotting bivariate distributions` section before Week 8's lecture and the whole tutorial before Week 9's lecture**.
+
+If you have any questions about the contents of this tutorial, please post them in the "Week 8+9 Tutorial" thread.
+
+# Loading Packages and Data
+
+`ggplot2` is included as a core package of `tidyverse`. Run the cell below to load `tidyverse`, `ggplot2`, and other required packages. Why is is called `ggplot`? Because it is the Grammar of Graphics for PLOTting!
+
+```{r}
+library(tidyverse) # also loads ggplot2
+library(here)
+```
+
+In this tutorial, we will be using maternal mortality data from the World Health Organization that has been merged with population data from the World Bank. Download the `WHO_maternal_mortality_rates.csv` file from Canvas and place it in the `data` folder of your class directory.
+
+Run the cell below to load the data as `maternal_mortality` and view the first few columns.
+
+```{r}
+# Source: https://platform.who.int/data/maternal-newborn-child-adolescent-ageing/indicator-explorer-new/mca/maternal-mortality-ratio-(per-100-000-live-births)
+maternal_mortality = read_csv(here("data", "maternal_mortality_ratios.csv"))
+head(maternal_mortality)
+```
+
+The data frame includes annual estimates of maternal mortality ratios (deaths per 100,000 live births) for each country. It includes the the following columns:
+
+-   `Year`: a numeric, year of estimate
+
+-   `Country`:a character, country of estimate
+
+-   `Region`: a character, the WHO region that the country belongs to
+
+-   `income_group`: a character, the World Bank's classification of the country's income level.
+
+-   `total_population`: a numeric, the population size in hundreds of thousands
+
+-   `mortality_estimate`: a numeric, the estimated maternal mortality ratio, calculated as (\# maternal deaths / \# live births) x 100,000
+
+-   `mortality_ci_lb`: a numeric, the lower bound of the estimated confidence interval of maternal mortality ratio
+
+-   `mortality_ci_ub`: a numeric, the upper bound of the estimated confidence interval of maternal mortality ratio
+
+Use the cell below to explore the dataset. At minimum, we recommend that you familiarize yourself with the range of years the data covers, the number of unique values of each country/region/income_group, and the extent of missingness in the data.
+
+```{r}
+
+```
+
+# Introduction to ggplot()
+
+Earlier in the class, we learned how to make scatter plots and histograms using "base" R functions, or methods that are inherent to R and did not need to be loaded from a package. With these methods, we had to specify **vectors** that contained the data we wanted to plot. For example, the code below produces a scatter plot that compares the values of total population and maternal mortality rate in 2020.
+
+```{r}
+maternal_mortality_2020 = maternal_mortality %>% filter(Year == 2020)
+
+plot(x = maternal_mortality_2020$total_population,
+     y = maternal_mortality_2020$mortality_estimate, 
+     main = "Population vs Maternal Mortality in 2020",
+     xlab = "Total Population (in 100,000s)", 
+     ylab = "Maternal Mortality Rate (per 100,000 live births)")
+```
+
+Base R is useful for making quick plots, but it is difficult to extend these methods to create complex figures. Since we have to work with vectors, we have to be careful that the items are properly paired (ex the first item of vector 1 should be from the same unit as the first item of vector 2). Additionally, it can be difficult to modify plots to represent multiple dimensions of a dataset in a plot.
+
+`ggplot2` allows us to create sophisticated plots starting from **data frames**. `ggplot2` builds figures in a modular way, meaning that each elements in the plot are added piece-by-piece allowing for easy customization.
+
+All plots created through `ggplot2`, regardless of their type, start by calling the `ggplot()` function. `ggplot()` takes in a dataframe as an argument. On its own, the function returns an empty figure but helps signal that we want to create a graphic.
+
+```{r}
+ggplot(maternal_mortality_2020)
+```
+
+In the `ggplot()` function, we can also state the *aesthetic mappings* that we'd like to use in our figure using the `aes()` function. This allows us to map variables in the dataset to different features of our figure. Below, we use `aes()` to specify that we want our x-values to reflect `total_population` and our y-values to reflect `mortality_estimate`. Our figure will now have axes that correspond to what we put in `aes()`, but no data points will appear yet.
+
+```{r}
+ggplot(maternal_mortality_2020, aes(x = total_population, y = mortality_estimate))
+```
+
+Next, we can add an element to our `ggplot` using `+` to indicate what type of plot we want to use to display for our data. To create a scatter plot, we can use `geom_point()`.
+
+```{r}
+ggplot(maternal_mortality_2020, aes(x = total_population, y = mortality_estimate)) + 
+  geom_point()
+```
+
+We can save this plot object to a variable called `population_mortality_plot`.
+
+```{r}
+population_mortality_plot = 
+  ggplot(maternal_mortality_2020, aes(x = total_population, y = mortality_estimate)) + 
+  geom_point()
+
+population_mortality_plot
+```
+
+We can make edits to the plot by modifying the saved `population_mortality_plot` variable. For example, the code below builds off of the plot `population_mortality_plot` to create more informative axis labels and add a title. The labeled plot is saved as `labeled_population_mortality_plot`
+
+```{r}
+labeled_population_mortality_plot = population_mortality_plot + 
+  xlab("Total Population (in 100,000s)") + # labels x-axis
+  ylab("Maternal Mortality Rate (per 100,000 live births)") + # labels y-axis
+  ggtitle("Population vs Maternal Mortality in 2020") # adds plot title
+
+labeled_population_mortality_plot
+```
+
+We made our first figure with `ggplot2`! We can now see that there doesn't seem to be much of a relationship between total population and maternal mortality. In other words, there doesn't seem to be a clear trend line in this plot. In the rest of this tutorial, we'll walk through the different types of plots you can create with `ggplot2` and how to customize them.
+
+# Plotting univariate distributions
+
+The first type of figures we'll explore plot the distribution of a single variable. While numerical summaries can give a good overview of the data, these plots provide a more complete picture of the data and can be used to easily identify trends in the data.
+
+## Continuous Variables
+
+### Histograms
+
+Histogram displaying the frequency of different values in a continuous distribution within specified intervals, and can be produced with `geom_histogram()`
+
+```{r}
+ggplot(maternal_mortality_2020, aes(x = mortality_estimate)) + 
+  geom_histogram() + 
+  xlab("Maternal Mortality Rate (per 100,000 live births)") + 
+  ylab("Count")
+```
+
+Using this plot, we can see that most countries have relatively low maternal mortality with only a handful of countries breaking 800 deaths per 100,000 births. We would consider this variable to be right skewed.
+
+By default, histograms are generated with 30 total bins/intervals. To adjust the number or width of bins, we can set the value of `binwidth`. Smaller values of `binwidth` create smaller intervals (more bars) but larger values of `binwidth` create larger intervals (less bars).
+
+```{r}
+ggplot(maternal_mortality_2020, aes(x = mortality_estimate)) + 
+  geom_histogram(binwidth = 100) + 
+  xlab("Maternal Mortality Rate (per 100,000 live births)")
+```
+
+```{r}
+ggplot(maternal_mortality_2020, aes(x = mortality_estimate)) + 
+  geom_histogram(binwidth = 25) + 
+  xlab("Maternal Mortality Rate (per 100,000 live births)")
+```
+
+### Density Plots
+
+Density plots also show the distribution of a variable, and can be seen as the "smoothed" version of a histogram. These can be generated in `ggplot` with `geom_density`
+
+```{r}
+ggplot(maternal_mortality_2020, aes(x = mortality_estimate)) + 
+  geom_density() + 
+  xlab("Maternal Mortality Rate (per 100,000 live births)")
+```
+
+Density plots are especially nice because you can easily compare multiple lines on the same plot which is more difficult to do with traditional histograms.
+
+### Practice Problem 1
+
+Plot the distribution of maternal mortality in 2010 in the Americas using a histogram.
+
+```{r}
+# Set up the data
+#maternal_mortality_2010 = ...
+
+# Create the plot
+#ggplot(maternal_mortality_2010, ...)
+```
+
+### Practice Problem 2
+
+Plot the distribution of maternal mortality in 2000 among upper-middle income countries using a density plot.
+
+```{r}
+# Set up the data
+#maternal_mortality_2000_uppermid = ...
+
+# Create the plot
+#ggplot(maternal_mortality_2000_uppermid, ...)
+```
+
+## Categorical Variables
+
+### Bar Plots
+
+Bar plots can be used to show the distribution of categorical variables by displaying the number of observations in each group. To create a plot, use `geom_bar()`. Below, we plot the distribution of country incomes in 2020.
+
+```{r}
+ggplot(maternal_mortality_2020, aes(x = income_group)) + 
+  geom_bar() + 
+  xlab("Income Group")
+```
+
+Notice how the income groups are ordered alphabetically, rather than by "Low" -\> "Lower middle" -\> "Upper middle" -\> "High". We can change how they're displayed by converting income to a *factor* that we can set the order of using *levels*
+
+```{r}
+maternal_mortality_income_factors = 
+  maternal_mortality_2020 %>% 
+  mutate(income_group = factor(income_group, 
+                               levels = c("Low income", "Lower middle income", 
+                                          "Upper middle income", "High income")))
+
+ggplot(maternal_mortality_income_factors, aes(x = income_group)) + 
+  geom_bar() + 
+  xlab("Income Group")
+```
+
+From this plot, we can see how even the different categories are. It seems like the low income category has about half as many countries as the other three categories, but the other three are relatively balanced.
+
+### Practice Problem 3
+
+Plot the distribution of regions represented in 2020 using a bar plot.
+
+```{r}
+#ggplot(...)
+```
+
+# Plotting correlations
+
+## Scatterplots
+
+As we saw in the introduction, scatter plots can be generated using `geom_point()`. These plots allow us to look at the correlation between two continuous variables.
+
+```{r}
+ggplot(maternal_mortality_2020, aes(x = total_population, y = mortality_estimate)) + 
+  geom_point() + 
+  xlab("Total Population (in 100,000s)") + 
+  ylab("Maternal Mortality Rate (per 100,000 live births)")
+```
+
+# Plotting time series data
+
+## Line plots
+
+Line plots are a great option for visualizing how a variable changes over time. In ggplot, line plots are created using `geom_line()`. Run the code below to plot how maternal mortality changes over time in the United States.
+
+```{r}
+maternal_mortality_usa = maternal_mortality %>% filter(Country == "United States of America") 
+ggplot(maternal_mortality_usa, aes(x = Year, y = mortality_estimate)) + 
+  geom_line() + 
+  xlab("Year") + 
+  ylab("Maternal Mortality Rate (per 100,000 live births)")
+```
+
+# Potting bivariate distributions
+
+## Box Plots
+
+Box plots can be used to compare the distribution of a continuous variable by different levels of a categorical variable. They are created using `geom_boxplot`. In the code below, we compare the distribution of maternal mortality by income group.
+
+```{r}
+maternal_mortality_income_factors = 
+  maternal_mortality_2020 %>% 
+  mutate(income_group = factor(income_group, 
+                               levels = c("Low income", "Lower middle income", 
+                                          "Upper middle income", "High income")))
+
+ggplot(maternal_mortality_income_factors, aes(x = income_group, y = mortality_estimate)) + 
+  geom_boxplot() + 
+  xlab("") + 
+  ylab("Maternal Mortality Rate (per 100,000 live births)")
+```
+
+We can flip the axes to view the box plots horizontally rather than vertically.
+
+```{r}
+ggplot(maternal_mortality_income_factors, aes(x = mortality_estimate, y = income_group)) + 
+  geom_boxplot()+ 
+  xlab("Maternal Mortality Rate (per 100,000 live births)") +
+  ylab("") 
+```
+
+When we do this, values placed in order from bottom to top. However, since we tend to read plots from top to bottom, we might want to reverse this order.
+
+### Adjusting displays with `scale_` functions
+
+We can use the `scale_x_discrete`, `scale_x_continuous`, `scale_y_discrete`, and `scale_y_continuous` functions of `ggplot2` to adjust how axis values and labels are displayed in our plot. The function you should use depends on which scale you're working with and the type of data it represents (discrete vs continuous).
+
+For the purposes of this class we'll focus on the `breaks`, `labels`, and `limits` options of these functions. Use `?scale_y_discrete` to see other edits you can make.
+
+-   `breaks` specifies where the "tick marks" should be placed on the axis. By default, the breaks will include all possible values of the discrete variable or evenly spaced points across the range of a continuous variable. We can change the placement of these marks by specifying a vector of values that contain our desired break placements (ex `breaks = c(50, 100, 150, 200)`)
+
+-   `labels` is complementary to `breaks` and specifies how we want to label the break points. This is particularly useful if we want to reformat axis labels without changing the underlying data. For example, if we had breaks that are coded as `c("2012-03-01" "2012-06-01")` we can create more informative labels by setting `labels = c("March 3, 2012", "June 1, 2012")`.
+
+-   `limits` allows us to control the range of values displayed on the axes, and the order that they're shown in. For continuous variables, the limits can be used to specific the minimum and maximum value that should be represented on the axis. For categorical variables, the limits are specified through a vector that contains all possible values in the desired order. Functions can also be passed through to streamline the process of reordering variables. For example, `rev` reverses the order that values are displayed on the axis.
+
+In the boxplot above, we're interested in changing the order of income group, which is a *discrete* variable on the *y*-axis. Therefore, we can use `scale_y_discrete(limits = ...)` to change how income group is displayed on the plot.
+
+One way to set these values is by passing through a vector with all possible values of the categorical variable, in the order that we want them displayed (from bottom ["least"] to top ["greatest"]):
+
+```{r}
+ggplot(maternal_mortality_income_factors, aes(x = mortality_estimate, y = income_group)) + 
+  geom_boxplot() +
+  scale_y_discrete(limits=c(NA, "High income", "Upper middle income", 
+                            "Lower middle income", "Low income")) + 
+  xlab("Maternal Mortality Rate (per 100,000 live births)") + 
+  ylab("")
+```
+
+Since we're interested in simply reversing the order of the variables, we can also use the `rev` function with the `limits` argument.
+
+```{r}
+ggplot(maternal_mortality_income_factors, aes(x = mortality_estimate, y = income_group)) + 
+  geom_boxplot() +
+  scale_y_discrete(limits=rev) + 
+  xlab("Maternal Mortality Rate (per 100,000 live births)") + 
+  ylab("")
+```
+
+With this plot, we can see a pretty clear relationship between income and maternal mortality. This relationship could be further investigated with statistical tests to determine if there is a statistically significant relationship between country income and country maternal mortality.
+
+## Violin plots
+
+Violin plots are similar to box plots, but display the density of the continuous variable for each level of the categorical variable.
+
+```{r}
+ggplot(maternal_mortality_income_factors, aes(x = Region, y = total_population)) + 
+  geom_violin() + 
+  xlab("Region") + 
+  ylab("Total Population (in 100,000s)")
+```
+
+This plot combines the benefits of the histogram with the box plot so that we can see that our data are right-skewed (most observations are around zero) while also comparing regions to one another.
+
+## Practice Problem 4
+
+Plot the distribution of mortality in 2020 by region, using either a box plot or violin plot. Try using a `scale_` function to rearrange the order of how regions are displayed.
+
+```{r}
+#ggplot(...)
+```
+
+------------------------------------------------------------------------
+
+**Start Week 9**
+
+# Modifying features
+
+## Stacking elements
+
+A major strength of `ggplot2` is its ability to add multiple elements to the same plot. For example, we might want to plot both the estimates and confidence intervals of mortality in 2020 for countries in South-East Asia.
+
+We can start by plotting just the estimates of mortality using `geom_point()`.
+
+```{r}
+seasia_mortality = maternal_mortality %>% filter(Region == "South-East Asia", Year == 2020) 
+ggplot(seasia_mortality, aes(x = mortality_estimate, y = Country)) + 
+  geom_point() +
+  scale_y_discrete(limits=rev) + 
+  xlab("Maternal Mortality Rate (per 100,000 live births)") +
+  ylab("")
+```
+
+We can then add our confidence intervals on the same plot using `geom_linerange()`. Notice how `geom_linerange()` gets a separate set of aesthetic mappings (`aes()`) that indicate where the range starts (`xmin`) and ends (`xmax`). This adds to the first set of mappings specified in `ggplot()` (which also informs the country or "y-value" the ranges are associated with ) and uses the same dataframe.
+
+```{r}
+ggplot(seasia_mortality, aes(x = mortality_estimate, y = Country)) + 
+  geom_point() +
+  geom_linerange(aes(xmin = mortality_ci_lb, xmax = mortality_ci_ub)) +
+  scale_y_discrete(limits=rev) +
+  xlab("Maternal Mortality Rate (per 100,000 live births)") +
+  ylab("")
+```
+
+Adding error bars is great practice for scientific figures because it allows you to clearly communicate and compare uncertainty in your estimates.
+
+Similarly, we can add errors for each year to our line plots using `geom_ribbon()`. Again, we'll pass in a new set of mappings to indicate where the error ribbons start and end. We can also specify the color of the ribbon by setting `fill = "grey"`.
+
+```{r}
+maternal_mortality_usa = maternal_mortality %>% filter(Country == "United States of America") 
+
+ggplot(maternal_mortality_usa, aes(x = Year, y = mortality_estimate)) + 
+  geom_ribbon(aes(ymin = mortality_ci_lb, ymax = mortality_ci_ub), fill = "grey") +
+  geom_line() +
+  xlab("Year") + 
+  ylab("Maternal Mortality Rate (per 100,000 live births)") 
+```
+
+## Colors and Fills
+
+We can change the color and fill of plot elements using `color = ...` and `fill = ...`. `color` will change the colors of lines and shape outlines, while `fill` will change how the inside of areas (ex the inside of bars in histograms) are colored.
+
+Run the cells below to see how `color` and `fill` are different in the way they modify the histogram.
+
+```{r}
+ggplot(maternal_mortality_2020, aes(x = mortality_estimate)) + 
+  geom_histogram(color = "red") +  
+  xlab("Maternal Mortality Rate (per 100,000 live births)") 
+```
+
+```{r}
+ggplot(maternal_mortality_2020, aes(x = mortality_estimate)) + 
+  geom_histogram(fill = "red") + 
+  xlab("Maternal Mortality Rate (per 100,000 live births)") 
+
+```
+
+There are 657 colors that can be called by name in ggplot. You can view a list of these color names by running `colors()`
+
+```{r}
+ggplot_colors = colors()
+ggplot_colors[1:5]
+```
+
+In addition to these options, we can pass through the [hexcode](https://htmlcolorcodes.com/) of colors we want to use.
+
+```{r}
+ggplot(maternal_mortality_2020, aes(x = mortality_estimate)) + 
+  geom_histogram(fill = "#F54912") +   
+  xlab("Maternal Mortality Rate (per 100,000 live births)") 
+```
+
+## Point shapes and line types
+
+We can also vary the shape of points and type of lines in our plots using `shape` and `linetype`, respectively.
+
+The possible values for `linetype` are "blank", "solid", "dashed", "dotted", "dotdash", "longdash", "twodash". See this [resource](http://www.sthda.com/english/wiki/ggplot2-line-types-how-to-change-line-types-of-a-graph-in-r-software) for a visual guide of what each linetype looks like.
+
+```{r}
+ggplot(maternal_mortality_usa, aes(x = Year, y = mortality_estimate)) + 
+  geom_line(linetype = "dashed") + 
+  xlab("Year") + 
+  ylab("Maternal Mortality Rate (per 100,000 live births)") 
+
+```
+
+The possible values for `shape` are numerics that correspond to specific shapes such as circles, squares, and stars. See this [resource](http://www.sthda.com/english/wiki/ggplot2-point-shapes) for a visual guide of what each shape looks like.
+
+```{r}
+ggplot(maternal_mortality_2020, aes(x = total_population, y = mortality_estimate)) + 
+  geom_point(shape = 17) + 
+  xlab("Total Population (in 100,000s)") +
+  ylab("Maternal Mortality Rate (per 100,000 live births)") 
+```
+
+## Themes
+
+We can also change the appearance of the plots, using `theme()`. Themes may alter the background, axes, and fonts of the figures. Below, we show examples of `theme_bw()` and `theme_minimal()` but you can view a collection of all available themes [here](https://ggplot2.tidyverse.org/reference/ggtheme.html).
+
+```{r}
+ggplot(maternal_mortality_2020, aes(x = total_population, y = mortality_estimate)) + 
+  geom_point() +
+  theme_bw() + 
+  xlab("Total Population (in 100,000s)") +
+  ylab("Maternal Mortality Rate (per 100,000 live births)") 
+```
+
+```{r}
+ggplot(maternal_mortality_2020, aes(x = total_population, y = mortality_estimate)) + 
+  geom_point() +
+  theme_minimal() + 
+  xlab("Total Population (in 100,000s)") +
+  ylab("Maternal Mortality Rate (per 100,000 live births)") 
+```
+
+# Grouped plots
+
+## Varying elements by group
+
+We often put data points from different groups on the same plot, but visually distinguishing between these groups could bring new insights to your data. For example, in our scatter plot comparing population and mortality, we might want to easily identify which points correspond to low vs high income countries. We can do this by adding another item to our aesthetic mappings (`aes()`) to specify that we want to color points on the figure by `income_group`.
+
+```{r}
+ggplot(maternal_mortality_2020 %>% filter(!is.na(income_group)), 
+       aes(x = total_population, y = mortality_estimate, color = income_group)) + 
+  geom_point() +
+  theme_minimal() + 
+  xlab("Total Population (in 100,000s)") +
+  ylab("Maternal Mortality Rate (per 100,000 live births)") 
+```
+
+We can also change the title and position of the legend using the `labs` and `theme` elements.
+
+```{r}
+ggplot(maternal_mortality_2020 %>% filter(!is.na(income_group)), 
+       aes(x = total_population, y = mortality_estimate, color = income_group)) + 
+  geom_point() +
+  theme_minimal() + 
+  labs(color = "Income Group") + 
+  theme(legend.position = "bottom") + # can be top, left, right, or bottom
+  xlab("Total Population (in 100,000s)") +
+  ylab("Maternal Mortality Rate (per 100,000 live births)")  
+```
+
+Similarly, we can add a `shape` item to `aes` to specify that we want a different shape for unique `income_group`
+
+```{r}
+ggplot(maternal_mortality_2020 %>% filter(!is.na(income_group)), 
+       aes(x = total_population, y = mortality_estimate, shape = income_group)) + 
+  geom_point() +
+  theme_minimal() +
+  labs(shape = "Income Group") +
+  xlab("Total Population (in 100,000s)") +
+  ylab("Maternal Mortality Rate (per 100,000 live births)")  
+```
+
+In some cases, plotting and coloring groups on a plot can help improve how clearly it conveys the data.
+
+Consider a line plot in which we want plot mortality over time for countries in South East Asia. When we run the code below, all of the points are plotted on the same line and we can't distinguish between countries. This plot is uninterpretable.
+
+```{r}
+se_asia_maternal_mortality = maternal_mortality %>% filter(Region == "South-East Asia") 
+
+ggplot(se_asia_maternal_mortality, aes(x = Year, y = mortality_estimate)) + 
+  geom_line() +
+  xlab("Year") +
+  ylab("Maternal Mortality Rate (per 100,000 live births)")  
+```
+
+Instead, we want to plot a separate line for each country. We can do this by adding a `group` item to our mappings to specify that there should be separate plot elements for each unique value in the grouped variable. In our case, this argument specifies that we want a different line for each `Country` on the plot.
+
+```{r}
+ggplot(se_asia_maternal_mortality, aes(x = Year, y = mortality_estimate, group = Country)) + 
+  geom_line() +
+  xlab("Year") +
+  ylab("Maternal Mortality Rate (per 100,000 live births)")  
+```
+
+However, as is, we can't tell what countries each line corresponds to. We can vary line color by country to be able to distinguish between them.
+
+```{r}
+ggplot(se_asia_maternal_mortality, 
+       aes(x = Year, y = mortality_estimate, group = Country, color = Country)) + 
+  geom_line() +
+  xlab("Year") +
+  ylab("Maternal Mortality Rate (per 100,000 live births)")  
+```
+
+## Practice Problem 5
+
+Plot the mortality estimates (and their 95% CIs) for Yemen and Oman over time. Plot each country in a different color. For a challenge, try varying the line types as well.
+
+```{r}
+#ggplot(...)
+```
+
+## Facets
+
+If there are too many elements on the plot, it can become too crowded to easily interpret. Instead, we can create many subplots and combine them with their axes lined up. This allows us to see individual data points more clearly while still being able to compare the different groups.
+
+We can create subplots, or **facets**, by using `facet_wrap()` with the variable that we want to create subplots for.
+
+```{r}
+ggplot(maternal_mortality_2020 %>% filter(!is.na(income_group)), 
+       aes(x = total_population, y = mortality_estimate, color = income_group)) + 
+  facet_wrap(~Region) + 
+  geom_point() +
+  theme_minimal() +
+  labs(color = "Income Group") + 
+  xlab("Total Population (in 100,000s)") +
+  ylab("Maternal Mortality Rate (per 100,000 live births)")  
+```
+
+By default, all plots have the same axis scales. However, this can make it difficult to view subplots where data points that are heavily clustered. To allow axes to vary by facet, we can edit the `scales` argument to be equal to `free` (all facets have their own x- and y- axis), `free_y` (all facets have the same x-axis but their own y-axis), or `free_x` (all facets have their own x-axis but the same y-axis).
+
+```{r}
+ggplot(maternal_mortality_2020 %>% filter(!is.na(income_group)), 
+       aes(x = total_population, y = mortality_estimate, color = income_group)) + 
+  facet_wrap(~Region, scales = "free") + 
+  geom_point() +
+  theme_minimal() +
+  labs(color = "Income Group") + 
+  xlab("Total Population (in 100,000s)") +
+  ylab("Maternal Mortality Rate (per 100,000 live births)") 
+```
+
+Notice how every facet now has its own x- and y-axis. Allowing these scales to differ makes it easier to see differences *within* regions, but makes it more difficult to spot differences *across* regions.
+
+# Summary
+
+In this tutorial, you practiced using `ggplot2` to create data visualizations. You learned about the different types of figures and the ways that they can be customized.
+
+In the next (and last!) tutorial, we'll bring together everything we learned in this class to discuss reproducible workflows for your analyses.
+
+# Resources
+
+R for Data Science Chapter 19: [Data visualisation](https://r4ds.had.co.nz/data-visualisation.html)
+
+[The R Graph Gallery](https://r-graph-gallery.com/)
