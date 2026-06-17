@@ -345,7 +345,7 @@ iframe.qwebr-output-code-browse {
 // Document level settings ----
 
 // Determine if we need to install R packages
-globalThis.qwebrInstallRPackagesList = ['readr', 'dplyr', 'ggplot2', 'tidyr', 'purrr', 'stringr', 'forcats', 'tibble'];
+globalThis.qwebrInstallRPackagesList = [''];
 
 // Specify possible locations to search for the repository
 globalThis.qwebrPackageRepoURLS = ['https://repo.r-wasm.org/'];
@@ -355,7 +355,7 @@ globalThis.qwebrSetupRPackages = !(qwebrInstallRPackagesList.indexOf("") !== -1)
 globalThis.qwebrAutoloadRPackages = true;
 
 // Display a startup message?
-globalThis.qwebrShowStartupMessage = false;
+globalThis.qwebrShowStartupMessage = true;
 globalThis.qwebrShowHeaderMessage = false;
 
 // Describe the webR settings that should be used
@@ -367,7 +367,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"# Helper: download bundled data into the WebR virtual filesystem\nwebr_site_url <- \"site-url: https://r-pophealth-research.github.io/online-course\"\nwebr_read_csv <- function(path) {\n  local_name <- basename(path)\n  if (!file.exists(local_name)) {\n    if (!grepl(\"^https?://\", path)) {\n      clean_path <- sub(\"^(\\.\\./)+\", \"\", path)\n      path <- paste0(webr_site_url, \"/\", clean_path)\n    }\n    download.file(path, local_name, quiet = TRUE, mode = \"wb\")\n  }\n  readr::read_csv(local_name, show_col_types = FALSE)\n}","id":1,"options":{"autorun":"true","classes":"","comment":"","context":"setup","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"framingham <- webr_read_csv(\"data/framingham.csv\")\nnrow(framingham)","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
+globalThis.qwebrCellDetails = [{"code":"# Helper: download bundled data into the WebR virtual filesystem\nwebr_site_url <- \"site-url: https://r-pophealth-research.github.io/online-course\"\nwebr_read_csv <- function(path) {\n  local_name <- basename(path)\n  if (!file.exists(local_name)) {\n    if (!grepl(\"^https?://\", path)) {\n      clean_path <- sub(\"^(\\.\\./)+\", \"\", path)\n      path <- paste0(webr_site_url, \"/\", clean_path)\n    }\n    download.file(path, local_name, quiet = TRUE, mode = \"wb\")\n  }\n  utils::read.csv(local_name, stringsAsFactors = FALSE)\n}","id":1,"options":{"autorun":"true","classes":"","comment":"","context":"setup","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"framingham <- webr_read_csv(\"data/framingham.csv\")\nnrow(framingham)","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
 
 </script>
 <script type="module">
