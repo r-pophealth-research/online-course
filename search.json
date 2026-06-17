@@ -1,0 +1,38 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Welcome",
+    "section": "",
+    "text": "Welcome to R Fundamentals for Health Research — an introduction to R for epidemiology and health policy research.\nThese materials\nThese course materials run entirely in your browser using Quarto and WebR. You do not need R installed locally to explore the tutorials and run code on this site.\nTry loading a course dataset:",
+    "crumbs": [
+      "Home",
+      "Getting started",
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#how-to-use-this-site",
+    "href": "index.html#how-to-use-this-site",
+    "title": "Welcome",
+    "section": "How to use this site",
+    "text": "How to use this site\n\nTutorials — Pre-class activities with interactive code cells. Click Run in any code block to execute R in your browser.\nHomework — Assignments with editable code cells. Download the original .Rmd from the course repo if you prefer working in RStudio.\nFinal Project — End-of-quarter analysis assignment.\n\n\n\n\n\n\n\nNote\n\n\n\nThe first time you run code on a page, WebR needs to download R and any required packages. This can take 30–60 seconds on a slow connection. Subsequent cells on the same page run much faster.",
+    "crumbs": [
+      "Home",
+      "Getting started",
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#working-locally-in-rstudio",
+    "href": "index.html#working-locally-in-rstudio",
+    "title": "Welcome",
+    "section": "Working locally in RStudio",
+    "text": "Working locally in RStudio\nIf you prefer the full RStudio experience, clone the course repository and open the .Rmd files directly. The .qmd files on this site are generated from those sources for WebR compatibility.",
+    "crumbs": [
+      "Home",
+      "Getting started",
+      "Welcome"
+    ]
+  }
+]
