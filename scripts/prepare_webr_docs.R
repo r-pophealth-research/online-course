@@ -30,14 +30,44 @@ sync_dengue_data <- function() {
   }
 }
 
-data_helper_chunk <- function() {
+read_site_url <- function() {
+  lines <- readLines("_quarto.yml", warn = FALSE)
+  site_line <- lines[grepl("^\\s*site-url:", lines)]
+  if (length(site_line) == 0) {
+    stop("site-url must be set in _quarto.yml for WebR data loading", call. = FALSE)
+  }
+  url <- trimws(sub("^site-url:\\s*", "", site_line[1]))
+  sub("/$", "", url)
+}
+
+sync_index_site_url <- function(site_url) {
+  index_path <- "index.qmd"
+  if (!file.exists(index_path)) {
+    return(invisible(NULL))
+  }
+  lines <- readLines(index_path, warn = FALSE)
+  lines <- gsub(
+    '^webr_site_url <- ".*"$',
+    paste0('webr_site_url <- "', site_url, '"'),
+    lines
+  )
+  writeLines(lines, index_path, useBytes = TRUE)
+  message("Synced site URL in ", index_path)
+}
+
+data_helper_chunk <- function(site_url) {
   c(
     "```{webr-r}",
     "#| context: setup",
     "# Helper: download bundled data into the WebR virtual filesystem",
+    paste0("webr_site_url <- \"", site_url, "\""),
     "webr_read_csv <- function(path) {",
     "  local_name <- basename(path)",
     "  if (!file.exists(local_name)) {",
+    "    if (!grepl(\"^https?://\", path)) {",
+    "      clean_path <- sub(\"^(\\\\.\\\\./)+\", \"\", path)",
+    "      path <- paste0(webr_site_url, \"/\", clean_path)",
+    "    }",
     "    download.file(path, local_name, quiet = TRUE, mode = \"wb\")",
     "  }",
     "  readr::read_csv(local_name, show_col_types = FALSE)",
@@ -68,19 +98,16 @@ convert_rmd_to_qmd <- function(rmd_path) {
     "---"
   )
 
-  depth <- nchar(dirname(rmd_path)) - nchar(gsub("/", "", dirname(rmd_path))) + 1
-  data_prefix <- paste(rep("..", depth), collapse = "/")
-
-  converted_body <- convert_body(body_lines, data_prefix)
+  converted_body <- convert_body(body_lines)
   if (needs_data_helper(converted_body)) {
-    converted_body <- c(data_helper_chunk(), "", converted_body)
+    converted_body <- c(data_helper_chunk(read_site_url()), "", converted_body)
   }
 
   writeLines(c(new_yaml, "", converted_body), qmd_path, useBytes = TRUE)
   message("Wrote ", qmd_path)
 }
 
-convert_body <- function(lines, data_prefix) {
+convert_body <- function(lines) {
   out <- character()
   i <- 1
   while (i <= length(lines)) {
@@ -99,7 +126,7 @@ convert_body <- function(lines, data_prefix) {
         # PDF-only setup chunks are not needed on the website
       } else {
         new_header <- sub("\\{r", "{webr-r", chunk_header)
-        new_chunk <- adapt_chunk_for_webr(chunk_lines, data_prefix)
+        new_chunk <- adapt_chunk_for_webr(chunk_lines)
         closing <- sub("^\\s*", "", lines[i])
         out <- c(out, new_header, new_chunk, closing)
       }
@@ -114,7 +141,7 @@ convert_body <- function(lines, data_prefix) {
   out
 }
 
-adapt_chunk_for_webr <- function(chunk_lines, data_prefix) {
+adapt_chunk_for_webr <- function(chunk_lines) {
   text <- paste(chunk_lines, collapse = "\n")
 
   text <- gsub("library\\(tidyverse\\)", "# tidyverse packages are pre-loaded on this site", text)
@@ -123,12 +150,12 @@ adapt_chunk_for_webr <- function(chunk_lines, data_prefix) {
 
   text <- gsub(
     "here\\(\"data\"\\s*,\\s*\"([^\"]+)\"\\)",
-    paste0("\"", data_prefix, "/data/\\1\""),
+    "\"data/\\1\"",
     text
   )
   text <- gsub(
     "here\\(\"data/([^\"]+)\"\\)",
-    paste0("\"", data_prefix, "/data/\\1\""),
+    "\"data/\\1\"",
     text
   )
 
@@ -151,6 +178,7 @@ adapt_chunk_for_webr <- function(chunk_lines, data_prefix) {
 }
 
 sync_dengue_data()
+sync_index_site_url(read_site_url())
 
 for (f in source_files) {
   if (!file.exists(f)) {

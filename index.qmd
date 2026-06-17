@@ -10,9 +10,14 @@ These course materials run entirely in your browser using [Quarto](https://quart
 ```{webr-r}
 #| context: setup
 # Helper: download bundled data into the WebR virtual filesystem
+webr_site_url <- "https://r-pophealth-research.github.io/online-course"
 webr_read_csv <- function(path) {
   local_name <- basename(path)
   if (!file.exists(local_name)) {
+    if (!grepl("^https?://", path)) {
+      clean_path <- sub("^(\.\./)+", "", path)
+      path <- paste0(webr_site_url, "/", clean_path)
+    }
     download.file(path, local_name, quiet = TRUE, mode = "wb")
   }
   readr::read_csv(local_name, show_col_types = FALSE)
