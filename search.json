@@ -1,10 +1,766 @@
 [
   {
+    "objectID": "final/Final_Project.html",
+    "href": "final/Final_Project.html",
+    "title": "Final Project",
+    "section": "",
+    "text": "Similar to Homework 4, your final will consist of a start-to-finish analysis of pre-existing data. We will give you a structure and a research question to examine. It is your responsibility to organize your code, give appropriate variable names, and explain the output of your code so that it could be understood by someone who does not know R. Please make sure to make good use of comments, check your indenting, and ensure no code runs off the page to get full style points!\nWe recommend that you complete this assignment in the Visual view of the notebook.",
+    "crumbs": [
+      "Home",
+      "Final",
+      "Final Project"
+    ]
+  },
+  {
+    "objectID": "final/Final_Project.html#individual-data",
+    "href": "final/Final_Project.html#individual-data",
+    "title": "Final Project",
+    "section": "Individual data",
+    "text": "Individual data\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nData dictionary:\n\n\n\n\n\n\n\nVariable Name\nDescription\n\n\n\n\nID\nIndividual identifier\n\n\nhh_ID\nHousehold identifier\n\n\nsex\nBiological sex\n\n\nn_symp_infections\nCount of times this individual has had a symptomatic dengue infection during the study\n\n\nn_asymp_infections\nCount of times this individual has had an asymptomatic dengue infection during the study",
+    "crumbs": [
+      "Home",
+      "Final",
+      "Final Project"
+    ]
+  },
+  {
+    "objectID": "final/Final_Project.html#household-data",
+    "href": "final/Final_Project.html#household-data",
+    "title": "Final Project",
+    "section": "Household data",
+    "text": "Household data\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nData dictionary:\n\n\n\n\n\n\n\nVariable Name\nDescription\n\n\n\n\nhh_ID\nHousehold identifier\n\n\ndoor_screens\n1, if the household has a screen door. 0, otherwise\n\n\nhouse_type\nOne of three household types. “Poles” indicates the house is built on stilts, as homes on floodplains typically are. “Single” indicates the house is a single-family home separate from other homes. “Townhouse” indicates the house if part of a multifamily unit where multiple homes are physically connected.\n\n\nconcrete_house\n1, if the house was built from concrete. 0, otherwise\n\n\nwater_supply_by_pipe\n1, if the house is supplied water by pipes. 0, if the house receives water some other way\n\n\ngarbage_management\nOne of three methods for getting rid of household waste. “Burn” if it is burned by the residents. “Car” if it is disposed of by a vehicle that collects waste. “Dump” if it is brought to a waste disposal facility by the residents.\n\n\nn_toilets_outside\nCount of the outdoor toilets available to the household residents",
+    "crumbs": [
+      "Home",
+      "Final",
+      "Final Project"
+    ]
+  },
+  {
+    "objectID": "final/Final_Project.html#question-1-2-points",
+    "href": "final/Final_Project.html#question-1-2-points",
+    "title": "Final Project",
+    "section": "Question 1 (2 points)",
+    "text": "Question 1 (2 points)\nExplore the distribution of at least one continuous variable and one categorical/binary variable in the datasets using both summary statistics and a exploratory plots.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Final",
+      "Final Project"
+    ]
+  },
+  {
+    "objectID": "final/Final_Project.html#question-2-2-points",
+    "href": "final/Final_Project.html#question-2-2-points",
+    "title": "Final Project",
+    "section": "Question 2 (2 points)",
+    "text": "Question 2 (2 points)\nThese is one column in household_data with missing/unknown values. How are the missing values coded? Identify the column and find the percentage of measurements that have a missing value for that variable.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Final",
+      "Final Project"
+    ]
+  },
+  {
+    "objectID": "final/Final_Project.html#question-3-1-point",
+    "href": "final/Final_Project.html#question-3-1-point",
+    "title": "Final Project",
+    "section": "Question 3 (1 point)",
+    "text": "Question 3 (1 point)\nCreate a copy of individual_data called individual_data_cleaned and a copy of household_data called household_data_cleaned. You will save the outputs of all your data cleaning and processing to these “cleaned” datasets to avoid overwriting the original datasets.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Final",
+      "Final Project"
+    ]
+  },
+  {
+    "objectID": "final/Final_Project.html#question-4-2-points",
+    "href": "final/Final_Project.html#question-4-2-points",
+    "title": "Final Project",
+    "section": "Question 4 (2 points)",
+    "text": "Question 4 (2 points)\nFor the column in household_data_cleaned you identified in Question 2, recode missing or unknown values as NA and convert the remaining values to numerics.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Final",
+      "Final Project"
+    ]
+  },
+  {
+    "objectID": "final/Final_Project.html#question-5-4-points",
+    "href": "final/Final_Project.html#question-5-4-points",
+    "title": "Final Project",
+    "section": "Question 5 (4 points)",
+    "text": "Question 5 (4 points)\nAdd the following columns to individual_data_cleaned:\n\nage_cat, that is “adult” for people 18 or older and “child” for people under 18.\nn_any_infections, the sum of symptomatic and asymptomatic infections for each person.\nany_infections, that is TRUE if the individual was ever infected with symptomatic or asymptomatic dengue.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Final",
+      "Final Project"
+    ]
+  },
+  {
+    "objectID": "final/Final_Project.html#challenge-question-1-3-points",
+    "href": "final/Final_Project.html#challenge-question-1-3-points",
+    "title": "Final Project",
+    "section": "Challenge Question 1 (3 points)",
+    "text": "Challenge Question 1 (3 points)\nAdd a household_size variable to household_data_cleaned that counts the number of individuals in each household.\nHint: Use the individual dataset to calculate the number of people in each household, then merge the data into household_data_cleaned\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Final",
+      "Final Project"
+    ]
+  },
+  {
+    "objectID": "final/Final_Project.html#question-6-3-points",
+    "href": "final/Final_Project.html#question-6-3-points",
+    "title": "Final Project",
+    "section": "Question 6 (3 points)",
+    "text": "Question 6 (3 points)\nJoin the cleaned individual and household level data to create a dataset called merged_dengue_data. The resulting data frame should contain 1 row per individual, with columns for both individual- and household-level variables for that person.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Final",
+      "Final Project"
+    ]
+  },
+  {
+    "objectID": "final/Final_Project.html#question-7-3-points",
+    "href": "final/Final_Project.html#question-7-3-points",
+    "title": "Final Project",
+    "section": "Question 7 (3 points)",
+    "text": "Question 7 (3 points)\nFill-in the values for Table 1. The “Total” column should describe characteristics for the full sample, while “No Infection” and “Any Infection” describe characteristics for subgroups by infection status.\nThe cells with “—” in them do not need to be filled in. The percents should be column percents (ex. % no infection males + % no infection females = 100%)\nYou should find all quantities indicated in the left column, including sample sizes, percentages, means, and SDs, using R code (no hand calculations). Clearly label and document your code so it’s clear how you calculated each value.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\nTable 1\nTotal\nNo Infection\nAny Infection\n\n\n\n\nNumber of individuals, N\n\n\n\n\n\nAge, mean (SD)\n\n\n\n\n\nSex, N (%)\n—\n—\n—\n\n\n- Female\n\n\n\n\n\n- Male\n\n\n\n\n\nConcrete House, N (%)\n—\n—\n—\n\n\n- Yes\n\n\n\n\n\n- No\n\n\n\n\n\nHouse Type, N (%)\n—\n—\n—\n\n\n- Poles\n\n\n\n\n\n- Single\n\n\n\n\n\n- Townhouse\n\n\n\n\n\nWater Supply, N (%)\n—\n—\n—\n\n\n- Pipes\n\n\n\n\n\n- Other\n\n\n\n\n\n- Missing",
+    "crumbs": [
+      "Home",
+      "Final",
+      "Final Project"
+    ]
+  },
+  {
+    "objectID": "final/Final_Project.html#challenge-question-2-3-points",
+    "href": "final/Final_Project.html#challenge-question-2-3-points",
+    "title": "Final Project",
+    "section": "Challenge Question 2 (3 points)",
+    "text": "Challenge Question 2 (3 points)\nComplete the rest of Table 1.\nYou should find all quantities, including sample sizes, percentages, means, and SDs, using R code (no hand calculations). Clearly label and document your code so it’s clear how you calculated each value.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\nTable 1\nTotal\nNo Infection\nAny Infection\n\n\n\n\nScreen Door, N (%)\n—\n—\n—\n\n\n- Yes\n\n\n\n\n\n- No\n\n\n\n\n\nGarbage Management, N (%)\n—\n—\n—\n\n\n- Burn\n\n\n\n\n\n- Car\n\n\n\n\n\n- Dump\n\n\n\n\n\nHousehold Size, Median (IQR)",
+    "crumbs": [
+      "Home",
+      "Final",
+      "Final Project"
+    ]
+  },
+  {
+    "objectID": "final/Final_Project.html#question-8-3-points",
+    "href": "final/Final_Project.html#question-8-3-points",
+    "title": "Final Project",
+    "section": "Question 8 (3 points)",
+    "text": "Question 8 (3 points)\nCalculate the odds ratio for being infected with dengue (any_infections) by whether the house is made of concrete.\nDo not “hard code” this calculation by copying exact numbers - use R code to first find the number of infections in concrete vs non-concrete homes. Your code for the odds ratio calculation should still work even if the underlying data changes.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Final",
+      "Final Project"
+    ]
+  },
+  {
+    "objectID": "final/Final_Project.html#challenge-question-3-3-points",
+    "href": "final/Final_Project.html#challenge-question-3-3-points",
+    "title": "Final Project",
+    "section": "Challenge Question 3 (3 points)",
+    "text": "Challenge Question 3 (3 points)\nCalculate the odds ratio for being infected with dengue by adults vs children.\nDo not “hard code” this calculation by copying exact numbers - use R code to first find the number of infections in adults vs children. Your code for the odds ratio calculation should still be valid even if the underlying data changes\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Final",
+      "Final Project"
+    ]
+  },
+  {
+    "objectID": "final/Final_Project.html#question-9-2-points",
+    "href": "final/Final_Project.html#question-9-2-points",
+    "title": "Final Project",
+    "section": "Question 9 (2 points)",
+    "text": "Question 9 (2 points)\nRun a chi-square test to assess if there is a difference in any dengue infection between males and females.\nInterpret your model output below your code. (In what group were infections higher? Was the difference statistically significant?)\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nInterpretation: …",
+    "crumbs": [
+      "Home",
+      "Final",
+      "Final Project"
+    ]
+  },
+  {
+    "objectID": "final/Final_Project.html#question-10-3-points",
+    "href": "final/Final_Project.html#question-10-3-points",
+    "title": "Final Project",
+    "section": "Question 10 (3 points)",
+    "text": "Question 10 (3 points)\nUse a linear model to assess how the number of outdoor toilets affects the number of dengue infections. Get a 95% confidence interval for your estimate.\nInterpret your model output below your code. (For each addition outdoor toilet, what is the expected change to the number of dengue infections? Is the effect statistically significant?)\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nInterpretation: …",
+    "crumbs": [
+      "Home",
+      "Final",
+      "Final Project"
+    ]
+  },
+  {
+    "objectID": "final/Final_Project.html#question-11-3-points",
+    "href": "final/Final_Project.html#question-11-3-points",
+    "title": "Final Project",
+    "section": "Question 11 (3 points)",
+    "text": "Question 11 (3 points)\nUse a logistic model to estimate the odds ratio and 95% confidence interval of any dengue infection associated with screen doors.\nInterpret your model output below your code. (How do the odds of infection change for homes with vs without screen doors? Is this a statistically significant effect?)\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nInterpretation: …",
+    "crumbs": [
+      "Home",
+      "Final",
+      "Final Project"
+    ]
+  },
+  {
+    "objectID": "final/Final_Project.html#question-12-3-points",
+    "href": "final/Final_Project.html#question-12-3-points",
+    "title": "Final Project",
+    "section": "Question 12 (3 points)",
+    "text": "Question 12 (3 points)\nExtend the model you created in Question 5 to estimate the odds ratio and 95% confidence interval of any dengue infection associated with screen doors, controlling for house type and garbage management.\nInterpret your model output below your code. (How do the odds of infection change for homes with vs without screen doors, when controlling for other factors? Is this a statistically significant effect?)\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nInterpretation: …",
+    "crumbs": [
+      "Home",
+      "Final",
+      "Final Project"
+    ]
+  },
+  {
+    "objectID": "final/Final_Project.html#challenge-question-4-5-points",
+    "href": "final/Final_Project.html#challenge-question-4-5-points",
+    "title": "Final Project",
+    "section": "Challenge Question 4 (5 points)",
+    "text": "Challenge Question 4 (5 points)\nFill in the skeleton code to produce a bootstrapped estimate of the risk ratio of any dengue infection for children vs adults using 100 bootstrapped samples.\nHint: Reference the “Optional Challenge: Bootstrapping” section of the Week 7 tutorial for help!\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Final",
+      "Final Project"
+    ]
+  },
+  {
+    "objectID": "final/Final_Project.html#question-13-3-points",
+    "href": "final/Final_Project.html#question-13-3-points",
+    "title": "Final Project",
+    "section": "Question 13 (3 points)",
+    "text": "Question 13 (3 points)\nMake a scatterplot of the number of any infections by age. Place age on the x-axis and the number of any infections on the y-axis.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Final",
+      "Final Project"
+    ]
+  },
+  {
+    "objectID": "final/Final_Project.html#question-14-4-points",
+    "href": "final/Final_Project.html#question-14-4-points",
+    "title": "Final Project",
+    "section": "Question 14 (4 points)",
+    "text": "Question 14 (4 points)\nMake a boxplot of the number of any dengue infections by house type. Place house type of the x-axis and infections on the y-axis. Order the house type from left to right as “Single”, “Townhouse”, and “Poles”.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Final",
+      "Final Project"
+    ]
+  },
+  {
+    "objectID": "hw/HW3_data_exploration_and_manipulation.html#data-overview",
+    "href": "hw/HW3_data_exploration_and_manipulation.html#data-overview",
+    "title": "Homework 3",
+    "section": "Data Overview",
+    "text": "Data Overview\nIn this homework, we’ll be working with hospitalization data collected by the California Department of Public Health. Specifically, we’ll be looking at the number of COVID-19 and influenza hospitalizations in California during 2021. Download the covid19_hospitalizations.csv and influenza_hospitalizations.csv files from Canvas and save them in the data folder of your class directory\nThe first dataset, loaded as covid19_hospitalizations contains daily data on the number of hospital patients with COVID-19, by county. It contains the following columns: * county: a string, the name of a county * todays_date: a date, the day that counts were recorded for * hospitalized_covid_confirmed_patients/hospitalized_covid_suspected_patients: a numeric, the number of patients in the hospital (including the ICU) that have a lab-confirmed/suspected case of COVID-19 * icu_covid_confirmed_patients/icu_covid_suspected_patients: a numeric, the number of patients in the ICU that have a lab-confirmed/suspected case of COVID-19 * all_hospital_beds / icu_available_beds: a numeric, the total number of available hospital/ICU beds.\nRun the cell below to load the COVID-19 hospitalization data.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nThe second dataset, loaded as flu_hospitalizations, contains daily data on the number of influenza hospitalizations across the whole state. It contains the following columns: * date: a date, the day that counts were recorded for * patient_vol_influenza: a numeric, the total number of inpatients with a influenza diagnosis * patient_vol_influenza_icu: a numeric, the total number of ICU patients with a influenza diagnosis * admits_influenza: a numeric, the total number of patients who were newly admitted and had a influenza diagnosis on the same day\nRun the cell below to load the influenza hospitalization data.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Homework",
+      "Homework 3"
+    ]
+  },
+  {
+    "objectID": "hw/HW3_data_exploration_and_manipulation.html#question-1-3-points",
+    "href": "hw/HW3_data_exploration_and_manipulation.html#question-1-3-points",
+    "title": "Homework 3",
+    "section": "Question 1 (3 points)",
+    "text": "Question 1 (3 points)\nOn which day was there the most confirmed COVID-19 patients in the ICU in Alameda County? Use tidyverse commands to find the answer from the covid19_hospitalizations dataset, and save the date to the variable highest_icu_date_alameda.\nHint: There are many ways you can approach this question. In one possible method, you can use some combination of filter(), pull(), arrange()\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Homework",
+      "Homework 3"
+    ]
+  },
+  {
+    "objectID": "hw/HW3_data_exploration_and_manipulation.html#question-2-2-points",
+    "href": "hw/HW3_data_exploration_and_manipulation.html#question-2-2-points",
+    "title": "Homework 3",
+    "section": "Question 2 (2 points)",
+    "text": "Question 2 (2 points)\nHow many days had over 50 influenza hospitalizations? Use tidyverse commands to find the answer from the flu_hospitalizations dataset, and save the value to the variable n_days_over50_flu_hosp.\nHint: There are many ways you can approach this question. In one possible method, you can use some combination of filter() and nrow().\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Homework",
+      "Homework 3"
+    ]
+  },
+  {
+    "objectID": "hw/HW3_data_exploration_and_manipulation.html#question-3-3-points",
+    "href": "hw/HW3_data_exploration_and_manipulation.html#question-3-3-points",
+    "title": "Homework 3",
+    "section": "Question 3 (3 points)",
+    "text": "Question 3 (3 points)\nWhat was the maximum number of ICU patients with influenza between September 1st and December 31st? Use tidyverse commands to find the answer from the flu_hospitalizations dataset, and save the value to the variable max_flu_icu_patients.\nHint: you can use filter on dates but need to compare the date column to other date value, similar to how you have to compare numbers to numbers and not numbers to characters. You can convert a string of format YYYY-MM-DD to a date using ymd. For example, this code checks if a date is between March 14, 2018 and November 8, 2019: filter(date &gt;= ymd(\"2018-03-14\"), date &lt;= ymd(\"2019-11-08\")).\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Homework",
+      "Homework 3"
+    ]
+  },
+  {
+    "objectID": "hw/HW3_data_exploration_and_manipulation.html#question-4-3-points",
+    "href": "hw/HW3_data_exploration_and_manipulation.html#question-4-3-points",
+    "title": "Homework 3",
+    "section": "Question 4 (3 points)",
+    "text": "Question 4 (3 points)\nCreate a scatter plot comparing the number of inpatient hospitalizations and the number of new influenza admits. Place current hospitalizations on the x-axis and new admissions on the y-axis. Make sure to include descriptive axis labels and a plot title.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Homework",
+      "Homework 3"
+    ]
+  },
+  {
+    "objectID": "hw/HW3_data_exploration_and_manipulation.html#challenge-question-1-2-points",
+    "href": "hw/HW3_data_exploration_and_manipulation.html#challenge-question-1-2-points",
+    "title": "Homework 3",
+    "section": "Challenge Question 1 (2 points)",
+    "text": "Challenge Question 1 (2 points)\nCreate a vector called county_covid_hosp that contains the total number of confirmed COVID-19 hospitalizations for each county. Plot the distribution of the new vector as a histogram. Make sure to include descriptive axis labels and a plot title.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Homework",
+      "Homework 3"
+    ]
+  },
+  {
+    "objectID": "hw/HW3_data_exploration_and_manipulation.html#question-5-3-points",
+    "href": "hw/HW3_data_exploration_and_manipulation.html#question-5-3-points",
+    "title": "Homework 3",
+    "section": "Question 5 (3 points)",
+    "text": "Question 5 (3 points)\nCreate a dataframe called all_covid19_hospitalizations that is a copy of covid19_hospitalizations with two new columns (1) all_covid_hospitalizations, which is a sum of the confirmed and suspected COVID-19 hospitalizations and (2) all_covid_icu, which is a sum of the confirmed and suspected COVID-19 ICU patients.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Homework",
+      "Homework 3"
+    ]
+  },
+  {
+    "objectID": "hw/HW3_data_exploration_and_manipulation.html#question-6-3-points",
+    "href": "hw/HW3_data_exploration_and_manipulation.html#question-6-3-points",
+    "title": "Homework 3",
+    "section": "Question 6 (3 points)",
+    "text": "Question 6 (3 points)\nCreate a dataframe called flu_admits_levels that is a copy of flu_hospitalizations with a new column admit_level that has the value low when there are 0-5 new admits with influenza, medium where there are 6-10 new admits with influenza, and high if there are over 10 new admits with influenza.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Homework",
+      "Homework 3"
+    ]
+  },
+  {
+    "objectID": "hw/HW3_data_exploration_and_manipulation.html#challenge-question-2-4-points",
+    "href": "hw/HW3_data_exploration_and_manipulation.html#challenge-question-2-4-points",
+    "title": "Homework 3",
+    "section": "Challenge Question 2 (4 points)",
+    "text": "Challenge Question 2 (4 points)\nCreate a dataframe called covid_icu_capacity that is a copy of covid19_hospitalizations with a new column called prop_icu_beds_occupied, which is the proportion of ICU beds that are currently occupied by patients with either confirmed or suspected COVID-19.\nAssume that the total number of ICU beds is the sum of available beds, beds taken by confirmed COVID-19 patients, and beds taken by suspected COVID-19 patients. Of course, this isn’t realistic since it ignores any ICU beds taken by non-COVID patients, but we’ll make the simplification for the sake of this question.\nHint: you may need to make two intermediate calculations for the number of ICU beds occupied by COVID-19 patients and the number of total ICU beds before calculating prop_icu_beds_occupied.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Homework",
+      "Homework 3"
+    ]
+  },
+  {
+    "objectID": "hw/HW3_data_exploration_and_manipulation.html#question-7-2-points",
+    "href": "hw/HW3_data_exploration_and_manipulation.html#question-7-2-points",
+    "title": "Homework 3",
+    "section": "Question 7 (2 points)",
+    "text": "Question 7 (2 points)\nThe code below creates a dataframe daily_covid19_hospitalizations that adds up COVID-19 hospitalizations across all counties for each day of 2021.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nThe code below shows the first few rows of flu_hospitalizations for your convenience.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nMerge daily_covid19_hospitalizations and flu_hospitalizations by date to create a new data frame called respiratory_hospitalizations.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Homework",
+      "Homework 3"
+    ]
+  },
+  {
+    "objectID": "hw/HW3_data_exploration_and_manipulation.html#challenge-question-3-3-points",
+    "href": "hw/HW3_data_exploration_and_manipulation.html#challenge-question-3-3-points",
+    "title": "Homework 3",
+    "section": "Challenge Question 3 (3 points)",
+    "text": "Challenge Question 3 (3 points)\nUsing your newly created respiratory_hospitalizations dataframe, create a scatterplot comparing the total influenza non-ICU hospitalizations vs. COVID-19 non-ICU hospitalizations patients. Include both confirmed and suspected COVID-19 cases in your calculations. Your plot should have an informative title and axis labels.\nHint: start by creating columns in your dataset called total_covid_nonicu_hospitalizations and total_flu_nonicu_hospitalizations.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Homework",
+      "Homework 3"
+    ]
+  },
+  {
+    "objectID": "hw/HW1_markdown_and_data_types.html",
+    "href": "hw/HW1_markdown_and_data_types.html",
+    "title": "HW1_markdown_and_data_types",
+    "section": "",
+    "text": "Welcome to your first homework! You will need to edit this document, Knit it to a PDF, and submit it to Gradescope. Remember the “Challenge” problems are optional for students taking this course for 1 unit but are required for students taking it for 2 units.\n\n\n\n\nCreate a code block that calculates 1,248 squared.\n\n\n\n\n\n\nReplace the #Your_code_here’s with appropriate data based on the variable names. Hint: You will use 1 of each data type.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nWrite a comparison using numerics that evaluates to TRUE.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\nWrite a comparison using characters that evaluates to FALSE.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\nWrite a comparison that uses NA and, based on your experience, explain what happens anytime you use NA in a comparison. Hint: Try a bunch of comparisons using an NA and see what you get.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nBriefly explain what is happening:\n\n\n\n\nThis section is required for students enrolled in the course for 2-units, and optional for students enrolled for 1-unit\nSearch PubMed for a public health topic you are interested in (ex. “opioid addiction”). In the left sidebar under “Article Type”, click “Clinical Trial” to only view trials. Pick an article you find interesting, and briefly answer the questions below. If you’re having trouble answering the questions, you can pick a different article.\nNOTE: To access the full text of some articles, you may need to be on Stanford’s wifi, logged into the Stanford VPN, or looking at the articles using the Stanford Libraries website.\n\n\nPlease paste a link to the article here:\n\n\n\nWhat was the study objective?\n\n\n\nDescribe in words and using R code at least two inclusion criteria for the study. Inclusion criteria are requirements described in the paper that participants had to meet before joining the study. Replace the examples with at least two of your own inclusion criteria from your research article.\n\nExample: Patients 40 years old or greater - age &gt;= 40\nExample: Patients with greater than 140 mm Hg blood pressure - blood_pressure &gt; 140",
+    "crumbs": [
+      "Home",
+      "Homework",
+      "HW1_markdown_and_data_types"
+    ]
+  },
+  {
+    "objectID": "hw/HW1_markdown_and_data_types.html#part-1-markdown",
+    "href": "hw/HW1_markdown_and_data_types.html#part-1-markdown",
+    "title": "HW1_markdown_and_data_types",
+    "section": "",
+    "text": "Create a code block that calculates 1,248 squared.",
+    "crumbs": [
+      "Home",
+      "Homework",
+      "HW1_markdown_and_data_types"
+    ]
+  },
+  {
+    "objectID": "hw/HW1_markdown_and_data_types.html#part-2-data-types",
+    "href": "hw/HW1_markdown_and_data_types.html#part-2-data-types",
+    "title": "HW1_markdown_and_data_types",
+    "section": "",
+    "text": "Replace the #Your_code_here’s with appropriate data based on the variable names. Hint: You will use 1 of each data type.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Homework",
+      "HW1_markdown_and_data_types"
+    ]
+  },
+  {
+    "objectID": "hw/HW1_markdown_and_data_types.html#part-3-comparisons",
+    "href": "hw/HW1_markdown_and_data_types.html#part-3-comparisons",
+    "title": "HW1_markdown_and_data_types",
+    "section": "",
+    "text": "Write a comparison using numerics that evaluates to TRUE.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\nWrite a comparison using characters that evaluates to FALSE.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\nWrite a comparison that uses NA and, based on your experience, explain what happens anytime you use NA in a comparison. Hint: Try a bunch of comparisons using an NA and see what you get.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nBriefly explain what is happening:",
+    "crumbs": [
+      "Home",
+      "Homework",
+      "HW1_markdown_and_data_types"
+    ]
+  },
+  {
+    "objectID": "hw/HW1_markdown_and_data_types.html#challenge-think-about-data-in-research",
+    "href": "hw/HW1_markdown_and_data_types.html#challenge-think-about-data-in-research",
+    "title": "HW1_markdown_and_data_types",
+    "section": "",
+    "text": "This section is required for students enrolled in the course for 2-units, and optional for students enrolled for 1-unit\nSearch PubMed for a public health topic you are interested in (ex. “opioid addiction”). In the left sidebar under “Article Type”, click “Clinical Trial” to only view trials. Pick an article you find interesting, and briefly answer the questions below. If you’re having trouble answering the questions, you can pick a different article.\nNOTE: To access the full text of some articles, you may need to be on Stanford’s wifi, logged into the Stanford VPN, or looking at the articles using the Stanford Libraries website.\n\n\nPlease paste a link to the article here:\n\n\n\nWhat was the study objective?\n\n\n\nDescribe in words and using R code at least two inclusion criteria for the study. Inclusion criteria are requirements described in the paper that participants had to meet before joining the study. Replace the examples with at least two of your own inclusion criteria from your research article.\n\nExample: Patients 40 years old or greater - age &gt;= 40\nExample: Patients with greater than 140 mm Hg blood pressure - blood_pressure &gt; 140",
+    "crumbs": [
+      "Home",
+      "Homework",
+      "HW1_markdown_and_data_types"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week7_statistical_analyses.html#disclaimer-statistics-pre-requisites",
+    "href": "tutorials/Week7_statistical_analyses.html#disclaimer-statistics-pre-requisites",
+    "title": "Week7_statistical_models",
+    "section": "Disclaimer: Statistics Pre-Requisites",
+    "text": "Disclaimer: Statistics Pre-Requisites\nWe assume that you have completed the pre-requisite EPI 258/259, or an equivalent introduction to statistics class. In this tutorial, we will teach you code needed to implement various statistical tests and models but will not cover the underlying theory of these tools. We do not expect you to remember which test to use when. Instead, we may tell you to run a certain test on certain variables, and you will be responsible for implementing the relevant code and interpreting the output. Getting you set up to run analyses in this way will prepare you for (often fast-paced) statistics courses and/or get you started on analyses with advising from someone with statistical training.\nUnbiased statistical inference relies on proper study design, population sampling, and confounder control. For the sake of this course, we assume all assumptions are met, but checking assumptions is something you need to explicitly do in a research setting.\nIf we ever use statistical language that is unclear, please feel free to ask us to clarify.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week7_statistical_models"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week7_statistical_analyses.html#categorical-vs-categorical",
+    "href": "tutorials/Week7_statistical_analyses.html#categorical-vs-categorical",
+    "title": "Week7_statistical_models",
+    "section": "Categorical vs Categorical",
+    "text": "Categorical vs Categorical\nOften when we’re doing research, we want to decide if two groups are different in some way. Last week, we asked if men were more likely to be smokers than women. Run the code below to reproduce a 2x2 table that shows the proportion of each sex that smoked.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nFrom this table, we see that 61% of males smoked and 41% of females smoked. It seems like males were more likely to be smokers than females. However, it is possible that in our randomly selected cohort, there just happen to be more male smokers and female non-smokers. R (and statistics as a whole) gives us a way to tell if that difference is statistically significant by comparing that difference to the likelihood of observing that difference by chance.\nWe can use a chi-squared test to see if the smoking rates by sex are significantly different. We use chisq.test with the sex and smoker variables like we used with table. (FYI, a chi-squared test is sometimes written as \\(\\chi^2\\) which is the Greek letter chi squared)\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nFrom the output, we can see the test that was run: “Pearson’s Chi-squared test with Yates’ continuity correction”. The next line tells us the data we used, clean_fram_data$smoker vs clean_fram_data$sex. The last line tells us the results of our statistical test: chi-squared value of 164.11, 1 degree of freedom, and a p-value of &lt; 2.2 * 10^-16. If you want to know what all of these mean, see this resource. We don’t expect you to understand what a chi-squared value or degree of freedom is for the class. For our purposes, our p-value is less than 0.05 which allows us to say there is a statistically significant difference in smoking rates between men and women in our sample.\n\nPractice Problem 1\nDo a chi-squared test to answer the question, “Is there a statistically significant difference in blood pressure medication use (BPMeds) between males and females?”\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nInterpret the output here: …",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week7_statistical_models"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week7_statistical_analyses.html#categorical-vs-continuous",
+    "href": "tutorials/Week7_statistical_analyses.html#categorical-vs-continuous",
+    "title": "Week7_statistical_models",
+    "section": "Categorical vs Continuous",
+    "text": "Categorical vs Continuous\nLet’s say we now wanted to ask is there a significant difference between the ages of the males and females in this data set.\nTo answer this question, we will first use t.test(). A t-test needs us to specify how we want this analysis run in the format of a formula. If formulas ring a bell, we used them to tell table1 which variables to include in our table. A formula will look like outcome ~ exposure or dependent_variable ~ independent_variable. Essentially, the outcome you are interested in goes to the left of the ~ and everything you think affects the outcome goes on the right. For us, we’re interested in age ~ sex or the difference in age across the different values of sex. We then tell t.test what dataset we are using by saying data=clean_fram_data.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nWe see a similar output with the data, a t-value, degrees of freedom (don’t worry about it), and a p-value listed at the top. The p-value is greater than 0.05, so the age difference between males and females is not statistically significant. Because we are now talking about continuous data rather than categorical, we get the sample mean of each group instead of an odds ratio. We can subtract these values to get that the mean age difference is \\(49.79926-49.29341=0.50585\\). We also get a confidence interval for that difference in means ranging from -0.015 to 1.027. Notice this range is mostly on the positive side, and our p-value was close to 0.05. Therefore, we can say that, in our sample, females are on average older than men, but that difference is not statistically significant.\n\nPractice Problem 3\nRepeat this t-test for the age difference between smokers and non-smokers. Interpret the output.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nInterpret the output here: …",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week7_statistical_models"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week7_statistical_analyses.html#linear-models",
+    "href": "tutorials/Week7_statistical_analyses.html#linear-models",
+    "title": "Week7_statistical_models",
+    "section": "Linear Models",
+    "text": "Linear Models\nLinear models model…a line! They will have a continuous outcome like age, blood pressure, or a test score. You can then add independent variables that you believe influence that outcome. R will include them in the model and produce a coefficient for those independent variables. We will start with the most basic linear model with a continuous outcome \\(y\\) and one continuous predictor \\(x\\): \\(y=mx+b\\). As an example, let’s check whether age influences blood pressure. We will use the same formula format as we did above to tell R how to model the variables inside the function lm. Because these statistical models can do so much more than just test for differences, people typically save their models to a variable.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nWe can then use summary on that variable to get the model parameters and confint to get the confidence intervals for those parameters.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nThe summary of a linear model has parts we are already familiar with. First, it will tell us what call produced this output so we know how the variables are being modeled. Then we get a big coefficients section that is the star of the show. Here we can fill in our values for our equation \\(y=mx+b\\). We can see the estimate for our intercept is 82.1 and the estimate for the age coefficient is 1.01. So our fitted formula is \\(sysBP=1.01*age+82.1\\). In other words, for each year increase in age, systolic blood pressure increases by 1.01 on average with a 95% confidence interval of 0.94-1.08. Each of these coefficients also has a p-value that tells us if that coefficient is statistically significantly different than zero. If the p-value for age was greater than 0.05, we could not say that the coefficient for age is significantly different from zero. In other words, age would not have a statistically significant impact on systolic blood pressure. However, in our case, age is statistically significant.\nSome of you intrepid epidemiologists out there may be thinking that there may be missing parts to the story here. What happens if we have confounders, mediators, or other factors that we want to adjust for? With models, we can add them in using the + just like we would in an equation! We can also add in more complex variables to the equation. Often times age has a quadratic (squared) effect where its impact on health is high when someone is especially young or old, but not so much in the middle. We can add in quadratic or even higher order powers using I() inside the formula. This little function tells R to do that math before fitting the model. Let’s add in sex, smoking status, and age squared into our existing model.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nFrom this model, we can see that age and smoking status both significantly affect systolic blood pressure. For each year of age on average, systolic blood pressure increases by 1. For smokers on average, their systolic blood pressure is 2 lower than non-smokers on average. We will encourage you to take more epidemiology methods courses to learn what kinds of biases may be in place to make the model come out this way! The other coefficients age squared and sex are not significantly associated with systolic blood pressure.\n\nPractice Problem 5\nDo these same associations hold when using diastolic blood pressure as the outcome? Run a linear model to test answer this question and interpret your model output.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nInterpret the output here: …",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week7_statistical_models"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week7_statistical_analyses.html#logistic-models",
+    "href": "tutorials/Week7_statistical_analyses.html#logistic-models",
+    "title": "Week7_statistical_models",
+    "section": "Logistic Models",
+    "text": "Logistic Models\nRather than looking at a continuous outcome, sometimes it will make more sense to look at a binary outcome like the presence/absence of disease. For this case, our linear models will not do (because it violates the linearity assumption). Logistic models are specifically designed to model binary outcomes.\nWe use glm(family=\"binomial\") to fit logistic models. Generalized linear models (GLMs) are versatile tools that allow us to model variables that have non-normal distributions. Binary variables follow a “binomial” distribution because there are only two possible values. By specifying family = \"binomial\", we’re telling R that we want to use GLMs to model a binary outcome. For more information on GLMs, please see this resource.\nTo run a GLM, we specify the formula and data, and can use summary to get the results in the same way as the linear model. Let’s model coronary heart disease (CHD) of diabetes and age.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nThe logistic model coefficients do not represent changes in the value of the outcome because there are only two possible values of the outcome! Instead, the model coefficients represent how covariates influence the likelihood of the outcome. In this output, the model coefficients represent the difference in log odds (as in \\(ln(odds)\\)) associated with a change in that exposure. For example, the coefficient associated with diabetesNone was about -0.91. Notice that R picked “None” as the group associated with the coefficient - this means that the log odds of CHD is 0.91 lower among those without diabetes.\nHowever, log odds are a very unnatural and unintuitive way of thinking about disease risk. Luckily, there’s a algebraic trick that allows us to easily convert between differences in log odds and odds ratios. (See this explainer if you need convincing!). We can use the natural exponentiation (\\(e^x\\)) to convert model coefficients to their equivalent odd ratios. In the case of diabetes, \\(e^{-0.91} = 0.40\\) is the odds ratio associated with no diabetes vs diabetes.\nTo implement this conversion in R, we need use exp() on the model coefficients to get the corresponding odds ratios. We can access the coefficients using the $ on the model we saved.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nWe can confirm that the odds ratio of CHD associated with not having diabetes is 0.40, or that not having diabetes was associated with a lower odds of having CHD. This association is statistically significant, since the p-value associated with the coefficient (as shown with summary(chd_smok_age_mod)) is less than 0.05.\nFrom this output, we can also say that the odds ratio for CHD for each year older is 1.08 with a 95% confidence interval of 1.06-1.09. In other words, each additional year of age increases the odds of CHD by 8%.\n\nPractice Problem 6\nWhat impact does smoking and systolic blood pressure have on the odds of having CHD? Run a logistic model to answer this question and interpret your results.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nInterpret the output here: …",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week7_statistical_models"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week7_statistical_analyses.html#refactoring",
+    "href": "tutorials/Week7_statistical_analyses.html#refactoring",
+    "title": "Week7_statistical_models",
+    "section": "Refactoring",
+    "text": "Refactoring\nIn that last example, it is a bit confusing to talk about how not having diabetes decreases risk. We usually talk about things by saying that having something increases your risk. To get this set up correctly for our model, we need to change the factoring of the diabetes variable. You have been working with factor variables all along! Factors are how R deals with categorical variables, or variables that can only take on a certain number of variables. By looking at ?factor, we can see that R will let us change the order of our diabetes variable so that “None” is the reference group and we can get an odds ratio for the “Diabetes” group. Here’s how we change the order of a factor using dplyr.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nNow we can see that having diabetes increases your risk of CHD by 91%.\nChanging your categorical variables into factors has other benefits too. For example, it is much easier to see summary statistics about your variables. For example:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPractice Problem 7\nAdd education into our logistic model for CHD from above, but before you do that, factor it so that “4-year degree or higher” is the reference group and educational attainment decreases from there. Interpret your model.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nInterpret your model here:",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week7_statistical_models"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week5_data_manipulation.html#replace_na",
+    "href": "tutorials/Week5_data_manipulation.html#replace_na",
+    "title": "Week 5: Data Manipulation",
+    "section": "replace_na()",
+    "text": "replace_na()\nBy default, missing values are coded in R as NA but it might be more informative to have them listed as something else like “Not measured” or “Unknown”.\nWe can start by looking at the degree of missingness in the education column\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nWe see that there were &gt;100 missing education values. However, when we use table() with its default arguments, missing values will be excluded.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nIf we keep these education values as NA, they might get filtered out in downstream analyses but it’s important to report how many missing values are in the dataset. We can use replace_na() to replace missing values with 0.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 5: Data Manipulation"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week5_data_manipulation.html#removing-duplicates",
+    "href": "tutorials/Week5_data_manipulation.html#removing-duplicates",
+    "title": "Week 5: Data Manipulation",
+    "section": "Removing duplicates",
+    "text": "Removing duplicates\nThere might be extra copies of some rows in your dataset (can be a result of an upstream data processing error). If we leave them in our data, these data points will incorrectly carry more weight and introduce bias to our analysis.\nWe can identify duplicated rows in our dataset using the duplicated function, which takes in a data frame as an argument and returns a vector of logicals that are TRUE if a row appears multiple times in the dataset and FALSE if the row only appears once.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nIt appears that there’s one row in the dataset that is duplicated; note that duplicated will not flag the first instance of duplicated rows. For example, if a row appears 3 times in the dataset duplicated will only return 2 TRUEs for that set. If a row appears 11 times in the dataset duplicated will only return 10 TRUEs for that set\nWe can view what rows are duplicated by indexing the data frame with framingham_duplicated_indices (see Week 2 for a refresher)\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nParticipant 46 had 2 rows in the dataset. We want to remove this duplicate, so only one copy of the row is included in our analysis dataset. The distinct() function can be applied to keep only unique rows in a dataset. The code below creates a new data frame framingham_deduplicated that removes the duplicated row we identified above, and compared the number of rows between the original and deduplicated datasets.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 5: Data Manipulation"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week5_data_manipulation.html#handling-erroneous-outliers",
+    "href": "tutorials/Week5_data_manipulation.html#handling-erroneous-outliers",
+    "title": "Week 5: Data Manipulation",
+    "section": "Handling (Erroneous) Outliers",
+    "text": "Handling (Erroneous) Outliers\nOutliers are data points that deviate significantly other values in the dataset. These points can represent true, extreme cases but may also be a result of measurement error. In these cases, outliers can skew the results of an analysis, so it’s critical to account for any extreme values that arise from errors in measurement or data entry.\nFor example, BMIs that are very low can be fatal in adults and the lowest BMI recorded was 6.4 kg/m^2. In our dataset, it’s unlikely that we’ll observe extremely low BMIs (&lt;5 kg/m^2), especially if other data points indicate that they’re healthy.\nTo determine if there are any outliers that need to be handled, we can first see if there are any instances where BMI is less than 5\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nIt looks like 1 individual had a BMI of 3.4. Keeping this value in the dataset might bias our analyses. Instead, we can replace it with a null value since we’re not sure what the true BMI for this individual is. This can be done with the function replace.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nTo check that the low BMI value was replaced, we can check that no rows in the dataset have a BMI less than 5. The cell below should return a data frame with 0 rows.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 5: Data Manipulation"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week5_data_manipulation.html#mutate",
+    "href": "tutorials/Week5_data_manipulation.html#mutate",
+    "title": "Week 5: Data Manipulation",
+    "section": "mutate()",
+    "text": "mutate()\nRecall from Week 2 that we can use the [] and $ operators to add new columns to a data frame.\nFor example, the both commands add a column called age_months to framingham_df. These values convert the age in years (contained in the age column) to age in months.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nTo add a new column using dplyr functions, we can use mutate(). mutate() takes any number of arguments in the form mutate(column_name = vector_of_values). For example, the following code could be used to create new age_months and age_days columns.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nmutate can also be used to change the value of existing columns. Suppose we wanted to round the number of cigarettes per day to the nearest 10th and replace the values of cigsPerDay with their rounded equivalent.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nif_else()\nIn some cases, we want to use an existing column to determine the values of a new column. if_else() can be used with mutate to set the values of a new variables based on a specific condition. It works similarly to if and else statements (see Week 2 for a refresher), and follows the structure if_else(condition, value_for_true_condition, value_for_false_condition).\nSuppose we wanted to create a new sex column that contains the values male or female based on the values contained in the male column (when 1 = male, 0 = female). The following code makes this new variable using ifelse()\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPractice Problem 1\nCreate a new variable high_BMI in framingham_df that takes on the value 1 if BMI is greater than or equal to 30 and 0 if BMI is less than 30.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\ncase_when()\nifelse() works well for creating binary variables but when we want to create a categorical variable with 3+ levels, case_when() is a more appropriate function.\nLike ifelse(), case_when() reflects the logic that if, else if, and else follow. It takes any number of arguments that follow the structure condition ~ new_value (note how it uses a ~ instead of a =).\nFor example, the code below recodes education to more informative labels (0 = Unknown, 1 = Didn’t graduate high school; 2 = High school diploma, GRE; 3 = Some college, 4 = Bachelor’s degree or higher)\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nIn calls of case_when(), conditions are evaluated in order; ex: the second condition is only assessed if the first condition evaluates to FALSE.\nBelow, we use case_when() to classify cigsPerDay into 4 groups: (1) 0 per day (2) 1-25 per day, (3) 26-50 per day, and (4) &gt;50 per day.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPractice Problem 2\nCreate a new variable age_decades in framingham_df that describes the decade that corresponds to each person’s age (ie “20s” for ages 20-29, “30s” for people ages 30-39, etc). Assume that no one in the dataset is below 20 years old or above 79 years old.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 5: Data Manipulation"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week5_data_manipulation.html#examples",
+    "href": "tutorials/Week5_data_manipulation.html#examples",
+    "title": "Week 5: Data Manipulation",
+    "section": "Examples",
+    "text": "Examples\nBelow, we’ll walk through how each of these join functions merge data from framingham_df and zip_code_demog. framingham_df contains person-level data, while zip_code_demog contains zip-code level demographic data. The framingham_df dataset contains a column called zip_code that can be linked to values in the zip column of zip_code_demog. Therefore, our “keys” are the zip codes because they link the two datasets. If you want to join two datasets, you need to specify the “key” that describes how rows in one should be matched to rows in another. By joining these two datasets by zip code, we can merge individual health outcome data with information on the social determinants of health in their communities.\nHowever, there might be zip codes that are in framingham_df that aren’t in zip_code_demog or vice versa. We can use the ! and %in% operators to find zip codes that are only present in one of the datasets\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nBecause the keys in the two datasets do not perfectly match, we need to tell R which rows should be kept in the join and which do not need to be kept. We tell R which rows we want to keep using left_join(), right_join(), full_join(), or inner_join(). In all examples below, we’ll treat framingham_df as our x or “left” dataset and zip_code_demog as our y or “right” dataset.\n\nleft_join()\nleft_join() will keep all rows in framingham_df, and only rows in zip_code_demog that match zip codes contained in framingham_df. Run the cell below to complete a left join on the datasets.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nThe new data frame has all of the columns from framingham_df, but now includes the total_population and median_hh_income columns from zip_code_demog.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nNote how framingham_df and framingham_left_join have the same number of rows\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nHowever, we know that framingham_df included data for the zip code 01746 but not 01745. The resulting data set included all rows from framingham_df, so the patient who lives in 01746 will still have their individual data, but there will be missing values for total_population and median_hh_income.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nSince no patients lived in 01745 and it was not in framingham_df, there will be no rows in framingham_left_join for that zip code.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nright_join()\nright_join() will keep all rows in zip_code_demog and only rows in framingham_df that match zip codes contained in zip_code_demog. Run the cell below to complete a right join on the datasets.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nUnlike the result from our left join, the resulting dataset framingham_right_join has more rows than the original zip_code_demog dataframe.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nThis is because there are many rows in framingham_df that match each row in zip_code_demog, since there are multiple people that live in each zip code.\nWe can see this more clearly by focusing on how right_join works for a single zip code.\nThe cell below extracts the demographic information for the zip code 01701.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nWe can use filter and nrow on framingham_df to find the number of participants that have the zip code 01701.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nWhen we right join framingham_df with demog_01701 by zip code, we end up only keep rows of framingham_df that have the zip code “01701”.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nThe resulting table has 602 rows, where each row contains an individual patient. However, each person has the same zip-code level demographics. We can confirm this by showing that there’s only one distinct combination of zip code, total population and household income.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nLet’s go back to framingham_right_join, the result of the right join between framingham_df and zip_code_demog. The right join includes all rows from zip_code_demog, which contains data for the zip code 01745 where none of the patients live. Therefore, framingham_right_join will have data for 01745 but there will be missing values for the individual health factors.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nframingham_left_join won’t include data for zip code 01746 since it wasn’t in the original zip_code_demog data frame even though patients live there.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nfull_join()\nIf we wanted all zip codes that appear in the data sets, we can use a full_join().\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nData for both 01746 (only in framingham_df) and 01745 (only in zip_code_demog) will be included in framingham_full_join.\nThe merged data will have missing zip code-level variables for 01746, and missing individual-level factors for 01745.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nAnalyses that use data created by a full join need to particularly careful of any missing values that are introduced in the merge process. In this case, if we wanted to use the number of rows in framingham_full_join to estimate the number of people per zip code, we might incorrectly count 1 person for the zip code 01745.\n\n\ninner_join()\nIf we wanted only zip codes that appear in both of the data sets, we can use a inner_join().\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nIn this case, neither 01745 nor 01746 will appear in the resulting data frame.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nAnalyses that use data created by a inner join need to be aware of which data points are dropped during the merge process. In some cases, the inner join could entirely remove patients with missing data leading to biased results.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 5: Data Manipulation"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week5_data_manipulation.html#practice-problem-4-challenge",
+    "href": "tutorials/Week5_data_manipulation.html#practice-problem-4-challenge",
+    "title": "Week 5: Data Manipulation",
+    "section": "Practice Problem 4 (Challenge)",
+    "text": "Practice Problem 4 (Challenge)\nCreate a new data frame chd_income_df that contains one row for each zip code represented in framingham_df and two columns: (1) chd_prev, the prevalence of CHD in the zip code and (2) the median household income of the zip code\nHint 1: Start by creating a data frame chd_prev with the prevalence of CHD for each zip code using group_by. (See Week 4 tutorial to remind yourself about grouping) Hint 2: We want our table to include one row for each zip code represented in framingham_df, even if there isn’t household income data available for that zip code. What kind of join function should we use?\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 5: Data Manipulation"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week5_data_manipulation.html#pivot_longer",
+    "href": "tutorials/Week5_data_manipulation.html#pivot_longer",
+    "title": "Week 5: Data Manipulation",
+    "section": "pivot_longer()",
+    "text": "pivot_longer()\nYou might have noticed that framingham_df is currently in a wide format, since there is one row for each participant. We can use pivot_longer to convert it to a long format, which takes in the arguments.\n\ndata: a data frame, which contains only the observation id and the columns that contain variables that will make up rows in the long-format data frame\ncols: a vector of characters, containing columns names corresponding to variables that will make up rows in the long-format data frame\n(optional) names_to: a character, what the column containing variable names in the long-format data frame should be called\n(optional) values_to: a character, what the column containing variable values in the long-format data frame should be called\nNOTE: Remember that in a data frame, all values in a column must have the same data type. Selected columns for the long-format contain the same data type.\n\nThe cell below creates framingham_long, a long-format version of the framingham data that contains all numeric variables found in the original dataset.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 5: Data Manipulation"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week5_data_manipulation.html#pivot_wider",
+    "href": "tutorials/Week5_data_manipulation.html#pivot_wider",
+    "title": "Week 5: Data Manipulation",
+    "section": "pivot_wider()",
+    "text": "pivot_wider()\nWe can then back-convert framingham_long to a wide version by using pivot_wider() which uses the arguments:\n\ndata: a data frame, in long format that contains the observation ID\nid_cols: a character or vector of characters, the name(s) of columns that contain the observation ID\nnames_from: a character, the name of the column that contains variable names\nvalues_from: a character, the name of the column that contains variable values\nNOTE: Remember that in a data frame, all values in a column must have the same data type. Selected columns for the long-format contain the same data type.\n\nThe cell below creates framingham_wide, a wide-format version of the framingham_long data that contains all numeric variables found in the framingham dataset.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 5: Data Manipulation"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week3_functions_packages.html#function-i-sure-hope-it-does.",
+    "href": "tutorials/Week3_functions_packages.html#function-i-sure-hope-it-does.",
+    "title": "Week 3: Functions and Packages",
+    "section": "Function? I sure hope it does.",
+    "text": "Function? I sure hope it does.\nFunctions allow us to take an input, run some code, and send back an output. In fact, if you’ve ever taken a math class before, you’ve already seen functions!\n\\[\nf(x) = 2x\n\\]\nLook familiar? This function is very simple. It takes an input \\(x\\), multiplies it by two, and gives back the answer. You can run it over and over again for different values:\n\\[\nf(1)=2*1=2\\\\\nf(-10)=2*-10=-20\\\\\nf(0)=2*0=0\n\\]\nR lets us do the same exact thing. We can provide instructions inside a function that we use later for different inputs. R uses function(){} to define these inputs and instructions. The inputs go inside the () and the instructions go inside the {}. In this case, our input x goes inside the parentheses, and our instructions 2*x goes inside the curly brackets. We give the function the name times_two so we can reference it later. So if we want to turn our math function into an R function called times_two, we can say:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nRun this code. In the Environment tab in the top right, a function called times_two appears. We can call to the function using its name followed by our input in parenthesis. For times_two, all we have to do is give x a value:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nEach time we run the function, it returns back the last thing it calculated. For this example, it only calculates 2*x, so that is what it returns.\nWe can also use a return() statement to explicitly state what we want the function output to be. A return() statement tells R that we want to exit the function, and any code after it won’t be run.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPractice Problem\nWrite your own function called times_four_plus_one that takes one input x, multiplies it by four, and adds one. Then, call your function three times with different inputs to make sure it works right.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 3: Functions and Packages"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week3_functions_packages.html#built-in-functions",
+    "href": "tutorials/Week3_functions_packages.html#built-in-functions",
+    "title": "Week 3: Functions and Packages",
+    "section": "Built-in Functions",
+    "text": "Built-in Functions\nR has a bunch of built-in functions that help us get our work done. In fact, you have been using functions this whole time! data.frame() is a useful function that we learned about last week. And during week one, we learned about a bunch of math functions like exp(), log(), and even abs() which gives us the absolute value!\nAn especially useful built-in function is seq(). This function allows you to generate a sequence of numbers. Now, we already learned that the colon : can be used to generate numbers in order. seq() expands on this by taking three inputs: from=, to=, and by=. from tells it our starting number, to tells it our maximum number, and by tells it the gaps between the numbers. If we want the numbers 1 through 10, we can just say 1:10 or seq(from=1, to=10, by=1). However, if we want every odd number from 1 to 10, we cannot use the : and have to use seq(from=1, to=10, by=2).\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPractice Problem\nNow you use seq() to generate all multiples of 0.2 from 0 to 5 (e.g. 0, 0.2, 0.4, … , 4.8, 5).\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 3: Functions and Packages"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week3_functions_packages.html#getting-help",
+    "href": "tutorials/Week3_functions_packages.html#getting-help",
+    "title": "Week 3: Functions and Packages",
+    "section": "Getting Help",
+    "text": "Getting Help\nR has a lot of functions built in, so it is almost impossible to remember all of them. Instead, we have the ? operator. When you write this operator before a function name in R, it will pop up some useful information.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nWhen we run this line, a little window pops up on the right side describing what sample() does. We learn that it takes a sample of size size from the elements of x. So let’s randomly pick 3 numbers between 1 and 10.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nThere is also an optional input replace that is normally equal to FALSE. Further down under Arguments, we learn that replace tells it “should sampling be with replacement?”. In other words, should the same element be able to be picked multiple times? If we want that to be yes, we can tell the function that. Try running this code multiple times until you get a repeated number.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nThe help page on the right side also has examples down at the bottom to help us. You can also always use Google to help you figure out how to use these functions, but the ? operator works even without Internet!\n\nPractice Problem\nUse ?runif (and the Internet if you need) to figure out how to get a random number between -1 and 2.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 3: Functions and Packages"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week3_functions_packages.html#any-number-of-arguments",
+    "href": "tutorials/Week3_functions_packages.html#any-number-of-arguments",
+    "title": "Week 3: Functions and Packages",
+    "section": "Any Number of Arguments",
+    "text": "Any Number of Arguments\nSometimes, functions will have an input that just says …. For example:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nThe ellipsis means that max() can accept any number of arguments and give you the maximum of them.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPractice Problem\nTry it out! The max() and min() functions will give you the maximum and minimum, respectively, of numbers or letters. They will accept any number of inputs, including a pre-made vector.\nTry finding different minimums and maximums. What happens when you include an NA in the group of numbers? What can you do about that (hint: check ?max?\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 3: Functions and Packages"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week3_functions_packages.html#if-else-statements",
+    "href": "tutorials/Week3_functions_packages.html#if-else-statements",
+    "title": "Week 3: Functions and Packages",
+    "section": "If-Else Statements",
+    "text": "If-Else Statements\nIf-else statements give us a chance to decide what code should be run. They will look like this:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nWe can use this statement to have code that is run in different situations. For example, if we want to tell the user if they try to do some math that doesn’t work, we could use an if-else statement.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nYou can also use the if part on its own if there is not a second step you want to do. You can also put multiple if-else statements together if there are multiple decisions you need to make. Feel free to run this code multiple times with different x values.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nNote than when a condition in an if-else series ends up being TRUE, all of the other elses are ignored. In the example above, x &gt; 5 is TRUE, so x is 9 to 5 is printed. The everything after the else gets ignored. Even though the next if (x &gt;2) would have also been TRUE, we don’t see it print that out because it is after the else.\n\nPractice Problem\nComplete the code below to write a series of conditional statements that compares the values of x and y. Try changing the values of x and y to check that your code works as expected\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 3: Functions and Packages"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week3_functions_packages.html#loops",
+    "href": "tutorials/Week3_functions_packages.html#loops",
+    "title": "Week 3: Functions and Packages",
+    "section": "Loops",
+    "text": "Loops\nMany times in research, we will need to run the same code over and over again, like if we need to calculate a value for every participant in a study. R gives us a way to do this using for loops. A typical for loop might look like this:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nIn the for loop, we specify how many times the code needs to be run by giving it a collection of things, the vector numbers in this case. We give that element a name, number, and write code using that variable. In this way, the first time the loop runs, number will be set to 1 because that is the first element of numbers. The code inside the curly brackets runs. Then number is set to 2 because it is the second element of numbers. The loop continues all the way through 5 and then stops because 5 is the last element in the vector numbers. When writing your own for loop, you use the format for (variable in values). values needs to be a collection of something that you have already created. variable is a placeholder name that you can use inside the curly brackets of the for loop to do what you want to do.\nSomething we normally do inside for loops is add the result to a list of results so we can keep track of all of them. Saving your results is a lot better than just printing them out, especially when you have a lot of observations. Let’s say we have ten people in a study, and we want to categorize them by age. If we have their ages stored in ages, we can use a for loop to add their categorized age to age_categories. Notice that the part labeled “Step 2” is inside the for loop, so it will add new_age_category to the end of age_categories every time the loop is run.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPractice Problem\nComplete the code below to categorize the stage of chronic kidney disease (CKD) based on estimated glomerular filtration rate (eGFR) values in egfr_values\neGRF values less than 15 correspond to Stage 5 CKD, values between 15 and 29 correspond to Stage 4, values between 30-44 correspond to Stage 3B, and values above 45 correspond to Stages 1-3A.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 3: Functions and Packages"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week1_install_r_rstudio.html",
+    "href": "tutorials/Week1_install_r_rstudio.html",
+    "title": "W1 - Install R & RStudio",
+    "section": "",
+    "text": "Welcome to CHPR/EPI 202!\nWe are excited you are joining us for the quarter, and we hope you are excited to get started with R. First thing’s first, we need to get R and RStudio installed on your computer.\nJust a quick definition of terms:\nR - R is a program that runs on your computer to process data, run analyses, make figures, and do much, much more. You can run R on its own, but it is all text-based. When something is text based, it is sometimes hard to stay organized.\nRStudio - RStudio is a program that runs on top of R. It gives you a nice, pretty work environment. It makes it easy to see the code you are writing, how R is running, any images you have created, what variables you have stored, and much more! Working in R without RStudio is possible and happens in large data centers, but RStudio makes life much easier.",
+    "crumbs": [
+      "Home",
+      "Getting started",
+      "W1 - Install R & RStudio"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week1_install_r_rstudio.html#before-we-begin-what-is-this-weird-document-format",
+    "href": "tutorials/Week1_install_r_rstudio.html#before-we-begin-what-is-this-weird-document-format",
+    "title": "W1 - Install R & RStudio",
+    "section": "Before we begin, what is this weird document format?",
+    "text": "Before we begin, what is this weird document format?\nCan you believe I made this entire tutorial…in R!?!? Well…kinda. That’s more of a complicated story, but we will go into that during week 1. I am writing this tutorial in R Markdown which is a special file format that turns plain text into the fancy PDF that you are reading now. The extra special part is that I can include code in this document too:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nCool, right? Because R Markdown allows us to combine normal human-readable text and code, we will be using it for the pre-class tutorials and your homework. If you really want to work ahead, check out the Epidemiologist’s R Handbook on R Markdown after you finish this tutorial.",
+    "crumbs": [
+      "Home",
+      "Getting started",
+      "W1 - Install R & RStudio"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week1_install_r_rstudio.html#step-1-install-r",
+    "href": "tutorials/Week1_install_r_rstudio.html#step-1-install-r",
+    "title": "W1 - Install R & RStudio",
+    "section": "Step 1: Install R",
+    "text": "Step 1: Install R\n\n\n\nR programming language logo\n\n\n\nYou will want to do all of this installing on a laptop that you can bring to class. That way, you can follow along with coding that we do together (and get a start on your homework!).\nTo install R, you will use the Comprehensive R Archive Network (CRAN). Click on that link or type cran.r-project.org into your browser.\nAt the top of this website, you will see a list of installation links.\n\n\nIf you are using Mac: Click the link that says Download R for macOS. You will see a page with download links that start with R- and end with .pkg. If you have a newer Mac that uses Apple’s processors (M1, M2, etc.), you will use the first link under the text For Apple silicon. If you have an older Mac that uses an Intel processor, you will use the link under For older Intel Macs. If you’re not sure which one you have, here’s a nifty tutorial on how to find that information on your computer.\nIf you are using Windows: Click the link that says Download R for Windows. Then, click on base. Then, click on Download R for Windows.\nIf you are using Linux: Click the link that says Download R for Linux. Then, select the distro you are using from the list. These links will bring you to a distro-specific tutorial for the commands need to download R.\n\n\nAfter you have downloaded the correct file for your system, click on it. If you cannot find the file, check your “Downloads” folder or try step c again. It may take a little while for the file to download and install. After you click on it, you may need to say “Yes” to allow the file to be installed on your computer. Click through the installer using the default options. Eventually, the installer will say that R was successfully installed, and you should see R on your computer.",
+    "crumbs": [
+      "Home",
+      "Getting started",
+      "W1 - Install R & RStudio"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week1_install_r_rstudio.html#step-2-install-rstudio",
+    "href": "tutorials/Week1_install_r_rstudio.html#step-2-install-rstudio",
+    "title": "W1 - Install R & RStudio",
+    "section": "Step 2: Install RStudio",
+    "text": "Step 2: Install RStudio\n\n\n\nRStudio logo\n\n\n\nTo install RStudio, you can click on this link or go to posit.co/download/rstudio-desktop in your browser.\nSince we already installed R in the above step, you can use the button under 2: Install RStudio to get RStudio for your computer. The website should automatically detect what system you’re using and give you the right one, but all of the different installers are available on the page if you scroll down.\nWhen it’s done downloading, click on the installer and follow the prompts. You may have to click “Yes” to allow it to run on your computer. Keep following the prompts using the default options until you finish the installation. Then, open RStudio by clicking on it.",
+    "crumbs": [
+      "Home",
+      "Getting started",
+      "W1 - Install R & RStudio"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week1_install_r_rstudio.html#step-3-check-your-work-take-an-rstudio-tour",
+    "href": "tutorials/Week1_install_r_rstudio.html#step-3-check-your-work-take-an-rstudio-tour",
+    "title": "W1 - Install R & RStudio",
+    "section": "Step 3: Check your work & take an RStudio Tour",
+    "text": "Step 3: Check your work & take an RStudio Tour\n\nClick on RStudio to open it. It should look something like this:\n\n\n\n\nHomepage for RStudio with no project open\n\n\nIf your RStudio does not look similar when you open it up, revisit steps 1 & 2 to see if something went wrong in the install. If you’re having trouble, please feel free to use office hours, email, or the internet to get help with your installation.\n\nLet’s look around RStudio. The big section on the left hand side is the R console. When you downloaded R in step 1, that is what you downloaded! It has all of the power of R, and everything else on your screen is just trying to make your life easier. The &gt; means that R is ready to accept a command. Feel free to click in there and ask it some math problems like 2+2 or 5*4 just to make sure it is really working. You can see at the top of that big pane are the tabs “Console”, “Terminal”, and “Background Jobs”. We will only be using the “Console” in this class, but it is good to know that there are other things there!\n\n\n\n\nRStudio console with basic math problems giving correct results like 2+2=4\n\n\nNote: Depending on when you read this, the top line may not say R version 4.3.2 (2023-10-31 ucrt) -- \"Eye Holes\", especially if you’re reading this in the way future!!! The top line will always be the R version you are running. As long as it says R version and then some numbers, you are good to go.\n\nThe top right pane is our “Environment”. This pane tells us about what we are working on in this project. When you save data sets or create variables, they will appear here in case you forget their names or what they contain. You can see there are other tabs in this pane too, but we will not use them in this course.\n\n\n\n\nRStudio environment tab saying “Environment is empty”\n\n\n\nThe bottom right pane has a lot of useful stuff in it. We will go through several of these in the course as they can be really helpful when you are making figures or need help. The tab you are probably looking at now is “Files” which is useful to save and open your code. We will be talking a look at this pane during week 1.\n\n\n\n\nRStudio files pane listing several folders with project names\n\n\nNote: Your files will not be the same as mine. However, you should have the same tabs at the top.\n\nThere is actually a hidden 4th pane that appears when you are working on editing a file. Let’s create a new file to see that pane. In the top left hand corner of RStudio, click on File &gt; New File &gt; R Script. A new pane should appear above the Console. You can use this pane to write your code and save it for future use. Go ahead and add the same lines 2+2 and 5*4 to this new file, and use the “Run” button for each line to send them to the Console. You can then use the blue disk/save button to save the code and send it to someone else or work on it later.\n\n\n\n\nmath problems written in the editor pane of RStudio",
+    "crumbs": [
+      "Home",
+      "Getting started",
+      "W1 - Install R & RStudio"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week1_install_r_rstudio.html#step-4-set-up-tinytex",
+    "href": "tutorials/Week1_install_r_rstudio.html#step-4-set-up-tinytex",
+    "title": "W1 - Install R & RStudio",
+    "section": "Step 4: Set up Tinytex",
+    "text": "Step 4: Set up Tinytex\nThere is one final step to get your computer set up for our class. For your homework, you will be using R to generate documents that you will upload online. These documents will look similar to this one where there are code blocks that you write, the results generated by the computer, and normal text that you can use to explain your results. You need tinytex to generate these documents. Copy and paste the two lines of code into the “Console” section of your RStudio like we did in part 3b. You may need to select “yes” or “y” to continue the installation. The code will print out information about the install, but you do not need to know what it means.\ninstall.packages(\"tinytex\")\ntinytex::install_tinytex()\nIf you have any issues running the code above, please feel free to reach out to the teaching staff. Once your code is done running and you see the &gt; at the bottom, run this line of code to check the installation.\ntinytex::is_tinytex()\nThat code should print out TRUE to tell you that everything is good to go!\nCongratulations! You have installed R and RStudio, and you are ready for the first week of class. We are excited to meet you all and get you working in R!!!",
+    "crumbs": [
+      "Home",
+      "Getting started",
+      "W1 - Install R & RStudio"
+    ]
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Welcome",
     "section": "",
-    "text": "Welcome to R Fundamentals for Health Research — an introduction to R for epidemiology and health policy research.\nThese materials\nThese course materials run entirely in your browser using Quarto and WebR. You do not need R installed locally to explore the tutorials and run code on this site.\nTry loading a course dataset:",
+    "text": "Welcome to R Fundamentals for Health Research — an introduction to R for epidemiology and health policy research.\nThese course materials run entirely in your browser using Quarto and WebR. You do not need R installed locally to explore the tutorials and run code on this site.\nTry loading a course dataset:",
     "crumbs": [
       "Home",
       "Getting started",
@@ -33,6 +789,930 @@
       "Home",
       "Getting started",
       "Welcome"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week10_research_best_practices.html",
+    "href": "tutorials/Week10_research_best_practices.html",
+    "title": "Week 10 - Research Best Practices",
+    "section": "",
+    "text": "This is a new line.\nFor our last week of this course, we want to take a step back and take a look at some other tools you can use to make your research more collaborative and more reproducible. This material will not be on the final. Instead, we hope you absorb this week’s material to use in your future work.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 10 - Research Best Practices"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week10_research_best_practices.html#why-use-github",
+    "href": "tutorials/Week10_research_best_practices.html#why-use-github",
+    "title": "Week 10 - Research Best Practices",
+    "section": "Why use GitHub",
+    "text": "Why use GitHub\nCollaborative coding is a little different than collaborating on, say, a Google Doc. When you are writing a word document, multiple people can log in and work on the same document at the same time. This type of collaboration does not work for coding. Imagine you are working on one part of the code that adds two variables together, but your collaborator is simultaneously working on another part of the document changing the names of those variables. Your code would refuse to run, and you would have no idea why! Rather than everyone working on the same copy of the code, GitHub allows everyone to have their own local copy, and GitHub stores a remote copy too. We call these collaborative projects repositories or, simply, repos.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 10 - Research Best Practices"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week10_research_best_practices.html#sign-up-for-github-and-install-github-desktop",
+    "href": "tutorials/Week10_research_best_practices.html#sign-up-for-github-and-install-github-desktop",
+    "title": "Week 10 - Research Best Practices",
+    "section": "Sign up for GitHub and install GitHub Desktop",
+    "text": "Sign up for GitHub and install GitHub Desktop\n\nGo to https://github.com/ and sign up for a GitHub account. You can choose to use your stanford.edu email address, but remember that you will lose access to this account if you stop being affiliated with Stanford.\nDowload GitHub Desktop. GitHub Desktop installs all the programs you need to interact with GitHub and makes it easy to sign in, upload code, and pull code down.\nAfter it finishes installing, GitHub Desktop should open, and you can sign in to your GitHub account.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 10 - Research Best Practices"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week10_research_best_practices.html#create-a-new-repo",
+    "href": "tutorials/Week10_research_best_practices.html#create-a-new-repo",
+    "title": "Week 10 - Research Best Practices",
+    "section": "Create a new repo",
+    "text": "Create a new repo\nLet’s put all of our completed tutorials for this class on GitHub so that we can reference them in the future. Remember that files you put on a public repo are public for the whole internet to see, so we don’t want to upload private files.\n\nGo to github.com and click on the + button in the top right, then click “New repository”.\nGive your repo an informative name like epi202-tutorials. Your repository name cannot have spaces in it.\nWrite a short description for the repo.\nLeave the repo as “Public”. You should never upload patient data to GitHub, even if you set the repo to “Private”.\nCheck the box next to “Add a README file”\nUnder Add .gitignore, find the “R” option\nYou can leave License as “None”\n\nSo your “New repository” window should look something like this:\n\nThen click “Create repository” You now have a repo epi202-tutorials associated with your GitHub account. GitHub will show you a page with information on how to setup your repo. Make sure to keep this page open because you will use the blue box for the next step!",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 10 - Research Best Practices"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week10_research_best_practices.html#add-your-repo-to-rstudio",
+    "href": "tutorials/Week10_research_best_practices.html#add-your-repo-to-rstudio",
+    "title": "Week 10 - Research Best Practices",
+    "section": "Add your repo to RStudio",
+    "text": "Add your repo to RStudio\nNow that we made our repo, we can open that repo in RStudio to start adding and editing our files. If you have trouble with the tutorial below, try completely closing out of RStudio and opening it back up so that it can recognize you have installed GitHub.\n\nIn RStudio, click File &gt; New Project… &gt; Version Control &gt; Git\nWe will then take the URL from the blue box on GitHub and paste it in the “Repository URL” field. After pasting the URL in RStudio, it should autofill the repo name. You should pick a good folder for this project to go in, like your EPI 202 class folder.\n\n\nWhen you click “Create Project”, RStudio will open a new project based on what is inside your GitHub repo. You now have an epi202-tutorials folder on your computer that is associated with your epi202-tutorials repo on GitHub!\nTake the completed tutorials from your class folder and copy them into the epi202-tutorials folder on your computer. You should see the files appear in your “Files” pane in RStudio.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 10 - Research Best Practices"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week10_research_best_practices.html#push-your-changes-to-github",
+    "href": "tutorials/Week10_research_best_practices.html#push-your-changes-to-github",
+    "title": "Week 10 - Research Best Practices",
+    "section": "Push your changes to GitHub",
+    "text": "Push your changes to GitHub\nWe made these changes to our local copy. To send these changes to the remote copy, we have to commit these changes. You may have noticed the “Git” tab has appeared in the top right of your RStudio. This tab will help us interract with GitHub.\n\nCheck all the boxes next to the files. We are saying that we want to send those files to the remote copy on GitHub.\n\nClick on the green check (circled in red) to review your changes. You can see all of your changes by clicking on each of the files. Added lines are in green. Deleted lines (if we had any) would be shown in red.\nAdd a commit message describing your changes, click “Commit”, and then click “Push”.\n\n\nIf we go back to our repo on github.com, we can see our files are now there!",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 10 - Research Best Practices"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week10_research_best_practices.html#github-workflow",
+    "href": "tutorials/Week10_research_best_practices.html#github-workflow",
+    "title": "Week 10 - Research Best Practices",
+    "section": "GitHub Workflow",
+    "text": "GitHub Workflow\nAs you and others work in RStudio on your project, you need to be sure to pull in changes others have made and push out changes you have made.\n\nBefore you start working, click the blue down arrow in the Git tab of RStudio. This button will pull in any changes that others have made, or say “Already up to date” if no one else has made changes.\nAfter your code is working the way you want it to, follow steps 1-3 in the section above to add, commit, and push your changes to GitHub so that others can pull them into their RStudio.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 10 - Research Best Practices"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week10_research_best_practices.html#why-use-osf",
+    "href": "tutorials/Week10_research_best_practices.html#why-use-osf",
+    "title": "Week 10 - Research Best Practices",
+    "section": "Why use OSF",
+    "text": "Why use OSF\nOutlining your project on OSF provides you a public record of your project planning, data, code, and findings. This record can be useful if reviewers ever call into question your methodology. Some researchers may take an observational dataset with many variables and run statistical tests until they get a significant result. Registering your analysis plan before you do your analysis prevents this kind of bad statistics often called p-hacking. It also provides a single location to upload data, if it can be made public, to comply with the new NIH data sharing rules. For students, writing out your project plan in this form gives you an opportunity to get feedback from mentors and fix potential issues before you start coding.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 10 - Research Best Practices"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week10_research_best_practices.html#look-at-an-example-project",
+    "href": "tutorials/Week10_research_best_practices.html#look-at-an-example-project",
+    "title": "Week 10 - Research Best Practices",
+    "section": "Look at an Example Project",
+    "text": "Look at an Example Project\nCheck out this OSF project by Dr. Ben Arnold.\n\nOn the landing page, you can see a quick summary of the project, the components of the project, and the recent activity on the project. Every action in the project is logged so that it can be tracked through time to see how the protocol changes.\nIf you scroll through the “Files” to “Scripts” or just click on “Scripts” in the “Components” area, you can see it is linked to their github tracking the analysis for the project.\nYou can click on the “Registrations” tab to switch over to see the snapshot of the project the author took before doing the primary analysis, capturing the primary analysis plan.\n\nConsider giving OSF a shot in your research flow to organize your plans, code, and data all in one place!",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 10 - Research Best Practices"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week2_data_structures.html",
+    "href": "tutorials/Week2_data_structures.html",
+    "title": "Data Types and Structures",
+    "section": "",
+    "text": "In this chapter, we’ll cover the different ways that data is stored in R. We’ll start by looking at the individual data points before moving on to collections of data. Here, you’ll implement code to create, store, and access data in R.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Data Types and Structures"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week2_data_structures.html#practice-problem-1",
+    "href": "tutorials/Week2_data_structures.html#practice-problem-1",
+    "title": "Data Types and Structures",
+    "section": "Practice Problem 1",
+    "text": "Practice Problem 1\nCreate a variable called temp_f that is equal to the current temperature in fahrenheit.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Data Types and Structures"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week2_data_structures.html#practice-problem-2",
+    "href": "tutorials/Week2_data_structures.html#practice-problem-2",
+    "title": "Data Types and Structures",
+    "section": "Practice Problem 2",
+    "text": "Practice Problem 2\nNow create a variable temp_c that converts the value of temp_f to celcius. Recall that °C = (°F - 32) ÷ (9/5)\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Data Types and Structures"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week2_data_structures.html#practice-problem-3",
+    "href": "tutorials/Week2_data_structures.html#practice-problem-3",
+    "title": "Data Types and Structures",
+    "section": "Practice Problem 3",
+    "text": "Practice Problem 3\nMake a vector called fruits, which contains 3 fruit names stored as characters\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Data Types and Structures"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week2_data_structures.html#accessing-items",
+    "href": "tutorials/Week2_data_structures.html#accessing-items",
+    "title": "Data Types and Structures",
+    "section": "Accessing Items",
+    "text": "Accessing Items\nEach item in a vector can be located using its index. The index is the numeric value that corresponds to the item’s position in the vector. The first item in the vector is at index 1, the second item is at index 2, etc.\nWe can use square brackets [] after a vector to indicate which items you’d like to select using their indices.\nSuppose we had the following vector numbers\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nTo access the 6th item of this vector, we can use the following code\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nYou can also index a list using a vector of indices. To access the 4th, 8th, and 19th item of this vector, we can use the following code\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nWe can also use vector indexing to alter the values of specific items in the vector. The code below replaces the second value of numbers with the value 1043\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Data Types and Structures"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week2_data_structures.html#practice-problem-4",
+    "href": "tutorials/Week2_data_structures.html#practice-problem-4",
+    "title": "Data Types and Structures",
+    "section": "Practice Problem 4",
+    "text": "Practice Problem 4\nIn the cell below, write code to replace the 3rd and 8th item of numbers with the value 32\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Data Types and Structures"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week2_data_structures.html#extending-vectors",
+    "href": "tutorials/Week2_data_structures.html#extending-vectors",
+    "title": "Data Types and Structures",
+    "section": "Extending Vectors",
+    "text": "Extending Vectors\nWe can also use c() to add data to an existing vector. Suppose we wanted to keep create a vector to keep track of the number of weekly flu cases observed in a large classroom.\nWe can start by creating an empty vector n_flu_cases that we’ll gradually add values to.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nThe first week, we observe 5 cases. Let’s update `n_flu_cases` so the first value is equal to 5.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nTwo weeks pass, during which we observed 8 and 6 cases. We can add both data points to the vector in one line of code\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nWe tracked down a database that we used to retroactively measure 2 flu cases from the week before we started tracking. We can add this to the start of the n_flu_cases vector by putting 2 before n_flu_cases when we use c().\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Data Types and Structures"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week2_data_structures.html#vector-operations",
+    "href": "tutorials/Week2_data_structures.html#vector-operations",
+    "title": "Data Types and Structures",
+    "section": "Vector Operations",
+    "text": "Vector Operations\nSimilar to how we were able to operate on individual data points, we can work with vectors to modify a collection of data.\nIn the code below, we multiply 20 and subtract 94 from each number in the vector nums\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nWe can also operate on vectors of characters. In the cells below, we append the character “Trial Number:” to a vector of characters.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nWe can also summarize the contents of a vector using functions like min, max, mean, median, and length. Read the code provided below and guess what the output will be. Run the cells to confirm.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nThe summary function produces a quick description of the distribution of values in the vector.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nThe unique function extracts all unique values in a vector\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nThe table function can be used to count the number of times each value appears in the vector\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Data Types and Structures"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week2_data_structures.html#practice-problem-5",
+    "href": "tutorials/Week2_data_structures.html#practice-problem-5",
+    "title": "Data Types and Structures",
+    "section": "Practice Problem 5",
+    "text": "Practice Problem 5\nSubtract the mean of the vector even_more_numbers from each value of even_more_numbers.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Data Types and Structures"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week2_data_structures.html#indexing-tables",
+    "href": "tutorials/Week2_data_structures.html#indexing-tables",
+    "title": "Data Types and Structures",
+    "section": "Indexing Tables",
+    "text": "Indexing Tables\nSimilar to how we used [] to select specific values, we can use [] to select certain rows, columns, and values in a data frame. Generally, we follow the structure table_name[row_index, column_index]\nTo access a specific row of the table, we use table_name[row_index, ]. When we leave the position for column_index blank, it assumes that we want to select all columns for that row.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nWe can also use a vector of indices to select multiple rows.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nSimilarly, we can use table_name[, column_index] to select specific columns of the data frame.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nInstead of using the numeric index, we can use the column name. If we pass the column name through a single set of brackets (table_name[\"column_name\"]) it returns a table with one column, but if we pass the column name through a double set of brackets (table_name[[\"column_name\"]]) it returns a vector\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nWe can also use the $ operator to select columns by their name, using the format table_name$column_name. If your column name has spaces, the name must be contained inside ticks (ex: table_name$`column name`)\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Data Types and Structures"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week2_data_structures.html#practice-problem-6",
+    "href": "tutorials/Week2_data_structures.html#practice-problem-6",
+    "title": "Data Types and Structures",
+    "section": "Practice Problem 6",
+    "text": "Practice Problem 6\nCalculate the age in months of the participants in study_cohort table.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Data Types and Structures"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week4_data_exploration.html#head-and-tail",
+    "href": "tutorials/Week4_data_exploration.html#head-and-tail",
+    "title": "Week 4: Data Exploration",
+    "section": "head() and tail()",
+    "text": "head() and tail()\nThe head() function allows you to preview the first 6 rows of the dataset.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nSimilarly, tail() will show you the last 6 rows of the data set.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 4: Data Exploration"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week4_data_exploration.html#slice_sample",
+    "href": "tutorials/Week4_data_exploration.html#slice_sample",
+    "title": "Week 4: Data Exploration",
+    "section": "slice_sample()",
+    "text": "slice_sample()\nIf you want to view a random sample of your dataset, you can use slice_sample where we can specify the size (n) of the sample and that we want to sample without replacement (ie a row can’t appear multiple times in our sample).\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 4: Data Exploration"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week4_data_exploration.html#dim-nrow-ncol",
+    "href": "tutorials/Week4_data_exploration.html#dim-nrow-ncol",
+    "title": "Week 4: Data Exploration",
+    "section": "dim(), nrow(), ncol()",
+    "text": "dim(), nrow(), ncol()\nThe dimensions of a data frame describe how many observations (rows) and variables (columns) are included. The dim() function takes in a data frame as an argument and returns its dimensions as a vector. The first item of the vector is the number of rows, and the second item of the vector is the number of columns.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nIf you were interested in just the number of rows of columns, you can use nrow() and ncol\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nTo view the specific variables (columns) that are included in a dataset, we can use colnames() which lists out the names of all columns.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 4: Data Exploration"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week4_data_exploration.html#arrange",
+    "href": "tutorials/Week4_data_exploration.html#arrange",
+    "title": "Week 4: Data Exploration",
+    "section": "arrange()",
+    "text": "arrange()\nTo order the rows of a data frame by the values of a column, we can use arrange(). The function takes a column name as an argument and returns a data frame sorted by that column in ascending order (smallest to largest).\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nTo sort a column in descending order (largest to smallest), add a - before the column name.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 4: Data Exploration"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week4_data_exploration.html#histograms",
+    "href": "tutorials/Week4_data_exploration.html#histograms",
+    "title": "Week 4: Data Exploration",
+    "section": "Histograms",
+    "text": "Histograms\nThe hist() function takes in a vector and produces a histogram of its distribution. The code below creates a histogram of ages in framingham_df\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 4: Data Exploration"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week4_data_exploration.html#boxplots",
+    "href": "tutorials/Week4_data_exploration.html#boxplots",
+    "title": "Week 4: Data Exploration",
+    "section": "Boxplots",
+    "text": "Boxplots\nSimilarly, a box plot can be used to show the range, interquartile range, and median of a vector. The code below makes a boxplot for ages in framingham_df\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 4: Data Exploration"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week4_data_exploration.html#scatterplots",
+    "href": "tutorials/Week4_data_exploration.html#scatterplots",
+    "title": "Week 4: Data Exploration",
+    "section": "Scatterplots",
+    "text": "Scatterplots\nIf we want to investigate the relationship between two variables in the dataset, we can create a scatterplot using plot(). This function takes in 2 vectors, the first vector contains the x-axis values for the plot and the second vector contains the y-axis values. The order of points should be the same - the first item of both vectors correspond to the first measurement, the second item of both vectors correspond to the second measurement, etc.\nThe code below creates a scatterplot of age vs total cholesterol.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 4: Data Exploration"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week4_data_exploration.html#labeling-plots",
+    "href": "tutorials/Week4_data_exploration.html#labeling-plots",
+    "title": "Week 4: Data Exploration",
+    "section": "Labeling plots",
+    "text": "Labeling plots\nWe can pass through additional arguments to any of the plotting functions above to edit axis labels and plot titles. * main: a character, the title of the plot that will be displayed on the top * xlab: a character, the x-axis label * ylab: a character, the y-axis label\nBelow, we can remake our scatterplot with informative titles and labels.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 4: Data Exploration"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week4_data_exploration.html#practice-problem-1",
+    "href": "tutorials/Week4_data_exploration.html#practice-problem-1",
+    "title": "Week 4: Data Exploration",
+    "section": "Practice Problem 1",
+    "text": "Practice Problem 1\nCreate a scatter plot to visualize the relationship between systolic (sysBP) vs diastolic blood pressure (diaBP). Include titles and labels to help with the interpretation of your plot.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 4: Data Exploration"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week4_data_exploration.html#select",
+    "href": "tutorials/Week4_data_exploration.html#select",
+    "title": "Week 4: Data Exploration",
+    "section": "select()",
+    "text": "select()\nIf we want to view specific observations (rows), we can use the [] operator (see week 2 materials for a refresher).\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\ndplyr also has a select function that can be used to select specific columns of a dataset.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nThe first argument of select will always be the data frame we’re working with. Each subsequent argument is the name of a column we want to select (no quotes needed).\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nWe can also use select() to drop certain columns by placing a - before the column name.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 4: Data Exploration"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week4_data_exploration.html#pull",
+    "href": "tutorials/Week4_data_exploration.html#pull",
+    "title": "Week 4: Data Exploration",
+    "section": "pull()",
+    "text": "pull()\nRecall that if we wanted to select columns as vectors instead of data frames, we can use the $ operator.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nAlternatively, we can use the pull() function from dplyr.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nThe first argument of pull should be the dataframe we’re working with and the second argument is the name of a column we want to pull data from (no quotes needed).\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 4: Data Exploration"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week4_data_exploration.html#filter",
+    "href": "tutorials/Week4_data_exploration.html#filter",
+    "title": "Week 4: Data Exploration",
+    "section": "filter()",
+    "text": "filter()\nIn week 2, we learned how to use [] to select rows that meet a certain condition. For example, the code below shows only rows for study participants that were over the age of 65.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\ndplyr includes a function called filter that can also be used to subset data frames based on a condition.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nThe first argument is the data frame that you’d like to filter from, and each subseqent argument is a condition that you’d like to filter for. Note how the conditions only include the column name, since the data frame is specified in the first argument.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nIf we want to filter for another condition, we can add it as an additional argument. Here, we filter for both male == 0 and age &gt; 65\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nWe can also filter by multiple conditions by using the & operator The code below also filters the dataset for male == 0 and age &gt; 65\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nIf we want to filter for cases where any of the conditions are met, we can use the | operator. Here, we filter for both male == 0 or age &gt; 65\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 4: Data Exploration"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week4_data_exploration.html#practice-problem-2",
+    "href": "tutorials/Week4_data_exploration.html#practice-problem-2",
+    "title": "Week 4: Data Exploration",
+    "section": "Practice Problem 2",
+    "text": "Practice Problem 2\nStarting from framingham_df, use pipes to (1) filter to participants that are younger than 40 years old and (2) select their glucose and diabetes values. Save your processed data to a variable called framingham_diabetes\nTip: the keyboard shortcut for %&gt;% is (Command + Shift + m) on MacOS and (Control + Shift + m) on Windows.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 4: Data Exploration"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week4_data_exploration.html#practice-problem-3",
+    "href": "tutorials/Week4_data_exploration.html#practice-problem-3",
+    "title": "Week 4: Data Exploration",
+    "section": "Practice Problem 3",
+    "text": "Practice Problem 3\nCalculate the average glucose value in the framingham_diabetes data frame you made in practice problem 1\nHint: mean() is used to take the average of a vector. Which function do you need to use extract values from a dataframe column as a vector?\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 4: Data Exploration"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week4_data_exploration.html#practice-problem-4",
+    "href": "tutorials/Week4_data_exploration.html#practice-problem-4",
+    "title": "Week 4: Data Exploration",
+    "section": "Practice Problem 4",
+    "text": "Practice Problem 4\nCalculate the number of observations and average glucose value (glucose) by different combinations of diabetes (diabetes) and sex (male, where 1=“male” and 0=“false) in the framingham_diabetes.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 4: Data Exploration"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week6_descriptive_statistics.html",
+    "href": "tutorials/Week6_descriptive_statistics.html",
+    "title": "Week 6: Descriptive Statistics",
+    "section": "",
+    "text": "Note: If you name your R chuck “setup”, R will run it automatically the first time you run one of the code chucks below. It’s a good idea to put your library statements inside setup so your packages are ready to go!",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 6: Descriptive Statistics"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week6_descriptive_statistics.html#center",
+    "href": "tutorials/Week6_descriptive_statistics.html#center",
+    "title": "Week 6: Descriptive Statistics",
+    "section": "Center",
+    "text": "Center\nThe two most common ways to describe the center of the data are the mean and median. R gives us simple functions to find these values.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nIt is good statistical practice to use mean when your data are normally distributed (bell shaped), like for age in this study. The median is used when the data are skewed, like for cigsPerDay in this study.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nIf we want to tell people the “center” age of our data, we can see 49.58 is a good central marker. If we want to say what our “center” cigarettes per day is, 0 is a much better choice because it represents the “average person” in our data set who does not smoke at all.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 6: Descriptive Statistics"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week6_descriptive_statistics.html#spread",
+    "href": "tutorials/Week6_descriptive_statistics.html#spread",
+    "title": "Week 6: Descriptive Statistics",
+    "section": "Spread",
+    "text": "Spread\nThe most common way to measure spread is through standard deviations calculated with sd(). This class is not a statistics class, so we will not go into what defines a standard deviation other than it describes the spread of the data. We can also use the inter-quartile range (IQR) to describe the spread of the data calculated using quantile(). The inter-quartile range is two numbers associated with the 25th and 75th percentile of the data (aka the 1/4 mark and the 3/4 mark). To get the IQR, we tell quantile we’re looking for the 25th and 75th percentile using probs=c(0.25,0.75). quantile returns our two values inside a vector. If we want to collapse that vector into a character with a dash between the numbers, we can use paste() with the argument collapse=\"-\".\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nJust like before, it is good practice to use standard deviations for normally distributed data like age and IQR for skewed data like cigsPerDay.\n\nPractice Problem 4\nSummarize the center and spread of the columns totChol and BMI. Check the variables with hist first to choose the methods you think are appropriate.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n[Optional Challenge] Practice Problem 5\nTo get the mean, median, sd, or IQR of variables within groups, we can use dplyr functions and the group_by function like we learned in Week 4! Remember that dplyr starts with the dataset and uses %&gt;% (pipe) operators to create a data flow. We then use group_by to specify which variables define our groups of interest. summarize can then give us a value for each group. For example, let’s find the mean, median, sd, and IQR of cigarettes per day for each education category.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nUse dplyr to get the mean and standard deviation of age for males and females.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 6: Descriptive Statistics"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week6_descriptive_statistics.html#risk-ratios",
+    "href": "tutorials/Week6_descriptive_statistics.html#risk-ratios",
+    "title": "Week 6: Descriptive Statistics",
+    "section": "Risk Ratios",
+    "text": "Risk Ratios\nThe risk ratio divides the risk (or probability) of the outcome of interest in the exposed group by the risk (or probability) of the outcome of interest in the unexposed group.\nSuppose we had the following 2x2 table:\n\n\n\n\nOutcome +\nOutcome -\n\n\n\n\nExposed/Treated\na\nb\n\n\nUnexposed/Untreated\nc\nd\n\n\n\nThen we can cacluclate the risk ratio as:\n\\[\nRR = \\frac{Risk\\ of\\ Outcome\\ in\\ Exposed}{Risk\\ of\\ Outcome\\ in\\ Unexposed} = \\frac{a/(a+b)}{c/(c+d)}\n\\]\nIn this example, we will divide the risk of CHD in those with diabetes by the risk of CHD in those without diabetes. Let’s start with our 2x2 table of diabetes and CHD.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nThe risk of having CHD for someone with diabetes is the number of people with CHD & diabetes divided by the total number of people with diabetes, or 40/(40+69). You can also think of this number as the percent of people with diabetes that have CHD; or the probability of CHD given you have diabetes.\nThe risk of CHD for someone without diabetes is the number of people with CHD & no diabetes divided by the number of people with no diabetes, or 604/(604+3528). You can also think of this number as the percent of people without diabetes that have CHD; or the probability of CHD given no diabetes. If we divide these risks, we get the risk ratio.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nAccording to this result, people with diabetes are at 2.51 times higher risk of having CHD compared to people without diabetes.\nTo avoid having to manually type the values, we can use dplyr to extract the relevant risk estimates directly from the data frame. Recall that when we have a vector of “0”s and “1”s (or “FALSES” and “TRUES”), we can calculate the proportions of “1”s by taking the mean of the vector. If we filter the data frame by diabetes status, taking the mean of the TenYearCHD column will give us the corresponding risk of CHD.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPractice Problem 5\nCalculate the risk ratio for CHD in the next ten years (TenYearCHD) comparing patients who are taking blood pressure medication to those who are not (BPMeds).\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 6: Descriptive Statistics"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week6_descriptive_statistics.html#odds-ratios",
+    "href": "tutorials/Week6_descriptive_statistics.html#odds-ratios",
+    "title": "Week 6: Descriptive Statistics",
+    "section": "Odds Ratios",
+    "text": "Odds Ratios\nSometimes, we want to know the odds ratio. Odds is very similar to risk with a slight twist. Risk is the number of “yes”s divided by the total number in that group. Odds is the number of “yes”s divided by the number of “no”s. If your risk is 50%, your odds are 1 to 1. If your risk is 75%, your odds are 3 to 1. If your risk is 10%, your odds are 1 to 9. Applying this concept, the odds ratio divides the odds of disease in the exposed group by the odds of the disease in the unexposed group.\nSuppose we had the following 2x2 table:\n\nThen the odds ratio is calculated as:\n\n\n\nOutcome +\nOutcome -\n\n\n\n\nExposed/Treated\na\nb\n\n\nUnexposed/Untreated\nc\nd\n\n\n\n\\[\nOR = \\frac{Odds\\ of\\ Outcome\\ in\\ Exposed}{Odds\\ of\\ Outcome\\ in\\ Unexposed} = \\frac{a/b}{c/d}\n\\]\nLet’s start with a 2x2 table of diabetes and CHD again:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nFor our example, the odds of CHD for people with diabetes is the number of people with CHD & diabetes divided by the number of people with no CHD & diabetes, or 40/69. The odds of CHD for people without diabetes is the number of people with CHD & no diabetes divided by the number of people with no CHD & no diabetes, or 604/3528. If we divide these odds, we get the odds ratio.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nAccording to this result, people with diabetes are at 3.39 times higher odds of having CHD compared to people without diabetes.\nWe can also use dplyr to calculate odds ratios directly from the data frame. Because of how odds are calculated, we aren’t able to take simply take the mean columns to estimate proportions. Instead, we can use filter to find the individual values of our 2x2 table and do the calculation as follows:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPractice Problem 6\nCalculate the odds ratio for CHD in the next ten years (TenYearCHD) comparing patients who are taking blood pressure medication to those who are not (BPMeds).\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 6: Descriptive Statistics"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week6_descriptive_statistics.html#epitools",
+    "href": "tutorials/Week6_descriptive_statistics.html#epitools",
+    "title": "Week 6: Descriptive Statistics",
+    "section": "Epitools",
+    "text": "Epitools\nThe epiR package has a function epi.2by2 that takes in a 2x2 table and calculates the risk ratio and odds ratio for you.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n[Optional Challenge] Practice Problem 7\nCalculate the risk and odds ratios for CHD in the next ten years (TenYearCHD) comparing patients who are taking blood pressure medication to those who are not (BPMeds) using epiR.\nHint: Taking blood pressure medications probably lowers your risk of heart disease, so the number you are looking for is less than 1.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 6: Descriptive Statistics"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week6_descriptive_statistics.html#table1-package",
+    "href": "tutorials/Week6_descriptive_statistics.html#table1-package",
+    "title": "Week 6: Descriptive Statistics",
+    "section": "table1 Package",
+    "text": "table1 Package\nWe can have R make a table1 for us using the table1 package. I often use this to get quick summary statistics about all of the variables and then copy all of that information into a pretty looking table in a word document. The creators of table1 have already made a tutorial if you want to dive in deeper.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nTo tell R which variables we want in our table, we have to give table1 a “formula”. Formulas in R use the ~ to describe the relationship between variables. For table1, we use the formula to add up all the variables we want in the table. If we want to remake the table above, we write the three variables that we want on the left side added together to the right of the ~ like ~age+smoker+educ_labeled. If we want table1 to calculate counts and percents for categorical variables, we use factor() to indicate that data is categorical like this ~age+factor(smoker)+factor(educ_labeled). If we want there to be different columns for different sexes, we need to add a | sex at the end. Lastly, we tell the function which dataset we are working on with data=clean_fram_data.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n[Optional Challenge] Practice Problem 9\nMake your own Table 1 using table1! Try having age, number of cigarettes per day, smoking status, education, and CHD in ten years on the left side with blood pressure medication status along the top. You will need to filter out missing data for blood pressure medication before you give the data to table1.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 6: Descriptive Statistics"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week8-9_data_visualizations.html#continuous-variables",
+    "href": "tutorials/Week8-9_data_visualizations.html#continuous-variables",
+    "title": "Week 8 + 9: Data Visualizations",
+    "section": "Continuous Variables",
+    "text": "Continuous Variables\n\nHistograms\nHistogram displaying the frequency of different values in a continuous distribution within specified intervals, and can be produced with geom_histogram()\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nUsing this plot, we can see that most countries have relatively low maternal mortality with only a handful of countries breaking 800 deaths per 100,000 births. We would consider this variable to be right skewed.\nBy default, histograms are generated with 30 total bins/intervals. To adjust the number or width of bins, we can set the value of binwidth. Smaller values of binwidth create smaller intervals (more bars) but larger values of binwidth create larger intervals (less bars).\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nDensity Plots\nDensity plots also show the distribution of a variable, and can be seen as the “smoothed” version of a histogram. These can be generated in ggplot with geom_density\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nDensity plots are especially nice because you can easily compare multiple lines on the same plot which is more difficult to do with traditional histograms.\n\n\nPractice Problem 1\nPlot the distribution of maternal mortality in 2010 in the Americas using a histogram.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nPractice Problem 2\nPlot the distribution of maternal mortality in 2000 among upper-middle income countries using a density plot.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 8 + 9: Data Visualizations"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week8-9_data_visualizations.html#categorical-variables",
+    "href": "tutorials/Week8-9_data_visualizations.html#categorical-variables",
+    "title": "Week 8 + 9: Data Visualizations",
+    "section": "Categorical Variables",
+    "text": "Categorical Variables\n\nBar Plots\nBar plots can be used to show the distribution of categorical variables by displaying the number of observations in each group. To create a plot, use geom_bar(). Below, we plot the distribution of country incomes in 2020.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nNotice how the income groups are ordered alphabetically, rather than by “Low” -&gt; “Lower middle” -&gt; “Upper middle” -&gt; “High”. We can change how they’re displayed by converting income to a factor that we can set the order of using levels\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nFrom this plot, we can see how even the different categories are. It seems like the low income category has about half as many countries as the other three categories, but the other three are relatively balanced.\n\n\nPractice Problem 3\nPlot the distribution of regions represented in 2020 using a bar plot.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 8 + 9: Data Visualizations"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week8-9_data_visualizations.html#scatterplots",
+    "href": "tutorials/Week8-9_data_visualizations.html#scatterplots",
+    "title": "Week 8 + 9: Data Visualizations",
+    "section": "Scatterplots",
+    "text": "Scatterplots\nAs we saw in the introduction, scatter plots can be generated using geom_point(). These plots allow us to look at the correlation between two continuous variables.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 8 + 9: Data Visualizations"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week8-9_data_visualizations.html#line-plots",
+    "href": "tutorials/Week8-9_data_visualizations.html#line-plots",
+    "title": "Week 8 + 9: Data Visualizations",
+    "section": "Line plots",
+    "text": "Line plots\nLine plots are a great option for visualizing how a variable changes over time. In ggplot, line plots are created using geom_line(). Run the code below to plot how maternal mortality changes over time in the United States.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 8 + 9: Data Visualizations"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week8-9_data_visualizations.html#box-plots",
+    "href": "tutorials/Week8-9_data_visualizations.html#box-plots",
+    "title": "Week 8 + 9: Data Visualizations",
+    "section": "Box Plots",
+    "text": "Box Plots\nBox plots can be used to compare the distribution of a continuous variable by different levels of a categorical variable. They are created using geom_boxplot. In the code below, we compare the distribution of maternal mortality by income group.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nWe can flip the axes to view the box plots horizontally rather than vertically.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nWhen we do this, values placed in order from bottom to top. However, since we tend to read plots from top to bottom, we might want to reverse this order.\n\nAdjusting displays with scale_ functions\nWe can use the scale_x_discrete, scale_x_continuous, scale_y_discrete, and scale_y_continuous functions of ggplot2 to adjust how axis values and labels are displayed in our plot. The function you should use depends on which scale you’re working with and the type of data it represents (discrete vs continuous).\nFor the purposes of this class we’ll focus on the breaks, labels, and limits options of these functions. Use ?scale_y_discrete to see other edits you can make.\n\nbreaks specifies where the “tick marks” should be placed on the axis. By default, the breaks will include all possible values of the discrete variable or evenly spaced points across the range of a continuous variable. We can change the placement of these marks by specifying a vector of values that contain our desired break placements (ex breaks = c(50, 100, 150, 200))\nlabels is complementary to breaks and specifies how we want to label the break points. This is particularly useful if we want to reformat axis labels without changing the underlying data. For example, if we had breaks that are coded as c(\"2012-03-01\" \"2012-06-01\") we can create more informative labels by setting labels = c(\"March 3, 2012\", \"June 1, 2012\").\nlimits allows us to control the range of values displayed on the axes, and the order that they’re shown in. For continuous variables, the limits can be used to specific the minimum and maximum value that should be represented on the axis. For categorical variables, the limits are specified through a vector that contains all possible values in the desired order. Functions can also be passed through to streamline the process of reordering variables. For example, rev reverses the order that values are displayed on the axis.\n\nIn the boxplot above, we’re interested in changing the order of income group, which is a discrete variable on the y-axis. Therefore, we can use scale_y_discrete(limits = ...) to change how income group is displayed on the plot.\nOne way to set these values is by passing through a vector with all possible values of the categorical variable, in the order that we want them displayed (from bottom [“least”] to top [“greatest”]):\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nSince we’re interested in simply reversing the order of the variables, we can also use the rev function with the limits argument.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nWith this plot, we can see a pretty clear relationship between income and maternal mortality. This relationship could be further investigated with statistical tests to determine if there is a statistically significant relationship between country income and country maternal mortality.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 8 + 9: Data Visualizations"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week8-9_data_visualizations.html#violin-plots",
+    "href": "tutorials/Week8-9_data_visualizations.html#violin-plots",
+    "title": "Week 8 + 9: Data Visualizations",
+    "section": "Violin plots",
+    "text": "Violin plots\nViolin plots are similar to box plots, but display the density of the continuous variable for each level of the categorical variable.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nThis plot combines the benefits of the histogram with the box plot so that we can see that our data are right-skewed (most observations are around zero) while also comparing regions to one another.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 8 + 9: Data Visualizations"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week8-9_data_visualizations.html#practice-problem-4",
+    "href": "tutorials/Week8-9_data_visualizations.html#practice-problem-4",
+    "title": "Week 8 + 9: Data Visualizations",
+    "section": "Practice Problem 4",
+    "text": "Practice Problem 4\nPlot the distribution of mortality in 2020 by region, using either a box plot or violin plot. Try using a scale_ function to rearrange the order of how regions are displayed.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nStart Week 9",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 8 + 9: Data Visualizations"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week8-9_data_visualizations.html#stacking-elements",
+    "href": "tutorials/Week8-9_data_visualizations.html#stacking-elements",
+    "title": "Week 8 + 9: Data Visualizations",
+    "section": "Stacking elements",
+    "text": "Stacking elements\nA major strength of ggplot2 is its ability to add multiple elements to the same plot. For example, we might want to plot both the estimates and confidence intervals of mortality in 2020 for countries in South-East Asia.\nWe can start by plotting just the estimates of mortality using geom_point().\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nWe can then add our confidence intervals on the same plot using geom_linerange(). Notice how geom_linerange() gets a separate set of aesthetic mappings (aes()) that indicate where the range starts (xmin) and ends (xmax). This adds to the first set of mappings specified in ggplot() (which also informs the country or “y-value” the ranges are associated with ) and uses the same dataframe.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nAdding error bars is great practice for scientific figures because it allows you to clearly communicate and compare uncertainty in your estimates.\nSimilarly, we can add errors for each year to our line plots using geom_ribbon(). Again, we’ll pass in a new set of mappings to indicate where the error ribbons start and end. We can also specify the color of the ribbon by setting fill = \"grey\".\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 8 + 9: Data Visualizations"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week8-9_data_visualizations.html#colors-and-fills",
+    "href": "tutorials/Week8-9_data_visualizations.html#colors-and-fills",
+    "title": "Week 8 + 9: Data Visualizations",
+    "section": "Colors and Fills",
+    "text": "Colors and Fills\nWe can change the color and fill of plot elements using color = ... and fill = .... color will change the colors of lines and shape outlines, while fill will change how the inside of areas (ex the inside of bars in histograms) are colored.\nRun the cells below to see how color and fill are different in the way they modify the histogram.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nThere are 657 colors that can be called by name in ggplot. You can view a list of these color names by running colors()\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nIn addition to these options, we can pass through the hexcode of colors we want to use.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 8 + 9: Data Visualizations"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week8-9_data_visualizations.html#point-shapes-and-line-types",
+    "href": "tutorials/Week8-9_data_visualizations.html#point-shapes-and-line-types",
+    "title": "Week 8 + 9: Data Visualizations",
+    "section": "Point shapes and line types",
+    "text": "Point shapes and line types\nWe can also vary the shape of points and type of lines in our plots using shape and linetype, respectively.\nThe possible values for linetype are “blank”, “solid”, “dashed”, “dotted”, “dotdash”, “longdash”, “twodash”. See this resource for a visual guide of what each linetype looks like.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nThe possible values for shape are numerics that correspond to specific shapes such as circles, squares, and stars. See this resource for a visual guide of what each shape looks like.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 8 + 9: Data Visualizations"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week8-9_data_visualizations.html#themes",
+    "href": "tutorials/Week8-9_data_visualizations.html#themes",
+    "title": "Week 8 + 9: Data Visualizations",
+    "section": "Themes",
+    "text": "Themes\nWe can also change the appearance of the plots, using theme(). Themes may alter the background, axes, and fonts of the figures. Below, we show examples of theme_bw() and theme_minimal() but you can view a collection of all available themes here.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 8 + 9: Data Visualizations"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week8-9_data_visualizations.html#varying-elements-by-group",
+    "href": "tutorials/Week8-9_data_visualizations.html#varying-elements-by-group",
+    "title": "Week 8 + 9: Data Visualizations",
+    "section": "Varying elements by group",
+    "text": "Varying elements by group\nWe often put data points from different groups on the same plot, but visually distinguishing between these groups could bring new insights to your data. For example, in our scatter plot comparing population and mortality, we might want to easily identify which points correspond to low vs high income countries. We can do this by adding another item to our aesthetic mappings (aes()) to specify that we want to color points on the figure by income_group.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nWe can also change the title and position of the legend using the labs and theme elements.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nSimilarly, we can add a shape item to aes to specify that we want a different shape for unique income_group\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nIn some cases, plotting and coloring groups on a plot can help improve how clearly it conveys the data.\nConsider a line plot in which we want plot mortality over time for countries in South East Asia. When we run the code below, all of the points are plotted on the same line and we can’t distinguish between countries. This plot is uninterpretable.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nInstead, we want to plot a separate line for each country. We can do this by adding a group item to our mappings to specify that there should be separate plot elements for each unique value in the grouped variable. In our case, this argument specifies that we want a different line for each Country on the plot.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nHowever, as is, we can’t tell what countries each line corresponds to. We can vary line color by country to be able to distinguish between them.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 8 + 9: Data Visualizations"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week8-9_data_visualizations.html#practice-problem-5",
+    "href": "tutorials/Week8-9_data_visualizations.html#practice-problem-5",
+    "title": "Week 8 + 9: Data Visualizations",
+    "section": "Practice Problem 5",
+    "text": "Practice Problem 5\nPlot the mortality estimates (and their 95% CIs) for Yemen and Oman over time. Plot each country in a different color. For a challenge, try varying the line types as well.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 8 + 9: Data Visualizations"
+    ]
+  },
+  {
+    "objectID": "tutorials/Week8-9_data_visualizations.html#facets",
+    "href": "tutorials/Week8-9_data_visualizations.html#facets",
+    "title": "Week 8 + 9: Data Visualizations",
+    "section": "Facets",
+    "text": "Facets\nIf there are too many elements on the plot, it can become too crowded to easily interpret. Instead, we can create many subplots and combine them with their axes lined up. This allows us to see individual data points more clearly while still being able to compare the different groups.\nWe can create subplots, or facets, by using facet_wrap() with the variable that we want to create subplots for.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nBy default, all plots have the same axis scales. However, this can make it difficult to view subplots where data points that are heavily clustered. To allow axes to vary by facet, we can edit the scales argument to be equal to free (all facets have their own x- and y- axis), free_y (all facets have the same x-axis but their own y-axis), or free_x (all facets have their own x-axis but the same y-axis).\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nNotice how every facet now has its own x- and y-axis. Allowing these scales to differ makes it easier to see differences within regions, but makes it more difficult to spot differences across regions.",
+    "crumbs": [
+      "Home",
+      "Tutorials",
+      "Week 8 + 9: Data Visualizations"
+    ]
+  },
+  {
+    "objectID": "hw/HW2_data_structures_and_functions.html",
+    "href": "hw/HW2_data_structures_and_functions.html",
+    "title": "Homework 2",
+    "section": "",
+    "text": "This assignment covers materials from Weeks 2 and 3, including data structures (vectors and data frames) and functions. You should be able to complete Parts 1-2 after the Week 2 lecture and Part 3 after the Week 3 lecture. You only need to complete the “Challenge Questions” if you have enrolled in the class for 2 units.\nIf you have questions about this assignment, please attend office hours or create a discussion post on the course Ed.",
+    "crumbs": [
+      "Home",
+      "Homework",
+      "Homework 2"
+    ]
+  },
+  {
+    "objectID": "hw/HW2_data_structures_and_functions.html#question-1-2-points",
+    "href": "hw/HW2_data_structures_and_functions.html#question-1-2-points",
+    "title": "Homework 2",
+    "section": "Question 1 (2 points)",
+    "text": "Question 1 (2 points)\nCreate a vector called household_incomes that contains the survey data, as numerics. Make sure that the first item in the vector corresponds to household 1, the second item corresponds to household 2, etc.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Homework",
+      "Homework 2"
+    ]
+  },
+  {
+    "objectID": "hw/HW2_data_structures_and_functions.html#question-2-2-points",
+    "href": "hw/HW2_data_structures_and_functions.html#question-2-2-points",
+    "title": "Homework 2",
+    "section": "Question 2 (2 points)",
+    "text": "Question 2 (2 points)\nWe continue to survey the community and collect incomes for 2 additional households. Household 6 reported an income of $124,950 and Household 7 reported an income of $42,738. Create a vector updated_household_incomes that extends the household_incomes vector with the two new income measurements\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Homework",
+      "Homework 2"
+    ]
+  },
+  {
+    "objectID": "hw/HW2_data_structures_and_functions.html#question-3-2-point",
+    "href": "hw/HW2_data_structures_and_functions.html#question-3-2-point",
+    "title": "Homework 2",
+    "section": "Question 3 (2 point)",
+    "text": "Question 3 (2 point)\nCalculate summary statistics for updated_household_incomes. Save mean_income, median_income, min_income, and max_income to their respective values.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Homework",
+      "Homework 2"
+    ]
+  },
+  {
+    "objectID": "hw/HW2_data_structures_and_functions.html#question-4-3-points",
+    "href": "hw/HW2_data_structures_and_functions.html#question-4-3-points",
+    "title": "Homework 2",
+    "section": "Question 4 (3 points)",
+    "text": "Question 4 (3 points)\nWe decide that we don’t need to measure the exact dollar amount of these incomes. Instead, we’re interested in rounding incomes to the nearest thousands. For example, $35,294 should be 35 and $93,866 should be 94 - note how the rounded values are whole numbers. Create a vector rounded_incomes that contain household incomes in thousands.\nHint 1: You will have to complete a vector operation on updated_household_incomes. Hint 2: The result of your vector operation may include many decimal values. You may need to use the round() function to gain whole numbers. You can run ?round to learn how to use the function.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Homework",
+      "Homework 2"
+    ]
+  },
+  {
+    "objectID": "hw/HW2_data_structures_and_functions.html#question-5-2-points",
+    "href": "hw/HW2_data_structures_and_functions.html#question-5-2-points",
+    "title": "Homework 2",
+    "section": "Question 5 (2 points)",
+    "text": "Question 5 (2 points)\nWe collect the following data:\n\nPatient 1: 120/80 mmHg\nPatient 2: 130/85 mmHg\nPatient 3: 118/76 mmHg\nPatient 4: 140/90 mmHg\nPatient 5: 122/78 mmHg\nPatient 6: 150/100 mmHg\nPatient 7: 126/82 mmHg\n\nCreate a data frame blood_pressure_df that contains these data points. It should have three columns: patient_id, systolic_value, and diastolic_value.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Homework",
+      "Homework 2"
+    ]
+  },
+  {
+    "objectID": "hw/HW2_data_structures_and_functions.html#question-6-1-point",
+    "href": "hw/HW2_data_structures_and_functions.html#question-6-1-point",
+    "title": "Homework 2",
+    "section": "Question 6 (1 point)",
+    "text": "Question 6 (1 point)\nPull the row in blood_pressure_df that corresponds to the measurement for Patient 5 and save it to the variable patient_5_df\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Homework",
+      "Homework 2"
+    ]
+  },
+  {
+    "objectID": "hw/HW2_data_structures_and_functions.html#question-7-1-point",
+    "href": "hw/HW2_data_structures_and_functions.html#question-7-1-point",
+    "title": "Homework 2",
+    "section": "Question 7 (1 point)",
+    "text": "Question 7 (1 point)\nPull systolic blood pressure values as a one-column data frame called systolic_df.\nHint: use class() to check that systolic_df is a data.frame type.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Homework",
+      "Homework 2"
+    ]
+  },
+  {
+    "objectID": "hw/HW2_data_structures_and_functions.html#question-8-1-point",
+    "href": "hw/HW2_data_structures_and_functions.html#question-8-1-point",
+    "title": "Homework 2",
+    "section": "Question 8 (1 point)",
+    "text": "Question 8 (1 point)\nPull systolic blood pressure values as a vector of numerics called systolic_vector.\nHint: use class() to check that systolic_vector is a numeric type.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Homework",
+      "Homework 2"
+    ]
+  },
+  {
+    "objectID": "hw/HW2_data_structures_and_functions.html#question-9-2-points",
+    "href": "hw/HW2_data_structures_and_functions.html#question-9-2-points",
+    "title": "Homework 2",
+    "section": "Question 9 (2 points)",
+    "text": "Question 9 (2 points)\nWrite a function that takes someone’s systolic and diastolic blood pressure and returns “Normal” or “Hypertension”, or “Severe Hypertension” based on the person’s blood pressure. The American Heart Association defines hypertension as having a systolic blood pressure greater than or equal to 130 mmHg OR a diastolic blood pressure greater than or equal to 80 mmHg. Severe hypertension corresponds to systolic blood pressure of greater than or equal to 140 mmHg OR diastolic blood pressure greater than or equal 90 mmHg.\nApply your function to a patient with a systolic BP of 120 and diastolic BP of 75, and a patient with a systolic BP of 150 and diastolic BP of 85.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Homework",
+      "Homework 2"
+    ]
+  },
+  {
+    "objectID": "hw/HW2_data_structures_and_functions.html#challenge-question-1-3-points",
+    "href": "hw/HW2_data_structures_and_functions.html#challenge-question-1-3-points",
+    "title": "Homework 2",
+    "section": "Challenge Question 1 (3 points)",
+    "text": "Challenge Question 1 (3 points)\nWrite a for loop using the classify_hypertension function to create a vector called hypertension_statuses that stores the hypertension status of each person in the blood_pressure_df data frame.\nHint: You can use the for loop to look at each row of the data frame using the row index.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Homework",
+      "Homework 2"
+    ]
+  },
+  {
+    "objectID": "hw/HW2_data_structures_and_functions.html#challenge-question-2-2-points",
+    "href": "hw/HW2_data_structures_and_functions.html#challenge-question-2-2-points",
+    "title": "Homework 2",
+    "section": "Challenge Question 2 (2 points)",
+    "text": "Challenge Question 2 (2 points)\nDon’t like writing a for loop each time you want to do work on a data frame? Neither do we. R gives us the function mapply() (multiple apply) which passes values in order to a function. Use ?mapply and Google to figure out how to create a vector with the hypertension status of each patient using your function, the patient data frame blood_pressure_df, and mapply.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Homework",
+      "Homework 2"
+    ]
+  },
+  {
+    "objectID": "hw/HW5_data_visualizations.html#data-overview",
+    "href": "hw/HW5_data_visualizations.html#data-overview",
+    "title": "Homework 5",
+    "section": "Data Overview",
+    "text": "Data Overview\nIn this homework, we’ll be working indicators of noncommunicable diseases (NCD) like heart disease, cancer, and diabetes and associated risk factors collected by the WHO Global Health Observatory. Download the ncd_risk_factors.csv file from Canvas and save them in the data folder of your class directory\nThe dataset contains country-level annual estimates on the prevalence of different NCDs and risk factors that may contribute to these conditions. It contains the following columns:\n\ncountry: a string, the name of a country\nyear: a numeric, the year that estimates were recorded\nindicator_abbr: a character, the abbreviated code for the indicator\nindicator_name: a character, the full name of the indicator\nsex: a character, the total number of available hospital/ICU beds\nestimate: a numeric, the point estimate of the corresponding indicator\nci_lb: a numeric, the lower bound of the confidence interval of the indicator esitmate\nci_ub: a numeric, the upper bound of the confidence interval of the indicator esitmate\n\nRun the cell below to load the NCD data as ncd_data\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nRun the cell below to see the mappings between each indicator_abbr and indicator_name. We can see that the data contains a variable NCDMORT3070 that describes the probability of death from a chronic conditions between the ages of 30-70, as well as factors related to blood pressure, hypertension, BMI, and substance use.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Homework",
+      "Homework 5"
+    ]
+  },
+  {
+    "objectID": "hw/HW5_data_visualizations.html#question-1-3-points",
+    "href": "hw/HW5_data_visualizations.html#question-1-3-points",
+    "title": "Homework 5",
+    "section": "Question 1 (3 points)",
+    "text": "Question 1 (3 points)\nCreate a histogram to plot the distribution of estimated prevalence of heavy episodic drinking for females in 2016. Make sure to add a title and informative axis labels to your plot.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Homework",
+      "Homework 5"
+    ]
+  },
+  {
+    "objectID": "hw/HW5_data_visualizations.html#question-2-3-points",
+    "href": "hw/HW5_data_visualizations.html#question-2-3-points",
+    "title": "Homework 5",
+    "section": "Question 2 (3 points)",
+    "text": "Question 2 (3 points)\nCreate a boxplot to compare the distributions of estimated prevalence of tobacco use in 2015 for males vs females. Make sure to add a title and informative axis labels to your plot.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Homework",
+      "Homework 5"
+    ]
+  },
+  {
+    "objectID": "hw/HW5_data_visualizations.html#question-3-3-points",
+    "href": "hw/HW5_data_visualizations.html#question-3-3-points",
+    "title": "Homework 5",
+    "section": "Question 3 (3 points)",
+    "text": "Question 3 (3 points)\nCreate a scatterplot to visualize the relationship between insufficient physical activity (NCD_PAA) and probability of death from a NCD between the age of 30 and 70 (NCDMORT3070) for males in 2016. Place NCD_PAA on the x-axis and NCDMORT3070 on the y-axis. Make sure to add a title and informative axis labels to your plot.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Homework",
+      "Homework 5"
+    ]
+  },
+  {
+    "objectID": "hw/HW5_data_visualizations.html#question-4-4-points",
+    "href": "hw/HW5_data_visualizations.html#question-4-4-points",
+    "title": "Homework 5",
+    "section": "Question 4 (4 points)",
+    "text": "Question 4 (4 points)\nPlot the estimates and confidence intervals (using geom_linerange()) of probability of death from a NCD between the age of 30 and 70 (NCDMORT3070) for females in Canada, Mexico, and the United States in 2018. Make sure to add a title and informative axis labels to your plot.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Homework",
+      "Homework 5"
+    ]
+  },
+  {
+    "objectID": "hw/HW5_data_visualizations.html#question-5-4-points",
+    "href": "hw/HW5_data_visualizations.html#question-5-4-points",
+    "title": "Homework 5",
+    "section": "Question 5 (4 points)",
+    "text": "Question 5 (4 points)\nUsing a line plot, visualize the estimates and confidence intervals (using geom_ribbon()) of probability of death from a NCD between the age of 30 and 70 (NCDMORT3070) for females in the United States over time. Make sure to add a title and informative axis labels to your plot.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Homework",
+      "Homework 5"
+    ]
+  },
+  {
+    "objectID": "hw/HW5_data_visualizations.html#question-6-5-points",
+    "href": "hw/HW5_data_visualizations.html#question-6-5-points",
+    "title": "Homework 5",
+    "section": "Question 6 (5 points)",
+    "text": "Question 6 (5 points)\nUsing a line plot, visualize the estimates and confidence intervals (using geom_ribbon()) of underweight (NCD_BMI_18A) and obesity prevalence (NCD_BMI_30A) for females in the United States over time. Make sure to add a title and informative axis labels to your plot.\nHint: set alpha = 0.2 inside geom_ribbon() to make the fill of the intervals transparent\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Homework",
+      "Homework 5"
+    ]
+  },
+  {
+    "objectID": "hw/HW5_data_visualizations.html#challenge-question-1-5-points",
+    "href": "hw/HW5_data_visualizations.html#challenge-question-1-5-points",
+    "title": "Homework 5",
+    "section": "Challenge Question 1 (5 points)",
+    "text": "Challenge Question 1 (5 points)\nPlot the estimates and confidence intervals of the prevalence of elevated blood pressure (BP_04) by sex in France, Germany, Spain, and Portugal in 2015. Plot estimates on the x-axis and countries on the y-axis. Each country should have two corresponding points + error bars that are plotted next to each other, one for prevalence among females and one prevalence among males. Color plot elements for males vs females in different colors.\nHint: look into how position = position_dodge(...) can be used to avoid overlapping elements of your plot\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Homework",
+      "Homework 5"
+    ]
+  },
+  {
+    "objectID": "hw/HW5_data_visualizations.html#challenge-question-2-5-points",
+    "href": "hw/HW5_data_visualizations.html#challenge-question-2-5-points",
+    "title": "Homework 5",
+    "section": "Challenge Question 2 (5 points)",
+    "text": "Challenge Question 2 (5 points)\nUsing a line plot, visualize the estimates and confidence intervals (using geom_ribbon()) of the prevalence of tobacco use (M_Est_tob_curr) by sex in Vietnam, Cambodia, Laos, and Thailand over time. Use facet_wrap to create a subplot for each country. Within each facet, create a line plot with year on the x-axis, tobacco use prevalence on the y-axis, and use different colored lines for each sex. Make sure to add a title and informative axis labels to your plot.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Home",
+      "Homework",
+      "Homework 5"
     ]
   }
 ]
