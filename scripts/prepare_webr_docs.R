@@ -70,10 +70,34 @@ data_helper_chunk <- function(site_url) {
     "    }",
     "    download.file(path, local_name, quiet = TRUE, mode = \"wb\")",
     "  }",
-    "  readr::read_csv(local_name, show_col_types = FALSE)",
+    "  utils::read.csv(local_name, stringsAsFactors = FALSE)",
     "}",
     "```"
   )
+}
+
+detect_webr_packages <- function(text) {
+  pkgs <- character()
+  if (grepl("library\\(tidyverse\\)", text)) {
+    pkgs <- c(pkgs, "dplyr", "ggplot2", "tidyr")
+  }
+  if (grepl("%>%|\\bdplyr::|\\bfilter\\(|\\bselect\\(|\\bmutate\\(|\\bgroup_by\\(|\\bsummarize\\(|\\bsummarise\\(|\\barrange\\(|\\bcount\\(|\\bleft_join\\(|\\binner_join\\(|\\bfull_join\\(|\\bdistinct\\(|\\brename\\(|\\bglimpse\\(", text)) {
+    pkgs <- c(pkgs, "dplyr")
+  }
+  if (grepl("ggplot\\(|geom_|facet_|theme_|labs\\(|scale_|coord_|`ggplot`", text)) {
+    pkgs <- c(pkgs, "ggplot2")
+  }
+  if (grepl("pivot_|gather\\(|spread\\(|separate\\(|unite\\(|\\btidyr::", text)) {
+    pkgs <- c(pkgs, "tidyr")
+  }
+  unique(pkgs)
+}
+
+format_webr_yaml <- function(pkgs) {
+  if (length(pkgs) == 0) {
+    return(character())
+  }
+  c("webr:", "  packages:", paste0("    - ", pkgs))
 }
 
 needs_data_helper <- function(lines) {
@@ -92,19 +116,22 @@ convert_rmd_to_qmd <- function(rmd_path) {
   title <- sub("^title:\\s*", "", title_line)
   title <- gsub("^['\"]|['\"]\\s*$", "", title)
 
-  new_yaml <- c(
-    "---",
-    paste0("title: \"", title, "\""),
-    "---"
-  )
-
   converted_body <- convert_body(body_lines)
   if (needs_data_helper(converted_body)) {
     converted_body <- c(data_helper_chunk(read_site_url()), "", converted_body)
   }
 
+  webr_pkgs <- detect_webr_packages(paste(c(body_lines, converted_body), collapse = "\n"))
+  new_yaml <- c(
+    "---",
+    paste0("title: \"", title, "\""),
+    format_webr_yaml(webr_pkgs),
+    "---"
+  )
+
   writeLines(c(new_yaml, "", converted_body), qmd_path, useBytes = TRUE)
-  message("Wrote ", qmd_path)
+  pkg_msg <- if (length(webr_pkgs) > 0) paste0(" [", paste(webr_pkgs, collapse = ", "), "]") else ""
+  message("Wrote ", qmd_path, pkg_msg)
 }
 
 convert_body <- function(lines) {

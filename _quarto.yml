@@ -95,17 +95,8 @@ resources:
   - tutorials/images/
 
 webr:
-  show-startup-message: false
+  show-startup-message: true
   channel-type: post-message
-  packages:
-    - readr
-    - dplyr
-    - ggplot2
-    - tidyr
-    - purrr
-    - stringr
-    - forcats
-    - tibble
 
 filters:
   - webr
