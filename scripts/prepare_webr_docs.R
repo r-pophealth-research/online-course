@@ -96,7 +96,7 @@ convert_body <- function(lines, data_prefix) {
       }
 
       if (grepl("include\\s*=\\s*FALSE", chunk_header)) {
-        out <- c(out, chunk_header, chunk_lines, sub("^\\s*", "", lines[i]))
+        # PDF-only setup chunks are not needed on the website
       } else {
         new_header <- sub("\\{r", "{webr-r", chunk_header)
         new_chunk <- adapt_chunk_for_webr(chunk_lines, data_prefix)

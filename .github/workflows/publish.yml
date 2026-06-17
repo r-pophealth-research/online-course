@@ -29,6 +29,13 @@ jobs:
         with:
           r-version: "4.4"
 
+      - name: Install R dependencies
+        uses: r-lib/actions/setup-r-dependencies@v2
+        with:
+          packages: |
+            knitr
+            rmarkdown
+
       - name: Generate WebR-enabled .qmd files
         run: Rscript scripts/prepare_webr_docs.R
 
