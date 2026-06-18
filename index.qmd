@@ -8,18 +8,6 @@ These materials were adapted from materials from the 2024-2025 offerings of EPI/
 
 All code in this online course can be run in your browser using [Quarto](https://quarto.org) and [WebR](https://docs.r-wasm.org/webr/latest/). You do not need R installed locally, but the "Running Materials Locally" sections provides instructions on how to run materials on your own computer.
 
-```{webr-r}
-#| context: setup
-# Helper: download bundled data into the WebR virtual filesystem
-webr_read_csv <- function(path) {
-  local_name <- basename(path)
-  if (!file.exists(local_name)) {
-    download.file(path, local_name, quiet = TRUE, mode = "wb")
-  }
-  readr::read_csv(local_name, show_col_types = FALSE)
-}
-```
-
 Click "Run" to run your first line of R code below!
 
 ```{webr-r}

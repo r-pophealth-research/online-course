@@ -12,6 +12,7 @@ website:
   search: true
   reader-mode: true
   repo-url: https://github.com/r-pophealth-research/online-course
+  site-url: https://r-pophealth-research.github.io/online-course
   repo-actions: [edit, issue]
   navbar:
     background: primary
@@ -62,17 +63,8 @@ resources:
   - images/
 
 webr:
-  show-startup-message: false
+  show-startup-message: true
   channel-type: post-message
-  packages:
-    - readr
-    - dplyr
-    - ggplot2
-    - tidyr
-    - purrr
-    - stringr
-    - forcats
-    - tibble
 
 filters:
   - webr
