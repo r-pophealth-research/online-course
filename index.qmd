@@ -2,45 +2,36 @@
 title: "Welcome"
 ---
 
+Welcome to **R for Health Research** — an introduction to R programming for epidemiology and health policy research.
 
-Welcome to **R Fundamentals for Health Research** — an introduction to R for epidemiology and health policy research.
+These materials were adapted from materials from the 2024-2025 offerings of EPI/CHPR 202 at Stanford University, and were authored by [Anna Nguyen](https://www.linkedin.com/in/annatnguyen98/) and [Samuel Jaros](https://www.linkedin.com/in/samuel-jaros/).
 
-These course materials run entirely in your browser using [Quarto](https://quarto.org) and [WebR](https://docs.r-wasm.org/webr/latest/). You do not need R installed locally to explore the tutorials and run code on this site.
+All code in this online course can be run in your browser using [Quarto](https://quarto.org) and [WebR](https://docs.r-wasm.org/webr/latest/). You do not need R installed locally, but the "Running Materials Locally" sections provides instructions on how to run materials on your own computer.
 
 ```{webr-r}
 #| context: setup
 # Helper: download bundled data into the WebR virtual filesystem
-webr_site_url <- "https://r-pophealth-research.github.io/online-course"
 webr_read_csv <- function(path) {
   local_name <- basename(path)
   if (!file.exists(local_name)) {
-    if (!grepl("^https?://", path)) {
-      clean_path <- sub("^(\.\./)+", "", path)
-      path <- paste0(webr_site_url, "/", clean_path)
-    }
     download.file(path, local_name, quiet = TRUE, mode = "wb")
   }
-  utils::read.csv(local_name, stringsAsFactors = FALSE)
+  readr::read_csv(local_name, show_col_types = FALSE)
 }
 ```
 
-Try loading a course dataset:
+Click "Run" to run your first line of R code below!
 
 ```{webr-r}
-framingham <- webr_read_csv("data/framingham.csv")
-nrow(framingham)
+print("Hello world!")
 ```
 
 ## How to use this site
 
 - **Tutorials** — Pre-class activities with interactive code cells. Click **Run** in any code block to execute R in your browser.
-- **Homework** — Assignments with editable code cells. Download the original `.Rmd` from the course repo if you prefer working in RStudio.
-- **Final Project** — End-of-quarter analysis assignment.
+- **Homework** — Assignments with editable code cells.
 
 ::: {.callout-note}
 The first time you run code on a page, WebR needs to download R and any required packages. This can take 30–60 seconds on a slow connection. Subsequent cells on the same page run much faster.
 :::
 
-## Working locally in RStudio
-
-If you prefer the full RStudio experience, clone the [course repository](https://github.com/r-pophealth-research/online-course) and open the `.Rmd` files directly. The `.qmd` files on this site are generated from those sources for WebR compatibility.

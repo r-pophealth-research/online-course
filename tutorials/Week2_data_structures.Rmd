@@ -5,7 +5,7 @@ output: html_notebook
 
 In this chapter, we'll cover the different ways that data is stored in R. We'll start by looking at the individual data points before moving on to collections of data. Here, you'll implement code to create, store, and access data in R.
 
-# Review: Data Types
+# Data Types
 
 There are several ways that data can be stored in R. In this class, we'll focus on using numerics, characters, and logicals.
 
@@ -47,7 +47,7 @@ big_number = 153423483
 big_number <- 153423483
 ```
 
-When you assign a variable, the environment panel in RStudio will update to include the variable's name and current value. Instead of having to type `153423483` every time we want to work with it, we can complete operations using the `big_number` variable. Compare the output of the following two cells:
+When you assign a variable, R will save the value to the variable name. Instead of having to type `153423483` every time we want to work with it, we can complete operations using the `big_number` variable. Compare the output of the following two cells:
 
 ```{r}
 153423483 * 4
@@ -57,29 +57,48 @@ When you assign a variable, the environment panel in RStudio will update to incl
 big_number * 4
 ```
 
-We can also reassign the value of variables using `=` and `->`. Run the code below to set the value of `big_number` to 12413. In the environment pane, the value of `big_number` will change to reflect your edits.
+We can also reassign the value of variables using `=` and `->`. Run the code below to set the value of `big_number` to 12413. R then updates the value saved to `big_number` to 12413.
 
 ```{r}
 big_number = 12413
+big_number
 ```
 
 ## Practice Problem 1
 
-Create a variable called `temp_f` that is equal to the current temperature in fahrenheit.
+Create a variable called `temp_f` that is equal to 72 degrees Fahrenheit.
 
 ```{r}
 temp_f = ...
 temp_f
 ```
 
-## Practice Problem 2
-
-Now create a variable `temp_c` that converts the value of `temp_f` to celcius. Recall that °C = (°F - 32) ÷ (9/5)
+::: {.callout-tip collapse="true"}
+## Solution
 
 ```{r}
-temp_c = ...
+temp_f = 72
+temp_f
+```
+:::
+
+## Practice Problem 2
+
+Now create a variable `temp_c` that converts the value of `temp_f` to Celsius. Recall that °C = (°F - 32) ÷ (9/5)
+
+```{r}
+temp_c = temp_f ...
 temp_c
 ```
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+temp_f = (temp_f - 32) / (9/5)
+temp_f
+```
+:::
 
 # Vectors
 
@@ -110,6 +129,15 @@ Make a vector called `fruits`, which contains 3 fruit names stored as characters
 fruits = c(..., ..., ...)
 fruits
 ```
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+fruits = c("apple", "orange", "banana")
+fruits
+```
+:::
 
 ## Accessing Items
 
@@ -151,6 +179,15 @@ In the cell below, write code to replace the 3rd and 8th item of `numbers` with 
 numbers[...] = ...
 numbers
 ```
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+numbers[c(3, 8)] = 32
+numbers
+```
+:::
 
 ## Extending Vectors
 
@@ -243,6 +280,16 @@ even_more_numbers = c(1, 6, 2, 93, 241, 315, 23)
 ... - ...
 ```
 
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+even_more_numbers = c(1, 6, 2, 93, 241, 315, 23)
+mean(even_more_numbers) - even_more_numbers
+```
+:::
+
+
 # Data Frames/Tables
 
 Sometimes, we have multiple pieces of corresponding data. Instead of storing each variable as a separate vector, we can use data frames. Data frames are composed of columns and rows. Typically, each row represents a single unit (ex: a person, county, or state) and each column represents a characteristics (ex: age, race, disease status).
@@ -308,6 +355,16 @@ Calculate the age in months of the participants in `study_cohort` table.
 ages_years = ... # Extract the column that contains participant ages in years
 ages_years ... # Use a vector operation to convert ages from years to months. 
 ```
+
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+ages_years = study_cohort$age # Extract the column that contains participant ages in years
+ages_years * 12 # Use a vector operation to convert ages from years to months. 
+```
+:::
+
 
 # Summary
 

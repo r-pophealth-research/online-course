@@ -8,50 +8,16 @@ project:
     - final/*.qmd
 
 website:
-  title: "CHPR/EPI 202"
-  description: "Interactive R course materials with WebR"
+  title: "R for Health Research"
   search: true
   reader-mode: true
   repo-url: https://github.com/r-pophealth-research/online-course
-  site-url: https://r-pophealth-research.github.io/online-course
   repo-actions: [edit, issue]
   navbar:
     background: primary
     left:
       - href: index.qmd
         text: Home
-      - text: Tutorials
-        menu:
-          - href: tutorials/Week1_install_r_rstudio.qmd
-            text: "Week 1: Install R & RStudio"
-          - href: tutorials/Week2_data_structures.qmd
-            text: "Week 2: Data Structures"
-          - href: tutorials/Week3_functions_packages.qmd
-            text: "Week 3: Functions & Packages"
-          - href: tutorials/Week4_data_exploration.qmd
-            text: "Week 4: Data Exploration"
-          - href: tutorials/Week5_data_manipulation.qmd
-            text: "Week 5: Data Manipulation"
-          - href: tutorials/Week6_descriptive_statistics.qmd
-            text: "Week 6: Descriptive Statistics"
-          - href: tutorials/Week7_statistical_analyses.qmd
-            text: "Week 7: Statistical Analyses"
-          - href: tutorials/Week8-9_data_visualizations.qmd
-            text: "Week 8–9: Data Visualizations"
-          - href: tutorials/Week10_research_best_practices.qmd
-            text: "Week 10: Research Best Practices"
-      - text: Homework
-        menu:
-          - href: hw/HW1_markdown_and_data_types.qmd
-            text: "HW 1: Markdown & Data Types"
-          - href: hw/HW2_data_structures_and_functions.qmd
-            text: "HW 2: Data Structures & Functions"
-          - href: hw/HW3_data_exploration_and_manipulation.qmd
-            text: "HW 3: Data Exploration & Manipulation"
-          - href: hw/HW5_data_visualizations.qmd
-            text: "HW 5: Data Visualizations"
-      - href: final/Final_Project.qmd
-        text: Final Project
   sidebar:
     style: floating
     contents:
@@ -93,10 +59,20 @@ format:
 resources:
   - data/
   - tutorials/images/
+  - images/
 
 webr:
-  show-startup-message: true
+  show-startup-message: false
   channel-type: post-message
+  packages:
+    - readr
+    - dplyr
+    - ggplot2
+    - tidyr
+    - purrr
+    - stringr
+    - forcats
+    - tibble
 
 filters:
   - webr
