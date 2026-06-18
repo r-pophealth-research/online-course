@@ -760,7 +760,7 @@
     "href": "index.html",
     "title": "Welcome",
     "section": "",
-    "text": "Welcome to R Fundamentals for Health Research — an introduction to R for epidemiology and health policy research.\nThese course materials run entirely in your browser using Quarto and WebR. You do not need R installed locally to explore the tutorials and run code on this site.\nTry loading a course dataset:",
+    "text": "Welcome to R for Health Research — an introduction to R programming for epidemiology and health policy research.\nThese materials were adapted from materials from the 2024-2025 offerings of EPI/CHPR 202 at Stanford University, and were authored by Anna Nguyen and Samuel Jaros.\nAll code in this online course can be run in your browser using Quarto and WebR. You do not need R installed locally, but the “Running Materials Locally” sections provides instructions on how to run materials on your own computer.\nClick “Run” to run your first line of R code below!",
     "crumbs": [
       "Home",
       "Getting started",
@@ -772,19 +772,7 @@
     "href": "index.html#how-to-use-this-site",
     "title": "Welcome",
     "section": "How to use this site",
-    "text": "How to use this site\n\nTutorials — Pre-class activities with interactive code cells. Click Run in any code block to execute R in your browser.\nHomework — Assignments with editable code cells. Download the original .Rmd from the course repo if you prefer working in RStudio.\nFinal Project — End-of-quarter analysis assignment.\n\n\n\n\n\n\n\nNote\n\n\n\nThe first time you run code on a page, WebR needs to download R and any required packages. This can take 30–60 seconds on a slow connection. Subsequent cells on the same page run much faster.",
-    "crumbs": [
-      "Home",
-      "Getting started",
-      "Welcome"
-    ]
-  },
-  {
-    "objectID": "index.html#working-locally-in-rstudio",
-    "href": "index.html#working-locally-in-rstudio",
-    "title": "Welcome",
-    "section": "Working locally in RStudio",
-    "text": "Working locally in RStudio\nIf you prefer the full RStudio experience, clone the course repository and open the .Rmd files directly. The .qmd files on this site are generated from those sources for WebR compatibility.",
+    "text": "How to use this site\n\nTutorials — Pre-class activities with interactive code cells. Click Run in any code block to execute R in your browser.\nHomework — Assignments with editable code cells.\n\n\n\n\n\n\n\nNote\n\n\n\nThe first time you run code on a page, WebR needs to download R and any required packages. This can take 30–60 seconds on a slow connection. Subsequent cells on the same page run much faster.",
     "crumbs": [
       "Home",
       "Getting started",
@@ -916,7 +904,7 @@
     "href": "tutorials/Week2_data_structures.html#practice-problem-1",
     "title": "Data Types and Structures",
     "section": "Practice Problem 1",
-    "text": "Practice Problem 1\nCreate a variable called temp_f that is equal to the current temperature in fahrenheit.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "text": "Practice Problem 1\nCreate a variable called temp_f that is equal to 72 degrees Fahrenheit.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Home",
       "Tutorials",
@@ -928,7 +916,7 @@
     "href": "tutorials/Week2_data_structures.html#practice-problem-2",
     "title": "Data Types and Structures",
     "section": "Practice Problem 2",
-    "text": "Practice Problem 2\nNow create a variable temp_c that converts the value of temp_f to celcius. Recall that °C = (°F - 32) ÷ (9/5)\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "text": "Practice Problem 2\nNow create a variable temp_c that converts the value of temp_f to Celsius. Recall that °C = (°F - 32) ÷ (9/5)\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Home",
       "Tutorials",
@@ -940,7 +928,7 @@
     "href": "tutorials/Week2_data_structures.html#practice-problem-3",
     "title": "Data Types and Structures",
     "section": "Practice Problem 3",
-    "text": "Practice Problem 3\nMake a vector called fruits, which contains 3 fruit names stored as characters\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "text": "Practice Problem 3\nMake a vector called fruits, which contains 3 fruit names stored as characters\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Home",
       "Tutorials",
@@ -964,7 +952,7 @@
     "href": "tutorials/Week2_data_structures.html#practice-problem-4",
     "title": "Data Types and Structures",
     "section": "Practice Problem 4",
-    "text": "Practice Problem 4\nIn the cell below, write code to replace the 3rd and 8th item of numbers with the value 32\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "text": "Practice Problem 4\nIn the cell below, write code to replace the 3rd and 8th item of numbers with the value 32\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Home",
       "Tutorials",
@@ -1000,7 +988,7 @@
     "href": "tutorials/Week2_data_structures.html#practice-problem-5",
     "title": "Data Types and Structures",
     "section": "Practice Problem 5",
-    "text": "Practice Problem 5\nSubtract the mean of the vector even_more_numbers from each value of even_more_numbers.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "text": "Practice Problem 5\nSubtract the mean of the vector even_more_numbers from each value of even_more_numbers.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Home",
       "Tutorials",
@@ -1024,7 +1012,7 @@
     "href": "tutorials/Week2_data_structures.html#practice-problem-6",
     "title": "Data Types and Structures",
     "section": "Practice Problem 6",
-    "text": "Practice Problem 6\nCalculate the age in months of the participants in study_cohort table.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "text": "Practice Problem 6\nCalculate the age in months of the participants in study_cohort table.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\nSolution\n\n\n\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
     "crumbs": [
       "Home",
       "Tutorials",
