@@ -367,7 +367,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"# Helper: download bundled data into the WebR virtual filesystem\nwebr_site_url <- \"site-url: https://r-pophealth-research.github.io/online-course\"\nwebr_read_csv <- function(path) {\n  local_name <- basename(path)\n  if (!file.exists(local_name)) {\n    if (!grepl(\"^https?://\", path)) {\n      clean_path <- sub(\"^(\\\\.\\\\./)+\", \"\", path)\n      path <- paste0(webr_site_url, \"/\", clean_path)\n    }\n    download.file(path, local_name, quiet = TRUE, mode = \"wb\")\n  }\n  utils::read.csv(local_name, stringsAsFactors = FALSE)\n}","id":1,"options":{"autorun":"true","classes":"","comment":"","context":"setup","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"times_two = function(x){\n  2*x\n}","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"times_two(x=1)\ntimes_two(x=-10)\ntimes_two(x=0)","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"multiply = function(x, y){\n  return(x*y)\n  x = x + 1 # This code will never be reached because return exits the function\n  x\n}\n\nmultiply(x=4, y=10)","id":4,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-4","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"...","id":5,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-5","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# 1 through 10\n1:10\nseq(1, 10)\n# odd numbers 1 through 10\nseq(1, 10, 2)","id":6,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-6","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Write your code here","id":7,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-7","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"?sample","id":8,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-8","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"sample(x=1:10, size=3)","id":9,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-9","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"sample(x=1:10, size=3, replace=TRUE)","id":10,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-10","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Write your code here","id":11,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-11","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"?max()","id":12,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-12","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"max(1, 5, 22)","id":13,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-13","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"min()\nmax()\n\nsome_numbers = c(...)\nmax(some_numbers)","id":14,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-14","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"if(conditional_statement){\n  # If conditional_statement is TRUE, this code will be run\n} else {\n  # If conditional_statement is FALSE, this code will be run\n}","id":15,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-15","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"x <- -2\n\nif(x >= 0) {\n  sqrt(x)\n} else {\n  print(\"You cannot take the square root of a negative number.\")\n}\n\nx <- 625\n\nif(x >= 0) {\n  sqrt(x)\n} else {\n  print(\"You cannot take the square root of a negative number.\")\n}","id":16,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-16","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"x <- 6\n\n# Only make one decision\n# If it's greater than 10, say that. Otherwise do nothing.\nif(x > 5) {\n  print(\"x is greater than 5\")\n}\n\n# Categorize x into whether it's over 10, 9-5, 5-3, or less than or equal to 2.\nif (x > 10) { \n  print(\"x is greater than 10\")\n} else if (x > 5) {\n  print(\"x is 9 to 5\")\n} else if (x > 2) {\n  print(\"x is 5 to 3\")\n} else {\n  print(\"x is less than or equal to 2\")\n}","id":17,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-17","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"x = 24\ny = 10\n\nif (x > y) {\n  print(\"x is ... than the value of y\")\n} else if (...) {\n  print(\"x is less than the value of y\")\n} else {\n  print(\"x is equal to y\")\n}","id":18,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-18","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"numbers <- 1:5\n\n# for(element in collection_of_elements)\nfor (number in numbers) {\n  # Code that gets repeated\n  print(paste(\"Number is now\", number))\n  print(number*5)\n}","id":19,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-19","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"ages = c(25, 8, 35, 87, 34, 15, 73, 34, 53, 2)\n\nage_categories = c()\n  \n# Categorize the first age\nfor (age in ages) {\n  # Step 1: Match age to the correct category\n  if (age < 18) {\n    new_age_category = \"<18 years\"\n  } else if (age < 64) {\n    new_age_category = \"18-64 years\"\n  } else {\n    new_age_category = \">=65 years\"\n  }\n  \n  # Step 2: Add age category to the vector\n  age_categories = c(age_categories, new_age_category)\n}\n\n# Display age and age category side-by-side\ncbind(ages, age_categories)","id":20,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-20","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"egfr_values = c(24, 61, 8, 36, 98, 78, 47, 42, 20)\nckd_statuses = c()\n\nfor (... in ...){\n  # Convert one egfr value to CKD stage\n  if (... < 15) {\n    stage = \"5\"\n  } else if (... < 30){\n    stage = \"4\"\n  } else if (... < 45){\n    stage = \"3b\"\n  } else {\n    stage = \"1 to 3a\"\n  }\n  # Add CKD stage to vector\n  ckd_statuses = c(..., ...)\n}\n\nckd_statuses","id":21,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-21","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Because we're working in R markdown, we have to tell it where to search for the package. That's why we put repos=\"https://cloud.r-project.org\". If you run install.packages() in the console or in a normal R file, you don't need the repos= part.\ninstall.packages(\"tidyverse\", repos=\"https://cloud.r-project.org\")","id":22,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-22","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# tidyverse packages are pre-loaded on this site","id":23,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-23","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"...","id":24,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-24","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"?read_csv()","id":25,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-25","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"webr_read_csv(\"data/wage_data.csv\")","id":26,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-26","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Write your code to import the wage data\n\n\n# Print out the wages data to check and make sure it was saved\nwages","id":27,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-27","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
+globalThis.qwebrCellDetails = [{"code":"# Helper: download bundled data into the WebR virtual filesystem\nwebr_site_url <- \"site-url: https://r-pophealth-research.github.io/online-course\"\nwebr_read_csv <- function(path) {\n  local_name <- basename(path)\n  if (!file.exists(local_name)) {\n    if (!grepl(\"^https?://\", path)) {\n      clean_path <- sub(\"^(\\\\.\\\\./)+\", \"\", path)\n      path <- paste0(webr_site_url, \"/\", clean_path)\n    }\n    download.file(path, local_name, quiet = TRUE, mode = \"wb\")\n  }\n  utils::read.csv(local_name, stringsAsFactors = FALSE)\n}","id":1,"options":{"autorun":"true","classes":"","comment":"","context":"setup","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"times_two = function(x){\n  2*x\n}","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"times_two(x=1)\ntimes_two(x=-10)\ntimes_two(x=0)","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"multiply = function(x, y){\n  return(x*y)\n  x = x + 1 # This code will never be reached because return exits the function\n  x\n}\n\nmultiply(x=4, y=10)","id":4,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-4","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"...","id":5,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-5","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"times_four_plus_one = function(x){\n  4*x + 1\n}\ntimes_four_plus_one(1)\ntimes_four_plus_one(-10)\ntimes_four_plus_one(0)","id":6,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-6","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# 1 through 10\n1:10\nseq(1, 10)\n# odd numbers 1 through 10\nseq(1, 10, 2)","id":7,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-7","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Write your code here","id":8,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-8","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"seq(from=0, to=5, by=0.2)","id":9,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-9","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"?sample","id":10,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-10","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"sample(x=1:10, size=3)","id":11,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-11","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"sample(x=1:10, size=3, replace=TRUE)","id":12,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-12","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Write your code here","id":13,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-13","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"runif(1, min=-1, max=2)","id":14,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-14","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"?max()","id":15,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-15","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"max(1, 5, 22)","id":16,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-16","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"min()\nmax()\n\nsome_numbers = c(...)\nmax(some_numbers)","id":17,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-17","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"min(3, 1, 9, 2)\nmax(3, 1, 9, 2)\nsome_numbers = c(3, 1, 9, 2, NA)\nmax(some_numbers, na.rm=TRUE)","id":18,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-18","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"if(conditional_statement){\n  # If conditional_statement is TRUE, this code will be run\n} else {\n  # If conditional_statement is FALSE, this code will be run\n}","id":19,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-19","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"x <- -2\n\nif(x >= 0) {\n  sqrt(x)\n} else {\n  print(\"You cannot take the square root of a negative number.\")\n}\n\nx <- 625\n\nif(x >= 0) {\n  sqrt(x)\n} else {\n  print(\"You cannot take the square root of a negative number.\")\n}","id":20,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-20","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"x <- 6\n\n# Only make one decision\n# If it's greater than 10, say that. Otherwise do nothing.\nif(x > 5) {\n  print(\"x is greater than 5\")\n}\n\n# Categorize x into whether it's over 10, 9-5, 5-3, or less than or equal to 2.\nif (x > 10) { \n  print(\"x is greater than 10\")\n} else if (x > 5) {\n  print(\"x is 9 to 5\")\n} else if (x > 2) {\n  print(\"x is 5 to 3\")\n} else {\n  print(\"x is less than or equal to 2\")\n}","id":21,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-21","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"x = 24\ny = 10\n\nif (x > y) {\n  print(\"x is ... than the value of y\")\n} else if (...) {\n  print(\"x is less than the value of y\")\n} else {\n  print(\"x is equal to y\")\n}","id":22,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-22","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"if (x > y) {\n  print(\"x is greater than the value of y\")\n} else if (x < y) {\n  print(\"x is less than the value of y\")\n} else {\n  print(\"x is equal to y\")\n}","id":23,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-23","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"numbers <- 1:5\n\n# for(element in collection_of_elements)\nfor (number in numbers) {\n  # Code that gets repeated\n  print(paste(\"Number is now\", number))\n  print(number*5)\n}","id":24,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-24","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"ages = c(25, 8, 35, 87, 34, 15, 73, 34, 53, 2)\n\nage_categories = c()\n  \n# Categorize the first age\nfor (age in ages) {\n  # Step 1: Match age to the correct category\n  if (age < 18) {\n    new_age_category = \"<18 years\"\n  } else if (age < 64) {\n    new_age_category = \"18-64 years\"\n  } else {\n    new_age_category = \">=65 years\"\n  }\n  \n  # Step 2: Add age category to the vector\n  age_categories = c(age_categories, new_age_category)\n}\n\n# Display age and age category side-by-side\ncbind(ages, age_categories)","id":25,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-25","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"egfr_values = c(24, 61, 8, 36, 98, 78, 47, 42, 20)\nckd_statuses = c()\n\nfor (... in ...){\n  # Convert one egfr value to CKD stage\n  if (... < 15) {\n    stage = \"5\"\n  } else if (... < 30){\n    stage = \"4\"\n  } else if (... < 45){\n    stage = \"3b\"\n  } else {\n    stage = \"1 to 3a\"\n  }\n  # Add CKD stage to vector\n  ckd_statuses = c(..., ...)\n}\n\nckd_statuses","id":26,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-26","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"for (egfr in egfr_values){\n  if (egfr < 15) {\n    stage = \"5\"\n  } else if (egfr < 30){\n    stage = \"4\"\n  } else if (egfr < 45){\n    stage = \"3b\"\n  } else {\n    stage = \"1 to 3a\"\n  }\n  ckd_statuses = c(ckd_statuses, stage)\n}","id":27,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-27","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Because we're working in R markdown, we have to tell it where to search for the package. That's why we put repos=\"https://cloud.r-project.org\". If you run install.packages() in the console or in a normal R file, you don't need the repos= part.\ninstall.packages(\"tidyverse\", repos=\"https://cloud.r-project.org\")","id":28,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-28","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# tidyverse packages are pre-loaded on this site","id":29,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-29","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"...","id":30,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-30","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"install.packages(\"haven\", repos=\"https://cloud.r-project.org\")\nlibrary(haven)","id":31,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-31","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"?read_csv()","id":32,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-32","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"webr_read_csv(\"data/wage_data.csv\")","id":33,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-33","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Write your code to import the wage data\n\n\n# Print out the wages data to check and make sure it was saved\nwages","id":34,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-34","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"wages = webr_read_csv(\"data/wage_data.csv\")\nwages","id":35,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-35","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
 
 </script>
 <script type="module">
@@ -2226,54 +2226,122 @@ f(0)=2*0=0
 <p>Write your own function called <code>times_four_plus_one</code> that takes one input <code>x</code>, multiplies it by four, and adds one. Then, call your function three times with different inputs to make sure it works right.</p>
 <div id="qwebr-insertion-location-5"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div id="qwebr-insertion-location-6"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="built-in-functions" class="level2">
 <h2 class="anchored" data-anchor-id="built-in-functions">Built-in Functions</h2>
 <p>R has a bunch of built-in functions that help us get our work done. In fact, you have been using functions this whole time! <code>data.frame()</code> is a useful function that we learned about last week. And during week one, we learned about a bunch of math functions like <code>exp()</code>, <code>log()</code>, and even <code>abs()</code> which gives us the absolute value!</p>
 <p>An especially useful built-in function is <code>seq()</code>. This function allows you to generate a sequence of numbers. Now, we already learned that the colon <code>:</code> can be used to generate numbers in order. <code>seq()</code> expands on this by taking three inputs: <code>from=</code>, <code>to=</code>, and <code>by=</code>. <code>from</code> tells it our starting number, <code>to</code> tells it our maximum number, and <code>by</code> tells it the gaps between the numbers. If we want the numbers 1 through 10, we can just say <code>1:10</code> or <code>seq(from=1, to=10, by=1)</code>. However, if we want every odd number from 1 to 10, we cannot use the <code>:</code> and have to use <code>seq(from=1, to=10, by=2)</code>.</p>
-<div id="qwebr-insertion-location-6"></div>
+<div id="qwebr-insertion-location-7"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <section id="practice-problem-1" class="level3">
 <h3 class="anchored" data-anchor-id="practice-problem-1">Practice Problem</h3>
 <p>Now you use <code>seq()</code> to generate all multiples of 0.2 from 0 to 5 (e.g.&nbsp;0, 0.2, 0.4, … , 4.8, 5).</p>
-<div id="qwebr-insertion-location-7"></div>
+<div id="qwebr-insertion-location-8"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div id="qwebr-insertion-location-9"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="getting-help" class="level2">
 <h2 class="anchored" data-anchor-id="getting-help">Getting Help</h2>
 <p>R has a lot of functions built in, so it is almost impossible to remember all of them. Instead, we have the <code>?</code> operator. When you write this operator before a function name in R, it will pop up some useful information.</p>
-<div id="qwebr-insertion-location-8"></div>
+<div id="qwebr-insertion-location-10"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>When we run this line, a little window pops up on the right side describing what <code>sample()</code> does. We learn that it takes a sample of size <code>size</code> from the elements of <code>x</code>. So let’s randomly pick 3 numbers between 1 and 10.</p>
-<div id="qwebr-insertion-location-9"></div>
+<div id="qwebr-insertion-location-11"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>There is also an optional input <code>replace</code> that is normally equal to <code>FALSE</code>. Further down under <strong>Arguments</strong>, we learn that <code>replace</code> tells it “should sampling be with replacement?”. In other words, should the same element be able to be picked multiple times? If we want that to be yes, we can tell the function that. Try running this code multiple times until you get a repeated number.</p>
-<div id="qwebr-insertion-location-10"></div>
+<div id="qwebr-insertion-location-12"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>The help page on the right side also has examples down at the bottom to help us. You can also always use Google to help you figure out how to use these functions, but the <code>?</code> operator works even without Internet!</p>
 <section id="practice-problem-2" class="level3">
 <h3 class="anchored" data-anchor-id="practice-problem-2">Practice Problem</h3>
 <p>Use <code>?runif</code> (and the Internet if you need) to figure out how to get a random number between -1 and 2.</p>
-<div id="qwebr-insertion-location-11"></div>
+<div id="qwebr-insertion-location-13"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div id="qwebr-insertion-location-14"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="any-number-of-arguments" class="level2">
 <h2 class="anchored" data-anchor-id="any-number-of-arguments">Any Number of Arguments</h2>
 <p>Sometimes, functions will have an input that just says <code>…</code>. For example:</p>
-<div id="qwebr-insertion-location-12"></div>
+<div id="qwebr-insertion-location-15"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>The ellipsis means that <code>max()</code> can accept any number of arguments and give you the maximum of them.</p>
-<div id="qwebr-insertion-location-13"></div>
+<div id="qwebr-insertion-location-16"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <section id="practice-problem-3" class="level3">
 <h3 class="anchored" data-anchor-id="practice-problem-3">Practice Problem</h3>
 <p>Try it out! The <code>max()</code> and <code>min()</code> functions will give you the maximum and minimum, respectively, of numbers or letters. They will accept any number of inputs, including a pre-made vector.</p>
 <p>Try finding different minimums and maximums. What happens when you include an <code>NA</code> in the group of numbers? What can you do about that (hint: check <code>?max</code>?</p>
-<div id="qwebr-insertion-location-14"></div>
+<div id="qwebr-insertion-location-17"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div id="qwebr-insertion-location-18"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+</div>
+</div>
 </section>
 </section>
 </section>
@@ -2287,53 +2355,104 @@ f(0)=2*0=0
 <section id="if-else-statements" class="level2">
 <h2 class="anchored" data-anchor-id="if-else-statements">If-Else Statements</h2>
 <p>If-else statements give us a chance to decide what code should be run. They will look like this:</p>
-<div id="qwebr-insertion-location-15"></div>
+<div id="qwebr-insertion-location-19"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>We can use this statement to have code that is run in different situations. For example, if we want to tell the user if they try to do some math that doesn’t work, we could use an if-else statement.</p>
-<div id="qwebr-insertion-location-16"></div>
+<div id="qwebr-insertion-location-20"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>You can also use the <code>if</code> part on its own if there is not a second step you want to do. You can also put multiple if-else statements together if there are multiple decisions you need to make. Feel free to run this code multiple times with different <code>x</code> values.</p>
-<div id="qwebr-insertion-location-17"></div>
+<div id="qwebr-insertion-location-21"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>Note than when a condition in an if-else series ends up being <code>TRUE</code>, all of the other <code>else</code>s are ignored. In the example above, <code>x &gt; 5</code> is <code>TRUE</code>, so <code>x is 9 to 5</code> is printed. The everything after the <code>else</code> gets ignored. Even though the next <code>if (x &gt;2)</code> would have also been <code>TRUE</code>, we don’t see it print that out because it is after the <code>else</code>.</p>
 <section id="practice-problem-4" class="level3">
 <h3 class="anchored" data-anchor-id="practice-problem-4">Practice Problem</h3>
 <p>Complete the code below to write a series of conditional statements that compares the values of <code>x</code> and <code>y</code>. Try changing the values of <code>x</code> and <code>y</code> to check that your code works as expected</p>
-<div id="qwebr-insertion-location-18"></div>
+<div id="qwebr-insertion-location-22"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div id="qwebr-insertion-location-23"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="loops" class="level2">
 <h2 class="anchored" data-anchor-id="loops">Loops</h2>
 <p>Many times in research, we will need to run the same code over and over again, like if we need to calculate a value for every participant in a study. R gives us a way to do this using <em>for loops</em>. A typical for loop might look like this:</p>
-<div id="qwebr-insertion-location-19"></div>
+<div id="qwebr-insertion-location-24"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>In the for loop, we specify how many times the code needs to be run by giving it a collection of things, the vector <code>numbers</code> in this case. We give that element a name, <code>number</code>, and write code using that variable. In this way, the first time the loop runs, <code>number</code> will be set to 1 because that is the first element of <code>numbers</code>. The code inside the curly brackets runs. Then <code>number</code> is set to 2 because it is the second element of <code>numbers</code>. The loop continues all the way through 5 and then stops because 5 is the last element in the vector <code>numbers</code>. When writing your own for loop, you use the format <code>for (variable in values)</code>. <code>values</code> needs to be a collection of something that you have already created. <code>variable</code> is a placeholder name that you can use inside the curly brackets of the for loop to do what you want to do.</p>
 <p>Something we normally do inside for loops is add the result to a list of results so we can keep track of all of them. Saving your results is a lot better than just printing them out, especially when you have a lot of observations. Let’s say we have ten people in a study, and we want to categorize them by age. If we have their ages stored in <code>ages</code>, we can use a for loop to add their categorized age to <code>age_categories</code>. Notice that the part labeled “Step 2” is <em>inside</em> the for loop, so it will add <code>new_age_category</code> to the end of <code>age_categories</code> every time the loop is run.</p>
-<div id="qwebr-insertion-location-20"></div>
+<div id="qwebr-insertion-location-25"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <section id="practice-problem-5" class="level3">
 <h3 class="anchored" data-anchor-id="practice-problem-5">Practice Problem</h3>
 <p>Complete the code below to categorize the stage of chronic kidney disease (CKD) based on estimated glomerular filtration rate (eGFR) values in <code>egfr_values</code></p>
 <p>eGRF values less than 15 correspond to Stage 5 CKD, values between 15 and 29 correspond to Stage 4, values between 30-44 correspond to Stage 3B, and values above 45 correspond to Stages 1-3A.</p>
-<div id="qwebr-insertion-location-21"></div>
+<div id="qwebr-insertion-location-26"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div id="qwebr-insertion-location-27"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+</div>
+</div>
 </section>
 </section>
 </section>
 <section id="packages" class="level1">
 <h1>Packages</h1>
 <p>Writing functions sure is fun, but I don’t want to have to write a function for everything in R. Luckily, many amazing data scientists have come before us, written useful functions, and stored them in packages. Packages are bits of code you download from the internet to use in your own code. In R, there are two steps to using a package. 1) Install the package with <code>install.packages()</code> and 2) Tell R you want to use that package with <code>library()</code>. One of the most useful packages is called tidyverse. This package contains a multitude of packages that help us import, clean, and visualize data. Let’s download tidyverse.</p>
-<div id="qwebr-insertion-location-22"></div>
+<div id="qwebr-insertion-location-28"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>Note that we put the package name in quotes like a string. Because the package is not downloaded yet, we have to put it in quotes. Now that it is downloaded, we can tell R we are ready to use tidyverse. Because it is downloaded, it no longer needs to be in quotes because it exists on our computer.</p>
-<div id="qwebr-insertion-location-23"></div>
+<div id="qwebr-insertion-location-29"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <section id="practice-problem-6" class="level3">
 <h3 class="anchored" data-anchor-id="practice-problem-6">Practice Problem</h3>
 <p>Another useful package is called <code>haven</code>. Haven allows you to import SPSS, STATA, and SAS data files. Go ahead and follow the two steps to download and install haven.</p>
-<div id="qwebr-insertion-location-24"></div>
+<div id="qwebr-insertion-location-30"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div id="qwebr-insertion-location-31"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="importing-data" class="level1">
@@ -2341,17 +2460,34 @@ f(0)=2*0=0
 <p>By installing tidyverse, one of the packages that gets installed is called readr. This package gives us useful functions to import data into R because who wants to type out 3,000 rows??? Let’s learn about importing data. Before you get started, <strong>make sure you’re working in your R Studio project that you made during class on Week 1</strong>. That means this file should be saved in your <code>pre-class</code> folder. If you’re not already doing that, you can click File&gt;Save As… and save it in your R project folder. The top right of your R Studio should say something like “EPI 202 R Class”.</p>
 <p>Go to Canvas and download the wage_data.csv file under Week 3. After it has downloaded, move <code>wage_data.csv</code> into your <code>data</code> folder in this R project. When you go into R, you should be able to click on the “Files” tab, and the <code>data</code> folder and see <code>wage_data.csv</code> in that folder.</p>
 <p>Now we’re ready to import the data. We will use the <code>read_csv()</code> function from the <code>readr</code> package. You can check out what <code>read_csv()</code> does using the <code>?</code> function. If you get an error, you did not download and library tidyverse yet.</p>
-<div id="qwebr-insertion-location-25"></div>
+<div id="qwebr-insertion-location-32"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p><code>read_csv()</code> has a bunch of options that lets us read in different files, but the only required input is the <code>file</code> we want in r. We give the file we want to import using a character. Because we are super organized and we are using an R Studio Project, all we have to say is look <code>here::here</code> in the <code>data</code> folder for a file called <code>wage_data.csv</code>. We do this by saying <code>here::here("data/wage_data.csv")</code>. You can even use the Tab key to autocomplete the name for you!</p>
-<div id="qwebr-insertion-location-26"></div>
+<div id="qwebr-insertion-location-33"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p><em>Why do we have to say <code>here::here()</code></em>? This is the way tell R Markdown to look at the R Project for help finding the file. If you’re working in a normal R file (one that ends with <code>.R</code> instead of <code>.Rmd)</code>, you don’t have to do this.</p>
 <section id="practice-problem-7" class="level3">
 <h3 class="anchored" data-anchor-id="practice-problem-7">Practice Problem</h3>
 <p>Notice that the data were printed without it appearing in the top right “Environment” tab. That’s because we didn’t assign it a variable! Try importing the wage data again, this time assigning it to a variable called <code>wages</code>.</p>
-<div id="qwebr-insertion-location-27"></div>
+<div id="qwebr-insertion-location-34"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div id="qwebr-insertion-location-35"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+</div>
+</div>
 
 
 </section>
