@@ -62,6 +62,19 @@ Write your own function called `times_four_plus_one` that takes one input `x`, m
 ```{r}
 ...
 ```
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+times_four_plus_one = function(x){
+  4*x + 1
+}
+times_four_plus_one(1)
+times_four_plus_one(-10)
+times_four_plus_one(0)
+```
+:::
+
 
 ## Built-in Functions
 
@@ -84,6 +97,14 @@ Now you use `seq()` to generate all multiples of 0.2 from 0 to 5 (e.g. 0, 0.2, 0
 ```{r}
 # Write your code here
 ```
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+seq(from=0, to=5, by=0.2)
+```
+:::
+
 
 ## Getting Help
 
@@ -114,6 +135,14 @@ Use `?runif` (and the Internet if you need) to figure out how to get a random nu
 ```{r}
 # Write your code here
 ```
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+runif(1, min=-1, max=2)
+```
+:::
+
 
 ## Any Number of Arguments
 
@@ -142,6 +171,17 @@ max()
 some_numbers = c(...)
 max(some_numbers)
 ```
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+min(3, 1, 9, 2)
+max(3, 1, 9, 2)
+some_numbers = c(3, 1, 9, 2, NA)
+max(some_numbers, na.rm=TRUE)
+```
+:::
+
 
 # Control Statements
 
@@ -228,6 +268,20 @@ if (x > y) {
   print("x is equal to y")
 }
 ```
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+if (x > y) {
+  print("x is greater than the value of y")
+} else if (x < y) {
+  print("x is less than the value of y")
+} else {
+  print("x is equal to y")
+}
+```
+:::
+
 
 ## Loops
 
@@ -299,6 +353,25 @@ for (... in ...){
 
 ckd_statuses
 ```
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+for (egfr in egfr_values){
+  if (egfr < 15) {
+    stage = "5"
+  } else if (egfr < 30){
+    stage = "4"
+  } else if (egfr < 45){
+    stage = "3b"
+  } else {
+    stage = "1 to 3a"
+  }
+  ckd_statuses = c(ckd_statuses, stage)
+}
+```
+:::
+
 
 # Packages
 
@@ -322,6 +395,15 @@ Another useful package is called `haven`. Haven allows you to import SPSS, STATA
 ```{r}
 ...
 ```
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+install.packages("haven", repos="https://cloud.r-project.org")
+library(haven)
+```
+:::
+
 
 # Importing Data
 
@@ -354,3 +436,12 @@ Notice that the data were printed without it appearing in the top right "Environ
 # Print out the wages data to check and make sure it was saved
 wages
 ```
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+wages = read_csv(here("data", "wage_data.csv"))
+wages
+```
+:::
+

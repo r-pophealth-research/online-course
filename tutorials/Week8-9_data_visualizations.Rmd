@@ -168,6 +168,21 @@ Plot the distribution of maternal mortality in 2010 in the Americas using a hist
 # Create the plot
 #ggplot(maternal_mortality_2010, ...)
 ```
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+maternal_mortality_2010 = maternal_mortality %>%
+  filter(Year == 2010,
+         Region == "Americas")
+
+ggplot(maternal_mortality_2010, aes(x = mortality_estimate)) +
+  geom_histogram() +
+  xlab("Maternal Mortality Rate (per 100,000 live births)") +
+  ylab("Count")
+```
+:::
+
 
 ### Practice Problem 2
 
@@ -180,6 +195,21 @@ Plot the distribution of maternal mortality in 2000 among upper-middle income co
 # Create the plot
 #ggplot(maternal_mortality_2000_uppermid, ...)
 ```
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+maternal_mortality_2000_uppermid = maternal_mortality %>%
+  filter(Year == 2000,
+         income_group == "Upper middle income")
+
+ggplot(maternal_mortality_2000_uppermid, aes(x = mortality_estimate)) +
+  geom_density() +
+  xlab("Maternal Mortality Rate (per 100,000 live births)") +
+  ylab("Density")
+```
+:::
+
 
 ## Categorical Variables
 
@@ -216,6 +246,16 @@ Plot the distribution of regions represented in 2020 using a bar plot.
 ```{r}
 #ggplot(...)
 ```
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+ggplot(maternal_mortality_2020, aes(x = Region)) +
+  geom_bar() +
+  xlab("Region")
+```
+:::
+
 
 # Plotting correlations
 
@@ -331,6 +371,17 @@ Plot the distribution of mortality in 2020 by region, using either a box plot or
 ```{r}
 #ggplot(...)
 ```
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+ggplot(maternal_mortality_2020, aes(x = Region, y = mortality_estimate)) +
+  geom_boxplot() +
+  xlab("Region") +
+  ylab("Maternal Mortality Rate (per 100,000 live births)")
+```
+:::
+
 
 ------------------------------------------------------------------------
 
@@ -534,6 +585,21 @@ Plot the mortality estimates (and their 95% CIs) for Yemen and Oman over time. P
 ```{r}
 #ggplot(...)
 ```
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+yemen_oman_data = maternal_mortality %>% filter(Country %in% c("Yemen", "Oman"))
+
+ggplot(yemen_oman_data, aes(x = Year, y = mortality_estimate,
+                            group = Country, color = Country, fill = Country)) +
+  geom_line() +
+  geom_ribbon(aes(ymin = mortality_ci_lb, ymax = mortality_ci_ub), alpha = 0.05) +
+  xlab("Year") +
+  ylab("Maternal Mortality Rate (per 100,000 live births)")
+```
+:::
+
 
 ## Facets
 

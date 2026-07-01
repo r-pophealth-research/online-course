@@ -94,6 +94,17 @@ clean_fram_data <- clean_fram_data %>%
 # Check your work using table. Make sure to include missing values!
 table(...)
 ```
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+clean_fram_data <- clean_fram_data %>%
+  mutate(smoker = if_else(currentSmoker == 1, "Smoker", "No smoking"))
+
+table(clean_fram_data$smoker, useNA="ifany")
+```
+:::
+
 
 Test to make sure your code works:
 
@@ -156,6 +167,18 @@ prop.table(table(...), margin=...)
 
 prop.table(table(...), margin=...)
 ```
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+prop.table(table(clean_fram_data$sex, clean_fram_data$educ_labeled))["Female", "High school diploma/GED"]
+
+prop.table(table(clean_fram_data$sex, clean_fram_data$educ_labeled), margin=1)["Male", "4-year degree or higher"]
+
+prop.table(table(clean_fram_data$sex, clean_fram_data$educ_labeled), margin=2)["Female", "4-year degree or higher"]
+```
+:::
+
 
 ### [Optional Challenge] Practice Problem 3
 
@@ -168,6 +191,17 @@ clean_fram_data %>%
   summarize(...) %>%
   pivot_wider(...)
 ```
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+clean_fram_data %>%
+  group_by(sex, smoker) %>%
+  summarize(n = n()) %>%
+  pivot_wider(names_from = sex, values_from = n)
+```
+:::
+
 
 # Continuous Variables
 
@@ -231,6 +265,18 @@ Summarize the **center** and **spread** of the columns `totChol` and `BMI`. Chec
 # Summary statistics for BMI
 ...
 ```
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+mean(clean_fram_data$totChol, na.rm=T)
+sd(clean_fram_data$totChol, na.rm=T)
+
+median(clean_fram_data$BMI, na.rm=T)
+IQR(clean_fram_data$BMI, na.rm=T)
+```
+:::
+
 
 ### [Optional Challenge] Practice Problem 5
 
@@ -254,6 +300,17 @@ Use `dplyr` to get the mean and standard deviation of age for males and females.
 ```{r}
 # Feel free to copy and edit the code above!
 ```
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+clean_fram_data %>%
+  group_by(sex) %>%
+  summarize(mean_age = mean(age, na.rm=T),
+            sd_age = sd(age, na.rm=T))
+```
+:::
+
 
 # Relative Measures of Risk
 
@@ -337,6 +394,24 @@ Calculate the **risk ratio** for CHD in the next ten years (`TenYearCHD`) compar
 # Risk ratio
 
 ```
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+risk_chd_bpmeds <- clean_fram_data %>%
+  filter(BPMeds == 1) %>%
+  pull(TenYearCHD) %>%
+  mean()
+
+risk_chd_no_bpmeds <- clean_fram_data %>%
+  filter(BPMeds == 0) %>%
+  pull(TenYearCHD) %>%
+  mean()
+
+risk_chd_bpmeds/risk_chd_no_bpmeds
+```
+:::
+
 
 ## Odds Ratios
 
@@ -411,6 +486,26 @@ Calculate the **odds ratio** for CHD in the next ten years (`TenYearCHD`) compar
 # Odds ratio
 
 ```
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+odds_chd_bpmeds_num <- clean_fram_data %>%
+  filter(BPMeds == 1, TenYearCHD == 1) %>% nrow()
+odds_chd_bpmeds_den <- clean_fram_data %>%
+  filter(BPMeds == 1, TenYearCHD == 0) %>% nrow()
+odds_chd_bpmeds <- odds_chd_bpmeds_num/odds_chd_bpmeds_den
+
+odds_chd_no_bpmeds_num <- clean_fram_data %>%
+  filter(BPMeds == 0, TenYearCHD == 1) %>% nrow()
+odds_chd_no_bpmeds_den <- clean_fram_data %>%
+  filter(BPMeds == 0, TenYearCHD == 0) %>% nrow()
+odds_chd_no_bpmeds <- odds_chd_no_bpmeds_num/odds_chd_no_bpmeds_den
+
+odds_chd_bpmeds/odds_chd_no_bpmeds
+```
+:::
+
 
 ## Epitools
 
@@ -433,6 +528,15 @@ Calculate the **risk and odds ratios** for CHD in the next ten years (`TenYearCH
 ```{r}
 
 ```
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+library(epiR)
+epi.2by2(table(clean_fram_data$BPMeds, clean_fram_data$TenYearCHD))
+```
+:::
+
 
 # Make a Table 1
 
@@ -463,6 +567,28 @@ Using the skills you learned above, fill in this mini-Table 1 for `clean_fram_da
 # Education counts and column percents
 
 ```
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+# Age - mean & SD
+mean(clean_fram_data$age)
+sd(clean_fram_data$age)
+mean(clean_fram_data$age[clean_fram_data$sex == "Female"])
+sd(clean_fram_data$age[clean_fram_data$sex == "Female"])
+mean(clean_fram_data$age[clean_fram_data$sex == "Male"])
+sd(clean_fram_data$age[clean_fram_data$sex == "Male"])
+
+# Smoking status counts and column percents
+table(clean_fram_data$smoker, clean_fram_data$sex)
+prop.table(table(clean_fram_data$smoker, clean_fram_data$sex), margin=2) * 100
+
+# Education counts and column percents
+table(clean_fram_data$educ_labeled, clean_fram_data$sex, useNA="ifany")
+prop.table(table(clean_fram_data$educ_labeled, clean_fram_data$sex, useNA="ifany"), margin=2) * 100
+```
+:::
+
 
 ## table1 Package
 
@@ -488,3 +614,13 @@ Make your own Table 1 using table1! Try having age, number of cigarettes per day
 ```{r}
 
 ```
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+library(table1)
+table1(~ age + factor(smoker) + factor(educ_labeled) + factor(TenYearCHD) | factor(BPMeds),
+       data = clean_fram_data %>% filter(!is.na(BPMeds)))
+```
+:::
+

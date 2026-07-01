@@ -60,6 +60,14 @@ Do a chi-squared test to answer the question, "Is there a statistically signific
 ```{r}
 chisq.test(...)
 ```
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+chisq.test(clean_fram_data$BPMeds, clean_fram_data$sex)
+```
+:::
+
 
 **Interpret the output here**: ...
 
@@ -84,6 +92,14 @@ Repeat this t-test for the age difference between smokers and non-smokers. Inter
 ```{r}
 t.test(...)
 ```
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+t.test(age~smoker, data=clean_fram_data)
+```
+:::
+
 
 **Interpret the output here**: ...
 
@@ -130,6 +146,17 @@ dbp_age_mod <- lm(...)
 summary(...)
 confint(...)
 ```
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+dbp_age_mod <- lm(diaBP ~ age + I(age^2) + sex + smoker, data=clean_fram_data)
+
+summary(dbp_age_mod)
+confint(dbp_age_mod)
+```
+:::
+
 
 **Interpret the output here**: ...
 
@@ -174,6 +201,19 @@ chd_smok_sbp_mod <- glm(...)
 # Get the coefficients. Don't forget to exponentiate!
 
 ```
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+chd_smok_sbp_mod <- glm(TenYearCHD ~ smoker + sysBP,
+                            data=clean_fram_data,
+                            family="binomial")
+
+exp(chd_smok_sbp_mod$coefficients)
+exp(confint(chd_smok_sbp_mod))
+```
+:::
+
 
 **Interpret the output here**: ...
 
@@ -226,6 +266,23 @@ chd_educ_factor_mod <- glm(...)
 # Get coefficients
 exp(...)
 ```
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+education_levels <- c("4-year degree or higher", "Some college",
+                        "High school diploma/GED", "Less than high school")
+
+clean_fram_data_factor <- clean_fram_data_factor %>%
+  mutate(educ_labeled = factor(educ_labeled, levels=education_levels))
+
+chd_educ_factor_mod <- glm(TenYearCHD ~ educ_labeled + diabetes + age,
+                           data=clean_fram_data_factor,
+                           family="binomial")
+exp(chd_educ_factor_mod$coefficients)
+```
+:::
+
 
 **Interpret your model here**:
 

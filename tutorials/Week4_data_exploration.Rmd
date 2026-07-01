@@ -156,6 +156,17 @@ Create a scatter plot to visualize the relationship between systolic (`sysBP`) v
 ```{r}
 ...
 ```
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+plot(framingham_df$sysBP, framingham_df$diaBP,
+     main = "Systolic vs Diastolic Blood \nPressure in the Framingham Cohort",
+     xlab = "Systolic Blood Pressure",
+     ylab = "Diastolic Blood Pressure")
+```
+:::
+
 
 # Subsetting Data in dplyr
 
@@ -300,6 +311,18 @@ framingham_diabetes = framingham_df ...
   
 framingham_diabetes
 ```
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+framingham_diabetes = framingham_df %>%
+  filter(age < 40) %>%
+  select(glucose, diabetes)
+
+framingham_diabetes
+```
+:::
+
 
 ## Practice Problem 3
 
@@ -312,6 +335,16 @@ framingham_diabetes %>%
   ... %>% 
   mean(na.rm = ...)
 ```
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+framingham_diabetes %>%
+  pull(glucose) %>%
+  mean(na.rm = T)
+```
+:::
+
 
 # [Optional] Groups: group_by() and summarize()
 
@@ -393,6 +426,17 @@ framingham_df %>%
   summarize(n_observations = ...,
             average_glucose = ...)
 ```
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+framingham_df %>%
+  group_by(male, diabetes) %>%
+  summarize(n_observations = n(),
+            average_glucose = mean(glucose, na.rm = T))
+```
+:::
+
 
 # Summary
 

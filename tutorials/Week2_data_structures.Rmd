@@ -95,8 +95,8 @@ temp_c
 ## Solution
 
 ```{r}
-temp_f = (temp_f - 32) / (9/5)
-temp_f
+temp_c = (temp_f - 32) / (9/5)
+temp_c
 ```
 :::
 
@@ -285,10 +285,9 @@ even_more_numbers = c(1, 6, 2, 93, 241, 315, 23)
 
 ```{r}
 even_more_numbers = c(1, 6, 2, 93, 241, 315, 23)
-mean(even_more_numbers) - even_more_numbers
+even_more_numbers - mean(even_more_numbers)
 ```
 :::
-
 
 # Data Frames/Tables
 
@@ -364,7 +363,6 @@ ages_years = study_cohort$age # Extract the column that contains participant age
 ages_years * 12 # Use a vector operation to convert ages from years to months. 
 ```
 :::
-
 
 # Summary
 

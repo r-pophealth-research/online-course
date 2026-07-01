@@ -169,6 +169,15 @@ Create a new variable `high_BMI` in framingham_df that takes on the value `1` if
 framingham_df %>% 
   mutate(high_BMI = ...(BMI >= 30, ..., ...))
 ```
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+framingham_df %>%
+  mutate(high_BMI = ifelse(BMI >= 30, 1, 0))
+```
+:::
+
 
 ### case_when()
 
@@ -214,6 +223,20 @@ framingham_df %>%
   mutate(age_decades = ...(age < 30 ~ ..., 
                            ...))
 ```
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+framingham_df %>%
+  mutate(age_decades = case_when(age < 30 ~ "20s",
+                                 age < 40 ~ "30s",
+                                 age < 50 ~ "40s",
+                                 age < 60 ~ "50s",
+                                 age < 70 ~ "60s",
+                                 age < 80 ~ "70s"))
+```
+:::
+
 
 # Renaming Columns
 
@@ -240,6 +263,14 @@ Rename the `education` column to `highest_education_completed`
 ```{r}
 framingham_df %>% ...
 ```
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+framingham_df %>% rename(highest_education_completed = education)
+```
+:::
+
 
 # Joining Data Sets
 
@@ -432,6 +463,20 @@ Hint 1: Start by creating a data frame `chd_prev` with the prevalence of CHD for
 chd_prev = framingham_df %>% group_by(...) %>% summarize(chd_prev = ...)
 chd_income_df = chd_prev %>% ...(zip_code_demog, by = c("zip_code" = "zip"))
 ```
+::: {.callout-tip collapse="true"}
+## Solution
+
+```{r}
+chd_prev = framingham_df %>%
+  group_by(zip_code) %>%
+  summarize(chd_prev = mean(TenYearCHD))
+
+chd_income_df = chd_prev %>%
+  left_join(zip_code_demog %>% select(zip, median_hh_income),
+            by = c("zip_code" = "zip"))
+```
+:::
+
 
 # Optional: Reshaping Data
 
