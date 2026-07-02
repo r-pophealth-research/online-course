@@ -1,0 +1,316 @@
+---
+title: "Additional Practice: Week 3 — Functions & Packages"
+output: pdf_document
+---
+
+# Review
+
+**if-else statement**
+
+```         
+if(condition){
+  action
+} else {
+  action
+}
+```
+
+**for loop**
+
+```         
+for(item in items){
+  action_with_item
+}
+```
+
+**function**
+
+```         
+name <- function(input){
+  action_with_input
+}
+```
+
+Notice a pattern here? The `if`, `for`, and `function` statements all have a similar format! In general, **when we are writing R code that's run in a special way (run only sometimes or run repeatedly)**, we provide some type of instructions in parentheses `()`. Then we provide the code we want to run based on those instructions in curly brackets `{}`. We need those curly brackets `{}` to tell R what code we want run in the special way and what code is just run normally.
+
+Note that `for` and `function` both allow you to create new variables inside the parentheses `()` that you can use later inside the curly brackets `{}`.
+
+Want some more practice with these? Check out [while loops](https://www.w3schools.com/r/r_while_loop.asp) which use the same format!
+
+# Functions, Ifs, and Loops
+
+Functions are a way to do the same action to different inputs.
+
+Functions have 2 important parts:
+
+1.  The part that goes in parentheses is the input. Not all functions have inputs, and that's okay.
+2.  The part that goes in the curly brackets is the the action that you want to run each time.
+
+You can then call on a function using its name and putting the input inside parentheses.
+
+## Practice 1 - Simple Function
+
+Write a simple function that takes a character input and prints (use `print()`) that input.
+
+```{r}
+# Write your function here
+printer
+
+# Check your function
+printer(input = "Hello world")
+printer(input = "Go trees!")
+```
+
+## Practice 2 - Multiple Inputs
+
+Write a function that takes two inputs, `base` and `exponent`, that returns the base raised to the exponent.
+
+```{r}
+# Fill in the function with the inputs and code needed to calculate
+exponentiate <- function(...) {
+
+}
+
+# Check your function
+exponentiate(base=2, exponent=5) # Should be 32
+exponentiate(base=5, exponent=-1) # Should be 0.2
+```
+
+## Practice 3 - Function + If
+
+When using the built-in `log` function, taking the log of 0 outputs `-Inf` (negative infinity), and taking the log of a negative number outputs `NaN` (not a number).
+
+```{r}
+log(0)
+log(-2)
+```
+
+Write a function called `smart_log` that takes any number as the input. If that number is zero or negative, return `NA`. Otherwise, return the log of that number.
+
+```{r}
+smart_log <- function(...){
+  # If statement to check if the number is zero or negative that returns NA
+  
+  # Otherwise, return the log of the number
+  
+}
+
+# Check your function
+smart_log(num=10)
+smart_log(num=0)
+smart_log(num=-2)
+```
+
+## Practice 4 - Function + Loop
+
+Now that we have our function, we can use a for-loop to find the log of a bunch of numbers.
+
+Write a for-loop that calculates and and saves the log of each number in a vector.
+
+```{r}
+# Calculate the log of these numbers using the function you made above
+# Save the results to logs
+numbers <- c(1, -10, 20, 50, 0)
+logs <- c()
+
+# Write your for-loop that calculates and saves the log of each number using 
+# the function you made above
+for(...) {
+  # Use the smart_log function to get the log and save it to a variable
+  
+  # Add that variable to the logs list
+  
+}
+
+# Check your results
+logs
+```
+
+## Practice 5 - Challenge: Complex function
+
+Remember this formula?
+
+$$
+x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}
+$$
+
+It's the quadratic formula from algebra, which tells us where a parabola intercepts the $x$ axis. Write a function that takes three values, `a`, `b`, and `c`, and returns a vector with two values - the two places where the parabola crosses the $x$ axis. But, if `a` is zero, return a vector with two `NA` values because that is not a parabola.
+
+Hint: There is no $\pm$ in R. You'll have to do those separately.
+
+```{r}
+# Write your function
+get_parab_x_intercepts
+
+# Testing
+get_parab_x_intercepts(a=2, b=4, c=-3) # Should be 0.5811 and -2.5811
+get_parab_x_intercepts(a=-5, b=1, c=6) # Should be -1 and 1.2
+get_parab_x_intercepts(a=0, b=10, c=2) # Should be NA and NA
+```
+
+# Get Help with Functions
+
+R has a bunch of functions that have already been written and documented for us. For example `min()` and `max()`:
+
+```{r}
+min(1,2,3,4,5)
+max(1,2,3,4,5)
+```
+
+These functions have documentation to tell us how to use them. You access the documentation using the `?`.
+
+```{r}
+?min()
+?max()
+```
+
+You can also use your Tab key inside the parentheses to get a suggestion of what should go next. Note the `na.rm` argument appears with a brief description.
+
+```{r}
+min()
+```
+
+## Practice 6 - Sequences
+
+Use the `?` operator to figure out how to use the `seq()` function get every fifth number from 0 to 90 (i.e. 0, 5, 10, ..., 90). Use the same function to get every 0.2 from 2 to 5 (i.e. 2.0, 2.2, 2.4, ..., 5).
+
+```{r}
+
+```
+
+# Working with Data
+
+## Import Data
+
+When you download data (or get it from collaborators), it's best practice to store it in a `data` folder when working locally. The main way you will load CSV files is with `read_csv()`. Note, you need to load the `tidyverse` package before you use `read_csv()`.
+
+Load `employment_data.csv` from the [course GitHub repo](https://github.com/r-pophealth-research/online-course/tree/main/data) and save it to a variable.
+
+```{r}
+library(tidyverse)
+
+employment_data <- read_csv("https://raw.githubusercontent.com/r-pophealth-research/online-course/main/data/employment_data.csv")
+```
+
+If you ever need to import data from Excel, you can install and load the `readxl` package. This package contains the `read_excel()` function that you can use just like `read_csv()`.
+
+## Export Data
+
+Once you have your data cleaned, you'll want to save your data set. You can save your data using the function `write_csv()`. This function needs two things: 1) a data set and 2) a file location to put the data set. The example below works in RStudio on your own computer.
+
+```{r}
+# write_csv(employment_data, file = "data/employment_data_copy.csv")
+```
+
+# Fun with Dates
+
+Dates are notoriously hard to deal with. There are leap years and [leap seconds](https://www.youtube.com/watch?v=lv3KAvP--ZM). Some months have 30 days, some months have 31, and other months can't decide how many days they want to have. Also, there are a bunch of different ways of writing the same date.
+
+## Lubridate Intro
+
+Lubridate to the rescue! `lubridate` is one of the packages included in the `tidyverse`. For additional help getting started, you can check out the [Lubridate Cheat Sheet](https://rstudio.github.io/cheatsheets/lubridate.pdf). To create a date in `lubridate`, you will use one of the parsing functions. These functions take in strings and create dates.
+
+```{r}
+library(lubridate)
+
+# Year, month, day, hours, minutes, seconds
+ymd_hms("2024-01-02 03:04:05")
+
+# Month, day, year, hours, minutes, seconds
+mdy_hms("10/31/22 23:59:59")
+
+# Year, month, day
+ymd("2020-03-15")
+
+# Month, day, year
+mdy("1/24/24")
+
+# It knows what days exist and what don't
+ymd("2024-02-29")
+ymd("2023-02-29")
+
+# It has special functions to get the current date/time
+today()
+now()
+```
+
+Now you use the right functions to turn these written out dates into Lubridate dates. Use the cheat sheet to help!
+
+```{r}
+ymd("2024-01-01")
+mdy("01-31-24")
+dmy("31/01/24")
+ymd_hm("2022-31-08 11:00")
+
+# You can tranform these dates all at once!
+mdy(c("11/08/16", "11/02/20", "11/05/24"))
+```
+
+## Employment Exercise
+
+Our goal is to use the `employment_data` dataset you imported above to calculate the employee's total compensation over the time they've worked at The Company(TM).
+
+### Practice 7 - Get the start date and end dates as Lubridates
+
+Use the dataset and what you just learned to pull out the start dates and end dates and transform them into Lubridates. Put the start dates into a variable called `start_dates` and the end dates into a variable called `end_dates`.
+
+```{r}
+
+```
+
+### Practice 8 - Challenge: Fix the end dates
+
+If people don't have an end date, they're still working at The Company(TM). So we need to replace all of the `NA`s in `end_date` with today's date.
+
+Just like how we used numbers and square brackets to find specific places in our data, we can use logicals in square brackets to do the same thing
+
+```{r}
+example_data <- c("a","b","c","d","e")
+# Both of these lines get only the second element
+example_data[2]
+example_data[c(F, T, F, F, F)]
+# Both of these lines get the thrid through the fifth element
+example_data[3:5]
+example_data[c(F, F, T, T, T)]
+```
+
+Using this knowledge, set all of the `NA`'s in end_date to today's date.
+
+```{r}
+# Hint
+is.na(end_date)
+end_date
+
+
+```
+
+### Practice 9 - Challenge: Figure out how long each person has been working here
+
+Lubridate allows us to subtract dates just like any other number. Use this to calculate how long each employee has been working at The Company(TM).
+
+```{r}
+
+```
+
+Lubridate also has a concept called an interval which stores the time between two dates accounting for leap years and everything else. Using `interval()` or `%--%`, create a vector of intervals that describes when each person works here.
+
+```{r}
+
+```
+
+### Practice 10 - Challenge: Multiply the number of months the person has been working by their monthly salary
+
+Note: The Company(TM) pays its employees the same amount regardless of how long a month is (because it's cheaper).
+
+Lubridate allows us to divide dates like they're math. These functions include dividing an entire time span by another time span. For example:
+
+```{r}
+all_of_jan <- interval(start=mdy("01-01-2025"), end=mdy("01-31-2025"))
+all_of_jan / weeks(1)
+```
+
+Now take the intervals you made and get the number of whole months each person worked. Then multiply that by their monthly salary.
+
+```{r}
+
+```

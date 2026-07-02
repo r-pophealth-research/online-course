@@ -18,6 +18,7 @@ other/
 tutorials/*.qmd
 hw/*.qmd
 final/*.qmd
+practice/*.qmd
 
 # Instructor materials and knit outputs
 *_complete*
@@ -33,18 +34,13 @@ final/*
 /images/
 
 # Data files not referenced by website source documents
-/data/baseline_jhs.csv
 /data/dengue_hh_data.csv
-/data/dengue_infection_data.csv
-/data/employment_data.csv
 /data/householdCohortData.csv
 /data/mid_quarter_eval.csv
 /data/ncd_risk_factors_original.csv
 /data/od_deaths_state.csv
-/data/stomach_cancer_deaths_california.csv
 /data/titanic.csv
 /data/titanic_data.csv
-/data/washb_subset.csv
 
 # OS junk
 .DS_Store

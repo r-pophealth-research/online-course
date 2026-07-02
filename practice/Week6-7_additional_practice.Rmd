@@ -1,0 +1,205 @@
+---
+title: "Additional Practice: Weeks 6 & 7 — Descriptive Statistics & Modeling"
+output: html_notebook
+---
+
+# Start to Finish Analysis for the Jackson Heart Study
+
+This walkthrough analyzes data from the [Jackson Heart Study](https://www.jacksonheartstudy.org/). You can use this analysis as a template for future start-to-finish analyses.
+
+Our research question for this analysis will be:
+
+> **Is smoking associated with hypertension after controlling for sociodemographic variables?**
+
+# Data Exploration
+
+```{r setup}
+library(tidyverse)
+
+jhs_data <- read_csv("https://raw.githubusercontent.com/r-pophealth-research/online-course/main/data/baseline_jhs.csv")
+```
+
+Explore the data structure and variables. Here are some questions you should be able to answer:
+
+-   What are the variables in your data set?
+
+    -   Continuous:
+
+    -   Categorical: sex, `income`, `education`, `ever_smoker`, `hypertension`
+
+-   What is the shape of the continuous variables?
+
+-   What does each group of the categorical variables represent?
+
+-   Which variable(s) have a lot of missingness?
+
+```{r}
+# Look at a summary of the data
+
+# Continuous variable shape
+
+# Categorical variables
+
+# Missingness
+
+```
+
+# Data Cleaning
+
+Based on our findings from the data exploration above, let's made a plan for data cleaning. We ***always*** want to document how we are cleaning our data outside of the code so that even people who cannot read R code know what is happening to the data.
+
+```{r}
+# Document what you're doing to the data in a comment!
+clean_jhs_data <- jhs_data %>%
+  mutate(...)
+```
+
+# Descriptive Statistics
+
+## Categorical Variables
+
+Smoking is our exposure of interest for this study, so look at the difference smoking count and percent by income and education.
+
+```{r}
+# Tables of income vs smoking
+table(...)
+prop.table(table(...), margin=...)
+
+# Tables of education vs smoking
+table(...)
+prop.table(table(...), margin=...)
+```
+
+## Continuous Variables
+
+Get measures for the center and spread of age and alcoholic drinks per week (`alcwV1`). For center, use `mean()` or `median()`, as appropriate. For spread, use `sd()` or `quantile()`, as appropriate.
+
+```{r}
+# Age
+
+# Alcoholic drinks per week
+
+```
+
+## Table 1
+
+Let's make the Table 1 for our paper with smoking on the top and age, alcoholic drinks per week, income, and education in the rows. Before you do your calculations, you can remove the people with missing smoking data. Percents in Table 1s should be column percents.
+
+```{r}
+# Filter out missing smoking status
+table1_data <- clean_jhs_data %>%
+  filter(...)
+
+# Descriptive stats
+## Age mean and SD
+
+## Drinks median and IQR
+
+## Income counts and percents
+
+## Education counts and percents
+
+```
+
+| Variable | Total (N=???) | Smokers (N=???) | Non-Smokers (N=???) |
+|----|----|----|----|
+| Age, Mean (SD) | ??? | ??? | ??? |
+| Drinks per Week, Median (IQR) | ??? | ??? | ??? |
+| Income, N (%) |  |  |  |
+| Poor | ??? | ??? | ??? |
+| Lower-middle | ??? | ??? | ??? |
+| Upper-middle | ??? | ??? | ??? |
+| Affluent | ??? | ??? | ??? |
+| Missing | ??? | ??? | ??? |
+| Education, N (%) |  |  |  |
+| \< High School | ??? | ??? | ??? |
+| High School/GED | ??? | ??? | ??? |
+| \> High School | ??? | ??? | ??? |
+| Missing | ??? | ??? | ??? |
+
+# Relative Risk
+
+What's our unadjusted odds ratio for hypertension in smokers?
+
+```{r}
+# 2x2 table of hypertension and smoking
+
+# Odds of hypertension in smokers
+
+# Odds of hypertension in non-smokers
+
+# Odds ratio
+
+```
+
+------------------------------------------------------------------------
+
+**Start Week 7**
+
+## Compare Groups
+
+# Statistical Modeling
+
+## Unadjusted Models
+
+Use a linear model to look at how smoking is associated with systolic blood pressure, including finding the confidence intervals.
+
+```{r}
+# Create the model
+
+# Use summary and confint to get the parameters
+
+```
+
+What do the model parameters mean?
+
+Use a logistic model to look at how smoking is associated with high blood pressure, including finding the confidence interval.
+
+```{r}
+# Create the model
+
+# Use exp, summary, and confint to get the parameters
+
+```
+
+What do the model parameters mean?
+
+## Adjusted Models
+
+Use a linear model to look at how smoking is associated with systolic blood pressure, controlling for age, alcoholic drinks, education, and income.
+
+```{r}
+# Create the adjusted model
+
+# Get the parameters
+
+```
+
+What do the model parameters mean?
+
+Use a logistic model to look at how smoking is associated with high blood pressure, controlling for sociodemographic variables.
+
+```{r}
+# Create the adjusted model
+
+# Get the parameters
+
+```
+
+What do the model parameters mean?
+
+### Challenge: Refactor
+
+Re-run the model above, but before you do that, re-factor education and income so that "Poor" and "Less than High School" are the reference groups.
+
+```{r}
+# We want "Poor" and "Less than High School" to be the reference groups
+# So we create vectors with the categories in order
+# And use factor() to reorder the levels
+
+
+# Create the model using the newly reordered variables
+
+# Get the parameters
+
+```

@@ -1,0 +1,121 @@
+---
+title: "Additional Practice: Week 2 — Data Structures"
+output: pdf_document
+---
+
+# Part 1. Data Types
+
+Suppose we wanted to the transmission of influenza in a community. Our local hospital tests all patients for influenza, and reports the number of cases observed each week.
+
+This week, 5 patients tested positive for influenza - create a variable called `n_cases_this_week` that stores this count as a numeric.
+
+```{r}
+n_cases_this_week = ...
+n_cases_this_week
+```
+
+It might be hard to contextualize this value without knowing the number of patients that were tested. Instead, we could estimate a rate of influenza cases per 1,000 patients (\# cases / \# patients \* 1000). This month, there were 258 patients tested - create a variables called `n_patients_this_week` that store this count as a numeric.
+
+```{r}
+n_patients_this_week = ...
+n_patients_this_week
+```
+
+Now, create a variable called `influenza_rate_this_week` using the variables `n_cases_this_week` and `n_patients_this_week`, to estimate the number of influenza cases per 1,000 patients.
+
+```{r}
+influenza_rate_this_week = ...
+influenza_rate_this_week
+```
+
+Suppose that the rate of influenza last week was 30 cases per 1,000 patients. Estimate the **rate ratio** of influenza associated with this week versus last week. Use the `influenza_rate_this_week` variable in your calculation.
+
+```{r}
+
+```
+
+# Part 2: Vectors
+
+The vectors below contains the number of influenza cases and the number of patients in the hospital for each week of our study.
+
+In both vectors, the estimate for the first month is the first value in the vector, the estimate for the second month is the second value, the estimate for the third month is the third value, etc.
+
+```{r}
+n_patients = c(147, 408, 168, 252, 203, 253)
+n_cases = c(0, 4, 4, 5, 3, 1)
+```
+
+Using the variables you created in part 1, add `n_patients_this_week` and `n_cases_this_week` to the end of the `n_patients` and `n_cases` vectors.
+
+```{r}
+n_patients = c(n_patients, ...)
+n_cases = ...
+```
+
+Use vector operations to estimate the total number of patients.
+
+```{r}
+total_patients = sum(...)
+```
+
+Use vector operations to estimate the total number of influenza cases
+
+```{r}
+total_cases = ...
+```
+
+Use vector operations to estimate the total rate of cases per 1,000 patients.
+
+```{r}
+total_rate = ... / ... * ...
+```
+
+Use vector indexing to estimate the rate of cases per 1,000 patients in the **third** week of the study.
+
+```{r}
+...
+```
+
+Use vector operations to estimate the rate of cases per 1,000 patients in **each** week of the study.
+
+```{r}
+...
+```
+
+# Part 3: Data Frames
+
+At the end of the study, the team compiles the data into a data frame as follows
+
+```{r}
+influenza_data = 
+  data.frame(week = 1:12, 
+             n_patients = c(147, 408, 168, 252, 203, 253, 258, 342, 205, 246, 123, 119),
+             n_cases = c(0, 4, 4, 5, 3, 1, 2, 1, 0, 0, 1, 1))
+
+influenza_data
+```
+
+Use data frame indexing to subset the data to the 5th week of the study.
+
+```{r}
+
+```
+
+Use data frame operations to extract the number of cases as a one-column data frame .
+
+```{r}
+
+```
+
+Use data frame operations to extract the number of cases as a vector.
+
+```{r}
+
+```
+
+Use data frame and vector operations to make a vector with the rate of cases per 1,000 patients in the first 8 weeks of the study.
+
+```{r}
+influenza_data_first8weeks = influenza_data[...]
+...
+```

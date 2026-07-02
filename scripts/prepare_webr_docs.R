@@ -11,6 +11,13 @@ source_files <- c(
   "tutorials/Week6_descriptive_statistics.Rmd",
   "tutorials/Week7_statistical_analyses.Rmd",
   "tutorials/Week8-9_data_visualizations.Rmd",
+  "practice/Week1_additional_practice.Rmd",
+  "practice/Week2_additional_practice.Rmd",
+  "practice/Week3_additional_practice.Rmd",
+  "practice/Week4_additional_practice.Rmd",
+  "practice/Week5_additional_practice.Rmd",
+  "practice/Week6-7_additional_practice.Rmd",
+  "practice/Week8-9_additional_practice.Rmd",
   "hw/HW1_markdown_and_data_types.Rmd",
   "hw/HW2_data_structures_and_functions.Rmd",
   "hw/HW3_data_exploration_and_manipulation.Rmd",
@@ -72,6 +79,9 @@ detect_webr_packages <- function(text) {
   }
   if (grepl("pivot_|gather\\(|spread\\(|separate\\(|unite\\(|\\btidyr::", text)) {
     pkgs <- c(pkgs, "tidyr")
+  }
+  if (grepl("library\\(lubridate\\)|\\blubridate::|floor_date|ymd\\(|mdy\\(|interval\\(", text)) {
+    pkgs <- c(pkgs, "lubridate")
   }
   unique(pkgs)
 }
@@ -184,7 +194,7 @@ for (f in source_files) {
 validate_data_files <- function() {
   qmd_files <- c(
     "index.qmd",
-    list.files(c("tutorials", "hw", "final", "appendix"), pattern = "\\.qmd$", full.names = TRUE)
+    list.files(c("tutorials", "hw", "final", "appendix", "practice"), pattern = "\\.qmd$", full.names = TRUE)
   )
 
   paths <- character()

@@ -2,7 +2,7 @@
 title: "Welcome"
 ---
 
-Welcome to **R for Health Research** — an introduction to R programming for epidemiology and health policy research.
+Welcome to **R for Health Research** — an introduction to R programming and data science principles for epidemiology and health policy research.
 
 These materials were adapted from materials from the 2024-2025 offerings of EPI/CHPR 202 at Stanford University, and were authored by [Anna Nguyen](https://www.linkedin.com/in/annatnguyen98/) and [Samuel Jaros](https://www.linkedin.com/in/samuel-jaros/). Anna Nguyen converted course materials into this online course with the assistance of [Cursor](https://cursor.com/)
 
