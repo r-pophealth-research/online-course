@@ -1677,12 +1677,6 @@ globalThis.qwebrExecuteCode = async function (
  <span class="menu-text">Welcome</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./tutorials/Week1_install_r_rstudio.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">W1 - Install R &amp; RStudio</span></a>
-  </div>
-</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -1790,6 +1784,23 @@ globalThis.qwebrExecuteCode = async function (
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Appendix</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./appendix/install_r_rstudio.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Install R and RStudio</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -1800,7 +1811,8 @@ globalThis.qwebrExecuteCode = async function (
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#how-to-use-this-site" id="toc-how-to-use-this-site" class="nav-link active" data-scroll-target="#how-to-use-this-site">How to use this site</a></li>
+  <li><a href="#running-r-in-your-browser-with-webr" id="toc-running-r-in-your-browser-with-webr" class="nav-link active" data-scroll-target="#running-r-in-your-browser-with-webr">Running R in your browser with WebR</a></li>
+  <li><a href="#how-to-use-this-site" id="toc-how-to-use-this-site" class="nav-link" data-scroll-target="#how-to-use-this-site">How to use this site</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/r-pophealth-research/online-course/edit/main/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/r-pophealth-research/online-course/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -2112,28 +2124,31 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 <p>Welcome to <strong>R for Health Research</strong> — an introduction to R programming for epidemiology and health policy research.</p>
 <p>These materials were adapted from materials from the 2024-2025 offerings of EPI/CHPR 202 at Stanford University, and were authored by <a href="https://www.linkedin.com/in/annatnguyen98/">Anna Nguyen</a> and <a href="https://www.linkedin.com/in/samuel-jaros/">Samuel Jaros</a>. Anna Nguyen converted course materials into this online course with the assistance of <a href="https://cursor.com/">Cursor</a></p>
-<p>All code in this online course can be run in your browser using <a href="https://quarto.org">Quarto</a> and <a href="https://docs.r-wasm.org/webr/latest/">WebR</a>. You do not need R installed locally, but the “Running Materials Locally” sections provides instructions on how to run materials on your own computer.</p>
-<p>Click “Run” to run your first line of R code below!</p>
+<p>You do not need R installed on your computer to use this site. The tutorials and homework pages include interactive code cells powered by <a href="https://docs.r-wasm.org/webr/latest/">WebR</a> and <a href="https://quarto.org">Quarto</a>. If you prefer working locally, see the <a href="./appendix/install_r_rstudio.html">Install R and RStudio</a> appendix for setup instructions.</p>
+<section id="running-r-in-your-browser-with-webr" class="level2">
+<h2 class="anchored" data-anchor-id="running-r-in-your-browser-with-webr">Running R in your browser with WebR</h2>
+<p><a href="https://docs.r-wasm.org/webr/latest/">WebR</a> is a version of R compiled to run entirely in your web browser. Every interactive code cell on this site is an editable text window—click inside it, change the code, and run it when you are ready.</p>
+<p><strong>To run code:</strong></p>
+<ul>
+<li>Click <strong>Run Code</strong> to execute everything in the cell. Printed output, tables, and plots appear directly below the cell.</li>
+<li>Press <strong>Shift + Enter</strong> as a keyboard shortcut for <strong>Run Code</strong>.</li>
+<li>Select part of the code and press <strong>Ctrl + Enter</strong> (Windows/Linux) or <strong>Cmd + Enter</strong> (Mac) to run just the selection—or run the current line if nothing is selected.</li>
+</ul>
+<p><strong>Other controls:</strong></p>
+<ul>
+<li>Click the reset icon (↻) to restore the cell’s original code and start over.</li>
+<li>Click the copy icon to copy the code to your clipboard.</li>
+</ul>
+<p>The first time you run code on a page, WebR needs to download R and any required packages. This can take 30–60 seconds on a slow connection. Subsequent cells on the same page run much faster.</p>
+<p>Try it below—edit the message if you like, then click <strong>Run Code</strong>:</p>
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>The first time you run code on a page, WebR needs to download R and any required packages. This can take 30–60 seconds on a slow connection. Subsequent cells on the same page run much faster.</p>
-</div>
-</div>
+</section>
 <section id="how-to-use-this-site" class="level2">
 <h2 class="anchored" data-anchor-id="how-to-use-this-site">How to use this site</h2>
 <ul>
-<li><strong>Tutorials</strong> — Interactive lessons with code cells. Click <strong>Run</strong> in any code block to execute R in your browser.</li>
-<li><strong>Homework</strong> — Assignments with editable code cells.</li>
+<li><strong>Tutorials</strong> — Interactive lessons that walk through R concepts week by week. Work through the code cells as you read.</li>
+<li><strong>Homework</strong> — Practice assignments with editable code cells. Complete them in your browser, or download the source files from the <a href="https://github.com/r-pophealth-research/online-course">course GitHub repo</a> to work in RStudio.</li>
 </ul>
 
 
