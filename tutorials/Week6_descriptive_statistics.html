@@ -2199,13 +2199,12 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<pre class="{webr-r setup}"><code># data paths are adjusted for the browser below
-# tidyverse packages are pre-loaded on this site</code></pre>
+<pre class="{webr-r setup}"><code># tidyverse packages are pre-loaded on this site</code></pre>
 <p><em>Note:</em> If you name your R chuck “setup”, R will run it automatically the first time you run one of the code chucks below. It’s a good idea to put your <code>library</code> statements inside <code>setup</code> so your packages are ready to go!</p>
 <section id="r-in-statistical-analyses" class="level1">
 <h1>R in Statistical Analyses</h1>
-<p>The first five weeks of this course have helped you understand the basics of R, import your data, and create the variables you need to do your analyses. For the next five weeks, we will focus on how you can use R in your statistical analyses. The first step in any research project is to understand the data set you are working with. We will use the <code>framingham.csv</code> dataset that you should have downloaded already in your <code>data</code> folder.</p>
-<pre class="{webr-r import}"><code>fram_data = webr_read_csv("data/framingham.csv")
+<p>The first five weeks of this course have helped you understand the basics of R, import your data, and create the variables you need to do your analyses. For the next five weeks, we will focus on how you can use R in your statistical analyses. The first step in any research project is to understand the data set you are working with. We will use the <code>framingham.csv</code> dataset from the <a href="https://github.com/r-pophealth-research/online-course/tree/main/data">course GitHub repo</a>.</p>
+<pre class="{webr-r import}"><code>fram_data = read_csv("https://raw.githubusercontent.com/r-pophealth-research/online-course/main/data/framingham.csv")
 head(fram_data)</code></pre>
 </section>
 <section id="data-prep" class="level1">
