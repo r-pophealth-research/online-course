@@ -15,16 +15,15 @@ If you have any questions about the contents of this tutorial, please post them 
 
 ```{r}
 library(tidyverse) # also loads ggplot2
-library(here)
 ```
 
-In this tutorial, we will be using maternal mortality data from the World Health Organization that has been merged with population data from the World Bank. Download the `WHO_maternal_mortality_rates.csv` file from Canvas and place it in the `data` folder of your class directory.
+In this tutorial, we will be using maternal mortality data from the World Health Organization that has been merged with population data from the World Bank. The data file is available in the [course GitHub repo](https://github.com/r-pophealth-research/online-course/tree/main/data).
 
 Run the cell below to load the data as `maternal_mortality` and view the first few columns.
 
 ```{r}
 # Source: https://platform.who.int/data/maternal-newborn-child-adolescent-ageing/indicator-explorer-new/mca/maternal-mortality-ratio-(per-100-000-live-births)
-maternal_mortality = read_csv(here("data", "maternal_mortality_ratios.csv"))
+maternal_mortality = read_csv("https://raw.githubusercontent.com/r-pophealth-research/online-course/main/data/maternal_mortality_ratios.csv")
 head(maternal_mortality)
 ```
 

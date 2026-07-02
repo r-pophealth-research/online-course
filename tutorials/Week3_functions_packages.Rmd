@@ -33,7 +33,7 @@ times_two = function(x){
 }
 ```
 
-Run this code. In the Environment tab in the top right, a function called `times_two` appears. We can **call** to the function using its name followed by our input in parenthesis. For `times_two`, all we have to do is give `x` a value:
+Run this code cell. R creates a function called `times_two` that you can use in later code cells in this notebook. We can **call** the function using its name followed by our input in parenthesis. For `times_two`, all we have to do is give `x` a value:
 
 ```{r}
 times_two(x=1)
@@ -378,7 +378,7 @@ for (egfr in egfr_values){
 Writing functions sure is fun, but I don't want to have to write a function for everything in R. Luckily, many amazing data scientists have come before us, written useful functions, and stored them in packages. Packages are bits of code you download from the internet to use in your own code. In R, there are two steps to using a package. 1) Install the package with `install.packages()` and 2) Tell R you want to use that package with `library()`. One of the most useful packages is called tidyverse. This package contains a multitude of packages that help us import, clean, and visualize data. Let's download tidyverse.
 
 ```{r}
-# Because we're working in R markdown, we have to tell it where to search for the package. That's why we put repos="https://cloud.r-project.org". If you run install.packages() in the console or in a normal R file, you don't need the repos= part.
+# Because we're working in this Quarto notebook, we have to tell it where to search for the package. That's why we put repos="https://cloud.r-project.org". In other R environments (like RStudio), you may not need the repos= part.
 install.packages("tidyverse", repos="https://cloud.r-project.org")
 ```
 
@@ -407,9 +407,7 @@ library(haven)
 
 # Importing Data
 
-By installing tidyverse, one of the packages that gets installed is called readr. This package gives us useful functions to import data into R because who wants to type out 3,000 rows??? Let's learn about importing data. Before you get started, **make sure you're working in your R Studio project that you made during class on Week 1**. That means this file should be saved in your `pre-class` folder. If you're not already doing that, you can click File\>Save As... and save it in your R project folder. The top right of your R Studio should say something like "EPI 202 R Class".
-
-Go to Canvas and download the wage_data.csv file under Week 3. After it has downloaded, move `wage_data.csv` into your `data` folder in this R project. When you go into R, you should be able to click on the "Files" tab, and the `data` folder and see `wage_data.csv` in that folder.
+By installing tidyverse, one of the packages that gets installed is called readr. This package gives us useful functions to import data into R because who wants to type out 3,000 rows??? Let's learn about importing data. The wage data for this tutorial is in the [course GitHub repo](https://github.com/r-pophealth-research/online-course/tree/main/data).
 
 Now we're ready to import the data. We will use the `read_csv()` function from the `readr` package. You can check out what `read_csv()` does using the `?` function. If you get an error, you did not download and library tidyverse yet.
 
@@ -417,17 +415,17 @@ Now we're ready to import the data. We will use the `read_csv()` function from t
 ?read_csv()
 ```
 
-`read_csv()` has a bunch of options that lets us read in different files, but the only required input is the `file` we want in r. We give the file we want to import using a character. Because we are super organized and we are using an R Studio Project, all we have to say is look `here::here` in the `data` folder for a file called `wage_data.csv`. We do this by saying `here::here("data/wage_data.csv")`. You can even use the Tab key to autocomplete the name for you!
+`read_csv()` has a bunch of options that lets us read in different files, but the only required input is the `file` we want in r. We give the file we want to import using a character—in this case, the URL of the CSV on GitHub:
 
 ```{r}
-read_csv(file=here::here("data", "wage_data.csv"))
+read_csv("https://raw.githubusercontent.com/r-pophealth-research/online-course/main/data/wage_data.csv")
 ```
 
-*Why do we have to say `here::here()`*? This is the way tell R Markdown to look at the R Project for help finding the file. If you're working in a normal R file (one that ends with `.R` instead of `.Rmd)`, you don't have to do this.
+*Why use a URL?* `read_csv()` can read files directly from the web, so you don't need to download CSVs to your computer first. This works in this notebook in your browser and in RStudio on your own machine.
 
 ### Practice Problem
 
-Notice that the data were printed without it appearing in the top right "Environment" tab. That's because we didn't assign it a variable! Try importing the wage data again, this time assigning it to a variable called `wages`.
+Notice that the data were printed below the code cell, but we didn't save them to a variable. That's because we didn't use assignment! To use this data in later code cells, assign it to a name. Try importing the wage data again, this time assigning it to a variable called `wages`.
 
 ```{r}
 # Write your code to import the wage data
@@ -440,7 +438,7 @@ wages
 ## Solution
 
 ```{r}
-wages = read_csv(here("data", "wage_data.csv"))
+wages = read_csv("https://raw.githubusercontent.com/r-pophealth-research/online-course/main/data/wage_data.csv")
 wages
 ```
 :::

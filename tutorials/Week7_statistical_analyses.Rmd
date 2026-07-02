@@ -18,11 +18,10 @@ Over the past several weeks, we've have cleaned our Framingham data using the sk
 Run the cell below to load `clean_fram_data`, a "cleaned" version of the Framingham data set.
 
 ```{r setup}
-library(here)
 library(tidyverse)
 
 # Get a dataset similar to the one we had last week
-clean_fram_data <- read_csv(here("data/framingham.csv"), show_col_types=F) %>%
+clean_fram_data <- read_csv("https://raw.githubusercontent.com/r-pophealth-research/online-course/main/data/framingham.csv", show_col_types=F) %>%
     mutate(education = case_when(education == 1 ~ "Less than high school", # Education labelling
                                  education == 2 ~ "High school diploma/GED",
                                  education == 3 ~ "Some college",

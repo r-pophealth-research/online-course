@@ -9,40 +9,22 @@ Welcome to Week 4! This week, we'll start diving into datasets and cover differe
 
 If you have any questions about the contents of this tutorial, please post them in the `Week 4 Pre-Class Tutorial` thread on Ed.
 
-Through this tutorial (and the rest of the class), we will be leveraging open source tools from the `tidyverse` and `here` packages. `tidyverse` includes a several "core" packages can be used in data exploration, manipulation, and visualizations. Over the next two weeks, we'll learn about the basics of `dplyr`, a package that includes several useful functions to interact with data.
+Through this tutorial (and the rest of the class), we will be leveraging open source tools from the `tidyverse` package. `tidyverse` includes several "core" packages that can be used in data exploration, manipulation, and visualizations. Over the next two weeks, we'll learn about the basics of `dplyr`, a package that includes several useful functions to interact with data.
 
 Before you start, run the cell below to load the packages.
 
 ```{r}
 #Run install.package("tidyverse") if you don't already have this installed
 library(tidyverse) # also loads dplyr
-
-#Run install.package("here") if you don't already have this installed
-library(here) 
 ```
 
 # Loading data
 
-To load in data sets, we have to specify where the file is located. File paths can be hard to remember, but the `here` function can help by returning the path to your current working directory.
-
-Run the cell below to view your current file path. Make sure that it returns the folder with your materials for CHPR/EPI 202. If it returns anything else, open the project that you've created for your class work and then reopen this notebook.
-
-```{r}
-here()
-```
-
-We will be using a example dataset from the Framingham Heart Study in this tutorial. Download the "framingham.csv" dataset from Canvas and move it to the `data` folder of your class folder/directory. The code below will return `TRUE` if the data has been correctly downloaded and stored.
+Course datasets are stored in the [online-course `data` folder on GitHub](https://github.com/r-pophealth-research/online-course/tree/main/data). To load a CSV, pass its URL to `read_csv()`:
 
 ```{r}
 # Data Source: https://www.kaggle.com/datasets/aasheesh200/framingham-heart-study-dataset/data
-framingham_file_path = here("data", "framingham.csv")
-file.exists(framingham_file_path)
-```
-
-If the `framingham.csv` is in the `data` folder (ie the previous cell returns `TRUE`), run the next cell to load the data and name the data frame `framingham_df`
-
-```{r}
-framingham_df = read_csv(here("data", "framingham.csv"))
+framingham_df = read_csv("https://raw.githubusercontent.com/r-pophealth-research/online-course/main/data/framingham.csv")
 ```
 
 # Viewing data
