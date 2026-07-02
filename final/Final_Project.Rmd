@@ -50,13 +50,12 @@ Run the cell below to load the required packages
 
 ```{r}
 library(tidyverse)
-library(here)
 ```
 
 ## Individual data
 
 ```{r}
-individual_data = read_csv(here("data", "dengue_individual_data.csv"))
+individual_data = read_csv("https://raw.githubusercontent.com/r-pophealth-research/online-course/main/data/dengue_individual_data.csv")
 glimpse(individual_data)
 ```
 
@@ -73,7 +72,7 @@ glimpse(individual_data)
 ## Household data
 
 ```{r}
-household_data = read_csv(here("data", "dengue_household_data.csv"))
+household_data = read_csv("https://raw.githubusercontent.com/r-pophealth-research/online-course/main/data/dengue_household_data.csv")
 glimpse(household_data)
 ```
 

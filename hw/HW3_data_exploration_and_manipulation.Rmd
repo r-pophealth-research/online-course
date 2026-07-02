@@ -17,12 +17,11 @@ Run the cell below to load the required packages
 
 ```{r}
 library(tidyverse)
-library(here)
 ```
 
 ## Data Overview 
 
-In this homework, we'll be working with hospitalization data collected by the California Department of Public Health. Specifically, we'll be looking at the number of COVID-19 and influenza hospitalizations in California during 2021. **Download the `covid19_hospitalizations.csv` and `influenza_hospitalizations.csv` files from Canvas and save them in the data folder of your class directory**
+In this homework, we'll be working with hospitalization data collected by the California Department of Public Health. Specifically, we'll be looking at the number of COVID-19 and influenza hospitalizations in California during 2021. The data files are in the [course GitHub repo](https://github.com/r-pophealth-research/online-course/tree/main/data).
 
 The first dataset, loaded as `covid19_hospitalizations` contains daily data on the number of hospital patients with COVID-19, by county. It contains the following columns:
 * `county`: a string, the name of a county
@@ -35,7 +34,7 @@ Run the cell below to load the COVID-19 hospitalization data.
 
 ```{r}
 #Source: https://data.chhs.ca.gov/dataset/covid-19-hospital-data
-covid19_hospitalizations = read_csv(here("data", "covid19_hospitalizations.csv"))
+covid19_hospitalizations = read_csv("https://raw.githubusercontent.com/r-pophealth-research/online-course/main/data/covid19_hospitalizations.csv")
 head(covid19_hospitalizations)
 ```
 
@@ -49,7 +48,7 @@ Run the cell below to load the influenza hospitalization data.
 
 ```{r}
 #Source: https://data.chhs.ca.gov/dataset/respiratory-virus-dashboard-metrics 
-flu_hospitalizations = read_csv(here("data", "influenza_hospitalizations.csv")) 
+flu_hospitalizations = read_csv("https://raw.githubusercontent.com/r-pophealth-research/online-course/main/data/influenza_hospitalizations.csv") 
 head(flu_hospitalizations)
 ```
 

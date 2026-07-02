@@ -33,7 +33,6 @@ final/*
 /images/
 
 # Data files not referenced by website source documents
-/data/Week10_classdata.csv
 /data/baseline_jhs.csv
 /data/dengue_hh_data.csv
 /data/dengue_infection_data.csv

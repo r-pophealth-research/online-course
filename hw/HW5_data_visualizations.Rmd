@@ -17,12 +17,11 @@ Run the cell below to load the required packages
 
 ```{r}
 library(tidyverse)
-library(here)
 ```
 
 ## Data Overview
 
-In this homework, we'll be working indicators of noncommunicable diseases (NCD) like heart disease, cancer, and diabetes and associated risk factors collected by the WHO Global Health Observatory. **Download the `ncd_risk_factors.csv` file from Canvas and save them in the data folder of your class directory**
+In this homework, we'll be working indicators of noncommunicable diseases (NCD) like heart disease, cancer, and diabetes and associated risk factors collected by the WHO Global Health Observatory. The data file is in the [course GitHub repo](https://github.com/r-pophealth-research/online-course/tree/main/data).
 
 The dataset contains country-level annual estimates on the prevalence of different NCDs and risk factors that may contribute to these conditions. It contains the following columns:
 
@@ -46,7 +45,7 @@ Run the cell below to load the NCD data as `ncd_data`
 
 ```{r}
 #Source: https://www.who.int/data/sets/health-inequality-monitor-dataset#gho
-ncd_data = read_csv(here("data", "ncd_risk_factors.csv"))
+ncd_data = read_csv("https://raw.githubusercontent.com/r-pophealth-research/online-course/main/data/ncd_risk_factors.csv")
 head(ncd_data)
 ```
 

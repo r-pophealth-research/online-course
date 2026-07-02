@@ -4,7 +4,7 @@ title: "Welcome"
 
 Welcome to **R for Health Research** — an introduction to R programming for epidemiology and health policy research.
 
-These materials were adapted from materials from the 2024-2025 offerings of EPI/CHPR 202 at Stanford University, and were authored by [Anna Nguyen](https://www.linkedin.com/in/annatnguyen98/) and [Samuel Jaros](https://www.linkedin.com/in/samuel-jaros/).
+These materials were adapted from materials from the 2024-2025 offerings of EPI/CHPR 202 at Stanford University, and were authored by [Anna Nguyen](https://www.linkedin.com/in/annatnguyen98/) and [Samuel Jaros](https://www.linkedin.com/in/samuel-jaros/). Anna Nguyen converted course materials into this online course with the assistance of [Cursor](https://cursor.com/)
 
 All code in this online course can be run in your browser using [Quarto](https://quarto.org) and [WebR](https://docs.r-wasm.org/webr/latest/). You do not need R installed locally, but the "Running Materials Locally" sections provides instructions on how to run materials on your own computer.
 
@@ -14,12 +14,14 @@ Click "Run" to run your first line of R code below!
 print("Hello world!")
 ```
 
+::: {.callout-note}
+The first time you run code on a page, WebR needs to download R and any required packages. This can take 30–60 seconds on a slow connection. Subsequent cells on the same page run much faster.
+:::
+
 ## How to use this site
 
 - **Tutorials** — Pre-class activities with interactive code cells. Click **Run** in any code block to execute R in your browser.
 - **Homework** — Assignments with editable code cells.
 
-::: {.callout-note}
-The first time you run code on a page, WebR needs to download R and any required packages. This can take 30–60 seconds on a slow connection. Subsequent cells on the same page run much faster.
-:::
+
 

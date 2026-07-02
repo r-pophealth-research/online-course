@@ -11,7 +11,6 @@ source_files <- c(
   "tutorials/Week6_descriptive_statistics.Rmd",
   "tutorials/Week7_statistical_analyses.Rmd",
   "tutorials/Week8-9_data_visualizations.Rmd",
-  "tutorials/Week10_research_best_practices.Rmd",
   "hw/HW1_markdown_and_data_types.Rmd",
   "hw/HW2_data_structures_and_functions.Rmd",
   "hw/HW3_data_exploration_and_manipulation.Rmd",
@@ -55,20 +54,19 @@ sync_index_site_url <- function(site_url) {
   message("Synced site URL in ", index_path)
 }
 
-data_helper_chunk <- function(site_url) {
+COURSE_DATA_RAW_URL <- "https://raw.githubusercontent.com/r-pophealth-research/online-course/main/data"
+
+data_helper_chunk <- function() {
   c(
     "```{webr-r}",
     "#| context: setup",
-    "# Helper: download bundled data into the WebR virtual filesystem",
-    paste0("webr_site_url <- \"", site_url, "\""),
-    "webr_read_csv <- function(path) {",
-    "  local_name <- basename(path)",
+    "# Helper: download course CSVs from the GitHub repo into the WebR virtual filesystem",
+    paste0("course_data_url <- \"", COURSE_DATA_RAW_URL, "\""),
+    "webr_read_csv <- function(file) {",
+    "  local_name <- basename(file)",
     "  if (!file.exists(local_name)) {",
-    "    if (!grepl(\"^https?://\", path)) {",
-    "      clean_path <- sub(\"^(\\\\.\\\\./)+\", \"\", path)",
-    "      path <- paste0(webr_site_url, \"/\", clean_path)",
-    "    }",
-    "    download.file(path, local_name, quiet = TRUE, mode = \"wb\")",
+    "    url <- if (grepl(\"^https?://\", file)) file else paste0(course_data_url, \"/\", local_name)",
+    "    download.file(url, local_name, quiet = TRUE, mode = \"wb\")",
     "  }",
     "  utils::read.csv(local_name, stringsAsFactors = FALSE)",
     "}",
@@ -118,7 +116,7 @@ convert_rmd_to_qmd <- function(rmd_path) {
 
   converted_body <- convert_body(body_lines)
   if (needs_data_helper(converted_body)) {
-    converted_body <- c(data_helper_chunk(read_site_url()), "", converted_body)
+    converted_body <- c(data_helper_chunk(), "", converted_body)
   }
 
   webr_pkgs <- detect_webr_packages(paste(c(body_lines, converted_body), collapse = "\n"))
@@ -186,8 +184,14 @@ adapt_chunk_for_webr <- function(chunk_lines) {
     text
   )
 
-  text <- gsub("file\\.exists\\([^)]+\\)", "TRUE  # data bundled with this site", text)
-  text <- gsub("^here\\(\\)\\s*$", "# Working directory is managed by WebR on this site", text, perl = TRUE)
+  text <- gsub("file\\.exists\\([^)]+\\)", "TRUE  # data hosted in the course GitHub repo", text)
+  text <- gsub("^here\\(\\)\\s*$", "# Data files are loaded from the course GitHub repo", text, perl = TRUE)
+
+  text <- gsub(
+    "read_csv\\(\\s*(?:file\\s*=\\s*)?\"https://raw\\.githubusercontent\\.com/r-pophealth-research/online-course/main/data/([^\"]+)\"[^)]*\\)",
+    "webr_read_csv(\"\\1\")",
+    text
+  )
 
   text <- gsub(
     "read_csv\\(\\s*(?:file\\s*=\\s*)?(\"(?:\\.\\./)?data/[^\"]+\")(?:\\s*,[^)]+)?\\s*\\)",
@@ -228,6 +232,7 @@ validate_data_files <- function() {
       text,
       gregexpr('(?<=webr_read_csv\\(")[^"]+(?=")', text, perl = TRUE)
     )[[1]]
+    found <- basename(found)
     if (length(found) > 0) paths <- c(paths, found)
   }
   paths <- unique(paths)

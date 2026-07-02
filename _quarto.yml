@@ -16,9 +16,6 @@ website:
   repo-actions: [edit, issue]
   navbar:
     background: primary
-    left:
-      - href: index.qmd
-        text: Home
   sidebar:
     style: floating
     contents:
@@ -35,7 +32,6 @@ website:
           - tutorials/Week6_descriptive_statistics.qmd
           - tutorials/Week7_statistical_analyses.qmd
           - tutorials/Week8-9_data_visualizations.qmd
-          - tutorials/Week10_research_best_practices.qmd
       - section: "Homework"
         contents:
           - hw/HW1_markdown_and_data_types.qmd
