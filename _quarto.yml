@@ -6,6 +6,7 @@ project:
     - tutorials/*.qmd
     - hw/*.qmd
     - final/*.qmd
+    - appendix/*.qmd
 
 website:
   title: "R for Health Research"
@@ -22,7 +23,6 @@ website:
       - section: "Getting started"
         contents:
           - index.qmd
-          - tutorials/Week1_install_r_rstudio.qmd
       - section: "Tutorials"
         contents:
           - tutorials/Week2_data_structures.qmd
@@ -41,6 +41,9 @@ website:
       - section: "Final"
         contents:
           - final/Final_Project.qmd
+      - section: "Appendix"
+        contents:
+          - appendix/install_r_rstudio.qmd
 
 format:
   html:

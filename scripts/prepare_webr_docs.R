@@ -3,7 +3,7 @@
 # Source .Rmd files are left unchanged for local RStudio use.
 
 source_files <- c(
-  "tutorials/Week1_install_r_rstudio.Rmd",
+  "appendix/install_r_rstudio.Rmd",
   "tutorials/Week2_data_structures.Rmd",
   "tutorials/Week3_functions_packages.Rmd",
   "tutorials/Week4_data_exploration.Rmd",

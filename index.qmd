@@ -6,22 +6,33 @@ Welcome to **R for Health Research** — an introduction to R programming for ep
 
 These materials were adapted from materials from the 2024-2025 offerings of EPI/CHPR 202 at Stanford University, and were authored by [Anna Nguyen](https://www.linkedin.com/in/annatnguyen98/) and [Samuel Jaros](https://www.linkedin.com/in/samuel-jaros/). Anna Nguyen converted course materials into this online course with the assistance of [Cursor](https://cursor.com/)
 
-All code in this online course can be run in your browser using [Quarto](https://quarto.org) and [WebR](https://docs.r-wasm.org/webr/latest/). You do not need R installed locally, but the "Running Materials Locally" sections provides instructions on how to run materials on your own computer.
+You do not need R installed on your computer to use this site. The tutorials and homework pages include interactive code cells powered by [WebR](https://docs.r-wasm.org/webr/latest/) and [Quarto](https://quarto.org). If you prefer working locally, see the [Install R and RStudio](appendix/install_r_rstudio.qmd) appendix for setup instructions.
 
-Click "Run" to run your first line of R code below!
+## Running R in your browser with WebR
+
+[WebR](https://docs.r-wasm.org/webr/latest/) is a version of R compiled to run entirely in your web browser. Every interactive code cell on this site is an editable text window—click inside it, change the code, and run it when you are ready.
+
+**To run code:**
+
+- Click **Run Code** to execute everything in the cell. Printed output, tables, and plots appear directly below the cell.
+- Press **Shift + Enter** as a keyboard shortcut for **Run Code**.
+- Select part of the code and press **Ctrl + Enter** (Windows/Linux) or **Cmd + Enter** (Mac) to run just the selection—or run the current line if nothing is selected.
+
+**Other controls:**
+
+- Click the reset icon (↻) to restore the cell's original code and start over.
+- Click the copy icon to copy the code to your clipboard.
+
+The first time you run code on a page, WebR needs to download R and any required packages. This can take 30–60 seconds on a slow connection. Subsequent cells on the same page run much faster.
+
+Try it below—edit the message if you like, then click **Run Code**:
 
 ```{webr-r}
 print("Hello world!")
 ```
 
-::: {.callout-note}
-The first time you run code on a page, WebR needs to download R and any required packages. This can take 30–60 seconds on a slow connection. Subsequent cells on the same page run much faster.
-:::
-
 ## How to use this site
 
-- **Tutorials** — Interactive lessons with code cells. Click **Run** in any code block to execute R in your browser.
-- **Homework** — Assignments with editable code cells.
-
-
+- **Tutorials** — Interactive lessons that walk through R concepts week by week. Work through the code cells as you read.
+- **Homework** — Practice assignments with editable code cells. Complete them in your browser, or download the source files from the [course GitHub repo](https://github.com/r-pophealth-research/online-course) to work in RStudio.
 
