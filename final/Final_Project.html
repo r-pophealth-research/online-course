@@ -345,7 +345,7 @@ iframe.qwebr-output-code-browse {
 // Document level settings ----
 
 // Determine if we need to install R packages
-globalThis.qwebrInstallRPackagesList = ['dplyr', 'ggplot2', 'tidyr'];
+globalThis.qwebrInstallRPackagesList = ['dplyr', 'ggplot2', 'tidyr', 'readr'];
 
 // Specify possible locations to search for the repository
 globalThis.qwebrPackageRepoURLS = ['https://repo.r-wasm.org/'];
@@ -367,7 +367,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"# Helper: download course CSVs from the GitHub repo into the WebR virtual filesystem\ncourse_data_url <- \"https://raw.githubusercontent.com/r-pophealth-research/online-course/main/data\"\nwebr_read_csv <- function(file) {\n  local_name <- basename(file)\n  if (!file.exists(local_name)) {\n    url <- if (grepl(\"^https?://\", file)) file else paste0(course_data_url, \"/\", local_name)\n    download.file(url, local_name, quiet = TRUE, mode = \"wb\")\n  }\n  utils::read.csv(local_name, stringsAsFactors = FALSE)\n}\nread_csv <- webr_read_csv","id":1,"options":{"autorun":"true","classes":"","comment":"","context":"setup","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# tidyverse packages are pre-loaded on this site","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"individual_data = webr_read_csv(\"dengue_individual_data.csv\")\nglimpse(individual_data)","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"household_data = webr_read_csv(\"dengue_household_data.csv\")\nglimpse(household_data)","id":4,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-4","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"","id":5,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-5","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"","id":6,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-6","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"individual_data_cleaned = ...\nhousehold_data_cleaned = ...","id":7,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-7","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"","id":8,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-8","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"","id":9,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-9","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"","id":10,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-10","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"merged_dengue_data = ...","id":11,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-11","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"","id":12,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-12","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"","id":13,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-13","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"n_infections_concrete = ...\nn_no_infections_concrete = ...\nodds_concrete = ...\n\nn_infections_nonconcrete = ...\nn_no_infections_nonconcrete = ...\nodds_nonconcrete = ...\n\nconcrete_OR = ... \nconcrete_OR","id":14,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-14","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"","id":15,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-15","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"","id":16,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-16","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"","id":17,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-17","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"","id":18,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-18","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"","id":19,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-19","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Create a vector to store the risk ratios\n...\n\n# Number of bootstrap samples to take\nbootstrap_n = ...\n\n# Create a for loop to run through the number of times to bootstrap calculating\n#   a the risk ratio of any infection for children versus adults from a random \n#   sample of the data and saving it to your risk ratio vector\nfor (...) {\n  # Draw bootstrap sample WITH replacement (use slice_sample())\n  bootstrap_sample = ...\n  \n  # Calculate the risk of any infection in children\n  risk_children = ...\n  \n  # Calculate the risk of any infection in adults\n  risk_adult = ...\n  \n  # Add risk ratio to your vector of risk ratios\n  risk_ratio = risk_children/risk_adult\n  ... = c(...)\n}\n\n# Take the mean of your risk ratios to get your estimate\n...\n\n# Get the 95% confidence interval from your risk ratio vector\nquantile(..., probs=c(0.025,0.975))","id":20,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-20","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"","id":21,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-21","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"","id":22,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-22","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
+globalThis.qwebrCellDetails = [{"code":"# tidyverse packages are pre-loaded on this site","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"individual_data = read_csv(\"https://raw.githubusercontent.com/r-pophealth-research/online-course/main/data/dengue_individual_data.csv\")\nglimpse(individual_data)","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"household_data = read_csv(\"https://raw.githubusercontent.com/r-pophealth-research/online-course/main/data/dengue_household_data.csv\")\nglimpse(household_data)","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"","id":4,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-4","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"","id":5,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-5","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"individual_data_cleaned = ...\nhousehold_data_cleaned = ...","id":6,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-6","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"","id":7,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-7","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"","id":8,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-8","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"","id":9,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-9","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"merged_dengue_data = ...","id":10,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-10","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"","id":11,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-11","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"","id":12,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-12","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"n_infections_concrete = ...\nn_no_infections_concrete = ...\nodds_concrete = ...\n\nn_infections_nonconcrete = ...\nn_no_infections_nonconcrete = ...\nodds_nonconcrete = ...\n\nconcrete_OR = ... \nconcrete_OR","id":13,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-13","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"","id":14,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-14","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"","id":15,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-15","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"","id":16,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-16","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"","id":17,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-17","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"","id":18,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-18","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Create a vector to store the risk ratios\n...\n\n# Number of bootstrap samples to take\nbootstrap_n = ...\n\n# Create a for loop to run through the number of times to bootstrap calculating\n#   a the risk ratio of any infection for children versus adults from a random \n#   sample of the data and saving it to your risk ratio vector\nfor (...) {\n  # Draw bootstrap sample WITH replacement (use slice_sample())\n  bootstrap_sample = ...\n  \n  # Calculate the risk of any infection in children\n  risk_children = ...\n  \n  # Calculate the risk of any infection in adults\n  risk_adult = ...\n  \n  # Add risk ratio to your vector of risk ratios\n  risk_ratio = risk_children/risk_adult\n  ... = c(...)\n}\n\n# Take the mean of your risk ratios to get your estimate\n...\n\n# Get the 95% confidence interval from your risk ratio vector\nquantile(..., probs=c(0.025,0.975))","id":19,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-19","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"","id":20,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-20","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"","id":21,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-21","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
 
 </script>
 <script type="module">
@@ -2160,8 +2160,6 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </header>
 
 
-<div id="qwebr-insertion-location-1"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>Your final project consists of a start-to-finish analysis of pre-existing data. We will give you a structure and a research question to examine. It is your responsibility to organize your code, give appropriate variable names, and explain the output of your code so that it could be understood by someone who does not know R. Please make sure to make good use of comments, check your indenting, and ensure no code runs off the page to get full style points!</p>
 <p>We recommend that you complete this assignment in the <strong>Visual</strong> view of the notebook.</p>
 <section id="background" class="level1">
@@ -2178,11 +2176,11 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <section id="loading-packages-and-data" class="level1">
 <h1>Loading packages and data</h1>
 <p>Run the cell below to load the required packages</p>
-<div id="qwebr-insertion-location-2"></div>
+<div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <section id="individual-data" class="level2">
 <h2 class="anchored" data-anchor-id="individual-data">Individual data</h2>
-<div id="qwebr-insertion-location-3"></div>
+<div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p><strong>Data dictionary:</strong></p>
 <table class="caption-top table">
@@ -2222,7 +2220,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </section>
 <section id="household-data" class="level2">
 <h2 class="anchored" data-anchor-id="household-data">Household data</h2>
-<div id="qwebr-insertion-location-4"></div>
+<div id="qwebr-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p><strong>Data dictionary:</strong></p>
 <table class="caption-top table">
@@ -2278,13 +2276,13 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <section id="question-1-2-points" class="level2">
 <h2 class="anchored" data-anchor-id="question-1-2-points">Question 1 (2 points)</h2>
 <p>Explore the distribution of at least one continuous variable and one categorical/binary variable in the datasets using both summary statistics and a exploratory plots.</p>
-<div id="qwebr-insertion-location-5"></div>
+<div id="qwebr-insertion-location-4"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 <section id="question-2-2-points" class="level2">
 <h2 class="anchored" data-anchor-id="question-2-2-points">Question 2 (2 points)</h2>
 <p>These is one column in <code>household_data</code> with missing/unknown values. How are the missing values coded? Identify the column and find the percentage of measurements that have a missing value for that variable.</p>
-<div id="qwebr-insertion-location-6"></div>
+<div id="qwebr-insertion-location-5"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 </section>
@@ -2293,13 +2291,13 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <section id="question-3-1-point" class="level2">
 <h2 class="anchored" data-anchor-id="question-3-1-point">Question 3 (1 point)</h2>
 <p>Create a copy of <code>individual_data</code> called <code>individual_data_cleaned</code> and a copy of <code>household_data</code> called <code>household_data_cleaned</code>. You will save the outputs of all your data cleaning and processing to these “cleaned” datasets to avoid overwriting the original datasets.</p>
-<div id="qwebr-insertion-location-7"></div>
+<div id="qwebr-insertion-location-6"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 <section id="question-4-2-points" class="level2">
 <h2 class="anchored" data-anchor-id="question-4-2-points">Question 4 (2 points)</h2>
 <p>For the column in <code>household_data_cleaned</code> you identified in Question 2, recode missing or unknown values as <code>NA</code> and convert the remaining values to numerics.</p>
-<div id="qwebr-insertion-location-8"></div>
+<div id="qwebr-insertion-location-7"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 <section id="question-5-4-points" class="level2">
@@ -2310,20 +2308,20 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <li><p><code>n_any_infections</code>, the sum of symptomatic and asymptomatic infections for each person.</p></li>
 <li><p><code>any_infections</code>, that is <code>TRUE</code> if the individual was ever infected with symptomatic or asymptomatic dengue.</p></li>
 </ul>
-<div id="qwebr-insertion-location-9"></div>
+<div id="qwebr-insertion-location-8"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 <section id="challenge-question-1-3-points" class="level2">
 <h2 class="anchored" data-anchor-id="challenge-question-1-3-points">Challenge Question 1 (3 points)</h2>
 <p>Add a <code>household_size</code> variable to <code>household_data_cleaned</code> that counts the number of individuals in each household.</p>
 <p><em>Hint:</em> Use the individual dataset to calculate the number of people in each household, then merge the data into <code>household_data_cleaned</code></p>
-<div id="qwebr-insertion-location-10"></div>
+<div id="qwebr-insertion-location-9"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 <section id="question-6-3-points" class="level2">
 <h2 class="anchored" data-anchor-id="question-6-3-points">Question 6 (3 points)</h2>
 <p>Join the cleaned individual and household level data to create a dataset called <code>merged_dengue_data</code>. The resulting data frame should contain 1 row per individual, with columns for both individual- and household-level variables for that person.</p>
-<div id="qwebr-insertion-location-11"></div>
+<div id="qwebr-insertion-location-10"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 </section>
@@ -2334,7 +2332,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p>Fill-in the values for Table 1. The “Total” column should describe characteristics for the full sample, while “No Infection” and “Any Infection” describe characteristics for subgroups by infection status.</p>
 <p>The cells with “—” in them do not need to be filled in. The percents should be column percents (ex. % no infection males + % no infection females = 100%)</p>
 <p>You should find all quantities indicated in the left column, including sample sizes, percentages, means, and SDs, using R code (no hand calculations). Clearly label and document your code so it’s clear how you calculated each value.</p>
-<div id="qwebr-insertion-location-12"></div>
+<div id="qwebr-insertion-location-11"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <table class="caption-top table">
 <thead>
@@ -2449,7 +2447,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <h2 class="anchored" data-anchor-id="challenge-question-2-3-points">Challenge Question 2 (3 points)</h2>
 <p>Complete the rest of Table 1.</p>
 <p>You should find all quantities, including sample sizes, percentages, means, and SDs, using R code (no hand calculations). Clearly label and document your code so it’s clear how you calculated each value.</p>
-<div id="qwebr-insertion-location-13"></div>
+<div id="qwebr-insertion-location-12"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <table class="caption-top table">
 <thead>
@@ -2516,14 +2514,14 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <h2 class="anchored" data-anchor-id="question-8-3-points">Question 8 (3 points)</h2>
 <p>Calculate the odds ratio for being infected with dengue (<code>any_infections</code>) by whether the house is made of concrete.</p>
 <p>Do not “hard code” this calculation by copying exact numbers - use R code to first find the number of infections in concrete vs non-concrete homes. Your code for the odds ratio calculation should still work even if the underlying data changes.</p>
-<div id="qwebr-insertion-location-14"></div>
+<div id="qwebr-insertion-location-13"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 <section id="challenge-question-3-3-points" class="level2">
 <h2 class="anchored" data-anchor-id="challenge-question-3-3-points">Challenge Question 3 (3 points)</h2>
 <p>Calculate the odds ratio for being infected with dengue by adults vs children.</p>
 <p>Do not “hard code” this calculation by copying exact numbers - use R code to first find the number of infections in adults vs children. Your code for the odds ratio calculation should still be valid even if the underlying data changes</p>
-<div id="qwebr-insertion-location-15"></div>
+<div id="qwebr-insertion-location-14"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 </section>
@@ -2533,7 +2531,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <h2 class="anchored" data-anchor-id="question-9-2-points">Question 9 (2 points)</h2>
 <p>Run a chi-square test to assess if there is a difference in any dengue infection between males and females.</p>
 <p>Interpret your model output below your code. (In what group were infections higher? Was the difference statistically significant?)</p>
-<div id="qwebr-insertion-location-16"></div>
+<div id="qwebr-insertion-location-15"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p><em>Interpretation:</em> …</p>
 </section>
@@ -2541,7 +2539,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <h2 class="anchored" data-anchor-id="question-10-3-points">Question 10 (3 points)</h2>
 <p>Use a linear model to assess how the number of outdoor toilets affects the number of dengue infections. Get a 95% confidence interval for your estimate.</p>
 <p>Interpret your model output below your code. (For each addition outdoor toilet, what is the expected change to the number of dengue infections? Is the effect statistically significant?)</p>
-<div id="qwebr-insertion-location-17"></div>
+<div id="qwebr-insertion-location-16"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p><em>Interpretation:</em> …</p>
 </section>
@@ -2549,7 +2547,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <h2 class="anchored" data-anchor-id="question-11-3-points">Question 11 (3 points)</h2>
 <p>Use a logistic model to estimate the odds ratio and 95% confidence interval of any dengue infection associated with screen doors.</p>
 <p>Interpret your model output below your code. (How do the odds of infection change for homes with vs without screen doors? Is this a statistically significant effect?)</p>
-<div id="qwebr-insertion-location-18"></div>
+<div id="qwebr-insertion-location-17"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p><em>Interpretation:</em> …</p>
 </section>
@@ -2557,7 +2555,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <h2 class="anchored" data-anchor-id="question-12-3-points">Question 12 (3 points)</h2>
 <p>Extend the model you created in Question 5 to estimate the odds ratio and 95% confidence interval of any dengue infection associated with screen doors, controlling for house type and garbage management.</p>
 <p>Interpret your model output below your code. (How do the odds of infection change for homes with vs without screen doors, when controlling for other factors? Is this a statistically significant effect?)</p>
-<div id="qwebr-insertion-location-19"></div>
+<div id="qwebr-insertion-location-18"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p><em>Interpretation:</em> …</p>
 </section>
@@ -2565,7 +2563,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <h2 class="anchored" data-anchor-id="challenge-question-4-5-points">Challenge Question 4 (5 points)</h2>
 <p>Fill in the skeleton code to produce a bootstrapped estimate of the risk ratio of any dengue infection for children vs adults using 100 bootstrapped samples.</p>
 <p><em>Hint:</em> Reference the Bootstrapping section of the Week 7 tutorial for help!</p>
-<div id="qwebr-insertion-location-20"></div>
+<div id="qwebr-insertion-location-19"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 </section>
@@ -2575,13 +2573,13 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <section id="question-13-3-points" class="level2">
 <h2 class="anchored" data-anchor-id="question-13-3-points">Question 13 (3 points)</h2>
 <p>Make a scatterplot of the number of any infections by age. Place age on the x-axis and the number of any infections on the y-axis.</p>
-<div id="qwebr-insertion-location-21"></div>
+<div id="qwebr-insertion-location-20"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 <section id="question-14-4-points" class="level2">
 <h2 class="anchored" data-anchor-id="question-14-4-points">Question 14 (4 points)</h2>
 <p>Make a boxplot of the number of any dengue infections by house type. Place house type of the x-axis and infections on the y-axis. Order the house type from left to right as “Single”, “Townhouse”, and “Poles”.</p>
-<div id="qwebr-insertion-location-22"></div>
+<div id="qwebr-insertion-location-21"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 
 
