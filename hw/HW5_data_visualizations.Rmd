@@ -5,7 +5,7 @@ output: pdf_document
 
 # Homework 5
 
-This assignment covers materials on data visualizations from Weeks 8+9. The Challenge Questions are optional extensions.
+This assignment covers materials on data visualizations from Weeks 8+9.
 
 For this homework, **we require you to generate all plots using `ggplot2`.** Figures generated using base R will only receive up to 50% of the points for each question.
 
@@ -173,7 +173,3 @@ se_asia_hypertension_df = ncd_data %>%
 ggplot(...) +
   ... 
 ```
-
-# Submission Instructions
-
-Work through this assignment on this site by running each code cell, or download the source file from the [course GitHub repo](https://github.com/r-pophealth-research/online-course) to complete it in RStudio. If you knit the document to a PDF, check that all your code and its output are displayed.

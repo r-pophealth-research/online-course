@@ -477,7 +477,7 @@ chd_income_df = chd_prev %>%
 :::
 
 
-# Optional: Reshaping Data
+# Reshaping Data
 
 There are many different ways to store the same data values.
 

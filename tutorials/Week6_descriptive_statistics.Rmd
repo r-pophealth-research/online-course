@@ -69,7 +69,7 @@ Lastly, it is important to note that the outputs of `table()` are not data frame
 # Find the type of data returned by table()
 class(table(clean_fram_data$educ_labeled, fram_data$education, useNA="ifany"))
 
-# Optional: Try to make the output of table() into a data frame using data.frame() and pivot_wider()
+# Try to make the output of table() into a data frame using data.frame() and pivot_wider()
 
 # table(...) %>%
 #   data.frame() %>%
@@ -179,7 +179,7 @@ prop.table(table(clean_fram_data$sex, clean_fram_data$educ_labeled), margin=2)["
 :::
 
 
-### [Optional Challenge] Practice Problem 3
+### Practice Problem 3
 
 If you like tidy commands better, you can also make these tables using the pipe functions. We will group by 2 variables which gives us all four unique combinations of sex and smoker (female smokers, female non-smokers, male smokers, and male non-smoker). We then use `summarize` to count the number of people in each of the four groups. `pivot_wider` will take the `sex` column and put the values in it (female and male) in their own columns. Fill out the code below to re-create the `table()` output using tidy commands.:
 
@@ -277,7 +277,7 @@ IQR(clean_fram_data$BMI, na.rm=T)
 :::
 
 
-### [Optional Challenge] Practice Problem 5
+### Practice Problem 5
 
 To get the `mean`, `median`, `sd`, or `IQR` of variables within groups, we can use `dplyr` functions and the `group_by` function like we learned in Week 4! Remember that `dplyr` starts with the dataset and uses `%>%` (pipe) operators to create a data flow. We then use `group_by` to specify which variables define our groups of interest. `summarize` can then give us a value for each group. For example, let's find the `mean`, `median`, `sd`, and `IQR` of cigarettes per day for each education category.
 
@@ -518,7 +518,7 @@ epi.2by2(table(clean_fram_data$diabetes_labeled,
                clean_fram_data$TenYearCHD_labeled))
 ```
 
-### [Optional Challenge] Practice Problem 7
+### Practice Problem 7
 
 Calculate the **risk and odds ratios** for CHD in the next ten years (`TenYearCHD`) comparing patients who are taking blood pressure medication to those who are not (`BPMeds`) using `epiR`.
 
@@ -606,7 +606,7 @@ table1(~ age + factor(smoker) + factor(educ_labeled) | sex,
        data=clean_fram_data)
 ```
 
-### [Optional Challenge] Practice Problem 9
+### Practice Problem 9
 
 Make your own Table 1 using table1! Try having age, number of cigarettes per day, smoking status, education, and CHD in ten years on the left side with blood pressure medication status along the top. You will need to filter out missing data for blood pressure medication before you give the data to table1.
 

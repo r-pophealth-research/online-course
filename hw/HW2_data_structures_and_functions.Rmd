@@ -3,7 +3,7 @@ title: "Homework 2"
 output: pdf_document
 ---
 
-This assignment covers materials from Weeks 2 and 3, including data structures (vectors and data frames) and functions. Complete Parts 1-2 after the Week 2 tutorial and Part 3 after the Week 3 tutorial. The Challenge Questions are optional extensions.
+This assignment covers materials from Weeks 2 and 3, including data structures (vectors and data frames) and functions. Complete Parts 1-2 after the Week 2 tutorial and Part 3 after the Week 3 tutorial.
 
 ### Quick note about style points
 
@@ -190,7 +190,3 @@ Don't like writing a for loop each time you want to do work on a data frame? Nei
 ```{r}
 ...
 ```
-
-# Submission Instructions
-
-Work through this assignment on this site by running each code cell, or download the source file from the [course GitHub repo](https://github.com/r-pophealth-research/online-course) to complete it in RStudio. If you knit the document to a PDF, check that all your code and its output are displayed.

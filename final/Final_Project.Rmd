@@ -351,7 +351,7 @@ Fill in the skeleton code to produce a bootstrapped estimate of the risk
 ratio of any dengue infection for children vs adults using 100
 bootstrapped samples.
 
-*Hint:* Reference the "Optional Challenge: Bootstrapping" section of the
+*Hint:* Reference the Bootstrapping section of the
 Week 7 tutorial for help!
 
 ```{r}
@@ -409,7 +409,3 @@ house type from left to right as "Single", "Townhouse", and "Poles".
 ```{r}
 
 ```
-
-# Submission Instructions
-
-Work through this project on this site by running each code cell, or download the source file from the [course GitHub repo](https://github.com/r-pophealth-research/online-course) to complete it in RStudio. If you knit the document to a PDF, check that all your code, comments, and output are fully visible and do not run off the page.

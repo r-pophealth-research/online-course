@@ -373,7 +373,7 @@ for (egfr in egfr_values){
 
 # Packages
 
-Writing functions sure is fun, but I don't want to have to write a function for everything in R. Luckily, many amazing data scientists have come before us, written useful functions, and stored them in packages. Packages are bits of code you download from the internet to use in your own code. In R, there are two steps to using a package. 1) Install the package with `install.packages()` and 2) Tell R you want to use that package with `library()`. One of the most useful packages is called tidyverse. This package contains a multitude of packages that help us import, clean, and visualize data. Let's download tidyverse.
+Writing functions sure is fun, but I don't want to have to write a function for everything in R. Luckily, many amazing data scientists have come before us, written useful functions, and stored them in packages. Packages are bits of code you download from the internet to use in your own code. In R, there are two steps to using a package. 1) Install the package with `install.packages()` and 2) Tell R you want to use that package with `library()`. One of the most useful packages is called tidyverse. This package contains a multitude of packages that help us clean and visualize data. Let's download tidyverse.
 
 ```{r}
 # Because we're working in this Quarto notebook, we have to tell it where to search for the package. That's why we put repos="https://cloud.r-project.org". In other R environments (like RStudio), you may not need the repos= part.
@@ -386,58 +386,5 @@ Note that we put the package name in quotes like a string. Because the package i
 library(tidyverse)
 ```
 
-### Practice Problem
-
-Another useful package is called `haven`. Haven allows you to import SPSS, STATA, and SAS data files. Go ahead and follow the two steps to download and install haven.
-
-```{r}
-...
-```
-::: {.callout-tip collapse="true"}
-## Solution
-
-```{r}
-install.packages("haven", repos="https://cloud.r-project.org")
-library(haven)
-```
-:::
-
-
-# Importing Data
-
-By installing tidyverse, one of the packages that gets installed is called readr. This package gives us useful functions to import data into R because who wants to type out 3,000 rows??? Let's learn about importing data. The wage data for this tutorial is in the [course GitHub repo](https://github.com/r-pophealth-research/online-course/tree/main/data).
-
-Now we're ready to import the data. We will use the `read_csv()` function from the `readr` package. You can check out what `read_csv()` does using the `?` function. If you get an error, you did not download and library tidyverse yet.
-
-```{r}
-?read_csv()
-```
-
-`read_csv()` has a bunch of options that lets us read in different files, but the only required input is the `file` we want in r. We give the file we want to import using a character—in this case, the URL of the CSV on GitHub:
-
-```{r}
-read_csv("https://raw.githubusercontent.com/r-pophealth-research/online-course/main/data/wage_data.csv")
-```
-
-*Why use a URL?* `read_csv()` can read files directly from the web, so you don't need to download CSVs to your computer first. This works in this notebook in your browser and in RStudio on your own machine.
-
-### Practice Problem
-
-Notice that the data were printed below the code cell, but we didn't save them to a variable. That's because we didn't use assignment! To use this data in later code cells, assign it to a name. Try importing the wage data again, this time assigning it to a variable called `wages`.
-
-```{r}
-# Write your code to import the wage data
-
-
-# Print out the wages data to check and make sure it was saved
-wages
-```
-::: {.callout-tip collapse="true"}
-## Solution
-
-```{r}
-wages = read_csv("https://raw.githubusercontent.com/r-pophealth-research/online-course/main/data/wage_data.csv")
-wages
-```
-:::
+You'll use tidyverse packages throughout the rest of this course. In the next tutorial, you'll learn how to import and explore data with `readr` and `dplyr`, two packages included in tidyverse.
 

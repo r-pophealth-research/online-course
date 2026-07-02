@@ -5,7 +5,7 @@ output: pdf_document
 
 # Homework 1
 
-Welcome to your first homework! Edit the code cells below and run them to check your answers. The Challenge section at the end is optional.
+Welcome to your first homework! Edit the code cells below and run them to check your answers.
 
 ## Part 1: Markdown
 
@@ -55,8 +55,6 @@ Briefly explain what is happening:
 
 ## Challenge: Think About Data in Research
 
-**This section is optional.**
-
 Search [PubMed](https://pubmed.ncbi.nlm.nih.gov/) for a public health topic you are interested in (ex. "opioid addiction"). In the left sidebar under "Article Type", click "Clinical Trial" to only view trials. Pick an article you find interesting, and briefly answer the questions below. If you're having trouble answering the questions, you can pick a different article.
 
 *NOTE:* Some articles may require access through your institution's library to view the full text.
@@ -75,7 +73,3 @@ Describe in words and using R code at least two inclusion criteria for the study
 
 -   Example: Patients 40 years old or greater - age \>= 40
 -   Example: Patients with greater than 140 mm Hg blood pressure - blood_pressure \> 140
-
-# Submission Instructions
-
-Work through this assignment on this site by running each code cell, or download the source file from the [course GitHub repo](https://github.com/r-pophealth-research/online-course) to complete it in RStudio. If you knit the document to a PDF, check that all your code and its output are displayed.

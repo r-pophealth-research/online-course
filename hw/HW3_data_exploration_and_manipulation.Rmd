@@ -5,7 +5,7 @@ output: pdf_document
 
 # Homework 3
 
-This assignment covers materials from Weeks 4 and 5, including data exploration and data manipulation. Complete Part 1 after the Week 4 tutorial and Parts 2-3 after the Week 5 tutorial. The Challenge Questions are optional extensions.
+This assignment covers materials from Weeks 4 and 5, including data exploration and data manipulation. Complete Part 1 after the Week 4 tutorial and Parts 2-3 after the Week 5 tutorial.
 
 In each question you are welcome to use additional lines of code or create intermediate variables, but be sure to save your final answer to the specified variable.
 
@@ -174,7 +174,3 @@ Hint: start by creating columns in your dataset called `total_covid_nonicu_hospi
 ```{r}
 ...
 ```
-
-# Submission Instructions
-
-Work through this assignment on this site by running each code cell, or download the source file from the [course GitHub repo](https://github.com/r-pophealth-research/online-course) to complete it in RStudio. If you knit the document to a PDF, check that all your code and its output are displayed.

@@ -287,9 +287,9 @@ exp(chd_educ_factor_mod$coefficients)
 
 ------------------------------------------------------------------------
 
-# [Optional Challenge] Bootstrapping
+# Bootstrapping
 
-If so far you have been thinking "Psh, this is too easy", we offer you this optional section on bootstrapping. It is entirely optional, we will not test you on this or expect you to remember. It is, however, extremely useful in real-world analyses.
+Bootstrapping is an advanced technique that is extremely useful in real-world analyses when statistical assumptions may not hold.
 
 In pretty much every study with real-world medical data, your statistical assumptions are going to be bent or completely broken. For these situations, our friends on main campus in the stats department Brad Efron and Rob Tibshirani invented **bootstrapping**. They called it bootstrapping because the data overcomes its weirdness by "pulling itself up by the bootsraps" through random sampling (it was the 80's). The idea behind bootstrapping is that we are simulating the re-sampling process, as though we went back out into the world and collected more data. Actually doing so is often too expensive and time-consuming, so we randomly sample from the data we have. Rather than using an estimate of the error like a statistical test does, we can observe the error by "repeating" the experiment many times. Let's estimate the mean difference and 95% confidence interval of that difference for the skewed `cigsPerDay` data with **bootstrapping**.
 
