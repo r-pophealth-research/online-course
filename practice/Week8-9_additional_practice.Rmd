@@ -13,8 +13,8 @@ library(lubridate)
 Run the cell below to load the data
 
 ```{r}
-washb_df = read_csv("https://raw.githubusercontent.com/r-pophealth-research/online-course/main/data/washb_subset.csv") 
-head(washb_df)
+# washb_df = read_csv("https://raw.githubusercontent.com/r-pophealth-research/online-course/main/data/washb_subset.csv")
+# head(washb_df)
 ```
 
 Use the cells below to briefly explore the data.

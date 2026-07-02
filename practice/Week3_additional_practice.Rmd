@@ -189,7 +189,7 @@ Load `employment_data.csv` from the [course GitHub repo](https://github.com/r-po
 ```{r}
 library(tidyverse)
 
-employment_data <- read_csv("https://raw.githubusercontent.com/r-pophealth-research/online-course/main/data/employment_data.csv")
+# employment_data <- read_csv("https://raw.githubusercontent.com/r-pophealth-research/online-course/main/data/employment_data.csv")
 ```
 
 If you ever need to import data from Excel, you can install and load the `readxl` package. This package contains the `read_excel()` function that you can use just like `read_csv()`.

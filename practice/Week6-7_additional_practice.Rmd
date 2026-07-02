@@ -16,7 +16,7 @@ Our research question for this analysis will be:
 ```{r setup}
 library(tidyverse)
 
-jhs_data <- read_csv("https://raw.githubusercontent.com/r-pophealth-research/online-course/main/data/baseline_jhs.csv")
+# jhs_data <- read_csv("https://raw.githubusercontent.com/r-pophealth-research/online-course/main/data/baseline_jhs.csv")
 ```
 
 Explore the data structure and variables. Here are some questions you should be able to answer:
