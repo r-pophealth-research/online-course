@@ -12,7 +12,7 @@ This week, we'll explore stomach cancer mortality rates by county using a datase
 Load the `stomach_cancer_deaths_california.csv` dataset from the [course GitHub repo](https://github.com/r-pophealth-research/online-course/tree/main/data) in the cell below
 
 ```{r}
-# stomach_cancer_deaths = read_csv("https://raw.githubusercontent.com/r-pophealth-research/online-course/main/data/stomach_cancer_deaths_california.csv")
+stomach_cancer_deaths = read_csv("https://raw.githubusercontent.com/r-pophealth-research/online-course/main/data/stomach_cancer_deaths_california.csv")
 ```
 
 # Part 1: Data Summaries

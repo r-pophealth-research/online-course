@@ -34,7 +34,6 @@ final/*
 /images/
 
 # Data files not referenced by website source documents
-/data/dengue_hh_data.csv
 /data/householdCohortData.csv
 /data/mid_quarter_eval.csv
 /data/ncd_risk_factors_original.csv

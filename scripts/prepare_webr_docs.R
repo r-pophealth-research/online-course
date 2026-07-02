@@ -199,7 +199,9 @@ validate_data_files <- function() {
 
   paths <- character()
   for (f in qmd_files) {
-    text <- paste(readLines(f, warn = FALSE), collapse = "\n")
+    lines <- readLines(f, warn = FALSE)
+    active_lines <- lines[!grepl("^\\s*#", lines)]
+    text <- paste(active_lines, collapse = "\n")
     found <- regmatches(
       text,
       gregexpr(

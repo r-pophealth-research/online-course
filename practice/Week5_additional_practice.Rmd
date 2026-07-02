@@ -14,7 +14,7 @@ Load the `dengue_infection_data.csv` dataset from the [course GitHub repo](https
 In this dataset, each row captures the number of infections reported for each individual during the study. Each individual is assigned an `ID`, and individuals who share a household share a `hh_ID`.
 
 ```{r}
-# dengue_infections = read_csv("https://raw.githubusercontent.com/r-pophealth-research/online-course/main/data/dengue_infection_data.csv")
+dengue_infections = read_csv("https://raw.githubusercontent.com/r-pophealth-research/online-course/main/data/dengue_infection_data.csv")
 ```
 
 # Part 1: Data Exploration
@@ -85,7 +85,7 @@ dengue_infections_clean = dengue_infections_clean %>%
 We also have access to household-level characteristics in `dengue_hh_data.csv`. Run the cell below to load that data.
 
 ```{r}
-# dengue_hh_data = read_csv("https://raw.githubusercontent.com/r-pophealth-research/online-course/main/data/dengue_hh_data.csv")
+dengue_hh_data = read_csv("https://raw.githubusercontent.com/r-pophealth-research/online-course/main/data/dengue_hh_data.csv")
 ```
 
 Join the *cleaned* individual and household level data to create a dataset called `merged_dengue_data`, where there is still only one row per individual
