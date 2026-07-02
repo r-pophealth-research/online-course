@@ -5,11 +5,9 @@ output: pdf_document
 
 # Homework 3
 
-This assignment covers materials from Weeks 4 and 5, including data exploration and data manipulation. You should be able to complete Part 1 after the Week 4 lecture and Parts 2-3 after the Week 5 lecture. **You only need to complete the "Challenge Questions" if you have enrolled in the class for 2 units.**
+This assignment covers materials from Weeks 4 and 5, including data exploration and data manipulation. Complete Part 1 after the Week 4 tutorial and Parts 2-3 after the Week 5 tutorial. The Challenge Questions are optional extensions.
 
 In each question you are welcome to use additional lines of code or create intermediate variables, but be sure to save your final answer to the specified variable.
-
-If you have questions about this assignment, please attend office hours or create a discussion post on the course Ed.
 
 # Loading packages and data
 
@@ -179,6 +177,4 @@ Hint: start by creating columns in your dataset called `total_covid_nonicu_hospi
 
 # Submission Instructions
 
-Knit this R notebook as a PDF and submit it to the corresponding Gradescope assignment. Check the file to make sure that all your code and its output is displayed.
-
-Once you successfully submit, you will be asked to match each question to its respective page on your submission. **Do not skip this step.**
+Work through this assignment on this site by running each code cell, or download the source file from the [course GitHub repo](https://github.com/r-pophealth-research/online-course) to complete it in RStudio. If you knit the document to a PDF, check that all your code and its output are displayed.

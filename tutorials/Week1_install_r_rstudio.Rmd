@@ -34,7 +34,7 @@ print("Hello world")
 R.version$version.string
 ```
 
-Cool, right? Because R Markdown allows us to combine normal human-readable text and code, we will be using it for the pre-class tutorials and your homework. If you really want to work ahead, check out the [Epidemiologist's R Handbook on R Markdown](https://epirhandbook.com/en/reports-with-r-markdown.html) after you finish this tutorial.
+Cool, right? Because R Markdown allows us to combine normal human-readable text and code, we will be using it for the tutorials and your homework. If you really want to work ahead, check out the [Epidemiologist's R Handbook on R Markdown](https://epirhandbook.com/en/reports-with-r-markdown.html) after you finish this tutorial.
 
 ## Step 1: Install R
 
@@ -68,7 +68,7 @@ a.  Click on RStudio to open it. It should look something like this:
 
 ![Homepage for RStudio with no project open](images/rstudio_no_project.png)
 
-If your RStudio does not look similar when you open it up, revisit steps 1 & 2 to see if something went wrong in the install. If you're having trouble, please feel free to use office hours, email, or the internet to get help with your installation.
+If your RStudio does not look similar when you open it up, revisit steps 1 & 2 to see if something went wrong in the install. If you're having trouble, search online for help or consult R installation guides.
 
 b.  Let's look around RStudio. The big section on the left hand side is the R console. When you downloaded R in step 1, that is what you downloaded! It has all of the power of R, and everything else on your screen is just trying to make your life easier. The `>` means that R is ready to accept a command. Feel free to click in there and ask it some math problems like `2+2` or `5*4` just to make sure it is really working. You can see at the top of that big pane are the tabs "Console", "Terminal", and "Background Jobs". We will only be using the "Console" in this class, but it is good to know that there are other things there!
 

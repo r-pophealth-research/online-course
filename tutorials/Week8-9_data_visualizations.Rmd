@@ -5,9 +5,7 @@ output: pdf_document
 
 # Weeks 8 and 9: Data Visualizations with ggplot
 
-Welcome to Week 8 and 9! Over the next two weeks, we'll revisit data visualizations and learn how to use the `ggplot2` package to create publication-ready figures. This tutorial is on the longer side, but you'll have two weeks to complete it. **Please complete up to (and including) the `Plotting bivariate distributions` section before Week 8's lecture and the whole tutorial before Week 9's lecture**.
-
-If you have any questions about the contents of this tutorial, please post them in the "Week 8+9 Tutorial" thread.
+Welcome to Week 8 and 9! In this tutorial, we'll revisit data visualizations and learn how to use the `ggplot2` package to create publication-ready figures. This tutorial is on the longer side—take your time working through it section by section.
 
 # Loading Packages and Data
 

@@ -555,8 +555,6 @@ In this tutorial, you learned about the data manipulation methods that help make
 
 Next week, you'll start applying your new R skillset to statistical analyses that mirror tasks you might encounter in health research.
 
-If you have any questions about the contents of this tutorial, please post them in the \`Week 5 Tutorial\` thread.
-
 # Resources
 
 [Introduction to dplyr](https://dplyr.tidyverse.org/articles/dplyr.html)

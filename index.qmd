@@ -20,7 +20,7 @@ The first time you run code on a page, WebR needs to download R and any required
 
 ## How to use this site
 
-- **Tutorials** — Pre-class activities with interactive code cells. Click **Run** in any code block to execute R in your browser.
+- **Tutorials** — Interactive lessons with code cells. Click **Run** in any code block to execute R in your browser.
 - **Homework** — Assignments with editable code cells.
 
 

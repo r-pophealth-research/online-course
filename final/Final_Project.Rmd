@@ -6,7 +6,7 @@ editor_options:
     wrap: 72
 ---
 
-Similar to Homework 4, your final will consist of a start-to-finish
+Your final project consists of a start-to-finish
 analysis of pre-existing data. We will give you a structure and a
 research question to examine. It is your responsibility to organize your
 code, give appropriate variable names, and explain the output of your
@@ -412,8 +412,4 @@ house type from left to right as "Single", "Townhouse", and "Poles".
 
 # Submission Instructions
 
-Knit the completed document as a PDF and submit it on Gradescope by the
-deadline. For students taking the course for 1 unit, you may need to
-delete the skeleton code under the challenge questions for your code to
-knit properly. Please double check the knitted PDF to make sure all of
-your code and comments are fully visible and do not run off the screen.
+Work through this project on this site by running each code cell, or download the source file from the [course GitHub repo](https://github.com/r-pophealth-research/online-course) to complete it in RStudio. If you knit the document to a PDF, check that all your code, comments, and output are fully visible and do not run off the page.

@@ -70,6 +70,7 @@ data_helper_chunk <- function() {
     "  }",
     "  utils::read.csv(local_name, stringsAsFactors = FALSE)",
     "}",
+    "read_csv <- webr_read_csv",
     "```"
   )
 }
@@ -186,6 +187,8 @@ adapt_chunk_for_webr <- function(chunk_lines) {
 
   text <- gsub("file\\.exists\\([^)]+\\)", "TRUE  # data hosted in the course GitHub repo", text)
   text <- gsub("^here\\(\\)\\s*$", "# Data files are loaded from the course GitHub repo", text, perl = TRUE)
+
+  text <- gsub("\\?read_csv\\(\\)", "# Run ?read_csv() in RStudio to view readr documentation", text)
 
   text <- gsub(
     "read_csv\\(\\s*(?:file\\s*=\\s*)?\"https://raw\\.githubusercontent\\.com/r-pophealth-research/online-course/main/data/([^\"]+)\"[^)]*\\)",

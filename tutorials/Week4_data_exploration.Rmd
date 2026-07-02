@@ -7,8 +7,6 @@ output: html_notebook
 
 Welcome to Week 4! This week, we'll start diving into datasets and cover different commands to view and summarize your the information contained in data frames.
 
-If you have any questions about the contents of this tutorial, please post them in the `Week 4 Pre-Class Tutorial` thread on Ed.
-
 Through this tutorial (and the rest of the class), we will be leveraging open source tools from the `tidyverse` package. `tidyverse` includes several "core" packages that can be used in data exploration, manipulation, and visualizations. Over the next two weeks, we'll learn about the basics of `dplyr`, a package that includes several useful functions to interact with data.
 
 Before you start, run the cell below to load the packages.

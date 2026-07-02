@@ -3,9 +3,7 @@ title: "Homework 2"
 output: pdf_document
 ---
 
-This assignment covers materials from Weeks 2 and 3, including data structures (vectors and data frames) and functions. You should be able to complete Parts 1-2 after the Week 2 lecture and Part 3 after the Week 3 lecture. **You only need to complete the "Challenge Questions" if you have enrolled in the class for 2 units.**
-
-If you have questions about this assignment, please attend office hours or create a discussion post on the course Ed.
+This assignment covers materials from Weeks 2 and 3, including data structures (vectors and data frames) and functions. Complete Parts 1-2 after the Week 2 tutorial and Part 3 after the Week 3 tutorial. The Challenge Questions are optional extensions.
 
 ### Quick note about style points
 
@@ -195,6 +193,4 @@ Don't like writing a for loop each time you want to do work on a data frame? Nei
 
 # Submission Instructions
 
-Knit this R notebook as a PDF and submit it to the corresponding Gradescope assignment. Check your output to make sure that all your code and its output is displayed.
-
-Once you successfully submit, you will be asked to match each question to its respective page on your submission. **Do not skip this step.**
+Work through this assignment on this site by running each code cell, or download the source file from the [course GitHub repo](https://github.com/r-pophealth-research/online-course) to complete it in RStudio. If you knit the document to a PDF, check that all your code and its output are displayed.

@@ -375,5 +375,3 @@ Next, you'll learn how to load existing tables, explore data found in tables, an
 Introduction to Rby Michael Koontz and Ryan Peek [Vectors and Dataframes](https://mikoontz.github.io/data-carpentry-week/lesson_data_frames.html)
 
 Advanced R by Hadley Wickham: [Data Structures](http://adv-r.had.co.nz/Data-structures.html)
-
-Video Tutorials by Lesley Park: [Data Structures](https://canvas.stanford.edu/courses/184485/pages/video-tutorials-data-structures?module_item_id=1713461).

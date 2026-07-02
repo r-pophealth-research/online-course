@@ -7,8 +7,6 @@ output: html_document
 
 Welcome to Week 3! In this tutorial, you'll learn all about functions in R. This includes building your own functions, using R's built-in functions, and loading packages that contain helpful tools.
 
-If you have any questions about the contents of this tutorial, please post them in the `Week 3 Pre-Class Tutorial` thread on Ed.
-
 ## Function? I sure hope it does.
 
 Functions allow us to take an input, run some code, and send back an output. In fact, if you've ever taken a math class before, you've already seen functions!
