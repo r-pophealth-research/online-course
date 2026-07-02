@@ -56,29 +56,13 @@ sync_index_site_url <- function(site_url) {
 
 COURSE_DATA_RAW_URL <- "https://raw.githubusercontent.com/r-pophealth-research/online-course/main/data"
 
-data_helper_chunk <- function() {
-  c(
-    "```{webr-r}",
-    "#| context: setup",
-    "# Helper: download course CSVs from the GitHub repo into the WebR virtual filesystem",
-    paste0("course_data_url <- \"", COURSE_DATA_RAW_URL, "\""),
-    "webr_read_csv <- function(file) {",
-    "  local_name <- basename(file)",
-    "  if (!file.exists(local_name)) {",
-    "    url <- if (grepl(\"^https?://\", file)) file else paste0(course_data_url, \"/\", local_name)",
-    "    download.file(url, local_name, quiet = TRUE, mode = \"wb\")",
-    "  }",
-    "  utils::read.csv(local_name, stringsAsFactors = FALSE)",
-    "}",
-    "read_csv <- webr_read_csv",
-    "```"
-  )
-}
-
 detect_webr_packages <- function(text) {
   pkgs <- character()
   if (grepl("library\\(tidyverse\\)", text)) {
     pkgs <- c(pkgs, "dplyr", "ggplot2", "tidyr")
+  }
+  if (grepl("\\bread_csv\\(|\\breadr::", text)) {
+    pkgs <- c(pkgs, "readr")
   }
   if (grepl("%>%|\\bdplyr::|\\bfilter\\(|\\bselect\\(|\\bmutate\\(|\\bgroup_by\\(|\\bsummarize\\(|\\bsummarise\\(|\\barrange\\(|\\bcount\\(|\\bleft_join\\(|\\binner_join\\(|\\bfull_join\\(|\\bdistinct\\(|\\brename\\(|\\bglimpse\\(", text)) {
     pkgs <- c(pkgs, "dplyr")
@@ -99,10 +83,6 @@ format_webr_yaml <- function(pkgs) {
   c("webr:", "  packages:", paste0("    - ", pkgs))
 }
 
-needs_data_helper <- function(lines) {
-  any(grepl("webr_read_csv\\(|read_csv\\(|read_excel\\(", lines))
-}
-
 convert_rmd_to_qmd <- function(rmd_path) {
   qmd_path <- sub("\\.Rmd$", ".qmd", rmd_path)
   lines <- readLines(rmd_path, warn = FALSE, encoding = "UTF-8")
@@ -116,9 +96,6 @@ convert_rmd_to_qmd <- function(rmd_path) {
   title <- gsub("^['\"]|['\"]\\s*$", "", title)
 
   converted_body <- convert_body(body_lines)
-  if (needs_data_helper(converted_body)) {
-    converted_body <- c(data_helper_chunk(), "", converted_body)
-  }
 
   webr_pkgs <- detect_webr_packages(paste(c(body_lines, converted_body), collapse = "\n"))
   new_yaml <- c(
@@ -190,24 +167,6 @@ adapt_chunk_for_webr <- function(chunk_lines) {
 
   text <- gsub("\\?read_csv\\(\\)", "# Run ?read_csv() in RStudio to view readr documentation", text)
 
-  text <- gsub(
-    "read_csv\\(\\s*(?:file\\s*=\\s*)?\"https://raw\\.githubusercontent\\.com/r-pophealth-research/online-course/main/data/([^\"]+)\"[^)]*\\)",
-    "webr_read_csv(\"\\1\")",
-    text
-  )
-
-  text <- gsub(
-    "read_csv\\(\\s*(?:file\\s*=\\s*)?(\"(?:\\.\\./)?data/[^\"]+\")(?:\\s*,[^)]+)?\\s*\\)",
-    "webr_read_csv(\\1)",
-    text
-  )
-
-  text <- gsub(
-    "read_excel\\(\\s*(?:file\\s*=\\s*)?(\"(?:\\.\\./)?data/[^\"]+\")(?:\\s*,[^)]+)?\\s*\\)",
-    "webr_read_excel(\\1)",
-    text
-  )
-
   strsplit(text, "\n", fixed = TRUE)[[1]]
 }
 
@@ -225,7 +184,7 @@ for (f in source_files) {
 validate_data_files <- function() {
   qmd_files <- c(
     "index.qmd",
-    list.files(c("tutorials", "hw", "final"), pattern = "\\.qmd$", full.names = TRUE)
+    list.files(c("tutorials", "hw", "final", "appendix"), pattern = "\\.qmd$", full.names = TRUE)
   )
 
   paths <- character()
@@ -233,7 +192,11 @@ validate_data_files <- function() {
     text <- paste(readLines(f, warn = FALSE), collapse = "\n")
     found <- regmatches(
       text,
-      gregexpr('(?<=webr_read_csv\\(")[^"]+(?=")', text, perl = TRUE)
+      gregexpr(
+        paste0("(?<=", gsub("/", "\\\\/", COURSE_DATA_RAW_URL), "/)[^\"]+(?=\")"),
+        text,
+        perl = TRUE
+      )
     )[[1]]
     found <- basename(found)
     if (length(found) > 0) paths <- c(paths, found)
