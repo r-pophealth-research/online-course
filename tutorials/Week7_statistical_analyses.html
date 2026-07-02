@@ -1868,7 +1868,7 @@ window.Quarto = {
   <li><a href="#practice-problem-7" id="toc-practice-problem-7" class="nav-link" data-scroll-target="#practice-problem-7">Practice Problem 7</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#optional-challenge-bootstrapping" id="toc-optional-challenge-bootstrapping" class="nav-link" data-scroll-target="#optional-challenge-bootstrapping">[Optional Challenge] Bootstrapping</a>
+  <li><a href="#bootstrapping" id="toc-bootstrapping" class="nav-link" data-scroll-target="#bootstrapping">Bootstrapping</a>
   <ul class="collapse">
   <li><a href="#spoilers-for-the-challenge-below-this-line" id="toc-spoilers-for-the-challenge-below-this-line" class="nav-link" data-scroll-target="#spoilers-for-the-challenge-below-this-line">Spoilers for the challenge below this line</a></li>
   </ul></li>
@@ -2395,9 +2395,9 @@ Solution
 </section>
 </section>
 </section>
-<section id="optional-challenge-bootstrapping" class="level1">
-<h1>[Optional Challenge] Bootstrapping</h1>
-<p>If so far you have been thinking “Psh, this is too easy”, we offer you this optional section on bootstrapping. It is entirely optional, we will not test you on this or expect you to remember. It is, however, extremely useful in real-world analyses.</p>
+<section id="bootstrapping" class="level1">
+<h1>Bootstrapping</h1>
+<p>Bootstrapping is an advanced technique that is extremely useful in real-world analyses when statistical assumptions may not hold.</p>
 <p>In pretty much every study with real-world medical data, your statistical assumptions are going to be bent or completely broken. For these situations, our friends on main campus in the stats department Brad Efron and Rob Tibshirani invented <strong>bootstrapping</strong>. They called it bootstrapping because the data overcomes its weirdness by “pulling itself up by the bootsraps” through random sampling (it was the 80’s). The idea behind bootstrapping is that we are simulating the re-sampling process, as though we went back out into the world and collected more data. Actually doing so is often too expensive and time-consuming, so we randomly sample from the data we have. Rather than using an estimate of the error like a statistical test does, we can observe the error by “repeating” the experiment many times. Let’s estimate the mean difference and 95% confidence interval of that difference for the skewed <code>cigsPerDay</code> data with <strong>bootstrapping</strong>.</p>
 <p>We perform bootstrapping by estimating a value many times (usually around 1000) and then taking the mean and percentiles of that data. In-between estimation, we take a random sample with replacement of our original data to get a slightly different but mostly the same dataset. In this way, outliers have less and less influence on the data. Let’s walk through 1 iteration of a bootstrap.</p>
 <ol type="1">
