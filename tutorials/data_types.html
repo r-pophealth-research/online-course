@@ -1743,14 +1743,25 @@ globalThis.qwebrExecuteCode = async function (
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#characters" id="toc-characters" class="nav-link active" data-scroll-target="#characters">Characters</a></li>
-  <li><a href="#numerics" id="toc-numerics" class="nav-link" data-scroll-target="#numerics">Numerics</a></li>
+  <li><a href="#characters" id="toc-characters" class="nav-link active" data-scroll-target="#characters">Characters</a>
+  <ul class="collapse">
+  <li><a href="#practice-problem-1" id="toc-practice-problem-1" class="nav-link" data-scroll-target="#practice-problem-1">Practice Problem 1</a></li>
+  </ul></li>
+  <li><a href="#numerics" id="toc-numerics" class="nav-link" data-scroll-target="#numerics">Numerics</a>
+  <ul class="collapse">
+  <li><a href="#practice-problem-2" id="toc-practice-problem-2" class="nav-link" data-scroll-target="#practice-problem-2">Practice Problem 2</a></li>
+  </ul></li>
   <li><a href="#logicals" id="toc-logicals" class="nav-link" data-scroll-target="#logicals">Logicals</a></li>
-  <li><a href="#missing-values" id="toc-missing-values" class="nav-link" data-scroll-target="#missing-values">Missing Values</a></li>
+  <li><a href="#missing-values" id="toc-missing-values" class="nav-link" data-scroll-target="#missing-values">Missing Values</a>
+  <ul class="collapse">
+  <li><a href="#practice-problem-3" id="toc-practice-problem-3" class="nav-link" data-scroll-target="#practice-problem-3">Practice Problem 3</a></li>
+  </ul></li>
   <li><a href="#comparisons" id="toc-comparisons" class="nav-link" data-scroll-target="#comparisons">Comparisons</a>
   <ul class="collapse">
   <li><a href="#comparing-numerics" id="toc-comparing-numerics" class="nav-link" data-scroll-target="#comparing-numerics">Comparing Numerics</a></li>
+  <li><a href="#practice-problem-4" id="toc-practice-problem-4" class="nav-link" data-scroll-target="#practice-problem-4">Practice Problem 4</a></li>
   <li><a href="#comparing-characters" id="toc-comparing-characters" class="nav-link" data-scroll-target="#comparing-characters">Comparing Characters</a></li>
+  <li><a href="#practice-problem-5" id="toc-practice-problem-5" class="nav-link" data-scroll-target="#practice-problem-5">Practice Problem 5</a></li>
   </ul></li>
   <li><a href="#extra-practice" id="toc-extra-practice" class="nav-link" data-scroll-target="#extra-practice">Extra Practice</a>
   <ul class="collapse">
@@ -2097,8 +2108,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 <p>If want to combine different strings, we can concatenate them using <code>paste</code></p>
 <div id="qwebr-insertion-location-7"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<section id="practice-problem-1" class="level4">
-<h4 class="anchored" data-anchor-id="practice-problem-1">Practice Problem 1</h4>
+<section id="practice-problem-1" class="level3">
+<h3 class="anchored" data-anchor-id="practice-problem-1">Practice Problem 1</h3>
 <p>Edit the cell below so that it prints your name.</p>
 <div id="qwebr-insertion-location-8"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -2136,8 +2147,8 @@ Solution
 <p>We got an error message! Because we tried to do math with a “non-numeric argument”, R returned an error. To fix this, we can “cast”, or convert, the problematic data to the correct form using functions like <code>as.numeric()</code> or <code>as.character()</code>. The data that we include within the parentheses of <code>as.numeric()</code> are the data that we want to convert. Run the cell below to correct the error.</p>
 <div id="qwebr-insertion-location-13"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<section id="practice-problem-2" class="level4">
-<h4 class="anchored" data-anchor-id="practice-problem-2">Practice Problem 2</h4>
+<section id="practice-problem-2" class="level3">
+<h3 class="anchored" data-anchor-id="practice-problem-2">Practice Problem 2</h3>
 <p>Fix the cell below so that it runs without error and it returns the numeric <code>2025</code>.</p>
 <div id="qwebr-insertion-location-14"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -2184,8 +2195,8 @@ Solution
 <p>Finally, there is <code>Inf</code> which means “infinity”. In R, when you divide by zero, you get infinity.</p>
 <div id="qwebr-insertion-location-22"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<section id="practice-problem-3" class="level4">
-<h4 class="anchored" data-anchor-id="practice-problem-3">Practice Problem 3</h4>
+<section id="practice-problem-3" class="level3">
+<h3 class="anchored" data-anchor-id="practice-problem-3">Practice Problem 3</h3>
 <p>Before running the cell, guess what the code will return. Can you explain why?</p>
 <p>Hint: What did <code>class("2")</code> return in the above section?</p>
 <div id="qwebr-insertion-location-23"></div>
@@ -2231,8 +2242,9 @@ Solution
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div id="qwebr-insertion-location-27"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<section id="practice-problem-4" class="level4">
-<h4 class="anchored" data-anchor-id="practice-problem-4">Practice Problem 4</h4>
+</section>
+<section id="practice-problem-4" class="level3">
+<h3 class="anchored" data-anchor-id="practice-problem-4">Practice Problem 4</h3>
 <p>Complete the code in the cell below such that it outputs <code>FALSE</code></p>
 <div id="qwebr-insertion-location-28"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -2255,7 +2267,6 @@ Solution
 </div>
 </div>
 </section>
-</section>
 <section id="comparing-characters" class="level3">
 <h3 class="anchored" data-anchor-id="comparing-characters">Comparing Characters</h3>
 <p>For characters, values follow a numeric than alphabet order looking at the first character than the second. Lowercase letters are less than uppercase letters. <code>"1"&lt;"10"&lt;"2"&lt;"a"&lt;"A"&lt;"ab"&lt;"AB"&lt;"b"&lt;"z"</code>. An empty string <code>""</code> is the smallest.</p>
@@ -2267,13 +2278,13 @@ Solution
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div id="qwebr-insertion-location-33"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<section id="practice-problem-5" class="level4">
-<h4 class="anchored" data-anchor-id="practice-problem-5">Practice Problem 5</h4>
+</section>
+<section id="practice-problem-5" class="level3">
+<h3 class="anchored" data-anchor-id="practice-problem-5">Practice Problem 5</h3>
 <p>Based on the examples you’ve seen above, what do you think is the “greatest” single character? ::: {.callout-tip collapse=“true” title=“Solution”}</p>
 <p>Based on the ordering given above (<code>"1"&lt;"10"&lt;"2"&lt;"a"&lt;"A"&lt;"ab"&lt;"AB"&lt;"b"&lt;"z"</code>), among single characters shown, <code>"z"</code> is the greatest. You can check comparisons like:</p>
 <div id="qwebr-insertion-location-34"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
 </section>
 </section>
 <section id="extra-practice" class="level1">
