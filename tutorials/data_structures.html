@@ -1763,10 +1763,12 @@ globalThis.qwebrExecuteCode = async function (
   <li><a href="#practice-problem-6" id="toc-practice-problem-6" class="nav-link" data-scroll-target="#practice-problem-6">Practice Problem 6</a></li>
   </ul></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
-  <li><a href="#extra-practice" id="toc-extra-practice" class="nav-link" data-scroll-target="#extra-practice">Extra Practice</a></li>
+  <li><a href="#extra-practice" id="toc-extra-practice" class="nav-link" data-scroll-target="#extra-practice">Extra Practice</a>
+  <ul class="collapse">
   <li><a href="#part-1.-variables" id="toc-part-1.-variables" class="nav-link" data-scroll-target="#part-1.-variables">Part 1. Variables</a></li>
   <li><a href="#part-2-vectors" id="toc-part-2-vectors" class="nav-link" data-scroll-target="#part-2-vectors">Part 2: Vectors</a></li>
   <li><a href="#part-3-data-frames" id="toc-part-3-data-frames" class="nav-link" data-scroll-target="#part-3-data-frames">Part 3: Data Frames</a></li>
+  </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/r-pophealth-research/online-course/edit/main/tutorials/data_structures.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/r-pophealth-research/online-course/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -2334,9 +2336,8 @@ Solution
 </section>
 <section id="extra-practice" class="level1">
 <h1>Extra Practice</h1>
-</section>
-<section id="part-1.-variables" class="level1">
-<h1>Part 1. Variables</h1>
+<section id="part-1.-variables" class="level2">
+<h2 class="anchored" data-anchor-id="part-1.-variables">Part 1. Variables</h2>
 <p>Suppose we wanted to the transmission of influenza in a community. Our local hospital tests all patients for influenza, and reports the number of cases observed each week.</p>
 <p>This week, 5 patients tested positive for influenza - create a variable called <code>n_cases_this_week</code> that stores this count as a numeric.</p>
 <div id="qwebr-insertion-location-42"></div>
@@ -2419,8 +2420,8 @@ Solution
 </div>
 </div>
 </section>
-<section id="part-2-vectors" class="level1">
-<h1>Part 2: Vectors</h1>
+<section id="part-2-vectors" class="level2">
+<h2 class="anchored" data-anchor-id="part-2-vectors">Part 2: Vectors</h2>
 <p>The vectors below contains the number of influenza cases and the number of patients in the hospital for each week of our study.</p>
 <p>In both vectors, the estimate for the first month is the first value in the vector, the estimate for the second month is the second value, the estimate for the third month is the third value, etc.</p>
 <div id="qwebr-insertion-location-50"></div>
@@ -2546,8 +2547,8 @@ Solution
 </div>
 </div>
 </section>
-<section id="part-3-data-frames" class="level1">
-<h1>Part 3: Data Frames</h1>
+<section id="part-3-data-frames" class="level2">
+<h2 class="anchored" data-anchor-id="part-3-data-frames">Part 3: Data Frames</h2>
 <p>At the end of the study, the team compiles the data into a data frame as follows</p>
 <div id="qwebr-insertion-location-63"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -2633,6 +2634,7 @@ Solution
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

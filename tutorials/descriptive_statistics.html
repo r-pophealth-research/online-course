@@ -2122,7 +2122,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </header>
 
 
-<p>The first five weeks of this course have helped you understand the basics of R, import your data, and create the variables you need to do your analyses. For the next five weeks, we will focus on how you can use R in your statistical analyses. The first step in any research project is to understand the data set you are working with. We will use the <code>framingham.csv</code> dataset from the <a href="https://github.com/r-pophealth-research/online-course/tree/main/data">course GitHub repo</a>.</p>
+<p>Earlier chapters helped you understand the basics of R, import your data, and create the variables you need to do your analyses. In the remaining chapters, we will focus on how you can use R in your statistical analyses. The first step in any research project is to understand the data set you are working with. We will use the <code>framingham.csv</code> dataset from the <a href="https://github.com/r-pophealth-research/online-course/tree/main/data">course GitHub repo</a>.</p>
 <pre class="{webr-r import}"><code>fram_data = read_csv("https://raw.githubusercontent.com/r-pophealth-research/online-course/main/data/framingham.csv")
 head(fram_data)</code></pre>
 <section id="data-cleaning" class="level1">
@@ -2323,7 +2323,7 @@ Solution
 </section>
 <section id="practice-problem-5" class="level3">
 <h3 class="anchored" data-anchor-id="practice-problem-5">Practice Problem 5</h3>
-<p>To get the <code>mean</code>, <code>median</code>, <code>sd</code>, or <code>IQR</code> of variables within groups, we can use <code>dplyr</code> functions and the <code>group_by</code> function like we learned in Week 4! Remember that <code>dplyr</code> starts with the dataset and uses <code>%&gt;%</code> (pipe) operators to create a data flow. We then use <code>group_by</code> to specify which variables define our groups of interest. <code>summarize</code> can then give us a value for each group. For example, let’s find the <code>mean</code>, <code>median</code>, <code>sd</code>, and <code>IQR</code> of cigarettes per day for each education category.</p>
+<p>To get the <code>mean</code>, <code>median</code>, <code>sd</code>, or <code>IQR</code> of variables within groups, we can use <code>dplyr</code> functions and the <code>group_by</code> function like we learned in Data Exploration! Remember that <code>dplyr</code> starts with the dataset and uses <code>%&gt;%</code> (pipe) operators to create a data flow. We then use <code>group_by</code> to specify which variables define our groups of interest. <code>summarize</code> can then give us a value for each group. For example, let’s find the <code>mean</code>, <code>median</code>, <code>sd</code>, and <code>IQR</code> of cigarettes per day for each education category.</p>
 <div id="qwebr-insertion-location-21"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>Use <code>dplyr</code> to get the mean and standard deviation of age for males and females.</p>
