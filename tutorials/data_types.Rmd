@@ -45,7 +45,7 @@ If want to combine different strings, we can concatenate them using `paste`
 paste("This is the first half of the sentence", "and this is the second half")
 ```
 
-#### Practice Problem 1
+### Practice Problem 1
 
 Edit the cell below so that it prints your name.
 
@@ -87,7 +87,7 @@ We got an error message! Because we tried to do math with a "non-numeric argumen
 as.numeric("2") + 3
 ```
 
-#### Practice Problem 2
+### Practice Problem 2
 
 Fix the cell below so that it runs without error and it returns the numeric `2025`.
 
@@ -157,7 +157,7 @@ Finally, there is `Inf` which means "infinity". In R, when you divide by zero, y
 is.infinite(Inf)
 ```
 
-#### Practice Problem 3
+### Practice Problem 3
 
 Before running the cell, guess what the code will return. Can you explain why?
 
@@ -209,7 +209,7 @@ The order of numerics is based on the natural order (ex 1 \< 2 \< 3 \< ....)
 1 + 1 == 2
 ```
 
-#### Practice Problem 4
+### Practice Problem 4
 
 Complete the code in the cell below such that it outputs `FALSE`
 
@@ -245,7 +245,7 @@ For characters, values follow a numeric than alphabet order looking at the first
 "a" < "H"
 ```
 
-#### Practice Problem 5
+### Practice Problem 5
 
 Based on the examples you've seen above, what do you think is the "greatest" single character? ::: {.callout-tip collapse="true" title="Solution"}
 
