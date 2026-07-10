@@ -3,7 +3,7 @@ title: "Data Manipulation"
 output: html_notebook
 ---
 
-In this tutorial, we'll introduce methods for data manipulation, or the alteration of data frames to gain new insights from the data. This tutorial will cover different methods to create new variables, combine datasets, and reshape data frames.
+In this chapter, we'll introduce methods for data manipulation, or the alteration of data frames to gain new insights from the data. This tutorial will cover different methods to create new variables, combine datasets, and reshape data frames.
 
 We'll continue to work with the Framingham data in this tutorial. Run the code below to load the data as `framingham_df` from the [course GitHub repo](https://github.com/r-pophealth-research/online-course/tree/main/data).
 

@@ -19,6 +19,7 @@ website:
     style: floating
     contents:
       - index.qmd
+      - tutorials/Week1_data_types.qmd
       - tutorials/Week2_data_structures.qmd
       - tutorials/Week3_functions_packages.qmd
       - tutorials/Week4_data_exploration.qmd
