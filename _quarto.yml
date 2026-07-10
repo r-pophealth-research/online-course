@@ -7,7 +7,7 @@ project:
     - appendix/*.qmd
 
 website:
-  title: "R for Health Research"
+  title: "R for Population Health Research"
   search: true
   reader-mode: true
   repo-url: https://github.com/r-pophealth-research/online-course
@@ -24,9 +24,9 @@ website:
       - tutorials/functions_packages.qmd
       - tutorials/data_exploration.qmd
       - tutorials/data_manipulation.qmd
+      - tutorials/data_visualizations.qmd
       - tutorials/descriptive_statistics.qmd
       - tutorials/statistical_analyses.qmd
-      - tutorials/data_visualizations.qmd
       - section: "Appendix"
         contents:
           - appendix/install_r_rstudio.qmd

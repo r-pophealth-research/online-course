@@ -4,8 +4,6 @@ title: "Welcome"
 
 Welcome to **R for Population Health Research** — an introduction to R programming and data science principles for epidemiology and health policy research. Each chapter consists of interactive tutorials that teach you how to use R to analyze data, create visualizations, and communicate your findings. The tutorials are designed for beginners, so no prior experience with programming is required.
 
-These materials were adapted from materials from the 2024-2025 offerings of EPI/CHPR 202 at Stanford University, and were authored by [Anna Nguyen](https://www.linkedin.com/in/annatnguyen98/) and [Samuel Jaros](https://www.linkedin.com/in/samuel-jaros/). Anna Nguyen converted course materials into this online course with the assistance of [Cursor](https://cursor.com/)
-
 You do not need R installed on your computer to use this site. The tutorials include interactive code cells powered by [WebR](https://docs.r-wasm.org/webr/latest/) and [Quarto](https://quarto.org). If you prefer working locally, see the [Install R and RStudio](appendix/install_r_rstudio.qmd) appendix for setup instructions.
 
 ## Running R in your browser with WebR
@@ -30,3 +28,7 @@ Try it below—edit the message if you like, then click **Run Code**:
 ```{webr-r}
 print("Hello world!")
 ```
+
+## Credit
+
+These materials were adapted from materials from the 2024 and 2025 offerings of EPI/CHPR 202 at Stanford University, and were authored by [Anna Nguyen](https://www.linkedin.com/in/annatnguyen98/) and [Samuel Jaros](https://www.linkedin.com/in/samuel-jaros/). Anna Nguyen converted course materials into this online course in 2026 with the assistance of [Cursor](https://cursor.com/).
