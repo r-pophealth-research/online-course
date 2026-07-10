@@ -59,7 +59,7 @@ c.  The top right pane is our "Environment". This pane tells us about what we ar
 
 ![RStudio environment tab saying "Environment is empty"](../tutorials/images/rstudio_environment.png)
 
-d.  The bottom right pane has a lot of useful stuff in it. We will go through several of these in the course as they can be really helpful when you are making figures or need help. The tab you are probably looking at now is "Files" which is useful to save and open your code. We will be talking a look at this pane during week 1.
+d.  The bottom right pane has a lot of useful stuff in it. We will go through several of these in the course as they can be really helpful when you are making figures or need help. The tab you are probably looking at now is "Files" which is useful to save and open your code. We will take a look at this pane in the early tutorials.
 
 ![RStudio files pane listing several folders with project names](../tutorials/images/rstudio_files.png)
 

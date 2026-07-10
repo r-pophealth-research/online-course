@@ -4,9 +4,8 @@ title: "Install R and RStudio"
 
 
 
-**Welcome to CHPR/EPI 202!**
+This chapter 
 
-We are excited you are joining us for the quarter, and we hope you are excited to get started with R. First thing's first, we need to get R and RStudio installed on your computer.
 
 Just a quick definition of terms:
 
@@ -14,39 +13,19 @@ Just a quick definition of terms:
 
 **RStudio** - RStudio is a program that runs on top of R. It gives you a nice, pretty work environment. It makes it easy to see the code you are writing, how R is running, any images you have created, what variables you have stored, and much more! Working in R without RStudio is possible and happens in large data centers, but RStudio makes life much easier.
 
-## Before we begin, what is this weird document format?
-
-Can you believe I made this entire tutorial...in R!?!? Well...kinda. That's more of a complicated story, but we will go into that during week 1. I am writing this tutorial in *R Markdown* which is a special file format that turns plain text into the fancy PDF that you are reading now. The extra special part is that I can include code in this document too:
-
-```{webr-r}
-# If I put a # at the beginning of a line, R won't look at that line.
-# print() sends data back to the user.
-# "Hello world" is in quotes to tell R that I want the text "Hello world" and 
-#   not the variables Hello and world.
-print("Hello world")
-
-# R is constantly improving and releasing new versions. Here's how you see the 
-#   current version you're using.
-R.version$version.string
-```
-
-Cool, right? Because R Markdown allows us to combine normal human-readable text and code, we will be using it for the tutorials and your homework. If you really want to work ahead, check out the [Epidemiologist's R Handbook on R Markdown](https://epirhandbook.com/en/reports-with-r-markdown.html) after you finish this tutorial.
-
 ## Step 1: Install R
 
 ![R programming language logo](../tutorials/images/r_logo.png)
 
-a.  You will want to do all of this installing on a laptop that you can bring to class. That way, you can follow along with coding that we do together (and get a start on your homework!).
+To install R, you will use the [Comprehensive R Archive Network (CRAN)](https://cran.r-project.org/). Click on that link or type cran.r-project.org into your browser.
 
-b.  To install R, you will use the [Comprehensive R Archive Network (CRAN)](https://cran.r-project.org/). Click on that link or type cran.r-project.org into your browser.
-
-c.  At the top of this website, you will see a list of installation links.
+At the top of this website, you will see a list of installation links.
 
 -   **If you are using Mac:** Click the link that says `Download R for macOS`. You will see a page with download links that start with `R-` and end with `.pkg`. If you have a newer Mac that uses Apple's processors (M1, M2, etc.), you will use the first link under the text `For Apple silicon`. If you have an older Mac that uses an Intel processor, you will use the link under `For older Intel Macs`. If you're not sure which one you have, [here's a nifty tutorial](https://help.arcstudiopro.com/all-how-tos/how-do-i-know-if-my-mac-has-intel-processor-or-apple-m1) on how to find that information on your computer.
 -   **If you are using Windows:** Click the link that says `Download R for Windows`. Then, click on `base`. Then, click on `Download R for Windows`.
 -   **If you are using Linux:** Click the link that says `Download R for Linux`. Then, select the distro you are using from the list. These links will bring you to a distro-specific tutorial for the commands need to download R.
 
-d.  After you have downloaded the correct file for your system, click on it. If you cannot find the file, check your "Downloads" folder or try step c again. It may take a little while for the file to download and install. After you click on it, you may need to say "Yes" to allow the file to be installed on your computer. Click through the installer using the default options. Eventually, the installer will say that R was successfully installed, and you should see R on your computer.
+After you have downloaded the correct file for your system, click on it. If you cannot find the file, check your "Downloads" folder or try step c again. It may take a little while for the file to download and install. After you click on it, you may need to say "Yes" to allow the file to be installed on your computer. Click through the installer using the default options. Eventually, the installer will say that R was successfully installed, and you should see R on your computer.
 
 ## Step 2: Install RStudio
 
@@ -76,7 +55,7 @@ c.  The top right pane is our "Environment". This pane tells us about what we ar
 
 ![RStudio environment tab saying "Environment is empty"](../tutorials/images/rstudio_environment.png)
 
-d.  The bottom right pane has a lot of useful stuff in it. We will go through several of these in the course as they can be really helpful when you are making figures or need help. The tab you are probably looking at now is "Files" which is useful to save and open your code. We will be talking a look at this pane during week 1.
+d.  The bottom right pane has a lot of useful stuff in it. We will go through several of these in the course as they can be really helpful when you are making figures or need help. The tab you are probably looking at now is "Files" which is useful to save and open your code. We will take a look at this pane in the early tutorials.
 
 ![RStudio files pane listing several folders with project names](../tutorials/images/rstudio_files.png)
 
@@ -86,21 +65,5 @@ e.  There is actually a hidden 4th pane that appears when you are working on edi
 
 ![math problems written in the editor pane of RStudio](../tutorials/images/rstudio_editor.png)
 
-## Step 4: Set up Tinytex
 
-There is one final step to get your computer set up for our class. For your homework, you will be using R to generate documents that you will upload online. These documents will look similar to this one where there are code blocks that you write, the results generated by the computer, and normal text that you can use to explain your results. You need tinytex to generate these documents. Copy and paste the two lines of code into the "Console" section of your RStudio like we did in part 3b. You may need to select "yes" or "y" to continue the installation. The code will print out information about the install, but you do not need to know what it means.
-
-```         
-install.packages("tinytex")
-tinytex::install_tinytex()
-```
-
-If you have any issues running the code above, please feel free to reach out to the teaching staff. Once your code is done running and you see the `>` at the bottom, run this line of code to check the installation.
-
-```         
-tinytex::is_tinytex()
-```
-
-That code should print out `TRUE` to tell you that everything is good to go!
-
-**Congratulations!** You have installed R and RStudio, and you are ready for the first week of class. We are excited to meet you all and get you working in R!!!
+**Congratulations!** You have installed R and RStudio!

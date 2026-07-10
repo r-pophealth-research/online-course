@@ -53,7 +53,7 @@ multiply = function(x, y){
 multiply(x=4, y=10)
 ```
 
-### Practice Problem
+### Practice Problem 1
 
 Write your own function called `times_four_plus_one` that takes one input `x`, multiplies it by four, and adds one. Then, call your function three times with different inputs to make sure it works right.
 
@@ -86,7 +86,7 @@ seq(1, 10)
 seq(1, 10, 2)
 ```
 
-### Practice Problem
+### Practice Problem 2
 
 Now you use `seq()` to generate all multiples of 0.2 from 0 to 5 (e.g. 0, 0.2, 0.4, ... , 4.8, 5).
 
@@ -122,7 +122,7 @@ sample(x=1:10, size=3, replace=TRUE)
 
 The help page on the right side also has examples down at the bottom to help us. You can also always use Google to help you figure out how to use these functions, but the `?` operator works even without Internet!
 
-### Practice Problem
+### Practice Problem 3
 
 Use `?runif` (and the Internet if you need) to figure out how to get a random number between -1 and 2.
 
@@ -150,7 +150,7 @@ The ellipsis means that `max()` can accept any number of arguments and give you 
 max(1, 5, 22)
 ```
 
-### Practice Problem
+### Practice Problem 4
 
 Try it out! The `max()` and `min()` functions will give you the maximum and minimum, respectively, of numbers or letters. They will accept any number of inputs, including a pre-made vector.
 
@@ -242,7 +242,7 @@ if (x > 10) {
 
 Note than when a condition in an if-else series ends up being `TRUE`, all of the other `else`s are ignored. In the example above, `x > 5` is `TRUE`, so `x is 9 to 5` is printed. The everything after the `else` gets ignored. Even though the next `if (x >2)` would have also been `TRUE`, we don't see it print that out because it is after the `else`.
 
-### Practice Problem
+### Practice Problem 5
 
 Complete the code below to write a series of conditional statements that compares the values of `x` and `y`. Try changing the values of `x` and `y` to check that your code works as expected
 
@@ -314,7 +314,7 @@ for (age in ages) {
 cbind(ages, age_categories)
 ```
 
-### Practice Problem
+### Practice Problem 6
 
 Complete the code below to categorize the stage of chronic kidney disease (CKD) based on estimated glomerular filtration rate (eGFR) values in `egfr_values`
 

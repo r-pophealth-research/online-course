@@ -14,17 +14,6 @@ source_files <- c(
   "tutorials/data_visualizations.Rmd"
 )
 
-sync_dengue_data <- function() {
-  for (f in c("dengue_individual_data.csv", "dengue_household_data.csv")) {
-    src <- file.path("final", f)
-    dst <- file.path("data", f)
-    if (file.exists(src)) {
-      file.copy(src, dst, overwrite = TRUE)
-      message("Synced ", src, " -> ", dst)
-    }
-  }
-}
-
 read_site_url <- function() {
   lines <- readLines("_quarto.yml", warn = FALSE)
   site_line <- lines[grepl("^\\s*site-url:", lines)]
@@ -169,7 +158,6 @@ adapt_chunk_for_webr <- function(chunk_lines) {
   strsplit(text, "\n", fixed = TRUE)[[1]]
 }
 
-sync_dengue_data()
 sync_index_site_url(read_site_url())
 
 for (f in source_files) {

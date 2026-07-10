@@ -11,12 +11,12 @@ Unbiased statistical inference relies on proper study design, population samplin
 
 # Inference
 
-Over the past several weeks, we've have cleaned our Framingham data using the skills we learned in weeks 4 and 5 and we familiarized ourselves with the distributions of different variables in week 6. This week we'll go over code to implement statistical tests and models for inferential analysis.
+So far, we've cleaned our Framingham data using the skills from Data Exploration and Data Manipulation, and we familiarized ourselves with the distributions of different variables in Descriptive Statistics. Now we'll go over code to implement statistical tests and models for inferential analysis.
 
 Run the cell below to load `clean_fram_data`, a "cleaned" version of the Framingham data set.
 
 ```{r}
-# Get a dataset similar to the one we had last week
+# Get a cleaned Framingham dataset
 clean_fram_data <- read_csv("https://raw.githubusercontent.com/r-pophealth-research/online-course/main/data/framingham.csv", show_col_types=F) %>%
     mutate(education = case_when(education == 1 ~ "Less than high school", # Education labelling
                                  education == 2 ~ "High school diploma/GED",
@@ -31,7 +31,7 @@ clean_fram_data <- read_csv("https://raw.githubusercontent.com/r-pophealth-resea
 
 ## Categorical vs Categorical
 
-Often when we're doing research, we want to decide if two groups are different in some way. Last week, we asked if men were more likely to be smokers than women. Run the code below to reproduce a 2x2 table that shows the proportion of each sex that smoked.
+Often when we're doing research, we want to decide if two groups are different in some way. In Descriptive Statistics, we asked if men were more likely to be smokers than women. Run the code below to reproduce a 2x2 table that shows the proportion of each sex that smoked.
 
 ```{r}
 sex_smoking_table <- table(clean_fram_data$smoker, clean_fram_data$sex)
@@ -290,7 +290,7 @@ female_mean =
 bootstrap_difference = 
 ```
 
-4.  Now we combine these three steps inside a for loop that will run 1000 times. Each time inside the for loop, we save the `bootstrap_difference` to a vector `all_boot_differences`. If you need to remember how to make a for loop that saves something to a vector every time, look back at week 2.
+4.  Now we combine these three steps inside a for loop that will run 1000 times. Each time inside the for loop, we save the `bootstrap_difference` to a vector `all_boot_differences`. If you need to remember how to make a for loop that saves something to a vector every time, look back at Data Structures.
 
 ```{r}
 # When you do random sampling, you should do set.seed() so that

@@ -3,7 +3,7 @@ title: 'Descriptive Statistics'
 output: html_notebook
 ---
 
-The first five weeks of this course have helped you understand the basics of R, import your data, and create the variables you need to do your analyses. For the next five weeks, we will focus on how you can use R in your statistical analyses. The first step in any research project is to understand the data set you are working with. We will use the `framingham.csv` dataset from the [course GitHub repo](https://github.com/r-pophealth-research/online-course/tree/main/data).
+Earlier chapters helped you understand the basics of R, import your data, and create the variables you need to do your analyses. In the remaining chapters, we will focus on how you can use R in your statistical analyses. The first step in any research project is to understand the data set you are working with. We will use the `framingham.csv` dataset from the [course GitHub repo](https://github.com/r-pophealth-research/online-course/tree/main/data).
 
 ```{r import}
 fram_data = read_csv("https://raw.githubusercontent.com/r-pophealth-research/online-course/main/data/framingham.csv")
@@ -263,7 +263,7 @@ IQR(clean_fram_data$BMI, na.rm=T)
 
 ### Practice Problem 5
 
-To get the `mean`, `median`, `sd`, or `IQR` of variables within groups, we can use `dplyr` functions and the `group_by` function like we learned in Week 4! Remember that `dplyr` starts with the dataset and uses `%>%` (pipe) operators to create a data flow. We then use `group_by` to specify which variables define our groups of interest. `summarize` can then give us a value for each group. For example, let's find the `mean`, `median`, `sd`, and `IQR` of cigarettes per day for each education category.
+To get the `mean`, `median`, `sd`, or `IQR` of variables within groups, we can use `dplyr` functions and the `group_by` function like we learned in Data Exploration! Remember that `dplyr` starts with the dataset and uses `%>%` (pipe) operators to create a data flow. We then use `group_by` to specify which variables define our groups of interest. `summarize` can then give us a value for each group. For example, let's find the `mean`, `median`, `sd`, and `IQR` of cigarettes per day for each education category.
 
 ```{r}
 clean_fram_data %>%

@@ -3,7 +3,7 @@ title: "Data Types"
 output: html_notebook
 ---
 
-R stores data as different **types**. Here, we'll focus on three of the primary data types: (1) characters, (2) numerics, and (3) logicals.
+In this chapter, you will learn about how R stores data as different **types**. Here, we'll focus on three of the primary data types: (1) characters, (2) numerics, and (3) logicals.
 
 ```{r}
 "2" #Character
@@ -257,8 +257,6 @@ Based on the ordering given above (`"1"<"10"<"2"<"a"<"A"<"ab"<"AB"<"b"<"z"`), am
 "z" > "9"
 ```
 
-:::
-
 # Extra Practice
 
 ## Data Types
@@ -348,3 +346,9 @@ Write a comparison that uses NA and, based on your experience, explain what happ
 
 Comparisons with `NA` return `NA`, not `TRUE` or `FALSE`. R cannot decide whether a comparison is true or false when one of the values is missing.
 :::
+
+# Summary
+
+In this tutorial, you learned how R stores data as characters, numerics, and logicals, and how to check types with `class()`. You practiced converting between types, working with missing and special values (`NA`, `NULL`, `NaN`, `Inf`), and writing comparisons that return `TRUE` or `FALSE`.
+
+Next, you'll learn how data is organized by R.

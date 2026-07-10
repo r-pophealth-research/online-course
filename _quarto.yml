@@ -45,7 +45,6 @@ format:
 resources:
   - data/
   - tutorials/images/
-  - images/
 
 webr:
   show-startup-message: true
