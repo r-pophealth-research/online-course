@@ -668,7 +668,7 @@
     "href": "index.html",
     "title": "Welcome",
     "section": "",
-    "text": "Welcome to R for Population Health Research — an introduction to R programming and data science principles for epidemiology and health policy research. Each chapter consists of interactive tutorials that teach you how to use R to analyze data, create visualizations, and communicate your findings. The tutorials are designed for beginners, so no prior experience with programming is required.\nThese materials were adapted from materials from the 2024-2025 offerings of EPI/CHPR 202 at Stanford University, and were authored by Anna Nguyen and Samuel Jaros. Anna Nguyen converted course materials into this online course with the assistance of Cursor\nYou do not need R installed on your computer to use this site. The tutorials include interactive code cells powered by WebR and Quarto. If you prefer working locally, see the Install R and RStudio appendix for setup instructions.",
+    "text": "Welcome to R for Population Health Research — an introduction to R programming and data science principles for epidemiology and health policy research. Each chapter consists of interactive tutorials that teach you how to use R to analyze data, create visualizations, and communicate your findings. The tutorials are designed for beginners, so no prior experience with programming is required.\nYou do not need R installed on your computer to use this site. The tutorials include interactive code cells powered by WebR and Quarto. If you prefer working locally, see the Install R and RStudio appendix for setup instructions.",
     "crumbs": [
       "Welcome"
     ]
@@ -679,6 +679,16 @@
     "title": "Welcome",
     "section": "Running R in your browser with WebR",
     "text": "Running R in your browser with WebR\nWebR is a version of R compiled to run entirely in your web browser. Every interactive code cell on this site is an editable text window—click inside it, change the code, and run it when you are ready.\nTo run code:\n\nClick Run Code to execute everything in the cell. Printed output, tables, and plots appear directly below the cell.\nPress Shift + Enter as a keyboard shortcut for Run Code.\nSelect part of the code and press Ctrl + Enter (Windows/Linux) or Cmd + Enter (Mac) to run just the selection—or run the current line if nothing is selected.\n\nOther controls:\n\nClick the reset icon (↻) to restore the cell’s original code and start over.\nClick the copy icon to copy the code to your clipboard.\n\nThe first time you run code on a page, WebR needs to download R and any required packages. This can take 30–60 seconds on a slow connection. Subsequent cells on the same page run much faster.\nTry it below—edit the message if you like, then click Run Code:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#credit",
+    "href": "index.html#credit",
+    "title": "Welcome",
+    "section": "Credit",
+    "text": "Credit\nThese materials were adapted from materials from the 2024 and 2025 offerings of EPI/CHPR 202 at Stanford University, and were authored by Anna Nguyen and Samuel Jaros. Anna Nguyen converted course materials into this online course in 2026 with the assistance of Cursor.",
     "crumbs": [
       "Welcome"
     ]
