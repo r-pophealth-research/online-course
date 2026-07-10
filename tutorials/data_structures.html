@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Data Manipulation – R for Health Research</title>
+<title>Data Structures – R for Health Research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -345,7 +345,7 @@ iframe.qwebr-output-code-browse {
 // Document level settings ----
 
 // Determine if we need to install R packages
-globalThis.qwebrInstallRPackagesList = ['readr', 'dplyr', 'tidyr'];
+globalThis.qwebrInstallRPackagesList = [''];
 
 // Specify possible locations to search for the repository
 globalThis.qwebrPackageRepoURLS = ['https://repo.r-wasm.org/'];
@@ -363,11 +363,11 @@ globalThis.qwebrCustomizedWebROptions = {
   "baseURL": "https://webr.r-wasm.org/v0.5.7/",
   "serviceWorkerUrl": "",
   "homedir": "/home/web_user", 
-  "channelType": "ChannelType.Automatic"
+  "channelType": "ChannelType.PostMessage"
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"framingham_df = read_csv(\"https://raw.githubusercontent.com/r-pophealth-research/online-course/main/data/framingham.csv\")\nhead(framingham_df)","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"zip_code_demog = read_csv(\"https://raw.githubusercontent.com/r-pophealth-research/online-course/main/data/framingham_zip_demog.csv\")\nhead(zip_code_demog)","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"framingham_df %>% filter(is.na(education))","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"framingham_df %>% pull(education) %>% table()","id":4,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-4","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"replaced_edu_nas_framingham = \n  framingham_df %>% \n  replace_na(list(education = 0)) # NA values in the education columns are replaced with \"Unknown\" \nreplaced_edu_nas_framingham %>% pull(education) %>% table() ","id":5,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-5","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"framingham_duplicated_indices = duplicated(framingham_df)\ntable(framingham_duplicated_indices) ","id":6,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-6","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"framingham_df[framingham_duplicated_indices, ]","id":7,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-7","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"framingham_deduplicated = framingham_df %>% distinct()\npaste(\"The original dataset has\", nrow(framingham_df), \"rows.\")\npaste(\"The deduplicated dataset has\", nrow(framingham_deduplicated), \"rows.\")","id":8,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-8","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"framingham_df %>% \n  filter(BMI < 5) %>% # Filters dataset to only rows where BMI < 5\n  pull(BMI) # Pull BMI column as vector","id":9,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-9","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"                            # Vector, for which certain values will be replaced\nframingham_df$BMI = replace(framingham_df$BMI, \n                            # Conditional for which values should be replaced\n                            framingham_df$BMI < 5, \n                            # Value to use when the condition is TRUE\n                            NA) ","id":10,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-10","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"framingham_df %>% \n  filter(BMI < 5) ","id":11,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-11","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"age_years = framingham_df %>% pull(age)\n# The next two lines do the same thing\nframingham_df$age_months = age_years * 12 \nframingham_df[\"age_months\"] = age_years * 12 ","id":12,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-12","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"framingham_df %>% \n  mutate(age_months = age * 12, \n         age_days = age * 365)","id":13,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-13","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"framingham_rounded_cigsPerDay = framingham_df %>% \n  mutate(cigsPerDay = round(cigsPerDay, digits = -1)) # digits = -1 specifies that we want to round to the nearest 10\n\n# Shows distribution of cigsPerDay, should only be intervals of 10\ntable(framingham_rounded_cigsPerDay$cigsPerDay)","id":14,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-14","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"framingham_df %>% \n  mutate(sex = ifelse(condition = male == 1, true = \"male\", false = \"female\")) %>% \n  select(male, sex)","id":15,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-15","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"framingham_df %>% \n  mutate(high_BMI = ...(BMI >= 30, ..., ...))","id":16,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-16","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"framingham_df %>%\n  mutate(high_BMI = ifelse(BMI >= 30, 1, 0))","id":17,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-17","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"framingham_df %>% \n  mutate(education_category = case_when(education == 0 ~ \"Unknown\", \n                                        education == 1 ~ \"Didn't graduate high school\", \n                                        education == 2 ~ \"High school diploma\", \n                                        education == 3 ~ \"Some college\", \n                                        education == 4 ~ \"Bachelor's degree or highe\")) %>% \n  select(education, education_category)","id":18,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-18","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"framingham_df %>% \n  mutate(cigsPerDay_categories = \n           case_when(cigsPerDay == 0 ~ \"0 per day\",\n                     # Sets value if cigsPerDay != 0 and cigsPerDay <= 25\n                     cigsPerDay <= 25 ~ \"1-25 per day\",  \n                     # Sets value if cigsPerDay != 0, cigsPerDay > 25, and cigsPerDay <= 50\n                     cigsPerDay <= 50 ~ \"26-50 per day\", \n                     # Sets value if all other cases are FALSE\n                     cigsPerDay > 50 ~ \">50 per day\")) %>% \n  select(cigsPerDay, cigsPerDay_categories)","id":19,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-19","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"framingham_df %>% \n  mutate(age_decades = ...(age < 30 ~ ..., \n                           ...))","id":20,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-20","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"framingham_df %>%\n  mutate(age_decades = case_when(age < 30 ~ \"20s\",\n                                 age < 40 ~ \"30s\",\n                                 age < 50 ~ \"40s\",\n                                 age < 60 ~ \"50s\",\n                                 age < 70 ~ \"60s\",\n                                 age < 80 ~ \"70s\"))","id":21,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-21","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"renamed_framingham = framingham_df %>% \n  rename(systolicBP = sysBP, \n         diastolicBP = diaBP)\n\nrenamed_framingham %>% select(systolicBP, diastolicBP)","id":22,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-22","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"renamed_framingham %>% select(sysBP, diaBP)","id":23,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-23","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"framingham_df %>% ...","id":24,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-24","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"framingham_df %>% rename(highest_education_completed = education)","id":25,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-25","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"zips_in_framingham_df = framingham_df %>% pull(zip_code) %>% unique() %>% sort()\nzips_in_demog = zip_code_demog %>% pull(zip) %>% unique() %>% sort()\n\n# Selects items in zips_in_framingham_df that aren't in zips_in_demog\nzips_only_in_framingham_df = zips_in_framingham_df[!(zips_in_framingham_df %in% zips_in_demog)]\n\n# Selects items in zips_in_demog that aren't in zips_in_framingham_df\nzips_only_in_demog = zips_in_demog[!(zips_in_demog %in% zips_in_framingham_df)]\n\npaste(\"Zip codes only in framingham_df:\", zips_only_in_framingham_df)\npaste(\"Zip codes only in zip_code_demog:\", zips_only_in_demog)","id":26,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-26","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"framingham_left_join = framingham_df %>% \n  left_join(zip_code_demog, by = c(\"zip_code\" = \"zip\")) \nnrow(framingham_left_join)","id":27,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-27","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"colnames(framingham_left_join)","id":28,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-28","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"nrow(framingham_df) == nrow(framingham_left_join)","id":29,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-29","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"framingham_left_join %>% \n  filter(zip_code == \"01746\") %>% \n  select(zip_code, total_population, median_hh_income)","id":30,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-30","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"framingham_left_join %>% \n  filter(zip_code == \"01745\") %>% \n  select(zip_code, total_population, median_hh_income)","id":31,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-31","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"framingham_right_join = framingham_df %>% \n  right_join(zip_code_demog, by = c(\"zip_code\" = \"zip\"))\nnrow(framingham_right_join)","id":32,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-32","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"nrow(zip_code_demog) > nrow(framingham_right_join)","id":33,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-33","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"demog_01701 = zip_code_demog %>% filter(zip == \"01701\")\ndemog_01701","id":34,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-34","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"framingham_df %>% filter(zip_code == \"01701\") %>% nrow()","id":35,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-35","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"framingham_right_join_01701 = framingham_df %>% \n  right_join(demog_01701, by = c(\"zip_code\" = \"zip\"))\n\nnrow(framingham_right_join_01701)","id":36,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-36","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"framingham_right_join_one_row %>% \n  select(zip_code, total_population, median_hh_income) %>% \n  distinct()","id":37,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-37","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"framingham_right_join %>% filter(zip_code == \"01745\")","id":38,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-38","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"framingham_right_join %>% filter(zip_code == \"01746\")","id":39,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-39","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"framingham_full_join = framingham_df %>% \n  full_join(zip_code_demog, by = c(\"zip_code\" = \"zip\"))\nnrow(framingham_full_join)","id":40,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-40","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"framingham_full_join %>% \n  filter(zip_code == \"01746\") %>% \n  select(zip_code, total_population, median_hh_income)","id":41,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-41","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"framingham_full_join %>% \n  filter(zip_code == \"01745\")","id":42,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-42","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"framingham_inner_join = framingham_df %>% \n  inner_join(zip_code_demog, by = c(\"zip_code\" = \"zip\"))\nnrow(framingham_inner_join)","id":43,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-43","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"framingham_inner_join %>% \n  filter(zip_code %in% c(\"01745\", \"01746\"))","id":44,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-44","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"chd_prev = framingham_df %>% group_by(...) %>% summarize(chd_prev = ...)\nchd_income_df = chd_prev %>% ...(zip_code_demog, by = c(\"zip_code\" = \"zip\"))","id":45,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-45","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"chd_prev = framingham_df %>%\n  group_by(zip_code) %>%\n  summarize(chd_prev = mean(TenYearCHD))\n\nchd_income_df = chd_prev %>%\n  left_join(zip_code_demog %>% select(zip, median_hh_income),\n            by = c(\"zip_code\" = \"zip\"))","id":46,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-46","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"data.frame(participant_id = c(1, 1, 2, 2, 3, 3), \n           variable = c(\"var1\", \"var2\", \"var1\", \"var2\", \"var1\", \"var2\"), \n           value = c(2, 7, 3, 5, 6, 8))","id":47,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-47","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"data.frame(participant_id = c(1, 2, 3), \n           var1 = c(2, 3, 6),\n           var2 = c(7, 5, 8))","id":48,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-48","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Extract vectors of all variables names, excluding participant ID\nnum_variable_names = c(\"age\", \"cigsPerDay\", \"BPMeds\", \"totChol\", \"sysBP\", \"diaBP\", \"BMI\", \"heartRate\", \"glucose\")\n\n# Converts framingham_df to a long format\nframingham_long = framingham_df %>% \n  distinct() %>% \n  select(id, all_of(num_variable_names)) %>% \n  pivot_longer(cols = all_of(num_variable_names), \n               names_to = \"Variable\", \n               values_to = \"Values\")\n\nframingham_long","id":49,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-49","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"framingham_wide = framingham_long %>% \n  pivot_wider(id_cols = \"id\", names_from = \"Variable\", values_from = \"Values\")\n\nframingham_wide","id":50,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-50","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"dengue_infections = read_csv(\"https://raw.githubusercontent.com/r-pophealth-research/online-course/main/data/dengue_infection_data.csv\")","id":51,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-51","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"","id":52,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-52","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"dim(dengue_infections)","id":53,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-53","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"","id":54,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-54","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"summary(dengue_infections)\ncolnames(dengue_infections)","id":55,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-55","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"","id":56,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-56","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Number of individuals (one row per ID)\nnrow(dengue_infections)\n# Or: dengue_infections %>% pull(ID) %>% unique() %>% length()\n\n# Number of households\ndengue_infections %>% pull(hh_ID) %>% unique() %>% length()","id":57,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-57","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"","id":58,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-58","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"hist(dengue_infections$n_asymp_infections)","id":59,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-59","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"","id":60,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-60","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"hh_sizes = dengue_infections %>% \n  group_by(hh_ID) %>% \n  summarize(size = n()) \nmean(hh_sizes$size)","id":61,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-61","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"dengue_infections_clean = dengue_infections","id":62,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-62","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"dengue_infections_clean = dengue_infections_clean %>% \n  mutate(... = if_else(ID %in% c(4, 87, 134), ..., ...))","id":63,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-63","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"dengue_infections_clean = dengue_infections_clean %>% \n  mutate(age = if_else(ID %in% c(4, 87, 134), NA, age))","id":64,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-64","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"dengue_infections_clean = dengue_infections_clean %>% \n  ...","id":65,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-65","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"dengue_infections_clean = dengue_infections_clean %>% \n  mutate(any_infection = if_else(n_symp_infections + n_asymp_infections > 0, 1, 0))","id":66,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-66","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"dengue_infections_clean = dengue_infections_clean %>% \n  ...","id":67,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-67","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"dengue_infections_clean = dengue_infections_clean %>% \n  mutate(age_group = case_when(age < 18 ~ \"<18\", \n                               age < 65 ~ \"18-64\", \n                               TRUE ~ \"65+\"))","id":68,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-68","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"dengue_hh_data = read_csv(\"https://raw.githubusercontent.com/r-pophealth-research/online-course/main/data/dengue_hh_data.csv\")","id":69,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-69","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"merged_dengue_data = ...","id":70,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-70","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"merged_dengue_data = dengue_infections_clean %>% \n  left_join(dengue_hh_data, by = c(\"hh_ID\" = \"household_id\"))","id":71,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-71","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"nrow(merged_dengue_data) == nrow(dengue_infections)","id":72,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-72","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"prev_by_age = ...\n\nprev_under18 = ...\nprev_18to65 = ...\n\n# Prevalence ratio of <18 vs 18-65\nprev_under18 / prev_18to65","id":73,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-73","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"prev_by_age = \n  dengue_infections_clean %>% \n  group_by(age_group) %>% \n  summarize(count_cases = sum(any_infection), \n            prev_cases = mean(any_infection))\n\nprev_under18 = prev_by_age %>% filter(age_group == \"<18\") %>% pull(prev_cases)\nprev_18to65 = prev_by_age %>% filter(age_group == \"18-64\") %>% pull(prev_cases)\n\n# Prevalence ratio of <18 vs 18-64\nprev_under18 / prev_18to65","id":74,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-74","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"long_dengue_df = ...\n\nlong_dengue_df","id":75,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-75","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"long_dengue_df = dengue_infections_clean %>% \n  pivot_longer(cols = c(\"n_symp_infections\", \"n_asymp_infections\"), \n               names_to = \"infection_type\", \n               values_to = \"n_infections\") %>% \n  mutate(infection_type = if_else(infection_type == \"n_symp_infections\",\n                                  \"symp\", \n                                  \"asymp\"))\n\nlong_dengue_df","id":76,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-76","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
+globalThis.qwebrCellDetails = [{"code":"# These two lines of code do the same thing\nbig_number = 153423483\nbig_number <- 153423483","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"153423483 * 4","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"big_number * 4","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"big_number = 12413\nbig_number","id":4,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-4","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"temp_f = ...\ntemp_f","id":5,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-5","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"temp_f = 72\ntemp_f","id":6,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-6","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"temp_c = temp_f ...\ntemp_c","id":7,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-7","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"temp_c = (temp_f - 32) / (9/5)\ntemp_c","id":8,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-8","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"c(1, 6, 7, 31, 2)","id":9,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-9","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# All values will be convert to characters\nc(1, 6, \"7\", 2, F)","id":10,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-10","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"5:100","id":11,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-11","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"fruits = c(..., ..., ...)\nfruits","id":12,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-12","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"fruits = c(\"apple\", \"orange\", \"banana\")\nfruits","id":13,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-13","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"numbers = 4:24 \nnumbers","id":14,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-14","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"numbers[6]","id":15,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-15","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"numbers[c(4, 8, 19)]","id":16,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-16","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"numbers[2] = 1043\nnumbers","id":17,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-17","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"numbers[...] = ...\nnumbers","id":18,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-18","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"numbers[c(3, 8)] = 32\nnumbers","id":19,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-19","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"n_flu_cases = c()","id":20,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-20","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Sets n_flu_cases to a vector that contains the existing values of n_flu_cases with a 5 at the end. \nn_flu_cases = c(n_flu_cases, 5)\nn_flu_cases","id":21,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-21","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Sets n_flu_cases to a vector that appends the values 8 and 6 to the end of the existing n_flu_cases vector.\nn_flu_cases = c(n_flu_cases, c(8, 6))\nn_flu_cases","id":22,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-22","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Sets n_flu_cases to a vector that adds the value 2 to the start of the existing n_flu_cases vector.\nn_flu_cases = c(2, n_flu_cases)\nn_flu_cases","id":23,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-23","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"nums = c(14, 362, 26, 2)\nnums * 20 - 94","id":24,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-24","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Create a vector of numbers between 1 and 10, convert them to characters\nnum_characters = as.character(1:10)\npaste(\"Trial Number:\", num_characters)","id":25,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-25","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"more_numbers = c(13, 6, 123, 23, 6)\npaste(\"Minimum:\", min(more_numbers))\npaste(\"Maximum:\", max(more_numbers))\npaste(\"Mean:\", mean(more_numbers))\npaste(\"Median:\", median(more_numbers))\npaste(\"Length:\", length(more_numbers))","id":26,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-26","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"summary(more_numbers)","id":27,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-27","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"unique(more_numbers)","id":28,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-28","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"table(more_numbers)","id":29,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-29","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"even_more_numbers = c(1, 6, 2, 93, 241, 315, 23)\n... - ...","id":30,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-30","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"even_more_numbers = c(1, 6, 2, 93, 241, 315, 23)\neven_more_numbers - mean(even_more_numbers)","id":31,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-31","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"study_cohort = data.frame(person_id = 1:5, \n                          tr = c(1, 1, 0, 0, 1), \n                          disease = c(0, 0, 0, 1, 0), \n                          age = c(19, 26, 56, 53, 12))\n\nstudy_cohort","id":32,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-32","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"study_cohort[1, ]","id":33,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-33","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"study_cohort[1:3, ]","id":34,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-34","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"study_cohort[c(1, 4), ]","id":35,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-35","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"study_cohort[, 3]","id":36,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-36","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"study_cohort[\"disease\"] # returns a table with one column","id":37,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-37","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"study_cohort[[\"disease\"]] # returns a vector with column values","id":38,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-38","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"study_cohort$disease","id":39,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-39","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"ages_years = ... # Extract the column that contains participant ages in years\nages_years ... # Use a vector operation to convert ages from years to months. ","id":40,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-40","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"ages_years = study_cohort$age # Extract the column that contains participant ages in years\nages_years * 12 # Use a vector operation to convert ages from years to months. ","id":41,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-41","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"n_cases_this_week = ...\nn_cases_this_week","id":42,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-42","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"n_cases_this_week = 5\nn_cases_this_week","id":43,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-43","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"n_patients_this_week = ...\nn_patients_this_week","id":44,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-44","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"n_patients_this_week = 258\nn_patients_this_week","id":45,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-45","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"influenza_rate_this_week = ...\ninfluenza_rate_this_week","id":46,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-46","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"influenza_rate_this_week = n_cases_this_week / n_patients_this_week * 1000\ninfluenza_rate_this_week","id":47,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-47","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"","id":48,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-48","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"influenza_rate_this_week / 30","id":49,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-49","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"n_patients = c(147, 408, 168, 252, 203, 253)\nn_cases = c(0, 4, 4, 5, 3, 1)","id":50,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-50","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"n_patients = c(n_patients, ...)\nn_cases = ...","id":51,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-51","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"n_patients = c(n_patients, n_patients_this_week)\nn_cases = c(n_cases, n_cases_this_week)","id":52,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-52","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"total_patients = sum(...)","id":53,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-53","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"total_patients = sum(n_patients)","id":54,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-54","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"total_cases = ...","id":55,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-55","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"total_cases = sum(n_cases)","id":56,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-56","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"total_rate = ... / ... * ...","id":57,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-57","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"total_rate = total_cases / total_patients * 1000","id":58,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-58","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"...","id":59,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-59","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"n_cases[3] / n_patients[3] * 1000","id":60,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-60","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"...","id":61,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-61","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"n_cases / n_patients * 1000","id":62,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-62","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"influenza_data = \n  data.frame(week = 1:12, \n             n_patients = c(147, 408, 168, 252, 203, 253, 258, 342, 205, 246, 123, 119),\n             n_cases = c(0, 4, 4, 5, 3, 1, 2, 1, 0, 0, 1, 1))\n\ninfluenza_data","id":63,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-63","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"","id":64,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-64","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"influenza_data[5, ]","id":65,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-65","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"","id":66,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-66","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"influenza_data[\"n_cases\"]","id":67,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-67","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"","id":68,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-68","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"influenza_data$n_cases\n# Or: influenza_data[[\"n_cases\"]]","id":69,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-69","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"influenza_data_first8weeks = influenza_data[...]\n...","id":70,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-70","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"influenza_data_first8weeks = influenza_data[1:8, ]\ninfluenza_data_first8weeks$n_cases / influenza_data_first8weeks$n_patients * 1000","id":71,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-71","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
 
 </script>
 <script type="module">
@@ -1650,7 +1650,7 @@ globalThis.qwebrExecuteCode = async function (
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../tutorials/Week5_data_manipulation.html">Data Manipulation</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../tutorials/data_structures.html">Data Structures</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -1669,47 +1669,50 @@ globalThis.qwebrExecuteCode = async function (
   </div>
 </li>
         <li class="sidebar-item">
- <span class="menu-text">tutorials/Week1_data_types.qmd</span>
-  </li>
+  <div class="sidebar-item-container"> 
+  <a href="../tutorials/data_types.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Types</span></a>
+  </div>
+</li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tutorials/Week2_data_structures.html" class="sidebar-item-text sidebar-link">
+  <a href="../tutorials/data_structures.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Data Structures</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tutorials/Week3_functions_packages.html" class="sidebar-item-text sidebar-link">
+  <a href="../tutorials/functions_packages.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Functions and Packages</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tutorials/Week4_data_exploration.html" class="sidebar-item-text sidebar-link">
+  <a href="../tutorials/data_exploration.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Exploration</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tutorials/Week5_data_manipulation.html" class="sidebar-item-text sidebar-link active">
+  <a href="../tutorials/data_manipulation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Manipulation</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tutorials/Week6_descriptive_statistics.html" class="sidebar-item-text sidebar-link">
+  <a href="../tutorials/descriptive_statistics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Descriptive Statistics</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tutorials/Week7_statistical_analyses.html" class="sidebar-item-text sidebar-link">
+  <a href="../tutorials/statistical_analyses.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Statistical Inference</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tutorials/Week8-9_data_visualizations.html" class="sidebar-item-text sidebar-link">
+  <a href="../tutorials/data_visualizations.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Visualizations</span></a>
   </div>
 </li>
@@ -1740,47 +1743,32 @@ globalThis.qwebrExecuteCode = async function (
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#data-cleaning" id="toc-data-cleaning" class="nav-link active" data-scroll-target="#data-cleaning">Data Cleaning</a>
+  <li><a href="#variables" id="toc-variables" class="nav-link active" data-scroll-target="#variables">Variables</a>
   <ul class="collapse">
-  <li><a href="#replace_na" id="toc-replace_na" class="nav-link" data-scroll-target="#replace_na">replace_na()</a></li>
-  <li><a href="#removing-duplicates" id="toc-removing-duplicates" class="nav-link" data-scroll-target="#removing-duplicates">Removing duplicates</a></li>
-  <li><a href="#handling-erroneous-outliers" id="toc-handling-erroneous-outliers" class="nav-link" data-scroll-target="#handling-erroneous-outliers">Handling (Erroneous) Outliers</a></li>
+  <li><a href="#practice-problem-1" id="toc-practice-problem-1" class="nav-link" data-scroll-target="#practice-problem-1">Practice Problem 1</a></li>
+  <li><a href="#practice-problem-2" id="toc-practice-problem-2" class="nav-link" data-scroll-target="#practice-problem-2">Practice Problem 2</a></li>
   </ul></li>
-  <li><a href="#creating-variables" id="toc-creating-variables" class="nav-link" data-scroll-target="#creating-variables">Creating Variables</a>
+  <li><a href="#vectors" id="toc-vectors" class="nav-link" data-scroll-target="#vectors">Vectors</a>
   <ul class="collapse">
-  <li><a href="#mutate" id="toc-mutate" class="nav-link" data-scroll-target="#mutate">mutate()</a>
-  <ul class="collapse">
-  <li><a href="#if_else" id="toc-if_else" class="nav-link" data-scroll-target="#if_else">if_else()</a></li>
-  <li><a href="#case_when" id="toc-case_when" class="nav-link" data-scroll-target="#case_when">case_when()</a></li>
+  <li><a href="#practice-problem-3" id="toc-practice-problem-3" class="nav-link" data-scroll-target="#practice-problem-3">Practice Problem 3</a></li>
+  <li><a href="#accessing-items" id="toc-accessing-items" class="nav-link" data-scroll-target="#accessing-items">Accessing Items</a></li>
+  <li><a href="#practice-problem-4" id="toc-practice-problem-4" class="nav-link" data-scroll-target="#practice-problem-4">Practice Problem 4</a></li>
+  <li><a href="#extending-vectors" id="toc-extending-vectors" class="nav-link" data-scroll-target="#extending-vectors">Extending Vectors</a></li>
+  <li><a href="#vector-operations" id="toc-vector-operations" class="nav-link" data-scroll-target="#vector-operations">Vector Operations</a></li>
+  <li><a href="#practice-problem-5" id="toc-practice-problem-5" class="nav-link" data-scroll-target="#practice-problem-5">Practice Problem 5</a></li>
   </ul></li>
-  </ul></li>
-  <li><a href="#renaming-columns" id="toc-renaming-columns" class="nav-link" data-scroll-target="#renaming-columns">Renaming Columns</a></li>
-  <li><a href="#joining-data-sets" id="toc-joining-data-sets" class="nav-link" data-scroll-target="#joining-data-sets">Joining Data Sets</a>
+  <li><a href="#data-framestables" id="toc-data-framestables" class="nav-link" data-scroll-target="#data-framestables">Data Frames/Tables</a>
   <ul class="collapse">
-  <li><a href="#examples" id="toc-examples" class="nav-link" data-scroll-target="#examples">Examples</a>
-  <ul class="collapse">
-  <li><a href="#left_join" id="toc-left_join" class="nav-link" data-scroll-target="#left_join">left_join()</a></li>
-  <li><a href="#right_join" id="toc-right_join" class="nav-link" data-scroll-target="#right_join">right_join()</a></li>
-  <li><a href="#full_join" id="toc-full_join" class="nav-link" data-scroll-target="#full_join">full_join()</a></li>
-  <li><a href="#inner_join" id="toc-inner_join" class="nav-link" data-scroll-target="#inner_join">inner_join()</a></li>
-  </ul></li>
-  <li><a href="#practice-problem-4-challenge" id="toc-practice-problem-4-challenge" class="nav-link" data-scroll-target="#practice-problem-4-challenge">Practice Problem 4 (Challenge)</a></li>
-  </ul></li>
-  <li><a href="#reshaping-data" id="toc-reshaping-data" class="nav-link" data-scroll-target="#reshaping-data">Reshaping Data</a>
-  <ul class="collapse">
-  <li><a href="#pivot_longer" id="toc-pivot_longer" class="nav-link" data-scroll-target="#pivot_longer">pivot_longer()</a></li>
-  <li><a href="#pivot_wider" id="toc-pivot_wider" class="nav-link" data-scroll-target="#pivot_wider">pivot_wider()</a></li>
+  <li><a href="#indexing-tables" id="toc-indexing-tables" class="nav-link" data-scroll-target="#indexing-tables">Indexing Tables</a></li>
+  <li><a href="#practice-problem-6" id="toc-practice-problem-6" class="nav-link" data-scroll-target="#practice-problem-6">Practice Problem 6</a></li>
   </ul></li>
   <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
-  <li><a href="#extra-practice" id="toc-extra-practice" class="nav-link" data-scroll-target="#extra-practice">Extra Practice</a>
-  <ul class="collapse">
-  <li><a href="#part-1-data-exploration" id="toc-part-1-data-exploration" class="nav-link" data-scroll-target="#part-1-data-exploration">Part 1: Data Exploration</a></li>
-  <li><a href="#part-2-creating-and-modifying-variables" id="toc-part-2-creating-and-modifying-variables" class="nav-link" data-scroll-target="#part-2-creating-and-modifying-variables">Part 2: Creating and Modifying Variables</a></li>
-  <li><a href="#part-3-joining-data-sets" id="toc-part-3-joining-data-sets" class="nav-link" data-scroll-target="#part-3-joining-data-sets">Part 3: Joining Data Sets</a></li>
-  <li><a href="#part-4-grouping-and-reshaping-data" id="toc-part-4-grouping-and-reshaping-data" class="nav-link" data-scroll-target="#part-4-grouping-and-reshaping-data">Part 4: Grouping and Reshaping Data</a></li>
-  </ul></li>
+  <li><a href="#extra-practice" id="toc-extra-practice" class="nav-link" data-scroll-target="#extra-practice">Extra Practice</a></li>
+  <li><a href="#part-1.-variables" id="toc-part-1.-variables" class="nav-link" data-scroll-target="#part-1.-variables">Part 1. Variables</a></li>
+  <li><a href="#part-2-vectors" id="toc-part-2-vectors" class="nav-link" data-scroll-target="#part-2-vectors">Part 2: Vectors</a></li>
+  <li><a href="#part-3-data-frames" id="toc-part-3-data-frames" class="nav-link" data-scroll-target="#part-3-data-frames">Part 3: Data Frames</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/r-pophealth-research/online-course/edit/main/tutorials/Week5_data_manipulation.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/r-pophealth-research/online-course/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/r-pophealth-research/online-course/edit/main/tutorials/data_structures.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/r-pophealth-research/online-course/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -2071,7 +2059,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Data Manipulation</h1>
+<h1 class="title">Data Structures</h1>
 </div>
 
 
@@ -2088,82 +2076,25 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 </header>
 
 
-<p>In this chapter, we’ll introduce methods for data manipulation, or the alteration of data frames to gain new insights from the data. This tutorial will cover different methods to create new variables, combine datasets, and reshape data frames.</p>
-<p>We’ll continue to work with the Framingham data in this tutorial. Run the code below to load the data as <code>framingham_df</code> from the <a href="https://github.com/r-pophealth-research/online-course/tree/main/data">course GitHub repo</a>.</p>
+<p>In this chapter, we’ll cover the different ways that data is stored in R. We’ll start by looking at the individual data points before moving on to collections of data. Here, you’ll implement code to create, store, and access data in R.</p>
+<section id="variables" class="level1">
+<h1>Variables</h1>
+<p>Often times, we want to complete multiple actions on the same data. We can use <strong>variables</strong> to store data values. These variables can be used for any future operations we want to do.</p>
+<p>The code below defines the variable <code>big_number</code> to take on the value of the numeric <code>153423483.</code> You can assign variables by using <code>&lt;-</code> or <code>=</code></p>
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>We’ll also use simulated (ie generated by a computer, not through real-world data collection) demographic data at the end of this tutorial. Run the next cell to load the data and name the data frame <code>zip_code_demog</code></p>
+<p>When you assign a variable, R will save the value to the variable name. Instead of having to type <code>153423483</code> every time we want to work with it, we can complete operations using the <code>big_number</code> variable. Compare the output of the following two cells:</p>
 <div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<section id="data-cleaning" class="level1">
-<h1>Data Cleaning</h1>
-<p>Real world data, particularly those used in health research, are quite “messy”. Missing values, duplicate rows, and data entry errors may be present, and can change inferences from our data if not handled correctly. Luckily, dplyr includes many functions that can assist with data cleaning.</p>
-<section id="replace_na" class="level2">
-<h2 class="anchored" data-anchor-id="replace_na">replace_na()</h2>
-<p>By default, missing values are coded in R as <code>NA</code> but it might be more informative to have them listed as something else like “Not measured” or “Unknown”.</p>
-<p>We can start by looking at the degree of missingness in the <code>education</code> column</p>
 <div id="qwebr-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>We see that there were &gt;100 missing education values. However, when we use <code>table()</code> with its default arguments, missing values will be excluded.</p>
+<p>We can also reassign the value of variables using <code>=</code> and <code>-&gt;</code>. Run the code below to set the value of <code>big_number</code> to 12413. R then updates the value saved to <code>big_number</code> to 12413.</p>
 <div id="qwebr-insertion-location-4"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>If we keep these <code>education</code> values as <code>NA</code>, they might get filtered out in downstream analyses but it’s important to report how many missing values are in the dataset. We can use <code>replace_na()</code> to replace missing values with 0.</p>
+<section id="practice-problem-1" class="level2">
+<h2 class="anchored" data-anchor-id="practice-problem-1">Practice Problem 1</h2>
+<p>Create a variable called <code>temp_f</code> that is equal to 72 degrees Fahrenheit.</p>
 <div id="qwebr-insertion-location-5"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="removing-duplicates" class="level2">
-<h2 class="anchored" data-anchor-id="removing-duplicates">Removing duplicates</h2>
-<p>There might be extra copies of some rows in your dataset (can be a result of an upstream data processing error). If we leave them in our data, these data points will incorrectly carry more weight and introduce bias to our analysis.</p>
-<p>We can identify duplicated rows in our dataset using the <code>duplicated</code> function, which takes in a data frame as an argument and returns a vector of logicals that are TRUE if a row appears multiple times in the dataset and FALSE if the row only appears once.</p>
-<div id="qwebr-insertion-location-6"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>It appears that there’s one row in the dataset that is duplicated; note that <code>duplicated</code> will not flag the first instance of duplicated rows. For example, if a row appears 3 times in the dataset <code>duplicated</code> will only return 2 <code>TRUE</code>s for that set. If a row appears 11 times in the dataset <code>duplicated</code> will only return 10 <code>TRUE</code>s for that set</p>
-<p>We can view what rows are duplicated by indexing the data frame with <code>framingham_duplicated_indices</code> (see Week 2 for a refresher)</p>
-<div id="qwebr-insertion-location-7"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Participant 46 had 2 rows in the dataset. We want to remove this duplicate, so only one copy of the row is included in our analysis dataset. The <code>distinct()</code> function can be applied to keep only unique rows in a dataset. The code below creates a new data frame <code>framingham_deduplicated</code> that removes the duplicated row we identified above, and compared the number of rows between the original and deduplicated datasets.</p>
-<div id="qwebr-insertion-location-8"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="handling-erroneous-outliers" class="level2">
-<h2 class="anchored" data-anchor-id="handling-erroneous-outliers">Handling (Erroneous) Outliers</h2>
-<p>Outliers are data points that deviate significantly other values in the dataset. These points can represent true, extreme cases but may also be a result of measurement error. In these cases, outliers can skew the results of an analysis, so it’s critical to account for any extreme values that arise from errors in measurement or data entry.</p>
-<p>For example, BMIs that are very low can be fatal in adults and the lowest BMI recorded was 6.4 kg/m^2. In our dataset, it’s unlikely that we’ll observe extremely low BMIs (&lt;5 kg/m^2), especially if other data points indicate that they’re healthy.</p>
-<p>To determine if there are any outliers that need to be handled, we can first see if there are any instances where BMI is less than 5</p>
-<div id="qwebr-insertion-location-9"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>It looks like 1 individual had a BMI of 3.4. Keeping this value in the dataset might bias our analyses. Instead, we can replace it with a null value since we’re not sure what the true BMI for this individual is. This can be done with the function <code>replace</code>.</p>
-<div id="qwebr-insertion-location-10"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>To check that the low BMI value was replaced, we can check that no rows in the dataset have a BMI less than 5. The cell below should return a data frame with 0 rows.</p>
-<div id="qwebr-insertion-location-11"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-</section>
-<section id="creating-variables" class="level1">
-<h1>Creating Variables</h1>
-<section id="mutate" class="level2">
-<h2 class="anchored" data-anchor-id="mutate">mutate()</h2>
-<p>Recall from Week 2 that we can use the <code>[]</code> and <code>$</code> operators to add new columns to a data frame.</p>
-<p>For example, the both commands add a column called <code>age_months</code> to framingham_df. These values convert the age in years (contained in the <code>age</code> column) to age in months.</p>
-<div id="qwebr-insertion-location-12"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>To add a new column using <code>dplyr</code> functions, we can use <code>mutate()</code>. <code>mutate()</code> takes any number of arguments in the form <code>mutate(column_name = vector_of_values)</code>. For example, the following code could be used to create new <code>age_months</code> and <code>age_days</code> columns.</p>
-<div id="qwebr-insertion-location-13"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p><code>mutate</code> can also be used to change the value of existing columns. Suppose we wanted to round the number of cigarettes per day to the nearest 10th and <strong>replace</strong> the values of <code>cigsPerDay</code> with their rounded equivalent.</p>
-<div id="qwebr-insertion-location-14"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<section id="if_else" class="level3">
-<h3 class="anchored" data-anchor-id="if_else">if_else()</h3>
-<p>In some cases, we want to use an existing column to determine the values of a new column. <code>if_else()</code> can be used with <code>mutate</code> to set the values of a new variables based on a specific condition. It works similarly to if and else statements (see Week 2 for a refresher), and follows the structure <code>if_else(condition, value_for_true_condition, value_for_false_condition)</code>.</p>
-<p>Suppose we wanted to create a new <code>sex</code> column that contains the values <code>male</code> or <code>female</code> based on the values contained in the <code>male</code> column (when 1 = male, 0 = female). The following code makes this new variable using <code>ifelse()</code></p>
-<div id="qwebr-insertion-location-15"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<section id="practice-problem-1" class="level4">
-<h4 class="anchored" data-anchor-id="practice-problem-1">Practice Problem 1</h4>
-<p>Create a new variable <code>high_BMI</code> in framingham_df that takes on the value <code>1</code> if BMI is greater than or equal to 30 and <code>0</code> if BMI is less than 30.</p>
-<div id="qwebr-insertion-location-16"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
@@ -2177,28 +2108,16 @@ Solution
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="qwebr-insertion-location-17"></div>
+<div id="qwebr-insertion-location-6"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 </div>
 </div>
 </section>
-</section>
-<section id="case_when" class="level3">
-<h3 class="anchored" data-anchor-id="case_when">case_when()</h3>
-<p><code>if_else()</code> works well for creating binary variables but when we want to create a categorical variable with 3+ levels, <code>case_when()</code> is a more appropriate function.</p>
-<p>Like <code>if_else()</code>, <code>case_when()</code> reflects the logic that <code>if</code>, <code>else if</code>, and <code>else</code> follow. It takes any number of arguments that follow the structure <code>condition ~ new_value</code> (note how it uses a <code>~</code> instead of a <code>=</code>).</p>
-<p>For example, the code below recodes <code>education</code> to more informative labels (0 = Unknown, 1 = Didn’t graduate high school; 2 = High school diploma, GRE; 3 = Some college, 4 = Bachelor’s degree or higher)</p>
-<div id="qwebr-insertion-location-18"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>In calls of <code>case_when()</code>, conditions are evaluated in order; ex: the second condition is only assessed if the first condition evaluates to <code>FALSE</code>.</p>
-<p>Below, we use <code>case_when()</code> to classify <code>cigsPerDay</code> into 4 groups: (1) 0 per day (2) 1-25 per day, (3) 26-50 per day, and (4) &gt;50 per day.</p>
-<div id="qwebr-insertion-location-19"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<section id="practice-problem-2" class="level4">
-<h4 class="anchored" data-anchor-id="practice-problem-2">Practice Problem 2</h4>
-<p>Create a new variable <code>age_decades</code> in framingham_df that describes the decade that corresponds to each person’s age (ie “20s” for ages 20-29, “30s” for people ages 30-39, etc). Assume that no one in the dataset is below 20 years old or above 79 years old.</p>
-<div id="qwebr-insertion-location-20"></div>
+<section id="practice-problem-2" class="level2">
+<h2 class="anchored" data-anchor-id="practice-problem-2">Practice Problem 2</h2>
+<p>Now create a variable <code>temp_c</code> that converts the value of <code>temp_f</code> to Celsius. Recall that °C = (°F - 32) ÷ (9/5)</p>
+<div id="qwebr-insertion-location-7"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
@@ -2212,27 +2131,28 @@ Solution
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="qwebr-insertion-location-21"></div>
+<div id="qwebr-insertion-location-8"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 </div>
 </div>
 </section>
 </section>
-</section>
-</section>
-<section id="renaming-columns" class="level1">
-<h1>Renaming Columns</h1>
-<p>Renaming columns can help improve the readability of a dataset. The <code>rename</code> function makes this process easy, and follows the structure <code>new_column_name = old_column_name</code>. Below, we can use <code>rename</code> to rename <code>sysBP</code> as <code>systolicBP</code> and <code>diaBP</code> as <code>diastolicBP</code></p>
-<div id="qwebr-insertion-location-22"></div>
+<section id="vectors" class="level1">
+<h1>Vectors</h1>
+<p><strong>Vectors</strong> are lists of data points that are all the same type. You can create a vector by using the <code>c()</code> function.</p>
+<div id="qwebr-insertion-location-9"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>After the columns have been renamed, the old column names can no longer be used in other commands. The code below will return an error.</p>
-<div id="qwebr-insertion-location-23"></div>
+<p>WARNING: When you try to mix data types in a new vector, R will <em>cast</em> all values in the vector as strings. Pay close attention to the data types that you put into a vector</p>
+<div id="qwebr-insertion-location-10"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<section id="practice-problem-3" class="level4">
-<h4 class="anchored" data-anchor-id="practice-problem-3">Practice Problem 3</h4>
-<p>Rename the <code>education</code> column to <code>highest_education_completed</code></p>
-<div id="qwebr-insertion-location-24"></div>
+<p>If you’re interested in making a sequence of numbers, the <code>:</code> operator is a shortcut to making an series of ascending numbers. Put the first value of the sequence to the left of the <code>:</code> and the last value to the right of the <code>:.</code> The code below create a vector of numbers from 5 to 100..</p>
+<div id="qwebr-insertion-location-11"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<section id="practice-problem-3" class="level2">
+<h2 class="anchored" data-anchor-id="practice-problem-3">Practice Problem 3</h2>
+<p>Make a vector called <code>fruits</code>, which contains 3 fruit names stored as characters</p>
+<div id="qwebr-insertion-location-12"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
@@ -2246,107 +2166,33 @@ Solution
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="qwebr-insertion-location-25"></div>
+<div id="qwebr-insertion-location-13"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 </div>
 </div>
 </section>
-</section>
-<section id="joining-data-sets" class="level1">
-<h1>Joining Data Sets</h1>
-<p>The data we need for research studies might be spread across multiple different data frames, and need to be merged (or <strong>joined</strong>) before we can complete our analysis. These datasets should each have a column that contains the key or identifier that helps us link observations across different data frames.</p>
-<p>There are many ways to join two data frames <code>x</code> and <code>y</code>. Join methods differ based on how they handle rows that are found in only one of data frames.</p>
-<ul>
-<li><code>left_join(x, y, by = c("key_name_in_x" = "key_name_in_y"))</code>: keeps all rows in <code>x</code> (the “left” dataset), and only rows in <code>y</code> (the “right” dataset) with <code>key_name_in_y</code> values that had a matching <code>key_name_in_x</code> value in <code>x</code></li>
-<li><code>right_join(x, y, by = c("key_name_in_x" = "key_name_in_y"))</code>: keeps all rows in <code>y</code> (the “right” dataset), and only rows in <code>x</code> (the “left” dataset) with <code>key_name_in_x</code> values that had a matching <code>key_name_in_y</code> value in y</li>
-<li><code>full_join(x, y, by = c("key_name_in_x" = "key_name_in_y"))</code>: keeps all rows in <code>x</code> and <code>y</code></li>
-<li><code>inner_join(x, y, by = c("key_name_in_x" = "key_name_in_y"))</code>: keeps only the rows in <code>x</code> and <code>y</code> that had a match between the datasets.</li>
-</ul>
-<p>For a visual guide on how joins work, <strong>we highly recommend that you read this section of the “R for Data Science” textbook: <a href="https://r4ds.hadley.nz/joins.html#how-do-joins-work" class="uri">https://r4ds.hadley.nz/joins.html#how-do-joins-work</a></strong></p>
-<section id="examples" class="level2">
-<h2 class="anchored" data-anchor-id="examples">Examples</h2>
-<p>Below, we’ll walk through how each of these join functions merge data from <code>framingham_df</code> and <code>zip_code_demog</code>. <code>framingham_df</code> contains person-level data, while <code>zip_code_demog</code> contains zip-code level demographic data. The <code>framingham_df</code> dataset contains a column called <code>zip_code</code> that can be linked to values in the <code>zip</code> column of <code>zip_code_demog</code>. Therefore, our “keys” are the zip codes because they link the two datasets. If you want to join two datasets, you need to specify the “key” that describes how rows in one should be matched to rows in another. By joining these two datasets by zip code, we can merge individual health outcome data with information on the social determinants of health in their communities.</p>
-<p>However, there might be zip codes that are in <code>framingham_df</code> that aren’t in <code>zip_code_demog</code> or vice versa. We can use the <code>!</code> and <code>%in%</code> operators to find zip codes that are only present in one of the datasets</p>
-<div id="qwebr-insertion-location-26"></div>
+<section id="accessing-items" class="level2">
+<h2 class="anchored" data-anchor-id="accessing-items">Accessing Items</h2>
+<p>Each item in a vector can be located using its <strong>index</strong>. The index is the numeric value that corresponds to the item’s position in the vector. The first item in the vector is at index 1, the second item is at index 2, etc.</p>
+<p>We can use square brackets <code>[]</code> after a vector to indicate which items you’d like to select using their indices.</p>
+<p>Suppose we had the following vector <code>numbers</code></p>
+<div id="qwebr-insertion-location-14"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Because the keys in the two datasets do not perfectly match, we need to tell R which rows should be kept in the join and which do not need to be kept. We tell R which rows we want to keep using <code>left_join()</code>, <code>right_join()</code>, <code>full_join()</code>, or <code>inner_join()</code>. In all examples below, we’ll treat <code>framingham_df</code> as our <code>x</code> or “left” dataset and <code>zip_code_demog</code> as our <code>y</code> or “right” dataset.</p>
-<section id="left_join" class="level3">
-<h3 class="anchored" data-anchor-id="left_join">left_join()</h3>
-<p><code>left_join()</code> will keep all rows in <code>framingham_df</code>, and only rows in <code>zip_code_demog</code> that match zip codes contained in <code>framingham_df</code>. Run the cell below to complete a left join on the datasets.</p>
-<div id="qwebr-insertion-location-27"></div>
+<p>To access the 6th item of this vector, we can use the following code</p>
+<div id="qwebr-insertion-location-15"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>The new data frame has all of the columns from <code>framingham_df</code>, but now includes the <code>total_population</code> and <code>median_hh_income</code> columns from <code>zip_code_demog.</code></p>
-<div id="qwebr-insertion-location-28"></div>
+<p>You can also index a list using a vector of indices. To access the 4th, 8th, and 19th item of this vector, we can use the following code</p>
+<div id="qwebr-insertion-location-16"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Note how <code>framingham_df</code> and <code>framingham_left_join</code> have the same number of rows</p>
-<div id="qwebr-insertion-location-29"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>However, we know that <code>framingham_df</code> included data for the zip code 01746 but not 01745. The resulting data set included all rows from <code>framingham_df</code>, so the patient who lives in 01746 will still have their individual data, but there will be missing values for <code>total_population</code> and <code>median_hh_income</code>.</p>
-<div id="qwebr-insertion-location-30"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Since no patients lived in 01745 and it was not in <code>framingham_df</code>, there will be no rows in <code>framingham_left_join</code> for that zip code.</p>
-<div id="qwebr-insertion-location-31"></div>
+<p>We can also use vector indexing to alter the values of specific items in the vector. The code below replaces the <em>second</em> value of <code>numbers</code> with the value <code>1043</code></p>
+<div id="qwebr-insertion-location-17"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="right_join" class="level3">
-<h3 class="anchored" data-anchor-id="right_join">right_join()</h3>
-<p><code>right_join()</code> will keep all rows in <code>zip_code_demog</code> and only rows in <code>framingham_df</code> that match zip codes contained in <code>zip_code_demog</code>. Run the cell below to complete a right join on the datasets.</p>
-<div id="qwebr-insertion-location-32"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Unlike the result from our left join, the resulting dataset <code>framingham_right_join</code> has more rows than the original <code>zip_code_demog</code> dataframe.</p>
-<div id="qwebr-insertion-location-33"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>This is because there are many rows in <code>framingham_df</code> that match each row in <code>zip_code_demog</code>, since there are multiple people that live in each zip code.</p>
-<p>We can see this more clearly by focusing on how <code>right_join</code> works for a single zip code.</p>
-<p>The cell below extracts the demographic information for the zip code 01701.</p>
-<div id="qwebr-insertion-location-34"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>We can use <code>filter</code> and <code>nrow</code> on <code>framingham_df</code> to find the number of participants that have the zip code 01701.</p>
-<div id="qwebr-insertion-location-35"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>When we right join <code>framingham_df</code> with <code>demog_01701</code> by zip code, we end up only keep rows of <code>framingham_df</code> that have the zip code “01701”.</p>
-<div id="qwebr-insertion-location-36"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>The resulting table has 602 rows, where each row contains an individual patient. However, each person has the same zip-code level demographics. We can confirm this by showing that there’s only one distinct combination of zip code, total population and household income.</p>
-<div id="qwebr-insertion-location-37"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Let’s go back to <code>framingham_right_join</code>, the result of the right join between <code>framingham_df</code> and <code>zip_code_demog</code>. The right join includes all rows from <code>zip_code_demog</code>, which contains data for the zip code 01745 where none of the patients live. Therefore, <code>framingham_right_join</code> will have data for 01745 but there will be missing values for the individual health factors.</p>
-<div id="qwebr-insertion-location-38"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p><code>framingham_left_join</code> won’t include data for zip code 01746 since it wasn’t in the original <code>zip_code_demog</code> data frame even though patients live there.</p>
-<div id="qwebr-insertion-location-39"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="full_join" class="level3">
-<h3 class="anchored" data-anchor-id="full_join">full_join()</h3>
-<p>If we wanted <strong>all</strong> zip codes that appear in the data sets, we can use a <code>full_join()</code>.</p>
-<div id="qwebr-insertion-location-40"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Data for both 01746 (only in <code>framingham_df</code>) and 01745 (only in <code>zip_code_demog</code>) will be included in <code>framingham_full_join</code>.</p>
-<p>The merged data will have missing zip code-level variables for 01746, and missing individual-level factors for 01745.</p>
-<div id="qwebr-insertion-location-41"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div id="qwebr-insertion-location-42"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Analyses that use data created by a full join need to particularly careful of any missing values that are introduced in the merge process. In this case, if we wanted to use the number of rows in <code>framingham_full_join</code> to estimate the number of people per zip code, we might incorrectly count 1 person for the zip code 01745.</p>
-</section>
-<section id="inner_join" class="level3">
-<h3 class="anchored" data-anchor-id="inner_join">inner_join()</h3>
-<p>If we wanted only zip codes that appear in <strong>both</strong> of the data sets, we can use a <code>inner_join()</code>.</p>
-<div id="qwebr-insertion-location-43"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>In this case, neither 01745 nor 01746 will appear in the resulting data frame.</p>
-<div id="qwebr-insertion-location-44"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Analyses that use data created by a inner join need to be aware of which data points are dropped during the merge process. In some cases, the inner join could entirely remove patients with missing data leading to biased results.</p>
-</section>
-</section>
-<section id="practice-problem-4-challenge" class="level2">
-<h2 class="anchored" data-anchor-id="practice-problem-4-challenge">Practice Problem 4 (Challenge)</h2>
-<p>Create a new data frame <code>chd_income_df</code> that contains one row for each zip code represented in <code>framingham_df</code> and two columns: (1) <code>chd_prev</code>, the prevalence of CHD in the zip code and (2) the median household income of the zip code</p>
-<p>Hint 1: Start by creating a data frame <code>chd_prev</code> with the prevalence of CHD for each zip code using <code>group_by</code>. (See Week 4 tutorial to remind yourself about grouping) Hint 2: We want our table to include one row for each zip code represented in <code>framingham_df</code>, even if there isn’t household income data available for that zip code. What kind of join function should we use?</p>
-<div id="qwebr-insertion-location-45"></div>
+<section id="practice-problem-4" class="level2">
+<h2 class="anchored" data-anchor-id="practice-problem-4">Practice Problem 4</h2>
+<p>In the cell below, write code to replace the 3rd and 8th item of <code>numbers</code> with the value <code>32</code></p>
+<div id="qwebr-insertion-location-18"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
@@ -2360,69 +2206,54 @@ Solution
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="qwebr-insertion-location-46"></div>
+<div id="qwebr-insertion-location-19"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 </div>
 </div>
 </section>
-</section>
-<section id="reshaping-data" class="level1">
-<h1>Reshaping Data</h1>
-<p>There are many different ways to store the same data values.</p>
-<p>In “long” data, there are multiple rows for each observation where each row contains a value for a single variable. Run the cell below to see an example of a long-format data frame.</p>
-<div id="qwebr-insertion-location-47"></div>
+<section id="extending-vectors" class="level2">
+<h2 class="anchored" data-anchor-id="extending-vectors">Extending Vectors</h2>
+<p>We can also use <code>c()</code> to add data to an existing vector. Suppose we wanted to keep create a vector to keep track of the number of weekly flu cases observed in a large classroom.</p>
+<p>We can start by creating an empty vector <code>n_flu_cases</code> that we’ll gradually add values to.</p>
+<div id="qwebr-insertion-location-20"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>In “wide” data, there is one row for each observations that contains values for all recorded variables. Run the cell below to see an example of a long-format data frame.</p>
-<div id="qwebr-insertion-location-48"></div>
+<p>The first week, we observe 5 cases. Let’s update `<code>n_flu_cases`</code> so the first value is equal to 5.</p>
+<div id="qwebr-insertion-location-21"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Over the next several weeks, we’ll be using some functions that explicitly require data to be in a long or wide format. To switch between the two formats, we can use <code>pivot_wider</code> and <code>pivot_longer</code>.</p>
-<section id="pivot_longer" class="level2">
-<h2 class="anchored" data-anchor-id="pivot_longer">pivot_longer()</h2>
-<p>You might have noticed that <code>framingham_df</code> is currently in a wide format, since there is one row for each participant. We can use <code>pivot_longer</code> to convert it to a long format, which takes in the arguments.</p>
-<ul>
-<li><code>data</code>: a data frame, which contains only the observation id and the columns that contain variables that will make up rows in the long-format data frame</li>
-<li><code>cols</code>: a vector of characters, containing columns names corresponding to variables that will make up rows in the long-format data frame</li>
-<li>(optional) <code>names_to</code>: a character, what the column containing variable names in the long-format data frame should be called</li>
-<li>(optional) <code>values_to</code>: a character, what the column containing variable values in the long-format data frame should be called</li>
-<li><strong>NOTE:</strong> Remember that in a data frame, all values in a column must have the same data type. Selected columns for the long-format contain the same data type.</li>
-</ul>
-<p>The cell below creates <code>framingham_long</code>, a long-format version of the framingham data that contains all numeric variables found in the original dataset.</p>
-<div id="qwebr-insertion-location-49"></div>
+<p>Two weeks pass, during which we observed 8 and 6 cases. We can add both data points to the vector in one line of code</p>
+<div id="qwebr-insertion-location-22"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>We tracked down a database that we used to retroactively measure 2 flu cases from the week before we started tracking. We can add this to the start of the <code>n_flu_cases</code> vector by putting <code>2</code> before <code>n_flu_cases</code> when we use <code>c()</code>.</p>
+<div id="qwebr-insertion-location-23"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-<section id="pivot_wider" class="level2">
-<h2 class="anchored" data-anchor-id="pivot_wider">pivot_wider()</h2>
-<p>We can then back-convert <code>framingham_long</code> to a wide version by using <code>pivot_wider()</code> which uses the arguments:</p>
-<ul>
-<li><p><code>data</code>: a data frame, in long format that contains the observation ID</p></li>
-<li><p><code>id_cols</code>: a character or vector of characters, the name(s) of columns that contain the observation ID</p></li>
-<li><p><code>names_from</code>: a character, the name of the column that contains variable names</p></li>
-<li><p><code>values_from</code>: a character, the name of the column that contains variable values</p></li>
-<li><p><strong>NOTE:</strong> Remember that in a data frame, all values in a column must have the same data type. Selected columns for the long-format contain the same data type.</p></li>
-</ul>
-<p>The cell below creates <code>framingham_wide</code>, a wide-format version of the <code>framingham_long</code> data that contains all numeric variables found in the framingham dataset.</p>
-<div id="qwebr-insertion-location-50"></div>
+<section id="vector-operations" class="level2">
+<h2 class="anchored" data-anchor-id="vector-operations">Vector Operations</h2>
+<p>Similar to how we were able to operate on individual data points, we can work with vectors to modify a collection of data.</p>
+<p>In the code below, we multiply 20 and subtract 94 from each number in the vector <code>nums</code></p>
+<div id="qwebr-insertion-location-24"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>We can also operate on vectors of characters. In the cells below, we append the character “Trial Number:” to a vector of characters.</p>
+<div id="qwebr-insertion-location-25"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>We can also summarize the contents of a vector using functions like <code>min</code>, <code>max</code>, <code>mean</code>, <code>median</code>, and <code>length</code>. Read the code provided below and guess what the output will be. Run the cells to confirm.</p>
+<div id="qwebr-insertion-location-26"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>The <code>summary</code> function produces a quick description of the distribution of values in the vector.</p>
+<div id="qwebr-insertion-location-27"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>The <code>unique</code> function extracts all unique values in a vector</p>
+<div id="qwebr-insertion-location-28"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>The <code>table</code> function can be used to count the number of times each value appears in the vector</p>
+<div id="qwebr-insertion-location-29"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
-</section>
-<section id="summary" class="level1">
-<h1>Summary</h1>
-<p>In this tutorial, you learned about the data manipulation methods that help make data sets more useful for your analyses.</p>
-<p>Next week, you’ll start applying your new R skillset to statistical analyses that mirror tasks you might encounter in health research.</p>
-</section>
-<section id="extra-practice" class="level1">
-<h1>Extra Practice</h1>
-<p>This week, we’ll explore dengue infections using a dataset from <a href="https://www.nature.com/articles/s41564-023-01543-3" title="Household immunity and individual risk of infection with dengue virus in a prospective, longitudinal cohort study">this study published in <em>Nature Microbiology</em></a>.</p>
-<p>Load the <code>dengue_infection_data.csv</code> dataset from the <a href="https://github.com/r-pophealth-research/online-course/tree/main/data">course GitHub repo</a> in the cell below.</p>
-<p>In this dataset, each row captures the number of infections reported for each individual during the study. Each individual is assigned an <code>ID</code>, and individuals who share a household share a <code>hh_ID</code>.</p>
-<div id="qwebr-insertion-location-51"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<section id="part-1-data-exploration" class="level2">
-<h2 class="anchored" data-anchor-id="part-1-data-exploration">Part 1: Data Exploration</h2>
-<p>Start by exploring the data. We’ve provided some suggested steps, but feel free to add more cells if there’s anything you want to take a closer look at.</p>
-<p>What the dimensions (number of rows, number of columns) of the dataset?</p>
-<div id="qwebr-insertion-location-52"></div>
+<section id="practice-problem-5" class="level2">
+<h2 class="anchored" data-anchor-id="practice-problem-5">Practice Problem 5</h2>
+<p>Subtract the mean of the vector <code>even_more_numbers</code> from each value of <code>even_more_numbers</code>.</p>
+<div id="qwebr-insertion-location-30"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
@@ -2436,13 +2267,46 @@ Solution
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="qwebr-insertion-location-53"></div>
+<div id="qwebr-insertion-location-31"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 </div>
 </div>
-<p>Summarize the dataset using <code>summary()</code>. What are the columns in the data? What do they represent?</p>
-<div id="qwebr-insertion-location-54"></div>
+</section>
+</section>
+<section id="data-framestables" class="level1">
+<h1>Data Frames/Tables</h1>
+<p>Sometimes, we have multiple pieces of corresponding data. Instead of storing each variable as a separate vector, we can use data frames. Data frames are composed of columns and rows. Typically, each row represents a single unit (ex: a person, county, or state) and each column represents a characteristics (ex: age, race, disease status).</p>
+<p>The code below creates a data frame called <code>study_cohort</code>, where each row contains data from a single study participant and each column contains all participant values of a single characteristics. We create the data frame using <code>data.frame()</code>, and define each column within the parentheses with <code>COLUMN_NAME = VECTOR_OF_COLUMN_VALUES</code></p>
+<div id="qwebr-insertion-location-32"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<section id="indexing-tables" class="level2">
+<h2 class="anchored" data-anchor-id="indexing-tables">Indexing Tables</h2>
+<p>Similar to how we used <code>[]</code> to select specific values, we can use <code>[]</code> to select certain rows, columns, and values in a data frame. Generally, we follow the structure <code>table_name[row_index, column_index]</code></p>
+<p>To access a specific row of the table, we use <code>table_name[row_index, ]</code>. When we leave the position for <code>column_index</code> blank, it assumes that we want to select all columns for that row.</p>
+<div id="qwebr-insertion-location-33"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>We can also use a vector of indices to select multiple rows.</p>
+<div id="qwebr-insertion-location-34"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div id="qwebr-insertion-location-35"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>Similarly, we can use <code>table_name[, column_index]</code> to select specific columns of the data frame.</p>
+<div id="qwebr-insertion-location-36"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>Instead of using the numeric index, we can use the column name. If we pass the column name through a single set of brackets (<code>table_name["column_name"]</code>) it returns a table with one column, but if we pass the column name through a double set of brackets (<code>table_name[["column_name"]]</code>) it returns a vector</p>
+<div id="qwebr-insertion-location-37"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div id="qwebr-insertion-location-38"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>We can also use the <code>$</code> operator to select columns by their name, using the format <code>table_name$column_name</code>. If your column name has spaces, the name must be contained inside ticks (ex: <code>table_name$`column name`</code>)</p>
+<div id="qwebr-insertion-location-39"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="practice-problem-6" class="level2">
+<h2 class="anchored" data-anchor-id="practice-problem-6">Practice Problem 6</h2>
+<p>Calculate the age in months of the participants in <code>study_cohort</code> table.</p>
+<div id="qwebr-insertion-location-40"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
@@ -2456,13 +2320,26 @@ Solution
 </div>
 <div id="callout-6" class="callout-6-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="qwebr-insertion-location-55"></div>
+<div id="qwebr-insertion-location-41"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 </div>
 </div>
-<p>How many individuals are captured in the dataset? How many households? In other words, how many unique values of the <code>ID</code> and <code>hh_ID</code> columns are there?</p>
-<div id="qwebr-insertion-location-56"></div>
+</section>
+</section>
+<section id="summary" class="level1">
+<h1>Summary</h1>
+<p>In this tutorial, you learned about the different ways that data is stored in R. You should be comfortable distinguishing between the different data types, creating new variables, and working with vectors.</p>
+<p>Next, you’ll learn how to load existing tables, explore data found in tables, and manipulate data frames!</p>
+</section>
+<section id="extra-practice" class="level1">
+<h1>Extra Practice</h1>
+</section>
+<section id="part-1.-variables" class="level1">
+<h1>Part 1. Variables</h1>
+<p>Suppose we wanted to the transmission of influenza in a community. Our local hospital tests all patients for influenza, and reports the number of cases observed each week.</p>
+<p>This week, 5 patients tested positive for influenza - create a variable called <code>n_cases_this_week</code> that stores this count as a numeric.</p>
+<div id="qwebr-insertion-location-42"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
@@ -2476,13 +2353,13 @@ Solution
 </div>
 <div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="qwebr-insertion-location-57"></div>
+<div id="qwebr-insertion-location-43"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 </div>
 </div>
-<p>Make a histogram of the number of asymptomatic cases in the dataset (<code>n_asymp_infections</code>)</p>
-<div id="qwebr-insertion-location-58"></div>
+<p>It might be hard to contextualize this value without knowing the number of patients that were tested. Instead, we could estimate a rate of influenza cases per 1,000 patients (# cases / # patients * 1000). This month, there were 258 patients tested - create a variables called <code>n_patients_this_week</code> that store this count as a numeric.</p>
+<div id="qwebr-insertion-location-44"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
@@ -2496,13 +2373,13 @@ Solution
 </div>
 <div id="callout-8" class="callout-8-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="qwebr-insertion-location-59"></div>
+<div id="qwebr-insertion-location-45"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 </div>
 </div>
-<p>Estimate the average size of households in the dataset.</p>
-<div id="qwebr-insertion-location-60"></div>
+<p>Now, create a variable called <code>influenza_rate_this_week</code> using the variables <code>n_cases_this_week</code> and <code>n_patients_this_week</code>, to estimate the number of influenza cases per 1,000 patients.</p>
+<div id="qwebr-insertion-location-46"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
@@ -2516,19 +2393,13 @@ Solution
 </div>
 <div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="qwebr-insertion-location-61"></div>
+<div id="qwebr-insertion-location-47"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 </div>
 </div>
-</section>
-<section id="part-2-creating-and-modifying-variables" class="level2">
-<h2 class="anchored" data-anchor-id="part-2-creating-and-modifying-variables">Part 2: Creating and Modifying Variables</h2>
-<p>Run the cell below to create a copy of <code>dengue_infections</code> called <code>dengue_infections_clean</code>. We will be using <code>dengue_infections_clean</code> for the rest of the notebook, where we’ll be adding new variables + modifying existing variables. Generally, it’s good practice to keep your original “untouched”, and make modifications on a copy.</p>
-<div id="qwebr-insertion-location-62"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Suppose we find out that ages were not properly recorded for individuals with IDs 4, 87, and 134. We want to retain their infection information for future analyses, but don’t want the incorrect ages to bias any results. Modify the <code>age</code> column so the ages for IDs 4, 87, and 134 are equal to <code>NA</code>, but that <code>age</code> is unchanged for all other IDs.</p>
-<div id="qwebr-insertion-location-63"></div>
+<p>Suppose that the rate of influenza last week was 30 cases per 1,000 patients. Estimate the <strong>rate ratio</strong> of influenza associated with this week versus last week. Use the <code>influenza_rate_this_week</code> variable in your calculation.</p>
+<div id="qwebr-insertion-location-48"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
@@ -2542,13 +2413,20 @@ Solution
 </div>
 <div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="qwebr-insertion-location-64"></div>
+<div id="qwebr-insertion-location-49"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 </div>
 </div>
-<p>Create a column in <code>dengue_infections_clean</code> called <code>any_infection</code>, which is equal to <code>1</code> if the individual had experienced either a symptomatic or asymptomatic infection during the trial and <code>0</code> otherwise.</p>
-<div id="qwebr-insertion-location-65"></div>
+</section>
+<section id="part-2-vectors" class="level1">
+<h1>Part 2: Vectors</h1>
+<p>The vectors below contains the number of influenza cases and the number of patients in the hospital for each week of our study.</p>
+<p>In both vectors, the estimate for the first month is the first value in the vector, the estimate for the second month is the second value, the estimate for the third month is the third value, etc.</p>
+<div id="qwebr-insertion-location-50"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>Using the variables you created in part 1, add <code>n_patients_this_week</code> and <code>n_cases_this_week</code> to the end of the <code>n_patients</code> and <code>n_cases</code> vectors.</p>
+<div id="qwebr-insertion-location-51"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
@@ -2562,13 +2440,13 @@ Solution
 </div>
 <div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="qwebr-insertion-location-66"></div>
+<div id="qwebr-insertion-location-52"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 </div>
 </div>
-<p>Create a column in <code>dengue_infections_clean</code> called <code>age_group</code>, which is equal to “&lt;18” if the individual is between the ages of 0 and 17 years old, “18-64” if the individual is between the ages of 18 and 64 years old, and 65+ if the individual is 65 or more years old.</p>
-<div id="qwebr-insertion-location-67"></div>
+<p>Use vector operations to estimate the total number of patients.</p>
+<div id="qwebr-insertion-location-53"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
@@ -2582,19 +2460,13 @@ Solution
 </div>
 <div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="qwebr-insertion-location-68"></div>
+<div id="qwebr-insertion-location-54"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 </div>
 </div>
-</section>
-<section id="part-3-joining-data-sets" class="level2">
-<h2 class="anchored" data-anchor-id="part-3-joining-data-sets">Part 3: Joining Data Sets</h2>
-<p>We also have access to household-level characteristics in <code>dengue_hh_data.csv</code>. Run the cell below to load that data.</p>
-<div id="qwebr-insertion-location-69"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<p>Join the <em>cleaned</em> individual and household level data to create a dataset called <code>merged_dengue_data</code>, where there is still only one row per individual</p>
-<div id="qwebr-insertion-location-70"></div>
+<p>Use vector operations to estimate the total number of influenza cases</p>
+<div id="qwebr-insertion-location-55"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-13-contents" aria-controls="callout-13" aria-expanded="false" aria-label="Toggle callout">
@@ -2608,19 +2480,13 @@ Solution
 </div>
 <div id="callout-13" class="callout-13-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="qwebr-insertion-location-71"></div>
+<div id="qwebr-insertion-location-56"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 </div>
 </div>
-<p>To confirm that you’ve completed the join correctly, run the cell below and make sure it returns <code>TRUE</code>.</p>
-<div id="qwebr-insertion-location-72"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</section>
-<section id="part-4-grouping-and-reshaping-data" class="level2">
-<h2 class="anchored" data-anchor-id="part-4-grouping-and-reshaping-data">Part 4: Grouping and Reshaping Data</h2>
-<p>Suppose we were interested in differences in dengue prevalence by age. Use <code>group_by</code> and <code>summarize</code> to estimate the count and prevalence of any dengue (both symptomatic and asymptomatic) in each age group. Use the grouped data to get the percent of &lt;18 with dengue divided by the percent of 18-65 with dengue.</p>
-<div id="qwebr-insertion-location-73"></div>
+<p>Use vector operations to estimate the total rate of cases per 1,000 patients.</p>
+<div id="qwebr-insertion-location-57"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-14-contents" aria-controls="callout-14" aria-expanded="false" aria-label="Toggle callout">
@@ -2634,13 +2500,13 @@ Solution
 </div>
 <div id="callout-14" class="callout-14-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="qwebr-insertion-location-74"></div>
+<div id="qwebr-insertion-location-58"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 </div>
 </div>
-<p>To more easily compare symptomatic and asymptomatic infections, we might want to restructure our data from having separate <code>n_symp_infections</code> + <code>n_asymp_infections</code> columns to a <code>infection_type</code> (with the values “symp” or “asymp”) columns + a <code>n_infections</code> (with the number of infections) column. Use <code>pivot_longer</code> to transform your data in this way.</p>
-<div id="qwebr-insertion-location-75"></div>
+<p>Use vector indexing to estimate the rate of cases per 1,000 patients in the <strong>third</strong> week of the study.</p>
+<div id="qwebr-insertion-location-59"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <div class="callout callout-style-default callout-tip callout-titled" title="Solution">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-15-contents" aria-controls="callout-15" aria-expanded="false" aria-label="Toggle callout">
@@ -2654,14 +2520,119 @@ Solution
 </div>
 <div id="callout-15" class="callout-15-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="qwebr-insertion-location-76"></div>
+<div id="qwebr-insertion-location-60"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+</div>
+</div>
+<p>Use vector operations to estimate the rate of cases per 1,000 patients in <strong>each</strong> week of the study.</p>
+<div id="qwebr-insertion-location-61"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-16-contents" aria-controls="callout-16" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-16" class="callout-16-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div id="qwebr-insertion-location-62"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+</div>
+</div>
+</section>
+<section id="part-3-data-frames" class="level1">
+<h1>Part 3: Data Frames</h1>
+<p>At the end of the study, the team compiles the data into a data frame as follows</p>
+<div id="qwebr-insertion-location-63"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>Use data frame indexing to subset the data to the 5th week of the study.</p>
+<div id="qwebr-insertion-location-64"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-17-contents" aria-controls="callout-17" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-17" class="callout-17-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div id="qwebr-insertion-location-65"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+</div>
+</div>
+<p>Use data frame operations to extract the number of cases as a one-column data frame .</p>
+<div id="qwebr-insertion-location-66"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-18-contents" aria-controls="callout-18" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-18" class="callout-18-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div id="qwebr-insertion-location-67"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+</div>
+</div>
+<p>Use data frame operations to extract the number of cases as a vector.</p>
+<div id="qwebr-insertion-location-68"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-19-contents" aria-controls="callout-19" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-19" class="callout-19-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div id="qwebr-insertion-location-69"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+</div>
+</div>
+<p>Use data frame and vector operations to make a vector with the rate of cases per 1,000 patients in the first 8 weeks of the study.</p>
+<div id="qwebr-insertion-location-70"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-20-contents" aria-controls="callout-20" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-20" class="callout-20-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div id="qwebr-insertion-location-71"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 </div>
 </div>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -3065,7 +3036,7 @@ Solution
   });
   </script>
 </div> <!-- /content -->
-<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/r-pophealth-research/online-course/edit/main/tutorials/Week5_data_manipulation.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/r-pophealth-research/online-course/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer><script type="module">
+<footer class="footer"><div class="nav-footer"><div class="nav-footer-center"><div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/r-pophealth-research/online-course/edit/main/tutorials/data_structures.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/r-pophealth-research/online-course/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div></div></footer><script type="module">
 // Handle cell initialization initialization
 qwebrCellDetails.map(
   (entry) => {

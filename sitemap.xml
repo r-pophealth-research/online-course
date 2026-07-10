@@ -2,38 +2,42 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://r-pophealth-research.github.io/online-course/appendix/install_r_rstudio.html</loc>
-    <lastmod>2026-07-10T19:30:27.002Z</lastmod>
+    <lastmod>2026-07-10T19:33:02.294Z</lastmod>
   </url>
   <url>
-    <loc>https://r-pophealth-research.github.io/online-course/tutorials/Week7_statistical_analyses.html</loc>
-    <lastmod>2026-07-10T19:30:27.140Z</lastmod>
+    <loc>https://r-pophealth-research.github.io/online-course/tutorials/functions_packages.html</loc>
+    <lastmod>2026-07-10T19:33:02.370Z</lastmod>
   </url>
   <url>
-    <loc>https://r-pophealth-research.github.io/online-course/tutorials/Week5_data_manipulation.html</loc>
-    <lastmod>2026-07-10T19:30:27.109Z</lastmod>
+    <loc>https://r-pophealth-research.github.io/online-course/tutorials/data_visualizations.html</loc>
+    <lastmod>2026-07-10T19:33:02.469Z</lastmod>
   </url>
   <url>
-    <loc>https://r-pophealth-research.github.io/online-course/tutorials/Week3_functions_packages.html</loc>
-    <lastmod>2026-07-10T19:30:27.064Z</lastmod>
+    <loc>https://r-pophealth-research.github.io/online-course/tutorials/data_structures.html</loc>
+    <lastmod>2026-07-10T19:33:02.346Z</lastmod>
+  </url>
+  <url>
+    <loc>https://r-pophealth-research.github.io/online-course/tutorials/data_exploration.html</loc>
+    <lastmod>2026-07-10T19:33:02.392Z</lastmod>
   </url>
   <url>
     <loc>https://r-pophealth-research.github.io/online-course/index.html</loc>
-    <lastmod>2026-07-10T19:30:26.966Z</lastmod>
+    <lastmod>2026-07-10T19:33:02.256Z</lastmod>
   </url>
   <url>
-    <loc>https://r-pophealth-research.github.io/online-course/tutorials/Week2_data_structures.html</loc>
-    <lastmod>2026-07-10T19:30:27.041Z</lastmod>
+    <loc>https://r-pophealth-research.github.io/online-course/tutorials/data_manipulation.html</loc>
+    <lastmod>2026-07-10T19:33:02.416Z</lastmod>
   </url>
   <url>
-    <loc>https://r-pophealth-research.github.io/online-course/tutorials/Week4_data_exploration.html</loc>
-    <lastmod>2026-07-10T19:30:27.085Z</lastmod>
+    <loc>https://r-pophealth-research.github.io/online-course/tutorials/data_types.html</loc>
+    <lastmod>2026-07-10T19:33:02.321Z</lastmod>
   </url>
   <url>
-    <loc>https://r-pophealth-research.github.io/online-course/tutorials/Week6_descriptive_statistics.html</loc>
-    <lastmod>2026-07-10T19:30:27.126Z</lastmod>
+    <loc>https://r-pophealth-research.github.io/online-course/tutorials/descriptive_statistics.html</loc>
+    <lastmod>2026-07-10T19:33:02.434Z</lastmod>
   </url>
   <url>
-    <loc>https://r-pophealth-research.github.io/online-course/tutorials/Week8-9_data_visualizations.html</loc>
-    <lastmod>2026-07-10T19:30:27.161Z</lastmod>
+    <loc>https://r-pophealth-research.github.io/online-course/tutorials/statistical_analyses.html</loc>
+    <lastmod>2026-07-10T19:33:02.449Z</lastmod>
   </url>
 </urlset>
