@@ -1,22 +1,13 @@
 ---
-title: "Week 4: Data Exploration"
+title: "Data Exploration"
 output: html_notebook
 ---
 
-# Week 4: Data Exploration
-
-Welcome to Week 4! This week, we'll start diving into datasets and cover different commands to view and summarize your the information contained in data frames.
+In this chapter, we'll start diving into datasets and cover different commands to view and summarize your the information contained in data frames.
 
 Through this tutorial (and the rest of the class), we will be leveraging open source tools from the `tidyverse` package. `tidyverse` includes several "core" packages that can be used in data exploration, manipulation, and visualizations. Over the next two weeks, we'll learn about the basics of `dplyr`, a package that includes several useful functions to interact with data.
 
-Before you start, run the cell below to load the packages.
-
-```{r}
-#Run install.package("tidyverse") if you don't already have this installed
-library(tidyverse) # also loads dplyr
-```
-
-# Loading data
+# Loading Data
 
 Course datasets are stored in the [online-course `data` folder on GitHub](https://github.com/r-pophealth-research/online-course/tree/main/data).
 
@@ -26,13 +17,7 @@ By loading tidyverse, you also loaded **readr**, which gives us useful functions
 ?read_csv()
 ```
 
-`read_csv()` has a bunch of options that let us read in different files, but the only required input is the `file` we want in R. We give the file we want to import using a character—in this case, the URL of the CSV on GitHub:
-
-```{r}
-read_csv("https://raw.githubusercontent.com/r-pophealth-research/online-course/main/data/wage_data.csv")
-```
-
-*Why use a URL?* `read_csv()` can read files directly from the web, so you don't need to download CSVs to your computer first. This works in this notebook in your browser and in RStudio on your own machine.
+`read_csv()` has a bunch of options that let us read in different files, but the only required input is the `file` we want in R. We give the file we want to import using a character—in this case, the URL of the CSV on GitHub. *Why use a URL?* `read_csv()` can read files directly from the web, so you don't need to download CSVs to your computer first. This works in this notebook in your browser and in RStudio on your own machine.
 
 For the rest of this tutorial, we'll work with data from the Framingham Heart Study. Import it and assign it to a variable called `framingham_df`:
 
@@ -41,43 +26,7 @@ For the rest of this tutorial, we'll work with data from the Framingham Heart St
 framingham_df = read_csv("https://raw.githubusercontent.com/r-pophealth-research/online-course/main/data/framingham.csv")
 ```
 
-### Practice Problem
-
-Notice that when we imported the wage data above, the data were printed below the code cell but we didn't save them to a variable. That's because we didn't use assignment! To use imported data in later code cells, assign it to a name. Try importing the wage data again, this time assigning it to a variable called `wages`.
-
-```{r}
-# Write your code to import the wage data
-
-
-# Print out the wages data to check and make sure it was saved
-wages
-```
-::: {.callout-tip collapse="true"}
-## Solution
-
-```{r}
-wages = read_csv("https://raw.githubusercontent.com/r-pophealth-research/online-course/main/data/wage_data.csv")
-wages
-```
-:::
-
-## Other file formats
-
-Another useful package is called `haven`. Haven allows you to import SPSS, STATA, and SAS data files. Go ahead and follow the two steps to download and install haven.
-
-```{r}
-...
-```
-::: {.callout-tip collapse="true"}
-## Solution
-
-```{r}
-install.packages("haven", repos="https://cloud.r-project.org")
-library(haven)
-```
-:::
-
-# Viewing data
+# Viewing Data
 
 By default, calling the data frame will display the first 10 rows of the data frame. For large data frames, this might not provide the best overview of your data. R and `tidyverse`/`dplyr` have several commands that you can use to effectively summarize your data.
 
@@ -188,8 +137,7 @@ Create a scatter plot to visualize the relationship between systolic (`sysBP`) v
 ```{r}
 ...
 ```
-::: {.callout-tip collapse="true"}
-## Solution
+::: {.callout-tip collapse="true" title="Solution"}
 
 ```{r}
 plot(framingham_df$sysBP, framingham_df$diaBP,
@@ -343,8 +291,7 @@ framingham_diabetes = framingham_df ...
   
 framingham_diabetes
 ```
-::: {.callout-tip collapse="true"}
-## Solution
+::: {.callout-tip collapse="true" title="Solution"}
 
 ```{r}
 framingham_diabetes = framingham_df %>%
@@ -367,8 +314,7 @@ framingham_diabetes %>%
   ... %>% 
   mean(na.rm = ...)
 ```
-::: {.callout-tip collapse="true"}
-## Solution
+::: {.callout-tip collapse="true" title="Solution"}
 
 ```{r}
 framingham_diabetes %>%
@@ -458,8 +404,7 @@ framingham_df %>%
   summarize(n_observations = ...,
             average_glucose = ...)
 ```
-::: {.callout-tip collapse="true"}
-## Solution
+::: {.callout-tip collapse="true" title="Solution"}
 
 ```{r}
 framingham_df %>%
@@ -476,8 +421,195 @@ In this tutorial, you learned different methods to view, subset, and aggregate d
 
 Next week, we'll learn about data manipulation which includes methods to create new variables, combine datasets, and reshape data frames.
 
-# Resources
+# Extra Practice
 
-[Data Wrangling with dplyr and tidyverse Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
+For these practice problems, we'll explore stomach cancer mortality rates by county using a dataset from the Institute for Health Metrics and Evaluation [(Source)](https://ghdx.healthdata.org/record/ihme-data/united-states-stomach-cancer-mortality-by-county-race-ethnicity-2000-2019).
 
-R for Data Science Chapter 10: [Exploratory data analysis](https://r4ds.hadley.nz/eda)
+Load the `stomach_cancer_deaths_california.csv` dataset from the [course GitHub repo](https://github.com/r-pophealth-research/online-course/tree/main/data) in the cell below
+
+```{r}
+stomach_cancer_deaths = read_csv("https://raw.githubusercontent.com/r-pophealth-research/online-course/main/data/stomach_cancer_deaths_california.csv")
+head(stomach_cancer_deaths)
+```
+
+## Question 1
+
+Start by describing the structure of the data frame.
+
+How many rows and columns are there?
+
+```{r}
+
+```
+::: {.callout-tip collapse="true" title="Solution"}
+```{r}
+dim(stomach_cancer_deaths)
+nrow(stomach_cancer_deaths)
+ncol(stomach_cancer_deaths)
+```
+:::
+
+What variables are in the dataset? 
+
+```{r}
+
+```
+::: {.callout-tip collapse="true" title="Solution"}
+```{r}
+colnames(stomach_cancer_deaths)
+```
+:::
+
+How many missing values (`NA`s) are there in the `val` column? (Hint: use `is.na()` to check if a value is equal to `NA`)
+
+```{r}
+
+```
+::: {.callout-tip collapse="true" title="Solution"}
+```{r}
+sum(is.na(stomach_cancer_deaths$val))
+
+# Or using dplyr:
+stomach_cancer_deaths %>% 
+  filter(is.na(val)) %>% 
+  nrow()
+```
+:::
+
+What are the unique values of sex, age, and race?
+
+```{r}
+...
+```
+::: {.callout-tip collapse="true" title="Solution"}
+```{r}
+stomach_cancer_deaths %>% pull(sex_name) %>% unique()
+stomach_cancer_deaths %>% pull(age_name) %>% unique()
+stomach_cancer_deaths %>% pull(race_name) %>% unique()
+```
+:::
+
+## Question 2
+
+Now that you're familiar with the data, make some plots to visualize the distribution of death rates among different subsets of the population. 
+
+First, make a histogram that shows the distribution of all-race, age-standardized death rates. 
+
+```{r}
+total_rates = 
+  stomach_cancer_deaths %>% 
+    filter(race_name == ..., age_name == ...) %>% 
+    select(location_name, val, upper, lower)
+
+hist(total_rates %>% pull(val), xlab = "Death Rates (per 100,000)", main = "Distribution of Mortality Rates")
+```
+::: {.callout-tip collapse="true" title="Solution"}
+```{r}
+total_rates = 
+  stomach_cancer_deaths %>% 
+    filter(race_name == "Total", age_name == "Age-standardized") %>% 
+    select(location_name, val, upper, lower)
+
+hist(total_rates %>% pull(val), xlab = "Death Rates (per 100,000)", main = "Distribution of Mortality Rates")
+```
+:::
+
+Now make a histogram that shows the distribution of API, age-standardized death rates. 
+
+```{r}
+api_deaths = 
+  stomach_cancer_deaths %>% 
+  ...
+
+...
+
+```
+::: {.callout-tip collapse="true" title="Solution"}
+```{r}
+api_deaths = 
+  stomach_cancer_deaths %>% 
+  filter(race_name == "API", age_name == "Age-standardized") %>% 
+  select(location_name, val)
+
+hist(api_deaths %>% pull(val), xlab = "Death Rates (per 100,000)", main = "Distribution of Mortality Rates, API")
+```
+:::
+
+
+## Question 3
+
+Using `group_by` and `summarize`, create a table that contains the number of measurements, mean mortality rate, and median mortality rate for each race in the dataset. Restrict the original data set to non-missing, age-standardize values. Try different ways of sorting/arranging your final table.
+
+```{r}
+stomach_cancer_deaths %>% 
+  filter(age_name == "Age-standardized", 
+         !is.na(val)) %>% 
+  group_by(...) %>% 
+  summarize(n_values = ...,
+            mean_mortality = ..., 
+            median_mortality = ...) %>% 
+  arrange(median_mortality)
+```
+::: {.callout-tip collapse="true" title="Solution"}
+```{r}
+stomach_cancer_deaths %>% 
+  filter(age_name == "Age-standardized", 
+         !is.na(val)) %>% 
+  group_by(race_name) %>% 
+  summarize(n_values = n(),
+            mean_mortality = mean(val), 
+            median_mortality = median(val)) %>% 
+  arrange(median_mortality)
+```
+:::
+
+## Question 4
+
+Write a function that plots age-standardized deaths rates for a given race. Use this function to plot death rates for the "Total" and "API" race groups, and confirm that it yields the same plots as above.
+
+```{r}
+plot_mortality_by_race = function(race_str) {
+  ...
+}
+
+plot_mortality_by_race("Total")
+plot_mortality_by_race("API")
+```
+::: {.callout-tip collapse="true" title="Solution"}
+```{r}
+plot_mortality_by_race = function(race_str) {
+  death_rates = 
+    stomach_cancer_deaths %>% 
+    filter(race_name == race_str, age_name == "Age-standardized") %>% 
+    select(location_name, val) %>% 
+    pull(val)
+  
+  hist(death_rates, 
+       xlab = "Death Rates (per 100,000)", 
+       main = paste("Distribution of Mortality Rates,", race_str))
+}
+
+plot_mortality_by_race("Total")
+plot_mortality_by_race("API")
+```
+:::
+
+Now use a for loop to apply this function to all race groups that are present in the data.
+
+```{r}
+# Get unique values of race using R commands (don't just type them out!)
+unique_race_values = ...
+
+for (race in unique_race_values){
+  ...
+}
+```
+::: {.callout-tip collapse="true" title="Solution"}
+```{r}
+unique_race_values = stomach_cancer_deaths %>% pull(race_name) %>% unique()
+
+for (race in unique_race_values){
+  plot_mortality_by_race(race)
+}
+```
+:::

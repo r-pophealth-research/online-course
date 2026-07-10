@@ -1,11 +1,11 @@
 ---
-title: 'Week 3: Functions and Packages'
+title: 'Functions and Packages'
 output: html_document
 ---
 
-# Functions
+In this chapter, you'll learn all about functions in R. This includes building your own functions, using R's built-in functions, and loading packages that contain helpful tools.
 
-Welcome to Week 3! In this tutorial, you'll learn all about functions in R. This includes building your own functions, using R's built-in functions, and loading packages that contain helpful tools.
+# Functions
 
 ## Function? I sure hope it does.
 
@@ -60,9 +60,8 @@ Write your own function called `times_four_plus_one` that takes one input `x`, m
 ```{r}
 ...
 ```
-::: {.callout-tip collapse="true"}
-## Solution
 
+::: {.callout-tip collapse="true" title="Solution"}
 ```{r}
 times_four_plus_one = function(x){
   4*x + 1
@@ -72,7 +71,6 @@ times_four_plus_one(-10)
 times_four_plus_one(0)
 ```
 :::
-
 
 ## Built-in Functions
 
@@ -95,14 +93,12 @@ Now you use `seq()` to generate all multiples of 0.2 from 0 to 5 (e.g. 0, 0.2, 0
 ```{r}
 # Write your code here
 ```
-::: {.callout-tip collapse="true"}
-## Solution
 
+::: {.callout-tip collapse="true" title="Solution"}
 ```{r}
 seq(from=0, to=5, by=0.2)
 ```
 :::
-
 
 ## Getting Help
 
@@ -133,14 +129,12 @@ Use `?runif` (and the Internet if you need) to figure out how to get a random nu
 ```{r}
 # Write your code here
 ```
-::: {.callout-tip collapse="true"}
-## Solution
 
+::: {.callout-tip collapse="true" title="Solution"}
 ```{r}
 runif(1, min=-1, max=2)
 ```
 :::
-
 
 ## Any Number of Arguments
 
@@ -169,9 +163,8 @@ max()
 some_numbers = c(...)
 max(some_numbers)
 ```
-::: {.callout-tip collapse="true"}
-## Solution
 
+::: {.callout-tip collapse="true" title="Solution"}
 ```{r}
 min(3, 1, 9, 2)
 max(3, 1, 9, 2)
@@ -179,7 +172,6 @@ some_numbers = c(3, 1, 9, 2, NA)
 max(some_numbers, na.rm=TRUE)
 ```
 :::
-
 
 # Control Statements
 
@@ -266,9 +258,8 @@ if (x > y) {
   print("x is equal to y")
 }
 ```
-::: {.callout-tip collapse="true"}
-## Solution
 
+::: {.callout-tip collapse="true" title="Solution"}
 ```{r}
 if (x > y) {
   print("x is greater than the value of y")
@@ -279,7 +270,6 @@ if (x > y) {
 }
 ```
 :::
-
 
 ## Loops
 
@@ -351,9 +341,8 @@ for (... in ...){
 
 ckd_statuses
 ```
-::: {.callout-tip collapse="true"}
-## Solution
 
+::: {.callout-tip collapse="true" title="Solution"}
 ```{r}
 for (egfr in egfr_values){
   if (egfr < 15) {
@@ -370,21 +359,213 @@ for (egfr in egfr_values){
 ```
 :::
 
-
 # Packages
 
-Writing functions sure is fun, but I don't want to have to write a function for everything in R. Luckily, many amazing data scientists have come before us, written useful functions, and stored them in packages. Packages are bits of code you download from the internet to use in your own code. In R, there are two steps to using a package. 1) Install the package with `install.packages()` and 2) Tell R you want to use that package with `library()`. One of the most useful packages is called tidyverse. This package contains a multitude of packages that help us clean and visualize data. Let's download tidyverse.
+Writing functions sure is fun, but I don't want to have to write a function for everything in R. Luckily, many amazing data scientists have come before us, written useful functions, and stored them in packages. Packages are collections of useful functions you can use in your own code.
+
+One of the most useful packages is called **tidyverse**. It includes many tools for cleaning, summarizing, and visualizing data. On this website, WebR **pre-installs and loads** the tidyverse packages you need for each page, so you can use them in the interactive code cells without any setup.
+
+If you were running the same code in **RStudio on your own computer**, you would need two steps first:
+
+1.  Install the package once with `install.packages()`
+2.  Load it in each R session with `library()`
 
 ```{r}
-# Because we're working in this Quarto notebook, we have to tell it where to search for the package. That's why we put repos="https://cloud.r-project.org". In other R environments (like RStudio), you may not need the repos= part.
-install.packages("tidyverse", repos="https://cloud.r-project.org")
-```
-
-Note that we put the package name in quotes like a string. Because the package is not downloaded yet, we have to put it in quotes. Now that it is downloaded, we can tell R we are ready to use tidyverse. Because it is downloaded, it no longer needs to be in quotes because it exists on our computer.
-
-```{r}
+# These steps are only needed in RStudio (or other local R environments).
+# On this website, tidyverse is already available and running this code results in an error
+install.packages("tidyverse")
 library(tidyverse)
 ```
 
-You'll use tidyverse packages throughout the rest of this course. In the next tutorial, you'll learn how to import and explore data with `readr` and `dplyr`, two packages included in tidyverse.
+Once tidyverse is available, you can use its functions right away. For example, `if_else()` from the `dplyr` package (part of tidyverse) chooses between two values based on a condition, similar to we used `if` and `else` earlier in this chapter.
 
+The code below uses `if_else()` to label measurements as `"adult"` or `"child"` based on if their age value is over 18:
+
+```{r}
+ages = c(12, 45, 67, 8)
+if_else(ages >= 18, "adult", "child")
+```
+
+# Summary
+
+In this tutorial, you learned how to write your own functions, use built-in R functions, and get help with `?`. You also practiced control statements—`if`/`else` for conditional code and `for` loops for repeating actions—and were introduced to packages, including tidyverse.
+
+Next, you'll learn how to import datasets and explore data frames with `readr` and `dplyr`.
+
+# Extra Practice
+
+## Question 1
+Write a simple function that takes a character input and prints (use `print()`) that input.
+
+```{r}
+# Write your function here
+printer
+
+# Check your function
+printer(input = "Hello world")
+printer(input = "Go trees!")
+```
+::: {.callout-tip collapse="true" title="Solution"}
+```{r}
+printer = function(input) {
+  print(input)
+}
+
+printer(input = "Hello world")
+printer(input = "Go trees!")
+```
+:::
+
+## Question 2 
+
+Write a function that takes two inputs, `base` and `exponent`, that returns the base raised to the exponent.
+
+```{r}
+# Fill in the function with the inputs and code needed to calculate
+exponentiate <- function(...) {
+
+}
+
+# Check your function
+exponentiate(base=2, exponent=5) # Should be 32
+exponentiate(base=5, exponent=-1) # Should be 0.2
+```
+::: {.callout-tip collapse="true" title="Solution"}
+```{r}
+exponentiate <- function(base, exponent) {
+  base^exponent
+}
+
+exponentiate(base=2, exponent=5)
+exponentiate(base=5, exponent=-1)
+```
+:::
+
+## Question 3
+
+When using the built-in `log` function, taking the log of 0 outputs `-Inf` (negative infinity), and taking the log of a negative number outputs `NaN` (not a number).
+
+```{r}
+log(0)
+log(-2)
+```
+
+Write a function called `smart_log` that takes any number as the input. If that number is zero or negative, return `NA`. Otherwise, return the log of that number.
+
+```{r}
+smart_log <- function(...){
+  # If statement to check if the number is zero or negative that returns NA
+  
+  # Otherwise, return the log of the number
+  
+}
+
+# Check your function
+smart_log(num=10)
+smart_log(num=0)
+smart_log(num=-2)
+```
+::: {.callout-tip collapse="true" title="Solution"}
+```{r}
+smart_log <- function(num){
+  if (num <= 0) {
+    return(NA)
+  }
+  log(num)
+}
+
+smart_log(num=10)
+smart_log(num=0)
+smart_log(num=-2)
+```
+:::
+
+## Question 4
+
+Now that we have our function, we can use a for-loop to find the log of a bunch of numbers.
+
+Write a for-loop that calculates and and saves the log of each number in a vector.
+
+```{r}
+# Calculate the log of these numbers using the function you made above
+# Save the results to logs
+numbers <- c(1, -10, 20, 50, 0)
+logs <- c()
+
+# Write your for-loop that calculates and saves the log of each number using 
+# the function you made above
+for(...) {
+  # Use the smart_log function to get the log and save it to a variable
+  
+  # Add that variable to the logs list
+  
+}
+
+# Check your results
+logs
+```
+::: {.callout-tip collapse="true" title="Solution"}
+```{r}
+numbers <- c(1, -10, 20, 50, 0)
+logs <- c()
+
+for (num in numbers) {
+  result = smart_log(num)
+  logs = c(logs, result)
+}
+
+logs
+```
+:::
+
+## Question 5
+
+Remember this formula?
+
+$$
+x=\frac{-b\pm\sqrt{b^2-4ac}}{2a}
+$$
+
+It's the quadratic formula from algebra, which tells us where a parabola intercepts the $x$ axis. Write a function that takes three values, `a`, `b`, and `c`, and returns a vector with two values - the two places where the parabola crosses the $x$ axis. But, if `a` is zero, return a vector with two `NA` values because that is not a parabola.
+
+Hint: There is no $\pm$ in R. You'll have to do those separately.
+
+```{r}
+# Write your function
+get_parab_x_intercepts = ...
+
+# Testing
+get_parab_x_intercepts(a=2, b=4, c=-3) # Should be 0.5811 and -2.5811
+get_parab_x_intercepts(a=-5, b=1, c=6) # Should be -1 and 1.2
+get_parab_x_intercepts(a=0, b=10, c=2) # Should be NA and NA
+```
+::: {.callout-tip collapse="true" title="Solution"}
+```{r}
+get_parab_x_intercepts = function(a, b, c) {
+  if (a == 0) {
+    return(c(NA, NA))
+  }
+  x1 = (-b + sqrt(b^2 - 4*a*c)) / (2*a)
+  x2 = (-b - sqrt(b^2 - 4*a*c)) / (2*a)
+  c(x1, x2)
+}
+
+get_parab_x_intercepts(a=2, b=4, c=-3)
+get_parab_x_intercepts(a=-5, b=1, c=6)
+get_parab_x_intercepts(a=0, b=10, c=2)
+```
+:::
+
+## Question 6
+
+Use the `?` operator to figure out how to use the `seq()` function get every fifth number from 0 to 90 (i.e. 0, 5, 10, ..., 90). Use the same function to get every 0.2 from 2 to 5 (i.e. 2.0, 2.2, 2.4, ..., 5).
+
+```{r}
+
+```
+::: {.callout-tip collapse="true" title="Solution"}
+```{r}
+seq(from=0, to=90, by=5)
+seq(from=2, to=5, by=0.2)
+```
+:::

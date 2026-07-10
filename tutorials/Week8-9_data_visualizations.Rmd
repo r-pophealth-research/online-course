@@ -1,21 +1,15 @@
 ---
-title: "Week 8 + 9: Data Visualizations"
-output: pdf_document
+title: "Data Visualizations"
+output: html_notebook
 ---
 
-# Weeks 8 and 9: Data Visualizations with ggplot
-
-Welcome to Week 8 and 9! In this tutorial, we'll revisit data visualizations and learn how to use the `ggplot2` package to create publication-ready figures. This tutorial is on the longer side—take your time working through it section by section.
+In this chapter, we'll revisit data visualizations and learn how to use the `ggplot2` package to create publication-ready figures. This tutorial is on the longer side—take your time working through it section by section.
 
 # Loading Packages and Data
 
-`ggplot2` is included as a core package of `tidyverse`. Run the cell below to load `tidyverse`, `ggplot2`, and other required packages. Why is is called `ggplot`? Because it is the Grammar of Graphics for PLOTting!
+`ggplot2` is included as a core package of `tidyverse`, which is already loaded on this webpage. Why is is called `ggplot`? Because it is the Grammar of Graphics for PLOTting!
 
-```{r}
-library(tidyverse) # also loads ggplot2
-```
-
-In this tutorial, we will be using maternal mortality data from the World Health Organization that has been merged with population data from the World Bank. The data file is available in the [course GitHub repo](https://github.com/r-pophealth-research/online-course/tree/main/data).
+In this chapter, we will be using maternal mortality data from the World Health Organization that has been merged with population data from the World Bank. The data file is available in the [course GitHub repo](https://github.com/r-pophealth-research/online-course/tree/main/data).
 
 Run the cell below to load the data as `maternal_mortality` and view the first few columns.
 
@@ -27,21 +21,16 @@ head(maternal_mortality)
 
 The data frame includes annual estimates of maternal mortality ratios (deaths per 100,000 live births) for each country. It includes the the following columns:
 
--   `Year`: a numeric, year of estimate
-
--   `Country`:a character, country of estimate
-
--   `Region`: a character, the WHO region that the country belongs to
-
--   `income_group`: a character, the World Bank's classification of the country's income level.
-
--   `total_population`: a numeric, the population size in hundreds of thousands
-
--   `mortality_estimate`: a numeric, the estimated maternal mortality ratio, calculated as (\# maternal deaths / \# live births) x 100,000
-
--   `mortality_ci_lb`: a numeric, the lower bound of the estimated confidence interval of maternal mortality ratio
-
--   `mortality_ci_ub`: a numeric, the upper bound of the estimated confidence interval of maternal mortality ratio
+| Column               | Type      | Description                                                                                  |
+|----------------------|-----------|----------------------------------------------------------------------------------------------|
+| `Year`               | numeric   | Year of estimate                                                                             |
+| `Country`            | character | Country of estimate                                                                          |
+| `Region`             | character | The WHO region that the country belongs to                                                   |
+| `income_group`       | character | The World Bank's classification of the country's income level                                |
+| `total_population`   | numeric   | The population size in hundreds of thousands                                                 |
+| `mortality_estimate` | numeric   | The estimated maternal mortality ratio, calculated as (# maternal deaths / # live births) x 100,000 |
+| `mortality_ci_lb`    | numeric   | The lower bound of the estimated confidence interval of maternal mortality ratio             |
+| `mortality_ci_ub`    | numeric   | The upper bound of the estimated confidence interval of maternal mortality ratio             |
 
 Use the cell below to explore the dataset. At minimum, we recommend that you familiarize yourself with the range of years the data covers, the number of unique values of each country/region/income_group, and the extent of missingness in the data.
 
@@ -165,8 +154,7 @@ Plot the distribution of maternal mortality in 2010 in the Americas using a hist
 # Create the plot
 #ggplot(maternal_mortality_2010, ...)
 ```
-::: {.callout-tip collapse="true"}
-## Solution
+::: {.callout-tip collapse="true" title="Solution"}
 
 ```{r}
 maternal_mortality_2010 = maternal_mortality %>%
@@ -192,8 +180,7 @@ Plot the distribution of maternal mortality in 2000 among upper-middle income co
 # Create the plot
 #ggplot(maternal_mortality_2000_uppermid, ...)
 ```
-::: {.callout-tip collapse="true"}
-## Solution
+::: {.callout-tip collapse="true" title="Solution"}
 
 ```{r}
 maternal_mortality_2000_uppermid = maternal_mortality %>%
@@ -243,8 +230,7 @@ Plot the distribution of regions represented in 2020 using a bar plot.
 ```{r}
 #ggplot(...)
 ```
-::: {.callout-tip collapse="true"}
-## Solution
+::: {.callout-tip collapse="true" title="Solution"}
 
 ```{r}
 ggplot(maternal_mortality_2020, aes(x = Region)) +
@@ -368,8 +354,7 @@ Plot the distribution of mortality in 2020 by region, using either a box plot or
 ```{r}
 #ggplot(...)
 ```
-::: {.callout-tip collapse="true"}
-## Solution
+::: {.callout-tip collapse="true" title="Solution"}
 
 ```{r}
 ggplot(maternal_mortality_2020, aes(x = Region, y = mortality_estimate)) +
@@ -378,11 +363,6 @@ ggplot(maternal_mortality_2020, aes(x = Region, y = mortality_estimate)) +
   ylab("Maternal Mortality Rate (per 100,000 live births)")
 ```
 :::
-
-
-------------------------------------------------------------------------
-
-**Start Week 9**
 
 # Modifying features
 
@@ -582,8 +562,7 @@ Plot the mortality estimates (and their 95% CIs) for Yemen and Oman over time. P
 ```{r}
 #ggplot(...)
 ```
-::: {.callout-tip collapse="true"}
-## Solution
+::: {.callout-tip collapse="true" title="Solution"}
 
 ```{r}
 yemen_oman_data = maternal_mortality %>% filter(Country %in% c("Yemen", "Oman"))
@@ -633,11 +612,3 @@ Notice how every facet now has its own x- and y-axis. Allowing these scales to d
 # Summary
 
 In this tutorial, you practiced using `ggplot2` to create data visualizations. You learned about the different types of figures and the ways that they can be customized.
-
-In the next (and last!) tutorial, we'll bring together everything we learned in this class to discuss reproducible workflows for your analyses.
-
-# Resources
-
-R for Data Science Chapter 19: [Data visualisation](https://r4ds.had.co.nz/data-visualisation.html)
-
-[The R Graph Gallery](https://r-graph-gallery.com/)

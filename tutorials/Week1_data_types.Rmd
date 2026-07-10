@@ -1,0 +1,350 @@
+---
+title: "Data Types"
+output: html_notebook
+---
+
+R stores data as different **types**. Here, we'll focus on three of the primary data types: (1) characters, (2) numerics, and (3) logicals.
+
+```{r}
+"2" #Character
+2 #Numeric
+TRUE #Logical
+```
+
+We can use the `class()` function to identify what type of data we're working with. In the code below, we use this function to check the type of three types of data. Run the cells and verify that the outputs match the labels above.
+
+```{r}
+class("2")
+```
+
+```{r}
+class(2)
+```
+
+```{r}
+class(TRUE)
+```
+
+Let's look at each of these data types in more detail.
+
+## Characters
+
+Characters are used to represent text, or "strings" in R. These data types are contained within a set of single (`'...'`) or double quotation marks (`"..."`).
+
+```{r}
+"This is a string"
+```
+
+```{r}
+'This is also a string'
+```
+
+If want to combine different strings, we can concatenate them using `paste`
+
+```{r}
+paste("This is the first half of the sentence", "and this is the second half")
+```
+
+#### Practice Problem 1
+
+Edit the cell below so that it prints your name.
+
+```{r}
+paste("My name is", ...)
+```
+
+::: {.callout-tip collapse="true" title="Solution"}
+```{r}
+paste("My name is", "Anna")
+```
+:::
+
+## Numerics
+
+We can also solve mathematical expressions using numerics.
+
+```{r}
+4 + 5 * 2
+```
+
+Notice how R follows a specific order of operations. What do you think will be the output of the cell below?
+
+```{r}
+(4 + 5) * 2
+```
+
+Note: R's order of operations extends past just math! It's important to pay attention to the order of your code -- more on this later.
+
+However, some operations require the data to be a specific type. Run the cell below and see what happens.
+
+```{r}
+"2" + 3
+```
+
+We got an error message! Because we tried to do math with a "non-numeric argument", R returned an error. To fix this, we can "cast", or convert, the problematic data to the correct form using functions like `as.numeric()` or `as.character()`. The data that we include within the parentheses of `as.numeric()` are the data that we want to convert. Run the cell below to correct the error.
+
+```{r}
+as.numeric("2") + 3
+```
+
+#### Practice Problem 2
+
+Fix the cell below so that it runs without error and it returns the numeric `2025`.
+
+```{r}
+2020 + "5"
+```
+
+::: {.callout-tip collapse="true" title="Solution"}
+```{r}
+2020 + as.numeric("5")
+```
+:::
+
+## Logicals
+
+Logicals are a special data type. They only take on two values: `TRUE` (also encoded as `T` and `1`) or `FALSE` (also encoded as `F` and `0`).
+
+```{r}
+TRUE
+T
+FALSE
+F
+class(FALSE)
+```
+
+# Missing Values
+
+There's a special type of value that is used to indicate missing data: `NA` which means "Not Available". R has a built-in function `is.na()` that tells you if values are equal to `NA`. You can also say a character or number is missing using `NA_character_` or `NA_real_`.
+
+```{r}
+NA
+NA_real_ # This is numeric (as in a real number)
+NA_character_
+```
+
+```{r}
+is.na(1)
+is.na("is this NA?")
+```
+
+```{r}
+is.na(NA)
+is.na(NA_character_)
+is.na(NA_integer_)
+```
+
+There are three other special data values that we will briefly cover. One is `NULL` which means "there's nothing here". This is different from `NA` means that there's some value, but we don't know what it is, like a missing measurement from a study.
+
+```{r}
+NULL
+is.null(NULL)
+```
+
+There is also `NaN` which means "not a number". The main place you will get `NaN` is when you do math you shouldn't be doing.
+
+```{r}
+NaN
+0/0
+log(-64)
+is.nan(NaN)
+```
+
+Finally, there is `Inf` which means "infinity". In R, when you divide by zero, you get infinity.
+
+```{r}
+1/0
+is.infinite(Inf)
+```
+
+#### Practice Problem 3
+
+Before running the cell, guess what the code will return. Can you explain why?
+
+Hint: What did `class("2")` return in the above section?
+
+```{r}
+is.na("NA")
+```
+
+::: {.callout-tip collapse="true" title="Solution"}
+```{r}
+is.na("NA")
+```
+
+This returns `FALSE`. `"NA"` is a character string (just like `"2"` is a character), not the missing value `NA`. So `is.na()` correctly reports that it is not missing.
+:::
+
+# Comparisons
+
+We primarily use logicals when comparing other values. We do comparisons using comparison operators. Comparison operators include:
+
+-   `==`, equals
+
+-   `!=`, does not equal
+
+-   `>`, greater than
+
+-   `>=`, greater than or equal to
+
+-   `<`, less than
+
+-   `<=`, less than or equal to
+
+Each of these will give us `TRUE` or `FALSE`.
+
+### Comparing Numerics
+
+The order of numerics is based on the natural order (ex 1 \< 2 \< 3 \< ....)
+
+```{r}
+2 >= 1
+```
+
+```{r}
+1 > 2
+```
+
+```{r}
+1 + 1 == 2
+```
+
+#### Practice Problem 4
+
+Complete the code in the cell below such that it outputs `FALSE`
+
+```{r}
+... >= 16/(3+1) 
+```
+
+::: {.callout-tip collapse="true" title="Solution"}
+`16/(3+1)` equals `4`, so any number less than 4 on the left side will make the comparison `FALSE`. For example:
+
+```{r}
+3 >= 16/(3+1)
+```
+:::
+
+### Comparing Characters
+
+For characters, values follow a numeric than alphabet order looking at the first character than the second. Lowercase letters are less than uppercase letters. `"1"<"10"<"2"<"a"<"A"<"ab"<"AB"<"b"<"z"`. An empty string `""` is the smallest.
+
+```{r}
+"four" > "two"
+```
+
+```{r}
+"four" > "2"
+```
+
+```{r}
+"1" < "2"
+```
+
+```{r}
+"a" < "H"
+```
+
+#### Practice Problem 5
+
+Based on the examples you've seen above, what do you think is the "greatest" single character? ::: {.callout-tip collapse="true" title="Solution"}
+
+Based on the ordering given above (`"1"<"10"<"2"<"a"<"A"<"ab"<"AB"<"b"<"z"`), among single characters shown, `"z"` is the greatest. You can check comparisons like:
+
+```{r}
+"z" > "b"
+"z" > "A"
+"z" > "9"
+```
+
+:::
+
+# Extra Practice
+
+## Data Types
+
+### Question 1
+
+Calculate 1,248 squared.
+
+```{r}
+
+```
+
+::: {.callout-tip collapse="true" title="Solution"}
+```{r}
+1248^2
+```
+:::
+
+### Question 2
+
+Replace the `#Your_code_here`'s with *appropriate data* based on the variable names. Hint: You will use 1 of each data type.
+
+```{r}
+average_height_of_a_girrafe_in_meters = 
+the_best_city_in_the_world = 
+is_strawberry_the_best_ice_cream_flavor = 
+```
+
+::: {.callout-tip collapse="true" title="Solution"}
+Any values of the correct types work. For example:
+
+```{r}
+average_height_of_a_girrafe_in_meters = 5.5
+the_best_city_in_the_world = "San Francisco"
+is_strawberry_the_best_ice_cream_flavor = TRUE
+```
+:::
+
+## Comparisons
+
+### Question 3
+
+Write a comparison using numerics that evaluates to `TRUE`.
+
+```{r}
+
+```
+
+::: {.callout-tip collapse="true" title="Solution"}
+There are many possible "solutions" here! For example:
+
+```{r}
+10 > 3
+```
+:::
+
+### Question 4
+
+Write a comparison using characters that evaluates to `FALSE`.
+
+```{r}
+
+```
+
+::: {.callout-tip collapse="true" title="Solution"}
+There are many possible "solutions" here! For example:
+
+```{r}
+"apple" == "orange"
+```
+:::
+
+### Question 5
+
+Write a comparison that uses NA and, based on your experience, explain what happens anytime you use NA in a comparison. Hint: Try a bunch of comparisons using an NA and see what you get.
+
+```{r}
+
+```
+
+::: {.callout-tip collapse="true" title="Solution"}
+```{r}
+5 == NA
+5 > NA
+"a" != NA
+```
+
+Comparisons with `NA` return `NA`, not `TRUE` or `FALSE`. R cannot decide whether a comparison is true or false when one of the values is missing.
+:::

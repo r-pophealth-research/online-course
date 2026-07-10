@@ -4,9 +4,6 @@ project:
   render:
     - index.qmd
     - tutorials/*.qmd
-    - practice/*.qmd
-    - hw/*.qmd
-    - final/*.qmd
     - appendix/*.qmd
 
 website:
@@ -21,34 +18,14 @@ website:
   sidebar:
     style: floating
     contents:
-      - section: "Getting started"
-        contents:
-          - index.qmd
-      - section: "Tutorials"
-        contents:
-          - practice/Week1_additional_practice.qmd
-          - tutorials/Week2_data_structures.qmd
-          - practice/Week2_additional_practice.qmd
-          - tutorials/Week3_functions_packages.qmd
-          - practice/Week3_additional_practice.qmd
-          - tutorials/Week4_data_exploration.qmd
-          - practice/Week4_additional_practice.qmd
-          - tutorials/Week5_data_manipulation.qmd
-          - practice/Week5_additional_practice.qmd
-          - tutorials/Week6_descriptive_statistics.qmd
-          - tutorials/Week7_statistical_analyses.qmd
-          - practice/Week6-7_additional_practice.qmd
-          - tutorials/Week8-9_data_visualizations.qmd
-          - practice/Week8-9_additional_practice.qmd
-      - section: "Homework"
-        contents:
-          - hw/HW1_markdown_and_data_types.qmd
-          - hw/HW2_data_structures_and_functions.qmd
-          - hw/HW3_data_exploration_and_manipulation.qmd
-          - hw/HW5_data_visualizations.qmd
-      - section: "Final"
-        contents:
-          - final/Final_Project.qmd
+      - index.qmd
+      - tutorials/Week2_data_structures.qmd
+      - tutorials/Week3_functions_packages.qmd
+      - tutorials/Week4_data_exploration.qmd
+      - tutorials/Week5_data_manipulation.qmd
+      - tutorials/Week6_descriptive_statistics.qmd
+      - tutorials/Week7_statistical_analyses.qmd
+      - tutorials/Week8-9_data_visualizations.qmd
       - section: "Appendix"
         contents:
           - appendix/install_r_rstudio.qmd

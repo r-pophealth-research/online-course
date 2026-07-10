@@ -1,39 +1,9 @@
 ---
-title: "Data Types and Structures"
+title: "Data Structures"
 output: html_notebook
 ---
 
 In this chapter, we'll cover the different ways that data is stored in R. We'll start by looking at the individual data points before moving on to collections of data. Here, you'll implement code to create, store, and access data in R.
-
-# Data Types
-
-There are several ways that data can be stored in R. In this class, we'll focus on using numerics, characters, and logicals.
-
-**Numerics** represent whole and decimal numbers.
-
-```{r}
-3 # A numeric
-3.5 # Also a numeric
-
-# Mathematical operations can be performed on numerics
-3 + 6
-3 / 6
-```
-
-**Characters** represent text data; values are always contained within quotations. Single `'...'` or double `"..."` quotations work, but the opening and closing quotation marks have to match! (Ex `'..."` returns an error)
-
-```{r}
-"hello world" # A character
-"5.3" # A character
-```
-
-**Logicals** evaluate to either TRUE or FALSE, and are often used when we want to make comparisons.
-
-```{r}
-TRUE # A logical
-6 > 5 # A logical, evaluates to TRUE
-12 == "12" # A logical, evaluates to FALSE
-```
 
 # Variables
 
@@ -73,9 +43,7 @@ temp_f = ...
 temp_f
 ```
 
-::: {.callout-tip collapse="true"}
-## Solution
-
+::: {.callout-tip collapse="true" title="Solution"}
 ```{r}
 temp_f = 72
 temp_f
@@ -91,9 +59,7 @@ temp_c = temp_f ...
 temp_c
 ```
 
-::: {.callout-tip collapse="true"}
-## Solution
-
+::: {.callout-tip collapse="true" title="Solution"}
 ```{r}
 temp_c = (temp_f - 32) / (9/5)
 temp_c
@@ -130,9 +96,7 @@ fruits = c(..., ..., ...)
 fruits
 ```
 
-::: {.callout-tip collapse="true"}
-## Solution
-
+::: {.callout-tip collapse="true" title="Solution"}
 ```{r}
 fruits = c("apple", "orange", "banana")
 fruits
@@ -180,9 +144,7 @@ numbers[...] = ...
 numbers
 ```
 
-::: {.callout-tip collapse="true"}
-## Solution
-
+::: {.callout-tip collapse="true" title="Solution"}
 ```{r}
 numbers[c(3, 8)] = 32
 numbers
@@ -280,9 +242,7 @@ even_more_numbers = c(1, 6, 2, 93, 241, 315, 23)
 ... - ...
 ```
 
-::: {.callout-tip collapse="true"}
-## Solution
-
+::: {.callout-tip collapse="true" title="Solution"}
 ```{r}
 even_more_numbers = c(1, 6, 2, 93, 241, 315, 23)
 even_more_numbers - mean(even_more_numbers)
@@ -355,9 +315,7 @@ ages_years = ... # Extract the column that contains participant ages in years
 ages_years ... # Use a vector operation to convert ages from years to months. 
 ```
 
-::: {.callout-tip collapse="true"}
-## Solution
-
+::: {.callout-tip collapse="true" title="Solution"}
 ```{r}
 ages_years = study_cohort$age # Extract the column that contains participant ages in years
 ages_years * 12 # Use a vector operation to convert ages from years to months. 
@@ -370,8 +328,211 @@ In this tutorial, you learned about the different ways that data is stored in R.
 
 Next, you'll learn how to load existing tables, explore data found in tables, and manipulate data frames!
 
-# Resources
+# Extra Practice
 
-Introduction to Rby Michael Koontz and Ryan Peek [Vectors and Dataframes](https://mikoontz.github.io/data-carpentry-week/lesson_data_frames.html)
+# Part 1. Variables
 
-Advanced R by Hadley Wickham: [Data Structures](http://adv-r.had.co.nz/Data-structures.html)
+Suppose we wanted to the transmission of influenza in a community. Our local hospital tests all patients for influenza, and reports the number of cases observed each week.
+
+This week, 5 patients tested positive for influenza - create a variable called `n_cases_this_week` that stores this count as a numeric.
+
+```{r}
+n_cases_this_week = ...
+n_cases_this_week
+```
+
+::: {.callout-tip collapse="true" title="Solution"}
+```{r}
+n_cases_this_week = 5
+n_cases_this_week
+```
+:::
+
+It might be hard to contextualize this value without knowing the number of patients that were tested. Instead, we could estimate a rate of influenza cases per 1,000 patients (\# cases / \# patients \* 1000). This month, there were 258 patients tested - create a variables called `n_patients_this_week` that store this count as a numeric.
+
+```{r}
+n_patients_this_week = ...
+n_patients_this_week
+```
+
+::: {.callout-tip collapse="true" title="Solution"}
+```{r}
+n_patients_this_week = 258
+n_patients_this_week
+```
+:::
+
+Now, create a variable called `influenza_rate_this_week` using the variables `n_cases_this_week` and `n_patients_this_week`, to estimate the number of influenza cases per 1,000 patients.
+
+```{r}
+influenza_rate_this_week = ...
+influenza_rate_this_week
+```
+
+::: {.callout-tip collapse="true" title="Solution"}
+```{r}
+influenza_rate_this_week = n_cases_this_week / n_patients_this_week * 1000
+influenza_rate_this_week
+```
+:::
+
+Suppose that the rate of influenza last week was 30 cases per 1,000 patients. Estimate the **rate ratio** of influenza associated with this week versus last week. Use the `influenza_rate_this_week` variable in your calculation.
+
+```{r}
+
+```
+
+::: {.callout-tip collapse="true" title="Solution"}
+```{r}
+influenza_rate_this_week / 30
+```
+:::
+
+# Part 2: Vectors
+
+The vectors below contains the number of influenza cases and the number of patients in the hospital for each week of our study.
+
+In both vectors, the estimate for the first month is the first value in the vector, the estimate for the second month is the second value, the estimate for the third month is the third value, etc.
+
+```{r}
+n_patients = c(147, 408, 168, 252, 203, 253)
+n_cases = c(0, 4, 4, 5, 3, 1)
+```
+
+Using the variables you created in part 1, add `n_patients_this_week` and `n_cases_this_week` to the end of the `n_patients` and `n_cases` vectors.
+
+```{r}
+n_patients = c(n_patients, ...)
+n_cases = ...
+```
+
+::: {.callout-tip collapse="true" title="Solution"}
+```{r}
+n_patients = c(n_patients, n_patients_this_week)
+n_cases = c(n_cases, n_cases_this_week)
+```
+:::
+
+Use vector operations to estimate the total number of patients.
+
+```{r}
+total_patients = sum(...)
+```
+
+::: {.callout-tip collapse="true" title="Solution"}
+```{r}
+total_patients = sum(n_patients)
+```
+:::
+
+Use vector operations to estimate the total number of influenza cases
+
+```{r}
+total_cases = ...
+```
+
+::: {.callout-tip collapse="true" title="Solution"}
+```{r}
+total_cases = sum(n_cases)
+```
+:::
+
+Use vector operations to estimate the total rate of cases per 1,000 patients.
+
+```{r}
+total_rate = ... / ... * ...
+```
+
+::: {.callout-tip collapse="true" title="Solution"}
+```{r}
+total_rate = total_cases / total_patients * 1000
+```
+:::
+
+Use vector indexing to estimate the rate of cases per 1,000 patients in the **third** week of the study.
+
+```{r}
+...
+```
+
+::: {.callout-tip collapse="true" title="Solution"}
+```{r}
+n_cases[3] / n_patients[3] * 1000
+```
+:::
+
+Use vector operations to estimate the rate of cases per 1,000 patients in **each** week of the study.
+
+```{r}
+...
+```
+
+::: {.callout-tip collapse="true" title="Solution"}
+```{r}
+n_cases / n_patients * 1000
+```
+:::
+
+# Part 3: Data Frames
+
+At the end of the study, the team compiles the data into a data frame as follows
+
+```{r}
+influenza_data = 
+  data.frame(week = 1:12, 
+             n_patients = c(147, 408, 168, 252, 203, 253, 258, 342, 205, 246, 123, 119),
+             n_cases = c(0, 4, 4, 5, 3, 1, 2, 1, 0, 0, 1, 1))
+
+influenza_data
+```
+
+Use data frame indexing to subset the data to the 5th week of the study.
+
+```{r}
+
+```
+
+::: {.callout-tip collapse="true" title="Solution"}
+```{r}
+influenza_data[5, ]
+```
+:::
+
+Use data frame operations to extract the number of cases as a one-column data frame .
+
+```{r}
+
+```
+
+::: {.callout-tip collapse="true" title="Solution"}
+```{r}
+influenza_data["n_cases"]
+```
+:::
+
+Use data frame operations to extract the number of cases as a vector.
+
+```{r}
+
+```
+
+::: {.callout-tip collapse="true" title="Solution"}
+```{r}
+influenza_data$n_cases
+# Or: influenza_data[["n_cases"]]
+```
+:::
+
+Use data frame and vector operations to make a vector with the rate of cases per 1,000 patients in the first 8 weeks of the study.
+
+```{r}
+influenza_data_first8weeks = influenza_data[...]
+...
+```
+
+::: {.callout-tip collapse="true" title="Solution"}
+```{r}
+influenza_data_first8weeks = influenza_data[1:8, ]
+influenza_data_first8weeks$n_cases / influenza_data_first8weeks$n_patients * 1000
+```
+:::

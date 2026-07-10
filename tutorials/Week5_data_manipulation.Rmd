@@ -1,17 +1,9 @@
 ---
-title: "Week 5: Data Manipulation"
+title: "Data Manipulation"
 output: html_notebook
 ---
 
-# Week 5: Data Manipulation
-
-Welcome to Week 5! This week, we'll introduce methods for data manipulation, or the alteration of data frames to gain new insights from the data. This tutorial will cover different methods to create new variables, combine datasets, and reshape data frames.
-
-Before you start, run the cell below to load the required packages.
-
-```{r}
-library(tidyverse) # also loads dplyr
-```
+In this tutorial, we'll introduce methods for data manipulation, or the alteration of data frames to gain new insights from the data. This tutorial will cover different methods to create new variables, combine datasets, and reshape data frames.
 
 We'll continue to work with the Framingham data in this tutorial. Run the code below to load the data as `framingham_df` from the [course GitHub repo](https://github.com/r-pophealth-research/online-course/tree/main/data).
 
@@ -168,21 +160,19 @@ Create a new variable `high_BMI` in framingham_df that takes on the value `1` if
 framingham_df %>% 
   mutate(high_BMI = ...(BMI >= 30, ..., ...))
 ```
-::: {.callout-tip collapse="true"}
-## Solution
 
+::: {.callout-tip collapse="true" title="Solution"}
 ```{r}
 framingham_df %>%
   mutate(high_BMI = ifelse(BMI >= 30, 1, 0))
 ```
 :::
 
-
 ### case_when()
 
-`ifelse()` works well for creating binary variables but when we want to create a categorical variable with 3+ levels, `case_when()` is a more appropriate function.
+`if_else()` works well for creating binary variables but when we want to create a categorical variable with 3+ levels, `case_when()` is a more appropriate function.
 
-Like `ifelse()`, `case_when()` reflects the logic that `if`, `else if`, and `else` follow. It takes any number of arguments that follow the structure `condition ~ new_value` (note how it uses a `~` instead of a `=`).
+Like `if_else()`, `case_when()` reflects the logic that `if`, `else if`, and `else` follow. It takes any number of arguments that follow the structure `condition ~ new_value` (note how it uses a `~` instead of a `=`).
 
 For example, the code below recodes `education` to more informative labels (0 = Unknown, 1 = Didn't graduate high school; 2 = High school diploma, GRE; 3 = Some college, 4 = Bachelor's degree or higher)
 
@@ -222,9 +212,8 @@ framingham_df %>%
   mutate(age_decades = ...(age < 30 ~ ..., 
                            ...))
 ```
-::: {.callout-tip collapse="true"}
-## Solution
 
+::: {.callout-tip collapse="true" title="Solution"}
 ```{r}
 framingham_df %>%
   mutate(age_decades = case_when(age < 30 ~ "20s",
@@ -235,7 +224,6 @@ framingham_df %>%
                                  age < 80 ~ "70s"))
 ```
 :::
-
 
 # Renaming Columns
 
@@ -262,14 +250,12 @@ Rename the `education` column to `highest_education_completed`
 ```{r}
 framingham_df %>% ...
 ```
-::: {.callout-tip collapse="true"}
-## Solution
 
+::: {.callout-tip collapse="true" title="Solution"}
 ```{r}
 framingham_df %>% rename(highest_education_completed = education)
 ```
 :::
-
 
 # Joining Data Sets
 
@@ -462,9 +448,8 @@ Hint 1: Start by creating a data frame `chd_prev` with the prevalence of CHD for
 chd_prev = framingham_df %>% group_by(...) %>% summarize(chd_prev = ...)
 chd_income_df = chd_prev %>% ...(zip_code_demog, by = c("zip_code" = "zip"))
 ```
-::: {.callout-tip collapse="true"}
-## Solution
 
+::: {.callout-tip collapse="true" title="Solution"}
 ```{r}
 chd_prev = framingham_df %>%
   group_by(zip_code) %>%
@@ -475,7 +460,6 @@ chd_income_df = chd_prev %>%
             by = c("zip_code" = "zip"))
 ```
 :::
-
 
 # Reshaping Data
 
@@ -555,10 +539,207 @@ In this tutorial, you learned about the data manipulation methods that help make
 
 Next week, you'll start applying your new R skillset to statistical analyses that mirror tasks you might encounter in health research.
 
-# Resources
+# Extra Practice
 
-[Introduction to dplyr](https://dplyr.tidyverse.org/articles/dplyr.html)
+This week, we'll explore dengue infections using a dataset from [this study published in *Nature Microbiology*](https://www.nature.com/articles/s41564-023-01543-3 "Household immunity and individual risk of infection with dengue virus in a prospective, longitudinal cohort study").
 
-[Data Wrangling with dplyr and tidyverse Cheat Sheet](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
+Load the `dengue_infection_data.csv` dataset from the [course GitHub repo](https://github.com/r-pophealth-research/online-course/tree/main/data) in the cell below.
 
-R for Data Science Chapter 19: [Joins](https://r4ds.hadley.nz/joins)
+In this dataset, each row captures the number of infections reported for each individual during the study. Each individual is assigned an `ID`, and individuals who share a household share a `hh_ID`.
+
+```{r}
+dengue_infections = read_csv("https://raw.githubusercontent.com/r-pophealth-research/online-course/main/data/dengue_infection_data.csv")
+```
+
+## Part 1: Data Exploration
+
+Start by exploring the data. We've provided some suggested steps, but feel free to add more cells if there's anything you want to take a closer look at.
+
+What the dimensions (number of rows, number of columns) of the dataset?
+
+```{r}
+
+```
+::: {.callout-tip collapse="true" title="Solution"}
+```{r}
+dim(dengue_infections)
+```
+:::
+
+Summarize the dataset using `summary()`. What are the columns in the data? What do they represent?
+
+```{r}
+
+```
+::: {.callout-tip collapse="true" title="Solution"}
+```{r}
+summary(dengue_infections)
+colnames(dengue_infections)
+```
+:::
+
+How many individuals are captured in the dataset? How many households? In other words, how many unique values of the `ID` and `hh_ID` columns are there?
+
+```{r}
+
+```
+::: {.callout-tip collapse="true" title="Solution"}
+```{r}
+# Number of individuals (one row per ID)
+nrow(dengue_infections)
+# Or: dengue_infections %>% pull(ID) %>% unique() %>% length()
+
+# Number of households
+dengue_infections %>% pull(hh_ID) %>% unique() %>% length()
+```
+:::
+
+Make a histogram of the number of asymptomatic cases in the dataset (`n_asymp_infections`)
+
+```{r}
+
+```
+::: {.callout-tip collapse="true" title="Solution"}
+```{r}
+hist(dengue_infections$n_asymp_infections)
+```
+:::
+
+Estimate the average size of households in the dataset.
+
+```{r}
+
+```
+::: {.callout-tip collapse="true" title="Solution"}
+```{r}
+hh_sizes = dengue_infections %>% 
+  group_by(hh_ID) %>% 
+  summarize(size = n()) 
+mean(hh_sizes$size)
+```
+:::
+
+## Part 2: Creating and Modifying Variables
+
+Run the cell below to create a copy of `dengue_infections` called `dengue_infections_clean`. We will be using `dengue_infections_clean` for the rest of the notebook, where we'll be adding new variables + modifying existing variables. Generally, it's good practice to keep your original "untouched", and make modifications on a copy.
+
+```{r}
+dengue_infections_clean = dengue_infections
+```
+
+Suppose we find out that ages were not properly recorded for individuals with IDs 4, 87, and 134. We want to retain their infection information for future analyses, but don't want the incorrect ages to bias any results. Modify the `age` column so the ages for IDs 4, 87, and 134 are equal to `NA`, but that `age` is unchanged for all other IDs.
+
+```{r}
+dengue_infections_clean = dengue_infections_clean %>% 
+  mutate(... = if_else(ID %in% c(4, 87, 134), ..., ...))
+```
+::: {.callout-tip collapse="true" title="Solution"}
+```{r}
+dengue_infections_clean = dengue_infections_clean %>% 
+  mutate(age = if_else(ID %in% c(4, 87, 134), NA, age))
+```
+:::
+
+Create a column in `dengue_infections_clean` called `any_infection`, which is equal to `1` if the individual had experienced either a symptomatic or asymptomatic infection during the trial and `0` otherwise.
+
+```{r}
+dengue_infections_clean = dengue_infections_clean %>% 
+  ...
+```
+::: {.callout-tip collapse="true" title="Solution"}
+```{r}
+dengue_infections_clean = dengue_infections_clean %>% 
+  mutate(any_infection = if_else(n_symp_infections + n_asymp_infections > 0, 1, 0))
+```
+:::
+
+Create a column in `dengue_infections_clean` called `age_group`, which is equal to "\<18" if the individual is between the ages of 0 and 17 years old, "18-64" if the individual is between the ages of 18 and 64 years old, and 65+ if the individual is 65 or more years old.
+
+```{r}
+dengue_infections_clean = dengue_infections_clean %>% 
+  ...
+```
+::: {.callout-tip collapse="true" title="Solution"}
+```{r}
+dengue_infections_clean = dengue_infections_clean %>% 
+  mutate(age_group = case_when(age < 18 ~ "<18", 
+                               age < 65 ~ "18-64", 
+                               TRUE ~ "65+"))
+```
+:::
+
+## Part 3: Joining Data Sets
+
+We also have access to household-level characteristics in `dengue_hh_data.csv`. Run the cell below to load that data.
+
+```{r}
+dengue_hh_data = read_csv("https://raw.githubusercontent.com/r-pophealth-research/online-course/main/data/dengue_hh_data.csv")
+```
+
+Join the *cleaned* individual and household level data to create a dataset called `merged_dengue_data`, where there is still only one row per individual
+
+```{r}
+merged_dengue_data = ...
+```
+::: {.callout-tip collapse="true" title="Solution"}
+```{r}
+merged_dengue_data = dengue_infections_clean %>% 
+  left_join(dengue_hh_data, by = c("hh_ID" = "household_id"))
+```
+:::
+
+To confirm that you've completed the join correctly, run the cell below and make sure it returns `TRUE`.
+
+```{r}
+nrow(merged_dengue_data) == nrow(dengue_infections)
+```
+
+## Part 4: Grouping and Reshaping Data
+
+Suppose we were interested in differences in dengue prevalence by age. Use `group_by` and `summarize` to estimate the count and prevalence of any dengue (both symptomatic and asymptomatic) in each age group. Use the grouped data to get the percent of \<18 with dengue divided by the percent of 18-65 with dengue.
+
+```{r}
+prev_by_age = ...
+
+prev_under18 = ...
+prev_18to65 = ...
+
+# Prevalence ratio of <18 vs 18-65
+prev_under18 / prev_18to65
+```
+::: {.callout-tip collapse="true" title="Solution"}
+```{r}
+prev_by_age = 
+  dengue_infections_clean %>% 
+  group_by(age_group) %>% 
+  summarize(count_cases = sum(any_infection), 
+            prev_cases = mean(any_infection))
+
+prev_under18 = prev_by_age %>% filter(age_group == "<18") %>% pull(prev_cases)
+prev_18to65 = prev_by_age %>% filter(age_group == "18-64") %>% pull(prev_cases)
+
+# Prevalence ratio of <18 vs 18-64
+prev_under18 / prev_18to65
+```
+:::
+
+To more easily compare symptomatic and asymptomatic infections, we might want to restructure our data from having separate `n_symp_infections` + `n_asymp_infections` columns to a `infection_type` (with the values "symp" or "asymp") columns + a `n_infections` (with the number of infections) column. Use `pivot_longer` to transform your data in this way.
+
+```{r}
+long_dengue_df = ...
+
+long_dengue_df
+```
+::: {.callout-tip collapse="true" title="Solution"}
+```{r}
+long_dengue_df = dengue_infections_clean %>% 
+  pivot_longer(cols = c("n_symp_infections", "n_asymp_infections"), 
+               names_to = "infection_type", 
+               values_to = "n_infections") %>% 
+  mutate(infection_type = if_else(infection_type == "n_symp_infections",
+                                  "symp", 
+                                  "asymp"))
+
+long_dengue_df
+```
+:::

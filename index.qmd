@@ -6,7 +6,7 @@ Welcome to **R for Health Research** — an introduction to R programming and da
 
 These materials were adapted from materials from the 2024-2025 offerings of EPI/CHPR 202 at Stanford University, and were authored by [Anna Nguyen](https://www.linkedin.com/in/annatnguyen98/) and [Samuel Jaros](https://www.linkedin.com/in/samuel-jaros/). Anna Nguyen converted course materials into this online course with the assistance of [Cursor](https://cursor.com/)
 
-You do not need R installed on your computer to use this site. The tutorials and homework pages include interactive code cells powered by [WebR](https://docs.r-wasm.org/webr/latest/) and [Quarto](https://quarto.org). If you prefer working locally, see the [Install R and RStudio](appendix/install_r_rstudio.qmd) appendix for setup instructions.
+You do not need R installed on your computer to use this site. The tutorials include interactive code cells powered by [WebR](https://docs.r-wasm.org/webr/latest/) and [Quarto](https://quarto.org). If you prefer working locally, see the [Install R and RStudio](appendix/install_r_rstudio.qmd) appendix for setup instructions.
 
 ## Running R in your browser with WebR
 
@@ -34,5 +34,4 @@ print("Hello world!")
 ## How to use this site
 
 - **Tutorials** — Interactive lessons that walk through R concepts week by week. Work through the code cells as you read.
-- **Homework** — Practice assignments with editable code cells. Complete them in your browser, or download the source files from the [course GitHub repo](https://github.com/r-pophealth-research/online-course) to work in RStudio.
 

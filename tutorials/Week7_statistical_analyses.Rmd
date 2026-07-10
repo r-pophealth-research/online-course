@@ -1,25 +1,21 @@
 ---
-title: "Week7_statistical_models"
+title: "Statistical Inference"
 output: html_document
 ---
 
 ## Disclaimer: Statistics Pre-Requisites
 
-We assume that you have completed the pre-requisite EPI 258/259, or an equivalent introduction to statistics class. In this tutorial, we will teach you code needed to implement various statistical tests and models but will not cover the underlying theory of these tools. We do not expect you to remember which test to use when. Instead, we may tell you to run a certain test on certain variables, and you will be responsible for implementing the relevant code and interpreting the output. Getting you set up to run analyses in this way will prepare you for (often fast-paced) statistics courses and/or get you started on analyses with advising from someone with statistical training.
+In this tutorial, we will teach you code needed to implement various statistical tests and models but will not cover the underlying theory of these tools. We do not expect you to remember which test to use when. Instead, we may tell you to run a certain test on certain variables, and you will be responsible for implementing the relevant code and interpreting the output. Getting you set up to run analyses in this way will prepare you for (often fast-paced) statistics courses and/or get you started on analyses with advising from someone with statistical training.
 
 Unbiased statistical inference relies on proper study design, population sampling, and confounder control. For the sake of this course, we assume all assumptions are met, but checking assumptions is something you need to explicitly do in a research setting.
 
-If we ever use statistical language that is unclear, please feel free to ask us to clarify.
-
-# Statistical Inference
+# Inference
 
 Over the past several weeks, we've have cleaned our Framingham data using the skills we learned in weeks 4 and 5 and we familiarized ourselves with the distributions of different variables in week 6. This week we'll go over code to implement statistical tests and models for inferential analysis.
 
 Run the cell below to load `clean_fram_data`, a "cleaned" version of the Framingham data set.
 
-```{r setup}
-library(tidyverse)
-
+```{r}
 # Get a dataset similar to the one we had last week
 clean_fram_data <- read_csv("https://raw.githubusercontent.com/r-pophealth-research/online-course/main/data/framingham.csv", show_col_types=F) %>%
     mutate(education = case_when(education == 1 ~ "Less than high school", # Education labelling
@@ -59,18 +55,13 @@ Do a chi-squared test to answer the question, "Is there a statistically signific
 ```{r}
 chisq.test(...)
 ```
-::: {.callout-tip collapse="true"}
-## Solution
+::: {.callout-tip collapse="true" title="Solution"}
 
 ```{r}
 chisq.test(clean_fram_data$BPMeds, clean_fram_data$sex)
 ```
 :::
 
-
-**Interpret the output here**: ...
-
-------------------------------------------------------------------------
 
 ## Categorical vs Continuous
 
@@ -91,18 +82,13 @@ Repeat this t-test for the age difference between smokers and non-smokers. Inter
 ```{r}
 t.test(...)
 ```
-::: {.callout-tip collapse="true"}
-## Solution
+::: {.callout-tip collapse="true" title="Solution"}
 
 ```{r}
 t.test(age~smoker, data=clean_fram_data)
 ```
 :::
 
-
-**Interpret the output here**: ...
-
-------------------------------------------------------------------------
 
 # Statistical Models
 
@@ -145,8 +131,7 @@ dbp_age_mod <- lm(...)
 summary(...)
 confint(...)
 ```
-::: {.callout-tip collapse="true"}
-## Solution
+::: {.callout-tip collapse="true" title="Solution"}
 
 ```{r}
 dbp_age_mod <- lm(diaBP ~ age + I(age^2) + sex + smoker, data=clean_fram_data)
@@ -156,10 +141,6 @@ confint(dbp_age_mod)
 ```
 :::
 
-
-**Interpret the output here**: ...
-
-------------------------------------------------------------------------
 
 ## Logistic Models
 
@@ -200,8 +181,7 @@ chd_smok_sbp_mod <- glm(...)
 # Get the coefficients. Don't forget to exponentiate!
 
 ```
-::: {.callout-tip collapse="true"}
-## Solution
+::: {.callout-tip collapse="true" title="Solution"}
 
 ```{r}
 chd_smok_sbp_mod <- glm(TenYearCHD ~ smoker + sysBP,
@@ -213,10 +193,6 @@ exp(confint(chd_smok_sbp_mod))
 ```
 :::
 
-
-**Interpret the output here**: ...
-
-------------------------------------------------------------------------
 
 ## Refactoring
 
@@ -265,8 +241,7 @@ chd_educ_factor_mod <- glm(...)
 # Get coefficients
 exp(...)
 ```
-::: {.callout-tip collapse="true"}
-## Solution
+::: {.callout-tip collapse="true" title="Solution"}
 
 ```{r}
 education_levels <- c("4-year degree or higher", "Some college",
@@ -282,72 +257,61 @@ exp(chd_educ_factor_mod$coefficients)
 ```
 :::
 
-
-**Interpret your model here**:
-
-------------------------------------------------------------------------
-
 # Bootstrapping
 
 Bootstrapping is an advanced technique that is extremely useful in real-world analyses when statistical assumptions may not hold.
 
-In pretty much every study with real-world medical data, your statistical assumptions are going to be bent or completely broken. For these situations, our friends on main campus in the stats department Brad Efron and Rob Tibshirani invented **bootstrapping**. They called it bootstrapping because the data overcomes its weirdness by "pulling itself up by the bootsraps" through random sampling (it was the 80's). The idea behind bootstrapping is that we are simulating the re-sampling process, as though we went back out into the world and collected more data. Actually doing so is often too expensive and time-consuming, so we randomly sample from the data we have. Rather than using an estimate of the error like a statistical test does, we can observe the error by "repeating" the experiment many times. Let's estimate the mean difference and 95% confidence interval of that difference for the skewed `cigsPerDay` data with **bootstrapping**.
+In pretty much every study with real-world medical data, your statistical assumptions are going to be bent or completely broken. For these situations, our friends on main campus in the stats department Brad Efron and Rob Tibshirani invented **bootstrapping**. They called it bootstrapping because the data overcomes its weirdness by "pulling itself up by the bootstraps" through random sampling (it was the 80's). The idea behind bootstrapping is that we are simulating the re-sampling process, as though we went back out into the world and collected more data. Actually doing so is often too expensive and time-consuming, so we randomly sample from the data we have. Rather than using an estimate of the error like a statistical test does, we can observe the error by "repeating" the experiment many times. Let's estimate the mean difference and 95% confidence interval of that difference for the skewed `cigsPerDay` data with **bootstrapping**.
 
 We perform bootstrapping by estimating a value many times (usually around 1000) and then taking the mean and percentiles of that data. In-between estimation, we take a random sample with replacement of our original data to get a slightly different but mostly the same dataset. In this way, outliers have less and less influence on the data. Let's walk through 1 iteration of a bootstrap.
 
 1.  Take our existing dataset and randomly select a rows equal to the number of rows in the existing rows *with replacement*. With replacement means that we will get a slightly different dataset than our original with some rows being duplicated and other rows being left out entirely. Hint: Look at `?slice_sample`.
 
-    ```{r}
-    # When you do random sampling, you should do set.seed() so that
-    #   your "random" sample is the same every time you run this code block. 
-    #   It makes it easier to debug.
-    set.seed(0)
+```{r}
+# When you do random sampling, you should do set.seed() so that
+#   your "random" sample is the same every time you run this code block. 
+#   It makes it easier to debug.
+set.seed(0)
 
-    # Your code goes here
-    bootstrap_sample
-    ```
+bootstrap_sample = 
+```
 
-2.  Get the mean `cigsPerDay` for males and females separately.
+2.  Get the mean `cigsPerDay` for males and females in the bootstrap sample separately.
 
-    ```{r}
-    male_mean
+```{r}
+male_mean = 
 
-    female_mean
-    ```
+female_mean = 
+```
 
 3.  Subtract the female mean from the male mean and save it to the variable `bootstrap_difference`. We expect males to smoke more given our previous results, and doing the subtraction this way will allow us to end up with a positive number.
 
-    ```{r}
-    bootstrap_difference
-    ```
+```{r}
+bootstrap_difference = 
+```
 
 4.  Now we combine these three steps inside a for loop that will run 1000 times. Each time inside the for loop, we save the `bootstrap_difference` to a vector `all_boot_differences`. If you need to remember how to make a for loop that saves something to a vector every time, look back at week 2.
 
-    ```{r}
-    # When you do random sampling, you should do set.seed() so that
-    #   your "random" sample is the same every time you run this code block. 
-    #   It makes it easier to debug.
-    set.seed(0)
+```{r}
+# When you do random sampling, you should do set.seed() so that
+#   your "random" sample is the same every time you run this code block. 
+#   It makes it easier to debug.
+set.seed(0)
 
-    # Create a vector to store estimated differences in each bootstrapped sample
+# Create a vector to store estimated differences in each bootstrapped sample
 
-    # Make a For loop that performs steps 1-3 each time through and saves the
-    #   result to the vector above.
+# Make a For loop that performs steps 1-3 each time through and saves the
+#   result to the vector above.
 
-    ```
+```
 
 5.  Our `all_boot_differences` vector is now full of simulated random means from different dataset that are similar to our original data. Now, we can use `mean` to get the mean difference of the vector and `quantile` with `probs=c(0.025,0.975)` to get the 95% confidence interval.
 
-    ```{r}
+```{r}
 
-    ```
+```
 
-### Spoilers for the challenge below this line
-
-------------------------------------------------------------------------
-
-Your code should hopefully look something like this:
-
+::: {.callout-tip collapse="true" title="Solution"}
 ```{r}
 set.seed(0)
 
@@ -387,5 +351,6 @@ mean(all_boot_differences)
 # Get bootstrapped 95% confidence interval
 quantile(all_boot_differences, probs=c(0.025,0.975))
 ```
+:::
 
 Using bootstrapping, we calculated an estimate and a 95% percent confidence interval without needing to use a statistical test with all of its annoying assumptions. Instead, because our 95% confidence interval does not cross zero, we can say that men smoke significantly more cigarettes than women on overage (go back and note how this conclusion is different from the one in the chi squared test).
