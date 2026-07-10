@@ -192,8 +192,10 @@ If-else statements give us a chance to decide what code should be run. They will
 ```{r}
 if(conditional_statement){
   # If conditional_statement is TRUE, this code will be run
+  ...
 } else {
   # If conditional_statement is FALSE, this code will be run
+  ...
 }
 ```
 
@@ -228,13 +230,13 @@ if(x > 5) {
   print("x is greater than 5")
 }
 
-# Categorize x into whether it's over 10, 9-5, 5-3, or less than or equal to 2.
+# Categorize x into whether it's over 10, 6-10, 3-5, or less than or equal to 2.
 if (x > 10) { 
   print("x is greater than 10")
 } else if (x > 5) {
-  print("x is 9 to 5")
+  print("x between 6 and 10")
 } else if (x > 2) {
-  print("x is 5 to 3")
+  print("x is between 3 and 5")
 } else {
   print("x is less than or equal to 2")
 }
@@ -455,9 +457,9 @@ Write a function called `smart_log` that takes any number as the input. If that 
 ```{r}
 smart_log <- function(...){
   # If statement to check if the number is zero or negative that returns NA
-  
+  ...
   # Otherwise, return the log of the number
-  
+  ...
 }
 
 # Check your function
@@ -496,9 +498,9 @@ logs <- c()
 # the function you made above
 for(...) {
   # Use the smart_log function to get the log and save it to a variable
-  
+  ...
   # Add that variable to the logs list
-  
+  ...
 }
 
 # Check your results

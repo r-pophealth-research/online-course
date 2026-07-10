@@ -153,8 +153,6 @@ adapt_chunk_for_webr <- function(chunk_lines) {
   text <- gsub("file\\.exists\\([^)]+\\)", "TRUE  # data hosted in the course GitHub repo", text)
   text <- gsub("^here\\(\\)\\s*$", "# Data files are loaded from the course GitHub repo", text, perl = TRUE)
 
-  text <- gsub("\\?read_csv\\(\\)", "# Run ?read_csv() in RStudio to view readr documentation", text)
-
   strsplit(text, "\n", fixed = TRUE)[[1]]
 }
 
