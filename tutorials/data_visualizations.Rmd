@@ -149,10 +149,10 @@ Plot the distribution of maternal mortality in 2010 in the Americas using a hist
 
 ```{r}
 # Set up the data
-#maternal_mortality_2010 = ...
+maternal_mortality_2010 = ...
 
 # Create the plot
-#ggplot(maternal_mortality_2010, ...)
+ggplot(maternal_mortality_2010, ...)
 ```
 ::: {.callout-tip collapse="true" title="Solution"}
 
@@ -175,10 +175,10 @@ Plot the distribution of maternal mortality in 2000 among upper-middle income co
 
 ```{r}
 # Set up the data
-#maternal_mortality_2000_uppermid = ...
+maternal_mortality_2000_uppermid = ...
 
 # Create the plot
-#ggplot(maternal_mortality_2000_uppermid, ...)
+ggplot(maternal_mortality_2000_uppermid, ...)
 ```
 ::: {.callout-tip collapse="true" title="Solution"}
 
@@ -228,7 +228,7 @@ From this plot, we can see how even the different categories are. It seems like 
 Plot the distribution of regions represented in 2020 using a bar plot.
 
 ```{r}
-#ggplot(...)
+ggplot(...)
 ```
 ::: {.callout-tip collapse="true" title="Solution"}
 
@@ -352,7 +352,7 @@ This plot combines the benefits of the histogram with the box plot so that we ca
 Plot the distribution of mortality in 2020 by region, using either a box plot or violin plot. Try using a `scale_` function to rearrange the order of how regions are displayed.
 
 ```{r}
-#ggplot(...)
+ggplot(...)
 ```
 ::: {.callout-tip collapse="true" title="Solution"}
 
@@ -560,7 +560,7 @@ ggplot(se_asia_maternal_mortality,
 Plot the mortality estimates (and their 95% CIs) for Yemen and Oman over time. Plot each country in a different color. For a challenge, try varying the line types as well.
 
 ```{r}
-#ggplot(...)
+ggplot(...)
 ```
 ::: {.callout-tip collapse="true" title="Solution"}
 

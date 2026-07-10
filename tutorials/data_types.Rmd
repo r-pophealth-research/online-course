@@ -266,7 +266,7 @@ Based on the ordering given above (`"1"<"10"<"2"<"a"<"A"<"ab"<"AB"<"b"<"z"`), am
 Calculate 1,248 squared.
 
 ```{r}
-
+...
 ```
 
 ::: {.callout-tip collapse="true" title="Solution"}

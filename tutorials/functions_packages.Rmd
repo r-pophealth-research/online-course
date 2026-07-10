@@ -91,7 +91,7 @@ seq(1, 10, 2)
 Now you use `seq()` to generate all multiples of 0.2 from 0 to 5 (e.g. 0, 0.2, 0.4, ... , 4.8, 5).
 
 ```{r}
-# Write your code here
+
 ```
 
 ::: {.callout-tip collapse="true" title="Solution"}
@@ -127,7 +127,7 @@ The help page on the right side also has examples down at the bottom to help us.
 Use `?runif` (and the Internet if you need) to figure out how to get a random number between -1 and 2.
 
 ```{r}
-# Write your code here
+
 ```
 
 ::: {.callout-tip collapse="true" title="Solution"}
@@ -192,10 +192,10 @@ If-else statements give us a chance to decide what code should be run. They will
 ```{r}
 if(conditional_statement){
   # If conditional_statement is TRUE, this code will be run
-  ...
+  
 } else {
   # If conditional_statement is FALSE, this code will be run
-  ...
+  
 }
 ```
 
@@ -401,7 +401,7 @@ Write a simple function that takes a character input and prints (use `print()`) 
 
 ```{r}
 # Write your function here
-printer
+printer = ...
 
 # Check your function
 printer(input = "Hello world")
@@ -425,7 +425,7 @@ Write a function that takes two inputs, `base` and `exponent`, that returns the 
 ```{r}
 # Fill in the function with the inputs and code needed to calculate
 exponentiate <- function(...) {
-
+  ...
 }
 
 # Check your function
