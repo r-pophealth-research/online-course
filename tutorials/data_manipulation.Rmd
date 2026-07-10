@@ -61,7 +61,7 @@ table(framingham_duplicated_indices)
 
 It appears that there's one row in the dataset that is duplicated; note that `duplicated` will not flag the first instance of duplicated rows. For example, if a row appears 3 times in the dataset `duplicated` will only return 2 `TRUE`s for that set. If a row appears 11 times in the dataset `duplicated` will only return 10 `TRUE`s for that set
 
-We can view what rows are duplicated by indexing the data frame with `framingham_duplicated_indices` (see Week 2 for a refresher)
+We can view what rows are duplicated by indexing the data frame with `framingham_duplicated_indices` (see Data Structures for a refresher)
 
 ```{r}
 framingham_df[framingham_duplicated_indices, ]
@@ -111,7 +111,7 @@ framingham_df %>%
 
 ## mutate()
 
-Recall from Week 2 that we can use the `[]` and `$` operators to add new columns to a data frame.
+Recall from Data Structures that we can use the `[]` and `$` operators to add new columns to a data frame.
 
 For example, the both commands add a column called `age_months` to framingham_df. These values convert the age in years (contained in the `age` column) to age in months.
 
@@ -142,7 +142,7 @@ table(framingham_rounded_cigsPerDay$cigsPerDay)
 
 ### if_else()
 
-In some cases, we want to use an existing column to determine the values of a new column. `if_else()` can be used with `mutate` to set the values of a new variables based on a specific condition. It works similarly to if and else statements (see Week 2 for a refresher), and follows the structure `if_else(condition, value_for_true_condition, value_for_false_condition)`.
+In some cases, we want to use an existing column to determine the values of a new column. `if_else()` can be used with `mutate` to set the values of a new variables based on a specific condition. It works similarly to if and else statements (see Functions and Packages for a refresher), and follows the structure `if_else(condition, value_for_true_condition, value_for_false_condition)`.
 
 Suppose we wanted to create a new `sex` column that contains the values `male` or `female` based on the values contained in the `male` column (when 1 = male, 0 = female). The following code makes this new variable using `ifelse()`
 
@@ -442,7 +442,7 @@ Analyses that use data created by a inner join need to be aware of which data po
 
 Create a new data frame `chd_income_df` that contains one row for each zip code represented in `framingham_df` and two columns: (1) `chd_prev`, the prevalence of CHD in the zip code and (2) the median household income of the zip code
 
-Hint 1: Start by creating a data frame `chd_prev` with the prevalence of CHD for each zip code using `group_by`. (See Week 4 tutorial to remind yourself about grouping) Hint 2: We want our table to include one row for each zip code represented in `framingham_df`, even if there isn't household income data available for that zip code. What kind of join function should we use?
+Hint 1: Start by creating a data frame `chd_prev` with the prevalence of CHD for each zip code using `group_by`. (See the Data Exploration chapter to remind yourself about grouping) Hint 2: We want our table to include one row for each zip code represented in `framingham_df`, even if there isn't household income data available for that zip code. What kind of join function should we use?
 
 ```{r}
 chd_prev = framingham_df %>% group_by(...) %>% summarize(chd_prev = ...)
@@ -481,7 +481,7 @@ data.frame(participant_id = c(1, 2, 3),
            var2 = c(7, 5, 8))
 ```
 
-Over the next several weeks, we'll be using some functions that explicitly require data to be in a long or wide format. To switch between the two formats, we can use `pivot_wider` and `pivot_longer`.
+Later in the course, we'll be using some functions that explicitly require data to be in a long or wide format. To switch between the two formats, we can use `pivot_wider` and `pivot_longer`.
 
 ## pivot_longer()
 
@@ -537,11 +537,11 @@ framingham_wide
 
 In this tutorial, you learned about the data manipulation methods that help make data sets more useful for your analyses.
 
-Next week, you'll start applying your new R skillset to statistical analyses that mirror tasks you might encounter in health research.
+Next, you'll start applying your new R skillset to statistical analyses that mirror tasks you might encounter in health research.
 
 # Extra Practice
 
-This week, we'll explore dengue infections using a dataset from [this study published in *Nature Microbiology*](https://www.nature.com/articles/s41564-023-01543-3 "Household immunity and individual risk of infection with dengue virus in a prospective, longitudinal cohort study").
+We'll explore dengue infections using a dataset from [this study published in *Nature Microbiology*](https://www.nature.com/articles/s41564-023-01543-3 "Household immunity and individual risk of infection with dengue virus in a prospective, longitudinal cohort study").
 
 Load the `dengue_infection_data.csv` dataset from the [course GitHub repo](https://github.com/r-pophealth-research/online-course/tree/main/data) in the cell below.
 

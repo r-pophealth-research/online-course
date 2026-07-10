@@ -74,7 +74,7 @@ times_four_plus_one(0)
 
 ## Built-in Functions
 
-R has a bunch of built-in functions that help us get our work done. In fact, you have been using functions this whole time! `data.frame()` is a useful function that we learned about last week. And during week one, we learned about a bunch of math functions like `exp()`, `log()`, and even `abs()` which gives us the absolute value!
+R has a bunch of built-in functions that help us get our work done. In fact, you have been using functions this whole time! `data.frame()` is a useful function that we learned about in the Data Structures chapter. And in Data Types, we learned about a bunch of math functions like `exp()`, `log()`, and even `abs()` which gives us the absolute value!
 
 An especially useful built-in function is `seq()`. This function allows you to generate a sequence of numbers. Now, we already learned that the colon `:` can be used to generate numbers in order. `seq()` expands on this by taking three inputs: `from=`, `to=`, and `by=`. `from` tells it our starting number, `to` tells it our maximum number, and `by` tells it the gaps between the numbers. If we want the numbers 1 through 10, we can just say `1:10` or `seq(from=1, to=10, by=1)`. However, if we want every odd number from 1 to 10, we cannot use the `:` and have to use `seq(from=1, to=10, by=2)`.
 

@@ -19,14 +19,14 @@ website:
     style: floating
     contents:
       - index.qmd
-      - tutorials/Week1_data_types.qmd
-      - tutorials/Week2_data_structures.qmd
-      - tutorials/Week3_functions_packages.qmd
-      - tutorials/Week4_data_exploration.qmd
-      - tutorials/Week5_data_manipulation.qmd
-      - tutorials/Week6_descriptive_statistics.qmd
-      - tutorials/Week7_statistical_analyses.qmd
-      - tutorials/Week8-9_data_visualizations.qmd
+      - tutorials/data_types.qmd
+      - tutorials/data_structures.qmd
+      - tutorials/functions_packages.qmd
+      - tutorials/data_exploration.qmd
+      - tutorials/data_manipulation.qmd
+      - tutorials/descriptive_statistics.qmd
+      - tutorials/statistical_analyses.qmd
+      - tutorials/data_visualizations.qmd
       - section: "Appendix"
         contents:
           - appendix/install_r_rstudio.qmd

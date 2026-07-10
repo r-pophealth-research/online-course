@@ -4,13 +4,14 @@
 
 source_files <- c(
   "appendix/install_r_rstudio.Rmd",
-  "tutorials/Week2_data_structures.Rmd",
-  "tutorials/Week3_functions_packages.Rmd",
-  "tutorials/Week4_data_exploration.Rmd",
-  "tutorials/Week5_data_manipulation.Rmd",
-  "tutorials/Week6_descriptive_statistics.Rmd",
-  "tutorials/Week7_statistical_analyses.Rmd",
-  "tutorials/Week8-9_data_visualizations.Rmd"
+  "tutorials/data_types.Rmd",
+  "tutorials/data_structures.Rmd",
+  "tutorials/functions_packages.Rmd",
+  "tutorials/data_exploration.Rmd",
+  "tutorials/data_manipulation.Rmd",
+  "tutorials/descriptive_statistics.Rmd",
+  "tutorials/statistical_analyses.Rmd",
+  "tutorials/data_visualizations.Rmd"
 )
 
 sync_dengue_data <- function() {

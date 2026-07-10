@@ -5,7 +5,7 @@ output: html_notebook
 
 In this chapter, we'll start diving into datasets and cover different commands to view and summarize your the information contained in data frames.
 
-Through this tutorial (and the rest of the class), we will be leveraging open source tools from the `tidyverse` package. `tidyverse` includes several "core" packages that can be used in data exploration, manipulation, and visualizations. Over the next two weeks, we'll learn about the basics of `dplyr`, a package that includes several useful functions to interact with data.
+Through this tutorial (and the rest of the class), we will be leveraging open source tools from the `tidyverse` package. `tidyverse` includes several "core" packages that can be used in data exploration, manipulation, and visualizations. In this chapter and the next, we'll learn about the basics of `dplyr`, a package that includes several useful functions to interact with data.
 
 # Loading Data
 
@@ -89,7 +89,7 @@ arrange(framingham_df, -heartRate)
 
 # Basic Data Visualizations
 
-We might also be interested in viewing the values of a specific variable. In week 2, we learned how to describe the vectors using functions like `mean()`, `summary()`, and `range()` which can also be applied to the columns of dataframes (ex `mean(framingham_df$age)`). However, numerical summaries can't capture every feature of a distribution. Histograms, boxplots, and scatterplots provide another view of data frames and can be easily produced using R's built-in functions.
+We might also be interested in viewing the values of a specific variable. In Data Structures, we learned how to describe the vectors using functions like `mean()`, `summary()`, and `range()` which can also be applied to the columns of dataframes (ex `mean(framingham_df$age)`). However, numerical summaries can't capture every feature of a distribution. Histograms, boxplots, and scatterplots provide another view of data frames and can be easily produced using R's built-in functions.
 
 ## Histograms
 
@@ -154,7 +154,7 @@ There are many different cuts of the data that we might want to examine before s
 
 ## select()
 
-If we want to view specific observations (rows), we can use the `[]` operator (see week 2 materials for a refresher).
+If we want to view specific observations (rows), we can use the `[]` operator (see the Data Structures chapter for a refresher).
 
 ```{r}
 # Returns rows 4-7 of the dataset
@@ -211,7 +211,7 @@ pull(framingham_df, age)
 
 ## filter()
 
-In week 2, we learned how to use `[]` to select rows that meet a certain condition. For example, the code below shows only rows for study participants that were over the age of 65.
+In Data Structures, we learned how to use `[]` to select rows that meet a certain condition. For example, the code below shows only rows for study participants that were over the age of 65.
 
 ```{r}
 framingham_df[framingham_df$age > 65, ]
@@ -419,7 +419,7 @@ framingham_df %>%
 
 In this tutorial, you learned different methods to view, subset, and aggregate data frames. You practiced working with `dplyr` functions and pipes, which help make coding workflows more efficient and streamlined.
 
-Next week, we'll learn about data manipulation which includes methods to create new variables, combine datasets, and reshape data frames.
+Next, we'll learn about data manipulation which includes methods to create new variables, combine datasets, and reshape data frames.
 
 # Extra Practice
 
