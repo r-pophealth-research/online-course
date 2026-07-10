@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Week7_statistical_models – R for Health Research</title>
+<title>Statistical Inference – R for Health Research</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -345,7 +345,7 @@ iframe.qwebr-output-code-browse {
 // Document level settings ----
 
 // Determine if we need to install R packages
-globalThis.qwebrInstallRPackagesList = ['dplyr', 'ggplot2', 'tidyr', 'readr'];
+globalThis.qwebrInstallRPackagesList = ['readr', 'dplyr'];
 
 // Specify possible locations to search for the repository
 globalThis.qwebrPackageRepoURLS = ['https://repo.r-wasm.org/'];
@@ -367,7 +367,7 @@ globalThis.qwebrCustomizedWebROptions = {
 };
 
 // Store cell data
-globalThis.qwebrCellDetails = [{"code":"sex_smoking_table <- table(clean_fram_data$smoker, clean_fram_data$sex)\nprop.table(sex_smoking_table, margin=2)","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"chisq.test(clean_fram_data$smoker, clean_fram_data$sex)","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"chisq.test(...)","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"chisq.test(clean_fram_data$BPMeds, clean_fram_data$sex)","id":4,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-4","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"t.test(age~sex, data=clean_fram_data)","id":5,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-5","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"t.test(...)","id":6,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-6","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"t.test(age~smoker, data=clean_fram_data)","id":7,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-7","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"sbp_age_mod <- lm(sysBP~age, data=clean_fram_data)","id":8,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-8","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"summary(sbp_age_mod)\nconfint(sbp_age_mod)","id":9,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-9","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"sbp_full_mod <- lm(sysBP ~ age + I(age^2) + sex + smoker, data=clean_fram_data)\nsummary(sbp_full_mod)","id":10,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-10","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"dbp_age_mod <- lm(...)\n\n# Get model statistics\nsummary(...)\nconfint(...)","id":11,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-11","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"dbp_age_mod <- lm(diaBP ~ age + I(age^2) + sex + smoker, data=clean_fram_data)\n\nsummary(dbp_age_mod)\nconfint(dbp_age_mod)","id":12,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-12","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"chd_smok_age_mod <- glm(TenYearCHD ~ diabetes + age, data=clean_fram_data, \n                        family=\"binomial\")\nsummary(chd_smok_age_mod)","id":13,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-13","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"exp(chd_smok_age_mod$coefficients)\nexp(confint(chd_smok_age_mod))","id":14,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-14","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"chd_smok_sbp_mod <- glm(...)\n\n# Get the coefficients. Don't forget to exponentiate!","id":15,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-15","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"chd_smok_sbp_mod <- glm(TenYearCHD ~ smoker + sysBP,\n                            data=clean_fram_data,\n                            family=\"binomial\")\n\nexp(chd_smok_sbp_mod$coefficients)\nexp(confint(chd_smok_sbp_mod))","id":16,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-16","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"diabetes_levels <- c(\"None\", \"Diabetes\")\n\n# Put the values from the data in order in the levels parameter\nclean_fram_data_factor <- clean_fram_data %>%\n  mutate(diabetes = factor(diabetes, levels=diabetes_levels))\n\n# Use mutated diabetes in logistic model and the new clean_fram_data_factor data set\nchd_diab_factor_mod <- glm(TenYearCHD ~ diabetes + age, data=clean_fram_data_factor, \n                           family=\"binomial\")\nsummary(chd_diab_factor_mod)\nexp(chd_diab_factor_mod$coefficients)","id":17,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-17","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Run summary on non-factored diabetes data\nsummary(clean_fram_data$diabetes)\n\n# Run summary on factored diabetes data\nsummary(clean_fram_data_factor$diabetes)","id":18,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-18","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Put the education levels in order\neducation_levels <- c()\n\n# Re-factor the framingham data using the levels\nclean_fram_data_factor <- clean_fram_data_factor %>%\n  mutate(...)\n\n# Create logistic model\nchd_educ_factor_mod <- glm(...)\n# Get coefficients\nexp(...)","id":19,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-19","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"education_levels <- c(\"4-year degree or higher\", \"Some college\",\n                        \"High school diploma/GED\", \"Less than high school\")\n\nclean_fram_data_factor <- clean_fram_data_factor %>%\n  mutate(educ_labeled = factor(educ_labeled, levels=education_levels))\n\nchd_educ_factor_mod <- glm(TenYearCHD ~ educ_labeled + diabetes + age,\n                           data=clean_fram_data_factor,\n                           family=\"binomial\")\nexp(chd_educ_factor_mod$coefficients)","id":20,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-20","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# When you do random sampling, you should do set.seed() so that\n#   your \"random\" sample is the same every time you run this code block. \n#   It makes it easier to debug.\nset.seed(0)\n\n# Your code goes here\nbootstrap_sample","id":21,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-21","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"male_mean\n\nfemale_mean","id":22,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-22","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"bootstrap_difference","id":23,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-23","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# When you do random sampling, you should do set.seed() so that\n#   your \"random\" sample is the same every time you run this code block. \n#   It makes it easier to debug.\nset.seed(0)\n\n# Create a vector to store estimated differences in each bootstrapped sample\n\n# Make a For loop that performs steps 1-3 each time through and saves the\n#   result to the vector above.","id":24,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-24","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"","id":25,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-25","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"set.seed(0)\n\n# Vector to store differences\nall_boot_differences <- c()\n\n# Number of times to bootstrap\nbootstrap_n <- 1000\n\n# Iterate through number of bootstraps to calculate mean difference in \n#   cigarettes per day by sex\nfor(i in 1:bootstrap_n){\n  # Draw bootstrap sample\n  bootstrap_sample <- clean_fram_data %>%\n    slice_sample(n = nrow(clean_fram_data), replace = T)\n  \n  # Calculate male mean\n  male_mean <- bootstrap_sample %>%\n    filter(sex == \"Male\") %>%\n    pull(cigsPerDay) %>%\n    mean(na.rm = T)\n  \n  # Calculate female mean\n  female_mean <- bootstrap_sample %>%\n    filter(sex == \"Female\") %>%\n    pull(cigsPerDay) %>%\n    mean(na.rm = T)\n  \n  # Add mean difference to vector\n  boot_difference <- male_mean-female_mean\n  all_boot_differences <- c(all_boot_differences, boot_difference)\n}\n\n# Get bootstrapped mean difference\nmean(all_boot_differences)\n\n# Get bootstrapped 95% confidence interval\nquantile(all_boot_differences, probs=c(0.025,0.975))","id":26,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-26","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
+globalThis.qwebrCellDetails = [{"code":"# Get a dataset similar to the one we had last week\nclean_fram_data <- read_csv(\"https://raw.githubusercontent.com/r-pophealth-research/online-course/main/data/framingham.csv\", show_col_types=F) %>%\n    mutate(education = case_when(education == 1 ~ \"Less than high school\", # Education labelling\n                                 education == 2 ~ \"High school diploma/GED\",\n                                 education == 3 ~ \"Some college\",\n                                 education == 4 ~ \"4-year degree or higher\"),\n           smoker = if_else(currentSmoker==0,\"No smoking\",\"Smoker\"), # Smoker labelling\n           sex = if_else(male==1, \"Male\", \"Female\"), # Sex labelling\n           diabetes = if_else(diabetes == 1, \"Diabetes\", \"None\")) # Diabetes labelling","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"sex_smoking_table <- table(clean_fram_data$smoker, clean_fram_data$sex)\nprop.table(sex_smoking_table, margin=2)","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"chisq.test(clean_fram_data$smoker, clean_fram_data$sex)","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"chisq.test(...)","id":4,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-4","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"chisq.test(clean_fram_data$BPMeds, clean_fram_data$sex)","id":5,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-5","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"t.test(age~sex, data=clean_fram_data)","id":6,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-6","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"t.test(...)","id":7,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-7","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"t.test(age~smoker, data=clean_fram_data)","id":8,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-8","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"sbp_age_mod <- lm(sysBP~age, data=clean_fram_data)","id":9,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-9","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"summary(sbp_age_mod)\nconfint(sbp_age_mod)","id":10,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-10","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"sbp_full_mod <- lm(sysBP ~ age + I(age^2) + sex + smoker, data=clean_fram_data)\nsummary(sbp_full_mod)","id":11,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-11","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"dbp_age_mod <- lm(...)\n\n# Get model statistics\nsummary(...)\nconfint(...)","id":12,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-12","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"dbp_age_mod <- lm(diaBP ~ age + I(age^2) + sex + smoker, data=clean_fram_data)\n\nsummary(dbp_age_mod)\nconfint(dbp_age_mod)","id":13,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-13","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"chd_smok_age_mod <- glm(TenYearCHD ~ diabetes + age, data=clean_fram_data, \n                        family=\"binomial\")\nsummary(chd_smok_age_mod)","id":14,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-14","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"exp(chd_smok_age_mod$coefficients)\nexp(confint(chd_smok_age_mod))","id":15,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-15","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"chd_smok_sbp_mod <- glm(...)\n\n# Get the coefficients. Don't forget to exponentiate!","id":16,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-16","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"chd_smok_sbp_mod <- glm(TenYearCHD ~ smoker + sysBP,\n                            data=clean_fram_data,\n                            family=\"binomial\")\n\nexp(chd_smok_sbp_mod$coefficients)\nexp(confint(chd_smok_sbp_mod))","id":17,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-17","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"diabetes_levels <- c(\"None\", \"Diabetes\")\n\n# Put the values from the data in order in the levels parameter\nclean_fram_data_factor <- clean_fram_data %>%\n  mutate(diabetes = factor(diabetes, levels=diabetes_levels))\n\n# Use mutated diabetes in logistic model and the new clean_fram_data_factor data set\nchd_diab_factor_mod <- glm(TenYearCHD ~ diabetes + age, data=clean_fram_data_factor, \n                           family=\"binomial\")\nsummary(chd_diab_factor_mod)\nexp(chd_diab_factor_mod$coefficients)","id":18,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-18","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Run summary on non-factored diabetes data\nsummary(clean_fram_data$diabetes)\n\n# Run summary on factored diabetes data\nsummary(clean_fram_data_factor$diabetes)","id":19,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-19","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Put the education levels in order\neducation_levels <- c()\n\n# Re-factor the framingham data using the levels\nclean_fram_data_factor <- clean_fram_data_factor %>%\n  mutate(...)\n\n# Create logistic model\nchd_educ_factor_mod <- glm(...)\n# Get coefficients\nexp(...)","id":20,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-20","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"education_levels <- c(\"4-year degree or higher\", \"Some college\",\n                        \"High school diploma/GED\", \"Less than high school\")\n\nclean_fram_data_factor <- clean_fram_data_factor %>%\n  mutate(educ_labeled = factor(educ_labeled, levels=education_levels))\n\nchd_educ_factor_mod <- glm(TenYearCHD ~ educ_labeled + diabetes + age,\n                           data=clean_fram_data_factor,\n                           family=\"binomial\")\nexp(chd_educ_factor_mod$coefficients)","id":21,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-21","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# When you do random sampling, you should do set.seed() so that\n#   your \"random\" sample is the same every time you run this code block. \n#   It makes it easier to debug.\nset.seed(0)\n\nbootstrap_sample = ","id":22,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-22","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"male_mean = \n\nfemale_mean = ","id":23,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-23","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"bootstrap_difference = ","id":24,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-24","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# When you do random sampling, you should do set.seed() so that\n#   your \"random\" sample is the same every time you run this code block. \n#   It makes it easier to debug.\nset.seed(0)\n\n# Create a vector to store estimated differences in each bootstrapped sample\n\n# Make a For loop that performs steps 1-3 each time through and saves the\n#   result to the vector above.","id":25,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-25","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"","id":26,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-26","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"set.seed(0)\n\n# Vector to store differences\nall_boot_differences <- c()\n\n# Number of times to bootstrap\nbootstrap_n <- 1000\n\n# Iterate through number of bootstraps to calculate mean difference in \n#   cigarettes per day by sex\nfor(i in 1:bootstrap_n){\n  # Draw bootstrap sample\n  bootstrap_sample <- clean_fram_data %>%\n    slice_sample(n = nrow(clean_fram_data), replace = T)\n  \n  # Calculate male mean\n  male_mean <- bootstrap_sample %>%\n    filter(sex == \"Male\") %>%\n    pull(cigsPerDay) %>%\n    mean(na.rm = T)\n  \n  # Calculate female mean\n  female_mean <- bootstrap_sample %>%\n    filter(sex == \"Female\") %>%\n    pull(cigsPerDay) %>%\n    mean(na.rm = T)\n  \n  # Add mean difference to vector\n  boot_difference <- male_mean-female_mean\n  all_boot_differences <- c(all_boot_differences, boot_difference)\n}\n\n# Get bootstrapped mean difference\nmean(all_boot_differences)\n\n# Get bootstrapped 95% confidence interval\nquantile(all_boot_differences, probs=c(0.025,0.975))","id":27,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"1","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-27","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
 
 </script>
 <script type="module">
@@ -1679,7 +1679,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../practice/Week1_additional_practice.html">Tutorials</a></li><li class="breadcrumb-item"><a href="../tutorials/Week7_statistical_analyses.html">Week7_statistical_models</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../tutorials/Week7_statistical_analyses.html">Statistical Inference</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -1691,179 +1691,63 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="sidebar-menu-container"> 
     <ul class="list-unstyled mt-1">
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Getting started</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Welcome</span></a>
   </div>
 </li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
- <span class="menu-text">Tutorials</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../practice/Week1_additional_practice.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Additional Practice: Week 1 — Markdown &amp; Data Types</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../tutorials/Week2_data_structures.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data Types and Structures</span></a>
+ <span class="menu-text">Data Structures</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../practice/Week2_additional_practice.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Additional Practice: Week 2 — Data Structures</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../tutorials/Week3_functions_packages.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 3: Functions and Packages</span></a>
+ <span class="menu-text">Functions and Packages</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../practice/Week3_additional_practice.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Additional Practice: Week 3 — Functions &amp; Packages</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../tutorials/Week4_data_exploration.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 4: Data Exploration</span></a>
+ <span class="menu-text">Data Exploration</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../practice/Week4_additional_practice.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Additional Practice: Week 4 — Data Exploration</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../tutorials/Week5_data_manipulation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 5: Data Manipulation</span></a>
+ <span class="menu-text">Data Manipulation</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../practice/Week5_additional_practice.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Additional Practice: Week 5 — Data Manipulation</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../tutorials/Week6_descriptive_statistics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 6: Descriptive Statistics</span></a>
+ <span class="menu-text">Descriptive Statistics</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../tutorials/Week7_statistical_analyses.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Week7_statistical_models</span></a>
+ <span class="menu-text">Statistical Inference</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../practice/Week6-7_additional_practice.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Additional Practice: Weeks 6 &amp; 7 — Descriptive Statistics &amp; Modeling</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
+        <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../tutorials/Week8-9_data_visualizations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 8 + 9: Data Visualizations</span></a>
+ <span class="menu-text">Data Visualizations</span></a>
   </div>
 </li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../practice/Week8-9_additional_practice.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Additional Practice: Weeks 8 &amp; 9 — Data Visualizations</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Homework</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../hw/HW1_markdown_and_data_types.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">HW1_markdown_and_data_types</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../hw/HW2_data_structures_and_functions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Homework 2</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../hw/HW3_data_exploration_and_manipulation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Homework 3</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../hw/HW5_data_visualizations.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Homework 5</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
- <span class="menu-text">Final</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../final/Final_Project.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Final Project</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
  <span class="menu-text">Appendix</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../appendix/install_r_rstudio.html" class="sidebar-item-text sidebar-link">
@@ -1883,7 +1767,7 @@ window.Quarto = {
    
   <ul>
   <li><a href="#disclaimer-statistics-pre-requisites" id="toc-disclaimer-statistics-pre-requisites" class="nav-link active" data-scroll-target="#disclaimer-statistics-pre-requisites">Disclaimer: Statistics Pre-Requisites</a></li>
-  <li><a href="#statistical-inference" id="toc-statistical-inference" class="nav-link" data-scroll-target="#statistical-inference">Statistical Inference</a></li>
+  <li><a href="#inference" id="toc-inference" class="nav-link" data-scroll-target="#inference">Inference</a></li>
   <li><a href="#basic-comparisons" id="toc-basic-comparisons" class="nav-link" data-scroll-target="#basic-comparisons">Basic Comparisons</a>
   <ul class="collapse">
   <li><a href="#categorical-vs-categorical" id="toc-categorical-vs-categorical" class="nav-link" data-scroll-target="#categorical-vs-categorical">Categorical vs Categorical</a>
@@ -1910,10 +1794,7 @@ window.Quarto = {
   <li><a href="#practice-problem-7" id="toc-practice-problem-7" class="nav-link" data-scroll-target="#practice-problem-7">Practice Problem 7</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#bootstrapping" id="toc-bootstrapping" class="nav-link" data-scroll-target="#bootstrapping">Bootstrapping</a>
-  <ul class="collapse">
-  <li><a href="#spoilers-for-the-challenge-below-this-line" id="toc-spoilers-for-the-challenge-below-this-line" class="nav-link" data-scroll-target="#spoilers-for-the-challenge-below-this-line">Spoilers for the challenge below this line</a></li>
-  </ul></li>
+  <li><a href="#bootstrapping" id="toc-bootstrapping" class="nav-link" data-scroll-target="#bootstrapping">Bootstrapping</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/r-pophealth-research/online-course/edit/main/tutorials/Week7_statistical_analyses.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/r-pophealth-research/online-course/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -2204,9 +2085,9 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 }
 </script>
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../practice/Week1_additional_practice.html">Tutorials</a></li><li class="breadcrumb-item"><a href="../tutorials/Week7_statistical_analyses.html">Week7_statistical_models</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Week7_statistical_models</h1>
+<h1 class="title">Statistical Inference</h1>
 </div>
 
 
@@ -2225,44 +2106,34 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
 
 <section id="disclaimer-statistics-pre-requisites" class="level2">
 <h2 class="anchored" data-anchor-id="disclaimer-statistics-pre-requisites">Disclaimer: Statistics Pre-Requisites</h2>
-<p>We assume that you have completed the pre-requisite EPI 258/259, or an equivalent introduction to statistics class. In this tutorial, we will teach you code needed to implement various statistical tests and models but will not cover the underlying theory of these tools. We do not expect you to remember which test to use when. Instead, we may tell you to run a certain test on certain variables, and you will be responsible for implementing the relevant code and interpreting the output. Getting you set up to run analyses in this way will prepare you for (often fast-paced) statistics courses and/or get you started on analyses with advising from someone with statistical training.</p>
+<p>In this tutorial, we will teach you code needed to implement various statistical tests and models but will not cover the underlying theory of these tools. We do not expect you to remember which test to use when. Instead, we may tell you to run a certain test on certain variables, and you will be responsible for implementing the relevant code and interpreting the output. Getting you set up to run analyses in this way will prepare you for (often fast-paced) statistics courses and/or get you started on analyses with advising from someone with statistical training.</p>
 <p>Unbiased statistical inference relies on proper study design, population sampling, and confounder control. For the sake of this course, we assume all assumptions are met, but checking assumptions is something you need to explicitly do in a research setting.</p>
-<p>If we ever use statistical language that is unclear, please feel free to ask us to clarify.</p>
 </section>
-<section id="statistical-inference" class="level1">
-<h1>Statistical Inference</h1>
+<section id="inference" class="level1">
+<h1>Inference</h1>
 <p>Over the past several weeks, we’ve have cleaned our Framingham data using the skills we learned in weeks 4 and 5 and we familiarized ourselves with the distributions of different variables in week 6. This week we’ll go over code to implement statistical tests and models for inferential analysis.</p>
 <p>Run the cell below to load <code>clean_fram_data</code>, a “cleaned” version of the Framingham data set.</p>
-<pre class="{webr-r setup}"><code># tidyverse packages are pre-loaded on this site
-
-# Get a dataset similar to the one we had last week
-clean_fram_data &lt;- read_csv("https://raw.githubusercontent.com/r-pophealth-research/online-course/main/data/framingham.csv", show_col_types=F) %&gt;%
-    mutate(education = case_when(education == 1 ~ "Less than high school", # Education labelling
-                                 education == 2 ~ "High school diploma/GED",
-                                 education == 3 ~ "Some college",
-                                 education == 4 ~ "4-year degree or higher"),
-           smoker = if_else(currentSmoker==0,"No smoking","Smoker"), # Smoker labelling
-           sex = if_else(male==1, "Male", "Female"), # Sex labelling
-           diabetes = if_else(diabetes == 1, "Diabetes", "None")) # Diabetes labelling</code></pre>
+<div id="qwebr-insertion-location-1"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 <section id="basic-comparisons" class="level1">
 <h1>Basic Comparisons</h1>
 <section id="categorical-vs-categorical" class="level2">
 <h2 class="anchored" data-anchor-id="categorical-vs-categorical">Categorical vs Categorical</h2>
 <p>Often when we’re doing research, we want to decide if two groups are different in some way. Last week, we asked if men were more likely to be smokers than women. Run the code below to reproduce a 2x2 table that shows the proportion of each sex that smoked.</p>
-<div id="qwebr-insertion-location-1"></div>
+<div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>From this table, we see that 61% of males smoked and 41% of females smoked. It seems like males were more likely to be smokers than females. However, it is possible that in our randomly selected cohort, there just happen to be more male smokers and female non-smokers. R (and statistics as a whole) gives us a way to tell if that difference is <em>statistically significant</em> by comparing that difference to the likelihood of observing that difference by chance.</p>
 <p>We can use a chi-squared test to see if the smoking rates by sex are significantly different. We use <code>chisq.test</code> with the <code>sex</code> and <code>smoker</code> variables like we used with <code>table</code>. (FYI, a chi-squared test is sometimes written as <span class="math inline">\(\chi^2\)</span> which is the Greek letter chi squared)</p>
-<div id="qwebr-insertion-location-2"></div>
+<div id="qwebr-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>From the output, we can see the test that was run: “Pearson’s Chi-squared test with Yates’ continuity correction”. The next line tells us the data we used, <code>clean_fram_data$smoker</code> vs <code>clean_fram_data$sex</code>. The last line tells us the results of our statistical test: chi-squared value of 164.11, 1 degree of freedom, and a p-value of &lt; 2.2 * 10^-16. If you want to know what all of these mean, see this <a href="https://www.bmj.com/about-bmj/resources-readers/publications/statistics-square-one/8-chi-squared-tests">resource</a>. We don’t expect you to understand what a chi-squared value or degree of freedom is for the class. For our purposes, our p-value is less than 0.05 which allows us to say there is a statistically significant difference in smoking rates between men and women in our sample.</p>
 <section id="practice-problem-1" class="level3">
 <h3 class="anchored" data-anchor-id="practice-problem-1">Practice Problem 1</h3>
 <p>Do a chi-squared test to answer the question, “Is there a statistically significant difference in blood pressure medication use (<code>BPMeds</code>) between males and females?”</p>
-<div id="qwebr-insertion-location-3"></div>
+<div id="qwebr-insertion-location-4"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -2274,28 +2145,26 @@ Solution
 </div>
 <div id="callout-1" class="callout-1-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="qwebr-insertion-location-4"></div>
+<div id="qwebr-insertion-location-5"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 </div>
 </div>
-<p><strong>Interpret the output here</strong>: …</p>
-<hr>
 </section>
 </section>
 <section id="categorical-vs-continuous" class="level2">
 <h2 class="anchored" data-anchor-id="categorical-vs-continuous">Categorical vs Continuous</h2>
 <p>Let’s say we now wanted to ask is there a significant difference between the ages of the males and females in this data set.</p>
 <p>To answer this question, we will first use <code>t.test()</code>. A t-test needs us to specify how we want this analysis run in the format of a <strong>formula</strong>. If formulas ring a bell, we used them to tell <code>table1</code> which variables to include in our table. A formula will look like <code>outcome ~ exposure</code> or <code>dependent_variable ~ independent_variable</code>. Essentially, the outcome you are interested in goes to the left of the <code>~</code> and everything you think affects the outcome goes on the right. For us, we’re interested in <code>age ~ sex</code> or the difference in <code>age</code> across the different values of <code>sex</code>. We then tell <code>t.test</code> what dataset we are using by saying <code>data=clean_fram_data</code>.</p>
-<div id="qwebr-insertion-location-5"></div>
+<div id="qwebr-insertion-location-6"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>We see a similar output with the data, a t-value, degrees of freedom (don’t worry about it), and a p-value listed at the top. The p-value is greater than 0.05, so the age difference between males and females is not statistically significant. Because we are now talking about continuous data rather than categorical, we get the sample mean of each group instead of an odds ratio. We can subtract these values to get that the mean age difference is <span class="math inline">\(49.79926-49.29341=0.50585\)</span>. We also get a confidence interval for that difference in means ranging from -0.015 to 1.027. Notice this range is mostly on the positive side, and our p-value was close to 0.05. Therefore, we can say that, in our sample, females are on average older than men, but that difference is not statistically significant.</p>
 <section id="practice-problem-3" class="level3">
 <h3 class="anchored" data-anchor-id="practice-problem-3">Practice Problem 3</h3>
 <p>Repeat this t-test for the age difference between smokers and non-smokers. Interpret the output.</p>
-<div id="qwebr-insertion-location-6"></div>
+<div id="qwebr-insertion-location-7"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -2307,13 +2176,11 @@ Solution
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="qwebr-insertion-location-7"></div>
+<div id="qwebr-insertion-location-8"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 </div>
 </div>
-<p><strong>Interpret the output here</strong>: …</p>
-<hr>
 </section>
 </section>
 </section>
@@ -2323,22 +2190,22 @@ Solution
 <section id="linear-models" class="level2">
 <h2 class="anchored" data-anchor-id="linear-models">Linear Models</h2>
 <p>Linear models model…a line! They will have a continuous outcome like age, blood pressure, or a test score. You can then add independent variables that you believe influence that outcome. R will include them in the model and produce a coefficient for those independent variables. We will start with the most basic linear model with a continuous outcome <span class="math inline">\(y\)</span> and one continuous predictor <span class="math inline">\(x\)</span>: <span class="math inline">\(y=mx+b\)</span>. As an example, let’s check whether age influences blood pressure. We will use the same <strong>formula</strong> format as we did above to tell R how to model the variables inside the function <code>lm</code>. Because these statistical models can do so much more than just test for differences, people typically save their models to a variable.</p>
-<div id="qwebr-insertion-location-8"></div>
+<div id="qwebr-insertion-location-9"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>We can then use <code>summary</code> on that variable to get the model parameters and <code>confint</code> to get the confidence intervals for those parameters.</p>
-<div id="qwebr-insertion-location-9"></div>
+<div id="qwebr-insertion-location-10"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>The summary of a linear model has parts we are already familiar with. First, it will tell us what call produced this output so we know how the variables are being modeled. Then we get a big coefficients section that is the star of the show. Here we can fill in our values for our equation <span class="math inline">\(y=mx+b\)</span>. We can see the estimate for our intercept is 82.1 and the estimate for the age coefficient is 1.01. So our fitted formula is <span class="math inline">\(sysBP=1.01*age+82.1\)</span>. In other words, for each year increase in age, systolic blood pressure increases by 1.01 on average with a 95% confidence interval of 0.94-1.08. Each of these coefficients also has a p-value that tells us if that coefficient is statistically significantly different than zero. If the p-value for age was greater than 0.05, we could not say that the coefficient for age is significantly different from zero. In other words, age would not have a statistically significant impact on systolic blood pressure. However, in our case, age is statistically significant.</p>
 <p>Some of you intrepid epidemiologists out there may be thinking that there may be missing parts to the story here. What happens if we have confounders, mediators, or other factors that we want to adjust for? With models, we can add them in using the <code>+</code> just like we would in an equation! We can also add in more complex variables to the equation. Often times age has a quadratic (squared) effect where its impact on health is high when someone is especially young or old, but not so much in the middle. We can add in quadratic or even higher order powers using <code>I()</code> inside the formula. This little function tells R to do that math before fitting the model. Let’s add in sex, smoking status, and age squared into our existing model.</p>
-<div id="qwebr-insertion-location-10"></div>
+<div id="qwebr-insertion-location-11"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>From this model, we can see that age and smoking status both significantly affect systolic blood pressure. For each year of age on average, systolic blood pressure increases by 1. For smokers on average, their systolic blood pressure is 2 lower than non-smokers on average. We will encourage you to take more epidemiology methods courses to learn what kinds of biases may be in place to make the model come out this way! The other coefficients age squared and sex are not significantly associated with systolic blood pressure.</p>
 <section id="practice-problem-5" class="level3">
 <h3 class="anchored" data-anchor-id="practice-problem-5">Practice Problem 5</h3>
 <p>Do these same associations hold when using diastolic blood pressure as the outcome? Run a linear model to test answer this question and interpret your model output.</p>
-<div id="qwebr-insertion-location-11"></div>
+<div id="qwebr-insertion-location-12"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -2350,13 +2217,11 @@ Solution
 </div>
 <div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="qwebr-insertion-location-12"></div>
+<div id="qwebr-insertion-location-13"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 </div>
 </div>
-<p><strong>Interpret the output here</strong>: …</p>
-<hr>
 </section>
 </section>
 <section id="logistic-models" class="level2">
@@ -2364,21 +2229,21 @@ Solution
 <p>Rather than looking at a continuous outcome, sometimes it will make more sense to look at a binary outcome like the presence/absence of disease. For this case, our linear models will not do (because it violates the linearity assumption). Logistic models are specifically designed to model binary outcomes.</p>
 <p>We use <code>glm(family="binomial")</code> to fit logistic models. Generalized linear models (GLMs) are versatile tools that allow us to model variables that have non-normal distributions. Binary variables follow a “binomial” distribution because there are only two possible values. By specifying <code>family = "binomial"</code>, we’re telling R that we want to use GLMs to model a binary outcome. For more information on GLMs, please see this <a href="https://r-eco-evo.blogspot.com/2017/05/generalized-linear-models.html">resource</a>.</p>
 <p>To run a GLM, we specify the formula and data, and can use <code>summary</code> to get the results in the same way as the linear model. Let’s model coronary heart disease (CHD) of diabetes and age.</p>
-<div id="qwebr-insertion-location-13"></div>
+<div id="qwebr-insertion-location-14"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>The logistic model coefficients do not represent changes in the value of the outcome because there are only two possible values of the outcome! Instead, the model coefficients represent how covariates influence the likelihood of the outcome. In this output, the model coefficients represent the difference in <em>log odds</em> (as in <span class="math inline">\(ln(odds)\)</span>) associated with a change in that exposure. For example, the coefficient associated with <code>diabetesNone</code> was about <code>-0.91</code>. Notice that R picked “None” as the group associated with the coefficient - this means that the <em>log odds</em> of CHD is 0.91 lower among those without diabetes.</p>
 <p>However, log odds are a very unnatural and unintuitive way of thinking about disease risk. Luckily, there’s a algebraic trick that allows us to easily convert between differences in log odds and odds ratios. (See this <a href="https://www.bookdown.org/rwnahhas/RMPH/blr-interp.html">explainer</a> if you need convincing!). We can use the natural exponentiation (<span class="math inline">\(e^x\)</span>) to convert model coefficients to their equivalent odd ratios. In the case of diabetes, <span class="math inline">\(e^{-0.91} = 0.40\)</span> is the odds ratio associated with no diabetes vs diabetes.</p>
 <p>To implement this conversion in R, we need use <code>exp()</code> on the model coefficients to get the corresponding odds ratios. We can access the coefficients using the <code>$</code> on the model we saved.</p>
-<div id="qwebr-insertion-location-14"></div>
+<div id="qwebr-insertion-location-15"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>We can confirm that the odds ratio of CHD associated with not having diabetes is 0.40, or that not having diabetes was associated with a lower odds of having CHD. This association is statistically significant, since the p-value associated with the coefficient (as shown with <code>summary(chd_smok_age_mod)</code>) is less than 0.05.</p>
 <p>From this output, we can also say that the odds ratio for CHD for each year older is 1.08 with a 95% confidence interval of 1.06-1.09. In other words, each additional year of age increases the odds of CHD by 8%.</p>
 <section id="practice-problem-6" class="level3">
 <h3 class="anchored" data-anchor-id="practice-problem-6">Practice Problem 6</h3>
 <p>What impact does smoking and systolic blood pressure have on the odds of having CHD? Run a logistic model to answer this question and interpret your results.</p>
-<div id="qwebr-insertion-location-15"></div>
+<div id="qwebr-insertion-location-16"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -2390,30 +2255,28 @@ Solution
 </div>
 <div id="callout-4" class="callout-4-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="qwebr-insertion-location-16"></div>
+<div id="qwebr-insertion-location-17"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 </div>
 </div>
-<p><strong>Interpret the output here</strong>: …</p>
-<hr>
 </section>
 </section>
 <section id="refactoring" class="level2">
 <h2 class="anchored" data-anchor-id="refactoring">Refactoring</h2>
 <p>In that last example, it is a bit confusing to talk about how not having diabetes decreases risk. We usually talk about things by saying that having something increases your risk. To get this set up correctly for our model, we need to change the <strong>factoring</strong> of the diabetes variable. You have been working with factor variables all along! Factors are how R deals with categorical variables, or variables that can only take on a certain number of variables. By looking at <code>?factor</code>, we can see that R will let us change the order of our diabetes variable so that “None” is the reference group and we can get an odds ratio for the “Diabetes” group. Here’s how we change the order of a factor using dplyr.</p>
-<div id="qwebr-insertion-location-17"></div>
+<div id="qwebr-insertion-location-18"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>Now we can see that having diabetes increases your risk of CHD by 91%.</p>
 <p>Changing your categorical variables into factors has other benefits too. For example, it is much easier to see summary statistics about your variables. For example:</p>
-<div id="qwebr-insertion-location-18"></div>
+<div id="qwebr-insertion-location-19"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <section id="practice-problem-7" class="level3">
 <h3 class="anchored" data-anchor-id="practice-problem-7">Practice Problem 7</h3>
 <p>Add education into our logistic model for CHD from above, but before you do that, factor it so that “4-year degree or higher” is the reference group and educational attainment decreases from there. Interpret your model.</p>
-<div id="qwebr-insertion-location-19"></div>
+<div id="qwebr-insertion-location-20"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
@@ -2425,48 +2288,64 @@ Solution
 </div>
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<div id="qwebr-insertion-location-20"></div>
+<div id="qwebr-insertion-location-21"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 </div>
 </div>
-<p><strong>Interpret your model here</strong>:</p>
-<hr>
 </section>
 </section>
 </section>
 <section id="bootstrapping" class="level1">
 <h1>Bootstrapping</h1>
 <p>Bootstrapping is an advanced technique that is extremely useful in real-world analyses when statistical assumptions may not hold.</p>
-<p>In pretty much every study with real-world medical data, your statistical assumptions are going to be bent or completely broken. For these situations, our friends on main campus in the stats department Brad Efron and Rob Tibshirani invented <strong>bootstrapping</strong>. They called it bootstrapping because the data overcomes its weirdness by “pulling itself up by the bootsraps” through random sampling (it was the 80’s). The idea behind bootstrapping is that we are simulating the re-sampling process, as though we went back out into the world and collected more data. Actually doing so is often too expensive and time-consuming, so we randomly sample from the data we have. Rather than using an estimate of the error like a statistical test does, we can observe the error by “repeating” the experiment many times. Let’s estimate the mean difference and 95% confidence interval of that difference for the skewed <code>cigsPerDay</code> data with <strong>bootstrapping</strong>.</p>
+<p>In pretty much every study with real-world medical data, your statistical assumptions are going to be bent or completely broken. For these situations, our friends on main campus in the stats department Brad Efron and Rob Tibshirani invented <strong>bootstrapping</strong>. They called it bootstrapping because the data overcomes its weirdness by “pulling itself up by the bootstraps” through random sampling (it was the 80’s). The idea behind bootstrapping is that we are simulating the re-sampling process, as though we went back out into the world and collected more data. Actually doing so is often too expensive and time-consuming, so we randomly sample from the data we have. Rather than using an estimate of the error like a statistical test does, we can observe the error by “repeating” the experiment many times. Let’s estimate the mean difference and 95% confidence interval of that difference for the skewed <code>cigsPerDay</code> data with <strong>bootstrapping</strong>.</p>
 <p>We perform bootstrapping by estimating a value many times (usually around 1000) and then taking the mean and percentiles of that data. In-between estimation, we take a random sample with replacement of our original data to get a slightly different but mostly the same dataset. In this way, outliers have less and less influence on the data. Let’s walk through 1 iteration of a bootstrap.</p>
 <ol type="1">
-<li><p>Take our existing dataset and randomly select a rows equal to the number of rows in the existing rows <em>with replacement</em>. With replacement means that we will get a slightly different dataset than our original with some rows being duplicated and other rows being left out entirely. Hint: Look at <code>?slice_sample</code>.</p>
-<div id="qwebr-insertion-location-21"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript></li>
-<li><p>Get the mean <code>cigsPerDay</code> for males and females separately.</p>
-<div id="qwebr-insertion-location-22"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript></li>
-<li><p>Subtract the female mean from the male mean and save it to the variable <code>bootstrap_difference</code>. We expect males to smoke more given our previous results, and doing the subtraction this way will allow us to end up with a positive number.</p>
-<div id="qwebr-insertion-location-23"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript></li>
-<li><p>Now we combine these three steps inside a for loop that will run 1000 times. Each time inside the for loop, we save the <code>bootstrap_difference</code> to a vector <code>all_boot_differences</code>. If you need to remember how to make a for loop that saves something to a vector every time, look back at week 2.</p>
-<div id="qwebr-insertion-location-24"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript></li>
-<li><p>Our <code>all_boot_differences</code> vector is now full of simulated random means from different dataset that are similar to our original data. Now, we can use <code>mean</code> to get the mean difference of the vector and <code>quantile</code> with <code>probs=c(0.025,0.975)</code> to get the 95% confidence interval.</p>
-<div id="qwebr-insertion-location-25"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript></li>
+<li>Take our existing dataset and randomly select a rows equal to the number of rows in the existing rows <em>with replacement</em>. With replacement means that we will get a slightly different dataset than our original with some rows being duplicated and other rows being left out entirely. Hint: Look at <code>?slice_sample</code>.</li>
 </ol>
-<section id="spoilers-for-the-challenge-below-this-line" class="level3">
-<h3 class="anchored" data-anchor-id="spoilers-for-the-challenge-below-this-line">Spoilers for the challenge below this line</h3>
-<hr>
-<p>Your code should hopefully look something like this:</p>
+<div id="qwebr-insertion-location-22"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<ol start="2" type="1">
+<li>Get the mean <code>cigsPerDay</code> for males and females in the bootstrap sample separately.</li>
+</ol>
+<div id="qwebr-insertion-location-23"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<ol start="3" type="1">
+<li>Subtract the female mean from the male mean and save it to the variable <code>bootstrap_difference</code>. We expect males to smoke more given our previous results, and doing the subtraction this way will allow us to end up with a positive number.</li>
+</ol>
+<div id="qwebr-insertion-location-24"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<ol start="4" type="1">
+<li>Now we combine these three steps inside a for loop that will run 1000 times. Each time inside the for loop, we save the <code>bootstrap_difference</code> to a vector <code>all_boot_differences</code>. If you need to remember how to make a for loop that saves something to a vector every time, look back at week 2.</li>
+</ol>
+<div id="qwebr-insertion-location-25"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<ol start="5" type="1">
+<li>Our <code>all_boot_differences</code> vector is now full of simulated random means from different dataset that are similar to our original data. Now, we can use <code>mean</code> to get the mean difference of the vector and <code>quantile</code> with <code>probs=c(0.025,0.975)</code> to get the 95% confidence interval.</li>
+</ol>
 <div id="qwebr-insertion-location-26"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="callout callout-style-default callout-tip callout-titled" title="Solution">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Solution
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div id="qwebr-insertion-location-27"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+</div>
+</div>
 <p>Using bootstrapping, we calculated an estimate and a 95% percent confidence interval without needing to use a statistical test with all of its annoying assumptions. Instead, because our 95% confidence interval does not cross zero, we can say that men smoke significantly more cigarettes than women on overage (go back and note how this conclusion is different from the one in the chi squared test).</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
