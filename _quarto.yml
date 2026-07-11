@@ -26,7 +26,7 @@ website:
       - tutorials/data_manipulation.qmd
       - tutorials/data_visualizations.qmd
       - tutorials/descriptive_statistics.qmd
-      - tutorials/statistical_analyses.qmd
+      - tutorials/statistical_inference.qmd
       - section: "Appendix"
         contents:
           - appendix/install_r_rstudio.qmd

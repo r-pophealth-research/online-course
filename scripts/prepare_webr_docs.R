@@ -10,7 +10,7 @@ source_files <- c(
   "tutorials/data_exploration.Rmd",
   "tutorials/data_manipulation.Rmd",
   "tutorials/descriptive_statistics.Rmd",
-  "tutorials/statistical_analyses.Rmd",
+  "tutorials/statistical_inference.Rmd",
   "tutorials/data_visualizations.Rmd"
 )
 

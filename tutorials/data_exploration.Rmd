@@ -9,8 +9,6 @@ Through this tutorial (and the rest of the class), we will be leveraging open so
 
 # Loading Data
 
-Course datasets are stored in the [online-course `data` folder on GitHub](https://github.com/r-pophealth-research/online-course/tree/main/data).
-
 By loading tidyverse, you also loaded **readr**, which gives us useful functions to import data into R—because who wants to type out 3,000 rows by hand? We will use the `read_csv()` function from the `readr` package. You can check out what `read_csv()` does using the `?` function.
 
 ```{r}

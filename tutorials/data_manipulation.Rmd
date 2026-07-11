@@ -5,7 +5,7 @@ output: html_notebook
 
 In this chapter, we'll introduce methods for data manipulation, or the alteration of data frames to gain new insights from the data. This tutorial will cover different methods to create new variables, combine datasets, and reshape data frames.
 
-We'll continue to work with the Framingham data in this tutorial. Run the code below to load the data as `framingham_df` from the [course GitHub repo](https://github.com/r-pophealth-research/online-course/tree/main/data).
+We'll continue to work with the Framingham data in this tutorial. Run the code below to load the data as `framingham_df`.
 
 ```{r}
 framingham_df = read_csv("https://raw.githubusercontent.com/r-pophealth-research/online-course/main/data/framingham.csv")
@@ -438,7 +438,7 @@ framingham_inner_join %>%
 
 Analyses that use data created by a inner join need to be aware of which data points are dropped during the merge process. In some cases, the inner join could entirely remove patients with missing data leading to biased results.
 
-## Practice Problem 4 (Challenge)
+## Practice Problem 4 
 
 Create a new data frame `chd_income_df` that contains one row for each zip code represented in `framingham_df` and two columns: (1) `chd_prev`, the prevalence of CHD in the zip code and (2) the median household income of the zip code
 
@@ -543,13 +543,13 @@ Next, you'll start applying your new R skillset to statistical analyses that mir
 
 We'll explore dengue infections using a dataset from [this study published in *Nature Microbiology*](https://www.nature.com/articles/s41564-023-01543-3 "Household immunity and individual risk of infection with dengue virus in a prospective, longitudinal cohort study").
 
-Load the `dengue_infection_data.csv` dataset from the [course GitHub repo](https://github.com/r-pophealth-research/online-course/tree/main/data) in the cell below.
-
-In this dataset, each row captures the number of infections reported for each individual during the study. Each individual is assigned an `ID`, and individuals who share a household share a `hh_ID`.
+Load the `dengue_infection_data.csv` dataset by running the cell below:
 
 ```{r}
 dengue_infections = read_csv("https://raw.githubusercontent.com/r-pophealth-research/online-course/main/data/dengue_infection_data.csv")
 ```
+
+In this dataset, each row captures the number of infections reported for each individual during the study. Each individual is assigned an `ID`, and individuals who share a household share a `hh_ID`.
 
 ## Part 1: Data Exploration
 
