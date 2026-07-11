@@ -1679,7 +1679,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../tutorials/statistical_analyses.html">Statistical Inference</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../tutorials/statistical_inference.html">Statistical Inference</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -1741,7 +1741,7 @@ window.Quarto = {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../tutorials/statistical_analyses.html" class="sidebar-item-text sidebar-link active">
+  <a href="../tutorials/statistical_inference.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Statistical Inference</span></a>
   </div>
 </li>
@@ -1782,22 +1782,22 @@ window.Quarto = {
   </ul></li>
   <li><a href="#categorical-vs-continuous" id="toc-categorical-vs-continuous" class="nav-link" data-scroll-target="#categorical-vs-continuous">Categorical vs Continuous</a>
   <ul class="collapse">
-  <li><a href="#practice-problem-3" id="toc-practice-problem-3" class="nav-link" data-scroll-target="#practice-problem-3">Practice Problem 3</a></li>
+  <li><a href="#practice-problem-2" id="toc-practice-problem-2" class="nav-link" data-scroll-target="#practice-problem-2">Practice Problem 2</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#statistical-models" id="toc-statistical-models" class="nav-link" data-scroll-target="#statistical-models">Statistical Models</a>
   <ul class="collapse">
   <li><a href="#linear-models" id="toc-linear-models" class="nav-link" data-scroll-target="#linear-models">Linear Models</a>
   <ul class="collapse">
-  <li><a href="#practice-problem-5" id="toc-practice-problem-5" class="nav-link" data-scroll-target="#practice-problem-5">Practice Problem 5</a></li>
+  <li><a href="#practice-problem-3" id="toc-practice-problem-3" class="nav-link" data-scroll-target="#practice-problem-3">Practice Problem 3</a></li>
   </ul></li>
   <li><a href="#logistic-models" id="toc-logistic-models" class="nav-link" data-scroll-target="#logistic-models">Logistic Models</a>
   <ul class="collapse">
-  <li><a href="#practice-problem-6" id="toc-practice-problem-6" class="nav-link" data-scroll-target="#practice-problem-6">Practice Problem 6</a></li>
+  <li><a href="#practice-problem-4" id="toc-practice-problem-4" class="nav-link" data-scroll-target="#practice-problem-4">Practice Problem 4</a></li>
   </ul></li>
   <li><a href="#refactoring" id="toc-refactoring" class="nav-link" data-scroll-target="#refactoring">Refactoring</a>
   <ul class="collapse">
-  <li><a href="#practice-problem-7" id="toc-practice-problem-7" class="nav-link" data-scroll-target="#practice-problem-7">Practice Problem 7</a></li>
+  <li><a href="#practice-problem-5" id="toc-practice-problem-5" class="nav-link" data-scroll-target="#practice-problem-5">Practice Problem 5</a></li>
   </ul></li>
   </ul></li>
   <li><a href="#bootstrapping" id="toc-bootstrapping" class="nav-link" data-scroll-target="#bootstrapping">Bootstrapping</a></li>
@@ -2165,8 +2165,8 @@ Solution
 <div id="qwebr-insertion-location-6"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>We see a similar output with the data, a t-value, degrees of freedom (don’t worry about it), and a p-value listed at the top. The p-value is greater than 0.05, so the age difference between males and females is not statistically significant. Because we are now talking about continuous data rather than categorical, we get the sample mean of each group instead of an odds ratio. We can subtract these values to get that the mean age difference is <span class="math inline">\(49.79926-49.29341=0.50585\)</span>. We also get a confidence interval for that difference in means ranging from -0.015 to 1.027. Notice this range is mostly on the positive side, and our p-value was close to 0.05. Therefore, we can say that, in our sample, females are on average older than men, but that difference is not statistically significant.</p>
-<section id="practice-problem-3" class="level3">
-<h3 class="anchored" data-anchor-id="practice-problem-3">Practice Problem 3</h3>
+<section id="practice-problem-2" class="level3">
+<h3 class="anchored" data-anchor-id="practice-problem-2">Practice Problem 2</h3>
 <p>Repeat this t-test for the age difference between smokers and non-smokers. Interpret the output.</p>
 <div id="qwebr-insertion-location-7"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -2206,8 +2206,8 @@ Solution
 <div id="qwebr-insertion-location-11"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>From this model, we can see that age and smoking status both significantly affect systolic blood pressure. For each year of age on average, systolic blood pressure increases by 1. For smokers on average, their systolic blood pressure is 2 lower than non-smokers on average. We will encourage you to take more epidemiology methods courses to learn what kinds of biases may be in place to make the model come out this way! The other coefficients age squared and sex are not significantly associated with systolic blood pressure.</p>
-<section id="practice-problem-5" class="level3">
-<h3 class="anchored" data-anchor-id="practice-problem-5">Practice Problem 5</h3>
+<section id="practice-problem-3" class="level3">
+<h3 class="anchored" data-anchor-id="practice-problem-3">Practice Problem 3</h3>
 <p>Do these same associations hold when using diastolic blood pressure as the outcome? Run a linear model to test answer this question and interpret your model output.</p>
 <div id="qwebr-insertion-location-12"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -2244,8 +2244,8 @@ Solution
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 <p>We can confirm that the odds ratio of CHD associated with not having diabetes is 0.40, or that not having diabetes was associated with a lower odds of having CHD. This association is statistically significant, since the p-value associated with the coefficient (as shown with <code>summary(chd_smok_age_mod)</code>) is less than 0.05.</p>
 <p>From this output, we can also say that the odds ratio for CHD for each year older is 1.08 with a 95% confidence interval of 1.06-1.09. In other words, each additional year of age increases the odds of CHD by 8%.</p>
-<section id="practice-problem-6" class="level3">
-<h3 class="anchored" data-anchor-id="practice-problem-6">Practice Problem 6</h3>
+<section id="practice-problem-4" class="level3">
+<h3 class="anchored" data-anchor-id="practice-problem-4">Practice Problem 4</h3>
 <p>What impact does smoking and systolic blood pressure have on the odds of having CHD? Run a logistic model to answer this question and interpret your results.</p>
 <div id="qwebr-insertion-location-16"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -2277,8 +2277,8 @@ Solution
 <p>Changing your categorical variables into factors has other benefits too. For example, it is much easier to see summary statistics about your variables. For example:</p>
 <div id="qwebr-insertion-location-19"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<section id="practice-problem-7" class="level3">
-<h3 class="anchored" data-anchor-id="practice-problem-7">Practice Problem 7</h3>
+<section id="practice-problem-5" class="level3">
+<h3 class="anchored" data-anchor-id="practice-problem-5">Practice Problem 5</h3>
 <p>Add education into our logistic model for CHD from above, but before you do that, factor it so that “4-year degree or higher” is the reference group and educational attainment decreases from there. Interpret your model.</p>
 <div id="qwebr-insertion-location-20"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
