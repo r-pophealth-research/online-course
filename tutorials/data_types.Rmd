@@ -284,7 +284,7 @@ Calculate 1,248 squared.
 
 ### Question 2
 
-Replace the `#Your_code_here`'s with *appropriate data* based on the variable names. Hint: You will use 1 of each data type.
+Replace the `...`'s with *appropriate data* based on the variable names. Hint: You will use 1 of each data type.
 
 ```{r}
 average_height_of_a_girrafe_in_meters = ...
