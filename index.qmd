@@ -32,3 +32,7 @@ print("Hello world!")
 ## Credit
 
 These materials were adapted from materials from the 2024 and 2025 offerings of EPI/CHPR 202 at Stanford University, and were authored by [Anna Nguyen](https://www.linkedin.com/in/annatnguyen98/) and [Samuel Jaros](https://www.linkedin.com/in/samuel-jaros/). Anna Nguyen converted course materials into this online course in 2026 with the assistance of [Cursor](https://cursor.com/).
+
+## Feedback
+
+If you have feedback for these materials, or want to report an issue (ie typo, cell that isn't working), please use this [form](https://forms.gle/1ff1wJPkeKMwqo2M8)!
